@@ -1,7 +1,6 @@
 #ifndef __Manager_H__
 #define __Manager_H__
 
-#include "Config.h";
 #include "Employee.h"
 
 namespace EmployeeDB::Model {

@@ -1,7 +1,6 @@
 #ifndef __HR_H__
 #define __HR_H__
 
-#include "Config.h";
 #include "Employee.h";
 
 namespace EmployeeDB::Model {

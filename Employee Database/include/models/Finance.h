@@ -1,7 +1,6 @@
 #ifndef __Finance_H__
 #define __Finance_H__
 
-#include "Config.h";
 #include "Employee.h"
 
 namespace EmployeeDB::Model {

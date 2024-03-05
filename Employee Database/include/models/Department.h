@@ -1,7 +1,7 @@
 #ifndef __Department_H__
 #define __Department_H__
 
-#include "Config.h"
+#include <string>
 
 namespace EmployeeDB::Model {
 	class Department {

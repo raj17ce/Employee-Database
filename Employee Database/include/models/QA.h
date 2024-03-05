@@ -1,7 +1,6 @@
 #ifndef __QA_H__
 #define __QA_H__
 
-#include "Config.h";
 #include "Employee.h"
 
 namespace EmployeeDB::Model {

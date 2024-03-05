@@ -1,7 +1,7 @@
 #ifndef __Employee_H__
 #define __Employee_H__
 
-#include "Config.h";
+#include <string>
 
 namespace EmployeeDB::Model {
 
