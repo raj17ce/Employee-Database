@@ -1,33 +1,34 @@
 #include <iostream>
-#include "sqlite3.h"
 #include "DBManager.h"
+#include "Model.h"
+#include "EmployeeController.h"
 
-using EmployeeDB::DBManager;
+using EmployeeDB::DBManager, EmployeeDB::Model::Employee, EmployeeDB::Controller::EmployeeController;
 
 int main() {
 	DBManager& db = DBManager::instance();
 
-	const char* createQueryString = "CREATE TABLE IF NOT EXISTS Employee("
-		"ID				INT		PRIMARY KEY     NOT NULL,"
-		"NAME           TEXT    NOT NULL,"
-		"AGE            INT     NOT NULL,"
-		"ADDRESS        CHAR(50),"
-		"SALARY         REAL );";
+    //Employee dummyEmployee;
 
-	db.executeQuery(createQueryString);
+    //// Set dummy values for all attributes
+    //dummyEmployee.setFirstName("John");
+    //dummyEmployee.setMiddleName("Robert");
+    //dummyEmployee.setLastName("Doe");
+    //dummyEmployee.setEmail("john.Doe@example.com");
+    //dummyEmployee.setAddress("123 Main St, Cityville");
+    //dummyEmployee.setDateOfBirth("1990-01-01");
+    //dummyEmployee.setDateOfJoining("2020-05-15");
+    //dummyEmployee.setPerformanceMetric(4.5);
+    //dummyEmployee.setMobileNumber(1234567890);
+    //dummyEmployee.setGender(EmployeeDB::Model::Gender::Male);
+    //dummyEmployee.setEmployeeId(1001);
+    //dummyEmployee.setDepartmentId(101);
+    //dummyEmployee.setManagerId(201);
+    //dummyEmployee.setBonus(5000);
 
-	//const char* insertQueryString = "INSERT INTO Employee (ID, NAME, AGE, ADDRESS, SALARY) "
-	//	"VALUES (1, 'Raj Patel', 17, 'Valsad, Gujarat, India', 50000.0 ); "
-	//	"INSERT INTO Employee (ID, NAME, AGE, ADDRESS, SALARY) "
-	//	"VALUES (2, 'Rishi Gandhi', 34, 'Surat, Gujarat, India', 50000.0 );";
+    //EmployeeController::createEmployee(dummyEmployee);
 
-	//db.executeQuery(insertQueryString);
-
-	const char* selectQueryString = "Select * from Employee";
-
-	db.executeSelectQuery(selectQueryString);
-
-	std::cout << db.getResultString();
+    std::cout<<EmployeeController::selectEmployeeId("john.Doe@example.com")<<'\n';
 
 	return 0;
 }

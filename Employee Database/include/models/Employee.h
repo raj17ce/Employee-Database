@@ -11,8 +11,24 @@ namespace EmployeeDB::Model {
 		Other
 	};
 
+    inline std::string getGenderString(Gender g) {
+        std::string tempStr{ "Male" };
+        switch (g) {
+        case EmployeeDB::Model::Gender::Male:
+            break;
+        case EmployeeDB::Model::Gender::Female:
+            tempStr = "Female";
+            break;
+        case EmployeeDB::Model::Gender::Other:
+            tempStr = "Other";
+            break;
+        }
+        return tempStr;
+    }
+
 	class Employee {
 	public:
+        Employee() = default;
         void setFirstName(const std::string& firstName) {
             m_FirstName = firstName;
         }
@@ -28,10 +44,15 @@ namespace EmployeeDB::Model {
         void setAddress(const std::string& address) {
             m_Address = address;
         }
+        void setDateOfBirth(const std::string& dateOfBirth) {
+            m_DateOfBirth = dateOfBirth;
+        }
+        void setDateOfJoining(const std::string& dateOfJoining) {
+            m_DateOfJoining = dateOfJoining;
+        }
         void setPerformanceMetric(double performanceMetric) {
             m_PerformanceMetric = performanceMetric;
         }
-        // TODO: Setters for DateOfBirth and DateOfJoining
         void setMobileNumber(long mobileNumber) {
             m_MobileNumber = mobileNumber;
         }
@@ -66,10 +87,15 @@ namespace EmployeeDB::Model {
         const std::string& getAddress() const {
             return m_Address;
         }
+        const std::string& getDateOfBirth() const {
+            return m_DateOfBirth;
+        }
+        const std::string& getDateOfJoining() const {
+            return m_DateOfJoining;
+        }
         double getPerformanceMetric() const {
             return m_PerformanceMetric;
         }
-        // TODO: Getters for DateOfBirth and DateOfJoining
         long getMobileNumber() const {
             return m_MobileNumber;
         }
@@ -89,16 +115,16 @@ namespace EmployeeDB::Model {
             return m_Bonus;
         }
 
-		virtual double computeSalary();
+        virtual double computeSalary() { return 10.2; };
 	private:
 		std::string m_FirstName;
 		std::string m_MiddleName;
 		std::string m_LastName;
         std::string m_Email;
         std::string m_Address;
+        std::string m_DateOfBirth;
+        std::string  m_DateOfJoining;
 		double m_PerformanceMetric;
-		//to-do m_DateOFBirth;
-		//to-do m_DateOfJoining; 
 		long m_MobileNumber;
 		Gender m_Gender;
 		int m_EmployeeId;

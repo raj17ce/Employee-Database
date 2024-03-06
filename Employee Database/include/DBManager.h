@@ -9,7 +9,7 @@ namespace EmployeeDB {
 
 		static DBManager& instance();
 		int executeQuery(const char*);
-		int executeSelectQuery(const char*);
+		int executeSelectQuery(const char*, int (*)(void*, int, char**, char**) = DBManager::callback, void* = 0);
 
 		static std::string getResultString() {
 			return m_ResultString;

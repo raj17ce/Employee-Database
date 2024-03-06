@@ -9,6 +9,9 @@ namespace EmployeeDB::Model {
 		void setProjectTitle(const std::string& projectTitle) {
 			m_ProjectTitle = projectTitle;
 		}
+		void setRole(const std::string& role) {
+			m_Role = role;
+		}
 		void setYearsOfExperience(double yearsOfExperience) {
 			m_YearsOfExperience = yearsOfExperience;
 		}
@@ -21,6 +24,9 @@ namespace EmployeeDB::Model {
 
 		const std::string& getProjectTitle() const {
 			return m_ProjectTitle;
+		}
+		const std::string& getRole() const {
+			return m_Role;
 		}
 		double getYearsOfExperience() const {
 			return m_YearsOfExperience;
@@ -35,6 +41,7 @@ namespace EmployeeDB::Model {
 		double computeSalary() override;
 	private:
 		std::string m_ProjectTitle;
+		std::string m_Role;
 		double m_YearsOfExperience;
 		int m_ManagerId;
 		int m_TeamSize;

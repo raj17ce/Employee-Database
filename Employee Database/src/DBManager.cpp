@@ -56,8 +56,8 @@ int DBManager::callback(void* NotUsed, int argc, char** argv, char** azColName) 
 	return 0;
 }
 
-int DBManager::executeSelectQuery(const char* queryString) {
-	m_ResultCode = sqlite3_exec(m_DB, queryString, callback, 0, &m_ErrorMessage);
+int DBManager::executeSelectQuery(const char* queryString, int (*callback)(void*, int, char**, char**), void* arg) {
+	m_ResultCode = sqlite3_exec(m_DB, queryString, callback, arg, &m_ErrorMessage);
 
 	if (m_ResultCode == SQLITE_OK) {
 		std::cout << "Successfully executed Query" << '\n';
