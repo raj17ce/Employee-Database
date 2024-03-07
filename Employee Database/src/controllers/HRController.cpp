@@ -1,24 +1,24 @@
 #include <exception>
 #include "DBManager.h"
-#include "EngineerController.h"
+#include "HRController.h"
 #include "EmployeeController.h"
 
 using EmployeeDB::Controller::EmployeeController;
-using EmployeeDB::Controller::EngineerController;
+using EmployeeDB::Controller::HRController;
 using EmployeeDB::DBManager;
 
-bool EngineerController::createEngineer(const Engineer& obj) {
+bool HRController::createHR(const HR& obj) {
 	bool employeeResult = EmployeeController::createEmployee(obj);
 
 	if (!employeeResult) {
 		return false;
 	}
 
-	int employeeID = EmployeeController::selectEmployeeIDbyEmail(obj.getEmail());
+	int employeeID = EmployeeController::selectEmployeeID(obj.getEmail());
 
-	std::string queryString = "INSERT INTO Engineer (employeeID, technology) VALUES (" +
+	std::string queryString = "INSERT INTO HR (employeeID, hrSpecialization) VALUES (" +
 		std::to_string(employeeID) + ", " +
-		"\" " + obj.getTechnology() + "\");";
+		"\" " + obj.getHRSpecialization() + "\");";
 
 	try {
 		DBManager::instance().executeQuery(queryString.c_str());
@@ -28,4 +28,4 @@ bool EngineerController::createEngineer(const Engineer& obj) {
 		return false;
 	}
 	return true;
-} 
+}

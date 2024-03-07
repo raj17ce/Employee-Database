@@ -7,18 +7,18 @@ using EmployeeDB::Controller::EmployeeController;
 using EmployeeDB::Controller::FinanceController;
 using EmployeeDB::DBManager;
 
-bool FinanceController::createFinance(const Finance& e) {
-	bool employeeResult = EmployeeController::createEmployee(e);
+bool FinanceController::createFinance(const Finance& obj) {
+	bool employeeResult = EmployeeController::createEmployee(obj);
 
 	if (!employeeResult) {
 		return false;
 	}
 
-	int employeeID = EmployeeController::selectEmployeeID(e.getEmail());
+	int employeeID = EmployeeController::selectEmployeeIDbyEmail(obj.getEmail());
 
 	std::string queryString = "INSERT INTO Finance (employeeID, accountingTool) VALUES (" +
 		std::to_string(employeeID) + ", " +
-		"\" " + e.getAccountingTool() + "\");";
+		"\" " + obj.getAccountingTool() + "\");";
 
 	try {
 		DBManager::instance().executeQuery(queryString.c_str());

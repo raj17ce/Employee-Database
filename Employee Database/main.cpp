@@ -1,44 +1,36 @@
 #include <iostream>
 #include "DBManager.h"
 #include "Model.h"
-#include "EngineerController.h"
-#include "EmployeeController.h"
-#include "FinanceController.h"
+#include "QAController.h"
 
 using EmployeeDB::DBManager;
-using EmployeeDB::Model::Engineer, EmployeeDB::Controller::EngineerController;
-using EmployeeDB::Model::Employee, EmployeeDB::Controller::EmployeeController;
-using EmployeeDB::Model::Finance, EmployeeDB::Controller::FinanceController;
+using EmployeeDB::Model::QA, EmployeeDB::Controller::QAController;
 
 int main() {
 	DBManager& db = DBManager::instance();
 
-    Finance dummyEmployee;
+    QA dummyEmployee;
 
     // Set dummy values for all attributes
-    dummyEmployee.setFirstName("Deep");
-    dummyEmployee.setMiddleName("B.");
+    dummyEmployee.setFirstName("Rahul");
+    dummyEmployee.setMiddleName("R.");
     dummyEmployee.setLastName("Patel");
-    dummyEmployee.setEmail("deep@gmail.com");
+    dummyEmployee.setEmail("rahul@gmail.com");
     dummyEmployee.setAddress("valsad, Gujarat");
     dummyEmployee.setDateOfBirth("17-04-2003");
     dummyEmployee.setDateOfJoining("01-01-2025");
     dummyEmployee.setPerformanceMetric(10);
-    dummyEmployee.setMobileNumber(9888665552);
+    dummyEmployee.setMobileNumber(8888665552);
     dummyEmployee.setGender(EmployeeDB::Model::Gender::Male);
     dummyEmployee.setDepartmentID(101);
     dummyEmployee.setManagerID(201);
     dummyEmployee.setBonus(50000);
 
-    dummyEmployee.setAccountingTool("Excel");
+    dummyEmployee.setTestingTool("Chai");
 
-    //EngineerController::createEngineer(dummyEmployee);
-    FinanceController::createFinance(dummyEmployee);
+    QAController::createQA(dummyEmployee);
     
-    //db.executeSelectQuery("Select Employee.*,Engineer.technology from Employee inner join Engineer On Employee.employeeID = Engineer.employeeID");
-    //std::cout << db.getResultString() << '\n';
-
-    db.executeSelectQuery("Select Employee.*,Finance.accountingTool from Employee inner join Finance On Employee.employeeID = Finance.employeeID");
+    db.executeSelectQuery("Select Employee.*,QA.testingTool from Employee inner join QA On Employee.employeeID = QA.employeeID");
     std::cout << db.getResultString() << '\n';
 
 	return 0;

@@ -5,22 +5,22 @@
 using EmployeeDB::Controller::EmployeeController;
 using EmployeeDB::DBManager;
 
-bool EmployeeController::createEmployee(const Employee& e) {
+bool EmployeeController::createEmployee(const Employee& obj) {
 	std::string queryString = "INSERT INTO Employee (firstName, middleName, lastName, dateOfBirth, mobileNo, email, address, gender, dateOfJoining, departmentID, managerID, performanceMetric, bonus)"
 		+ std::string{ "VALUES (" } +
-		"\"" + e.getFirstName() + "\"" + ", " +
-		"\"" + e.getMiddleName() + "\"" + ", " +
-		"\"" + e.getLastName() + "\"" + ", " +
-		"\"" + e.getDateOfBirth() + "\"" + ", " +
-		std::to_string(e.getMobileNumber()) + ", " +
-		"\"" + e.getEmail() + "\"" + ", " +
-		"\"" + e.getAddress() + "\"" + ", " +
-		"\"" + EmployeeDB::Model::getGenderString(e.getGender()) + "\"" + ", " +
-		"\"" + e.getDateOfJoining() + "\"" + ", " +
-		std::to_string(e.getDepartmentID()) + ", " +
-		std::to_string(e.getManagerID()) + ", " +
-		std::to_string(e.getPerformanceMetric()) + ", " +
-		std::to_string(e.getBonus()) + ");";
+		"\"" + obj.getFirstName() + "\"" + ", " +
+		"\"" + obj.getMiddleName() + "\"" + ", " +
+		"\"" + obj.getLastName() + "\"" + ", " +
+		"\"" + obj.getDateOfBirth() + "\"" + ", " +
+		std::to_string(obj.getMobileNumber()) + ", " +
+		"\"" + obj.getEmail() + "\"" + ", " +
+		"\"" + obj.getAddress() + "\"" + ", " +
+		"\"" + EmployeeDB::Model::getGenderString(obj.getGender()) + "\"" + ", " +
+		"\"" + obj.getDateOfJoining() + "\"" + ", " +
+		std::to_string(obj.getDepartmentID()) + ", " +
+		std::to_string(obj.getManagerID()) + ", " +
+		std::to_string(obj.getPerformanceMetric()) + ", " +
+		std::to_string(obj.getBonus()) + ");";
 
 	try {
 		DBManager::instance().executeQuery(queryString.c_str());
@@ -32,7 +32,7 @@ bool EmployeeController::createEmployee(const Employee& e) {
 	return true;
 }
 
-int EmployeeController::selectEmployeeID(const std::string& email) {
+int EmployeeController::selectEmployeeIDbyEmail(const std::string& email) {
 	std::string queryString = "SELECT employeeID FROM Employee WHERE email=\"" +email + "\";";
 	int selectedID{ 0 };
 

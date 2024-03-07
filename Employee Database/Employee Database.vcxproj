@@ -157,6 +157,8 @@
     <ClCompile Include="src\controllers\EmployeeController.cpp" />
     <ClCompile Include="src\controllers\EngineerController.cpp" />
     <ClCompile Include="src\controllers\FinanceController.cpp" />
+    <ClCompile Include="src\controllers\HRController.cpp" />
+    <ClCompile Include="src\controllers\QAController.cpp" />
     <ClCompile Include="src\DBManager.cpp" />
     <ClCompile Include="src\Validate.cpp" />
   </ItemGroup>
@@ -165,6 +167,8 @@
     <ClInclude Include="include\controllers\EmployeeController.h" />
     <ClInclude Include="include\controllers\EngineerController.h" />
     <ClInclude Include="include\controllers\FinanceController.h" />
+    <ClInclude Include="include\controllers\HRController.h" />
+    <ClInclude Include="include\controllers\QAController.h" />
     <ClInclude Include="include\DBManager.h" />
     <ClInclude Include="include\models\Department.h" />
     <ClInclude Include="include\models\Employee.h" />

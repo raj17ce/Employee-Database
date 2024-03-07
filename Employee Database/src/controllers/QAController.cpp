@@ -1,13 +1,13 @@
 #include <exception>
 #include "DBManager.h"
-#include "EngineerController.h"
+#include "QAController.h"
 #include "EmployeeController.h"
 
 using EmployeeDB::Controller::EmployeeController;
-using EmployeeDB::Controller::EngineerController;
+using EmployeeDB::Controller::QAController;
 using EmployeeDB::DBManager;
 
-bool EngineerController::createEngineer(const Engineer& obj) {
+bool QAController::createQA(const QA& obj) {
 	bool employeeResult = EmployeeController::createEmployee(obj);
 
 	if (!employeeResult) {
@@ -16,9 +16,9 @@ bool EngineerController::createEngineer(const Engineer& obj) {
 
 	int employeeID = EmployeeController::selectEmployeeIDbyEmail(obj.getEmail());
 
-	std::string queryString = "INSERT INTO Engineer (employeeID, technology) VALUES (" +
+	std::string queryString = "INSERT INTO QA (employeeID, testingTool) VALUES (" +
 		std::to_string(employeeID) + ", " +
-		"\" " + obj.getTechnology() + "\");";
+		"\" " + obj.getTestingTool() + "\");";
 
 	try {
 		DBManager::instance().executeQuery(queryString.c_str());
@@ -28,4 +28,4 @@ bool EngineerController::createEngineer(const Engineer& obj) {
 		return false;
 	}
 	return true;
-} 
+}
