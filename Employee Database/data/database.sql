@@ -14,7 +14,7 @@ CREATE TABLE "Employee" (
 	"lastName"	TEXT NOT NULL,
 	"dateOfBirth"	TEXT,
 	"mobileNo"	NUMERIC NOT NULL UNIQUE,
-	"email"	INTEGER NOT NULL UNIQUE,
+	"email" TEXT NOT NULL UNIQUE,
 	"address"	TEXT NOT NULL,
 	"gender"	TEXT NOT NULL,
 	"dateOfJoining"	TEXT NOT NULL,
@@ -51,7 +51,7 @@ CREATE TABLE "QA" (
  
 CREATE TABLE "Finance" (
 	"employeeID"	INTEGER NOT NULL,
-	"accountingSoftware"	TEXT,
+	"accountingTool"	TEXT,
 	FOREIGN KEY("employeeID") REFERENCES "Employee"("employeeID") ON DELETE CASCADE
 );
  

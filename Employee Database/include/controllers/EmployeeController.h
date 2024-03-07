@@ -2,9 +2,7 @@
 #define __EmployeeController_H__
 
 #include <iostream>
-#include "exception"
 #include "Employee.h"
-#include "DBManager.h"
 
 namespace EmployeeDB::Controller {
 
@@ -13,7 +11,7 @@ namespace EmployeeDB::Controller {
 	class EmployeeController {
 	public:
 		static bool createEmployee(const Employee&);
-		static int selectEmployeeId(const std::string& email);
+		static int selectEmployeeID(const std::string& email);
 	};
 }
 

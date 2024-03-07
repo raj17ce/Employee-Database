@@ -1,34 +1,45 @@
 #include <iostream>
 #include "DBManager.h"
 #include "Model.h"
+#include "EngineerController.h"
 #include "EmployeeController.h"
+#include "FinanceController.h"
 
-using EmployeeDB::DBManager, EmployeeDB::Model::Employee, EmployeeDB::Controller::EmployeeController;
+using EmployeeDB::DBManager;
+using EmployeeDB::Model::Engineer, EmployeeDB::Controller::EngineerController;
+using EmployeeDB::Model::Employee, EmployeeDB::Controller::EmployeeController;
+using EmployeeDB::Model::Finance, EmployeeDB::Controller::FinanceController;
 
 int main() {
 	DBManager& db = DBManager::instance();
 
-    //Employee dummyEmployee;
+    Finance dummyEmployee;
 
-    //// Set dummy values for all attributes
-    //dummyEmployee.setFirstName("John");
-    //dummyEmployee.setMiddleName("Robert");
-    //dummyEmployee.setLastName("Doe");
-    //dummyEmployee.setEmail("john.Doe@example.com");
-    //dummyEmployee.setAddress("123 Main St, Cityville");
-    //dummyEmployee.setDateOfBirth("1990-01-01");
-    //dummyEmployee.setDateOfJoining("2020-05-15");
-    //dummyEmployee.setPerformanceMetric(4.5);
-    //dummyEmployee.setMobileNumber(1234567890);
-    //dummyEmployee.setGender(EmployeeDB::Model::Gender::Male);
-    //dummyEmployee.setEmployeeId(1001);
-    //dummyEmployee.setDepartmentId(101);
-    //dummyEmployee.setManagerId(201);
-    //dummyEmployee.setBonus(5000);
+    // Set dummy values for all attributes
+    dummyEmployee.setFirstName("Deep");
+    dummyEmployee.setMiddleName("B.");
+    dummyEmployee.setLastName("Patel");
+    dummyEmployee.setEmail("deep@gmail.com");
+    dummyEmployee.setAddress("valsad, Gujarat");
+    dummyEmployee.setDateOfBirth("17-04-2003");
+    dummyEmployee.setDateOfJoining("01-01-2025");
+    dummyEmployee.setPerformanceMetric(10);
+    dummyEmployee.setMobileNumber(9888665552);
+    dummyEmployee.setGender(EmployeeDB::Model::Gender::Male);
+    dummyEmployee.setDepartmentID(101);
+    dummyEmployee.setManagerID(201);
+    dummyEmployee.setBonus(50000);
 
-    //EmployeeController::createEmployee(dummyEmployee);
+    dummyEmployee.setAccountingTool("Excel");
 
-    std::cout<<EmployeeController::selectEmployeeId("john.Doe@example.com")<<'\n';
+    //EngineerController::createEngineer(dummyEmployee);
+    FinanceController::createFinance(dummyEmployee);
+    
+    //db.executeSelectQuery("Select Employee.*,Engineer.technology from Employee inner join Engineer On Employee.employeeID = Engineer.employeeID");
+    //std::cout << db.getResultString() << '\n';
+
+    db.executeSelectQuery("Select Employee.*,Finance.accountingTool from Employee inner join Finance On Employee.employeeID = Finance.employeeID");
+    std::cout << db.getResultString() << '\n';
 
 	return 0;
 }

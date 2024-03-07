@@ -53,20 +53,20 @@ namespace EmployeeDB::Model {
         void setPerformanceMetric(double performanceMetric) {
             m_PerformanceMetric = performanceMetric;
         }
-        void setMobileNumber(long mobileNumber) {
+        void setMobileNumber(long long mobileNumber) {
             m_MobileNumber = mobileNumber;
         }
         void setGender(Gender gender) {
             m_Gender = gender;
         }
-        void setEmployeeId(int employeeId) {
-            m_EmployeeId = employeeId;
+        void setEmployeeID(int employeeID) {
+            m_EmployeeID = employeeID;
         }
-        void setDepartmentId(int departmentId) {
-            m_DepartmentId = departmentId;
+        void setDepartmentID(int departmentID) {
+            m_DepartmentID = departmentID;
         }
-        void setManagerId(int managerId) {
-            m_ManagerId = managerId;
+        void setManagerID(int managerID) {
+            m_ManagerID = managerID;
         }
         void setBonus(int bonus) {
             m_Bonus = bonus;
@@ -96,20 +96,20 @@ namespace EmployeeDB::Model {
         double getPerformanceMetric() const {
             return m_PerformanceMetric;
         }
-        long getMobileNumber() const {
+        long long getMobileNumber() const {
             return m_MobileNumber;
         }
         Gender getGender() const {
             return m_Gender;
         }
-        int getEmployeeId() const {
-            return m_EmployeeId;
+        int getEmployeeID() const {
+            return m_EmployeeID;
         }
-        int getDepartmentId() const {
-            return m_DepartmentId;
+        int getDepartmentID() const {
+            return m_DepartmentID;
         }
-        int getManagerId() const {
-            return m_ManagerId;
+        int getManagerID() const {
+            return m_ManagerID;
         }
         int getBonus() const {
             return m_Bonus;
@@ -125,11 +125,11 @@ namespace EmployeeDB::Model {
         std::string m_DateOfBirth;
         std::string  m_DateOfJoining;
 		double m_PerformanceMetric;
-		long m_MobileNumber;
+		long long m_MobileNumber;
 		Gender m_Gender;
-		int m_EmployeeId;
-		int m_DepartmentId;
-		int m_ManagerId;
+		int m_EmployeeID;
+		int m_DepartmentID;
+		int m_ManagerID;
 		int m_Bonus;
 	};
 }

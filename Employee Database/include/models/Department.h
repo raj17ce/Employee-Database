@@ -6,11 +6,11 @@
 namespace EmployeeDB::Model {
 	class Department {
 	public:
-        void setName(const std::string& name) {
-            m_Name = name;
+        void setDepartmentName(const std::string& name) {
+            m_DepartmentName = name;
         }
-        void setDepartmentId(int departmentId) {
-            m_DepartmentId = departmentId;
+        void setDepartmentID(int departmentID) {
+            m_DepartmentID = departmentID;
         }
         void setBaseSalary(int baseSalary) {
             m_BaseSalary = baseSalary;
@@ -22,11 +22,11 @@ namespace EmployeeDB::Model {
             m_Deduction = deduction;
         }
 
-        const std::string& getName() const {
-            return m_Name;
+        const std::string& getDepartmentName() const {
+            return m_DepartmentName;
         }
-        int getDepartmentId() const {
-            return m_DepartmentId;
+        int getDepartmentID() const {
+            return m_DepartmentID;
         }
         int getBaseSalary() const {
             return m_BaseSalary;
@@ -38,8 +38,8 @@ namespace EmployeeDB::Model {
             return m_Deduction;
         }
 	private:
-        std::string m_Name;
-		int m_DepartmentId;
+        std::string m_DepartmentName;
+		int m_DepartmentID;
 		int m_BaseSalary;
 		int m_Allowance;
 		int m_Deduction;

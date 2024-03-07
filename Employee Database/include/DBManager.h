@@ -1,6 +1,7 @@
 #ifndef __DBManager_H__
 #define __DBManager_H__
 
+#include <iostream>
 #include "sqlite3.h"
 
 namespace EmployeeDB {

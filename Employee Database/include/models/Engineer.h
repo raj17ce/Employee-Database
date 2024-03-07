@@ -7,15 +7,17 @@ namespace EmployeeDB::Model {
 
 	class Engineer : public Employee {
 	public:
-		void setProgrammingLanguage(const std::string& technology) {
+		void setTechnology(const std::string& technology) {
 			m_Technology = technology;
 		}
 
-		const std::string& getProgrammingLanguage() const {
+		const std::string& getTechnology() const {
 			return m_Technology;
 		}
 
-		double computeSalary() override;
+		double computeSalary() override {
+			return 10.2;
+		};
 	private:
 		std::string m_Technology;
 	};

@@ -15,8 +15,8 @@ namespace EmployeeDB::Model {
 		void setYearsOfExperience(double yearsOfExperience) {
 			m_YearsOfExperience = yearsOfExperience;
 		}
-		void setManagerId(int managerId) {
-			m_ManagerId = managerId;
+		void setManagerID(int managerID) {
+			m_ManagerID = managerID;
 		}
 		void setTeamSize(int teamSize) {
 			m_TeamSize = teamSize;
@@ -31,8 +31,8 @@ namespace EmployeeDB::Model {
 		double getYearsOfExperience() const {
 			return m_YearsOfExperience;
 		}
-		int getManagerId() const {
-			return m_ManagerId;
+		int getManagerID() const {
+			return m_ManagerID;
 		}
 		int getTeamSize() const {
 			return m_TeamSize;
@@ -43,7 +43,7 @@ namespace EmployeeDB::Model {
 		std::string m_ProjectTitle;
 		std::string m_Role;
 		double m_YearsOfExperience;
-		int m_ManagerId;
+		int m_ManagerID;
 		int m_TeamSize;
 	};
 }
