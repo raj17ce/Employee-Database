@@ -15,6 +15,9 @@ namespace EmployeeDB {
 		static std::string getResultString() {
 			return m_ResultString;
 		}
+		char* getErrorMessage() const {
+			return m_ErrorMessage;
+		}
 	private:
 		DBManager() {
 			openConnection();

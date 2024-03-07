@@ -2,19 +2,30 @@
 #include "DBManager.h"
 #include "EngineerController.h"
 #include "EmployeeController.h"
+#include "DepartmentController.h"
 
 using EmployeeDB::Controller::EmployeeController;
 using EmployeeDB::Controller::EngineerController;
+using EmployeeDB::Controller::DepartmentController;
 using EmployeeDB::DBManager;
 
-bool EngineerController::createEngineer(const Engineer& obj) {
+bool EngineerController::createEngineer(Engineer& obj) {
+	int departmentID = DepartmentController::getDepartmentIDbyName("Engineer");
+
+	if (departmentID == -1) {
+		std::cerr << "Engineer department not found.";
+		return false;
+	}
+
+	obj.setDepartmentID(departmentID);
+
 	bool employeeResult = EmployeeController::createEmployee(obj);
 
 	if (!employeeResult) {
 		return false;
 	}
 
-	int employeeID = EmployeeController::selectEmployeeIDbyEmail(obj.getEmail());
+	int employeeID = EmployeeController::getEmployeeIDbyEmail(obj.getEmail());
 
 	std::string queryString = "INSERT INTO Engineer (employeeID, technology) VALUES (" +
 		std::to_string(employeeID) + ", " +

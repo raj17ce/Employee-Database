@@ -12,13 +12,13 @@ namespace EmployeeDB::Model {
         void setDepartmentID(int departmentID) {
             m_DepartmentID = departmentID;
         }
-        void setBaseSalary(int baseSalary) {
+        void setBaseSalary(double baseSalary) {
             m_BaseSalary = baseSalary;
         }
-        void setAllowance(int allowance) {
+        void setAllowance(double allowance) {
             m_Allowance = allowance;
         }
-        void setDeduction(int deduction) {
+        void setDeduction(double deduction) {
             m_Deduction = deduction;
         }
 
@@ -28,21 +28,21 @@ namespace EmployeeDB::Model {
         int getDepartmentID() const {
             return m_DepartmentID;
         }
-        int getBaseSalary() const {
+        double getBaseSalary() const {
             return m_BaseSalary;
         }
-        int getAllowance() const {
+        double getAllowance() const {
             return m_Allowance;
         }
-        int getDeduction() const {
+        double getDeduction() const {
             return m_Deduction;
         }
 	private:
         std::string m_DepartmentName;
 		int m_DepartmentID;
-		int m_BaseSalary;
-		int m_Allowance;
-		int m_Deduction;
+		double m_BaseSalary;
+        double m_Allowance;
+        double m_Deduction;
 	};
 }
 

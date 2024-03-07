@@ -10,7 +10,7 @@ namespace EmployeeDB::Controller {
 
 	class QAController {
 	public:
-		static bool createQA(const QA&);
+		static bool createQA(QA&);
 	};
 }
 

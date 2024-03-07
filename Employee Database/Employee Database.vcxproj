@@ -154,6 +154,7 @@
     <ClCompile Include="lib\sqlite\shell.c" />
     <ClCompile Include="lib\sqlite\sqlite3.c" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\controllers\DepartmentController.cpp" />
     <ClCompile Include="src\controllers\EmployeeController.cpp" />
     <ClCompile Include="src\controllers\EngineerController.cpp" />
     <ClCompile Include="src\controllers\FinanceController.cpp" />
@@ -164,6 +165,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Config.h" />
+    <ClInclude Include="include\controllers\DepartmentController.h" />
     <ClInclude Include="include\controllers\EmployeeController.h" />
     <ClInclude Include="include\controllers\EngineerController.h" />
     <ClInclude Include="include\controllers\FinanceController.h" />

@@ -22,3 +22,26 @@ bool DepartmentController::createDepartment(const Department& obj) {
 	}
 	return true;
 }
+
+int DepartmentController::getDepartmentIDbyName(const std::string& departmentName) {
+	std::string queryString = "SELECT departmentID FROM Department WHERE departmentName=\"" + departmentName + "\";";
+	int departmentID{ -1 };
+
+	auto getDepartmentIDCallback = [](void* data, int argc, char** argv, char** azColName) -> int {
+		int* eId = static_cast<int*>(data);
+		if (!strcmp(azColName[0], "departmentID")) {
+			*eId = std::stoi(argv[0]);
+		}
+		return 0;
+		};
+
+	try {
+		DBManager::instance().executeSelectQuery(queryString.c_str(), getDepartmentIDCallback, &departmentID);
+	}
+	catch (const std::exception& e) {
+		std::cerr << e.what() << '\n';
+		return -1;
+	}
+
+	return departmentID;
+}

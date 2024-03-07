@@ -10,7 +10,7 @@ namespace EmployeeDB::Controller {
 
 	class FinanceController {
 	public:
-		static bool createFinance(const Finance&);
+		static bool createFinance(Finance&);
 	};
 }
 

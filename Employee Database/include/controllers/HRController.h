@@ -10,7 +10,7 @@ namespace EmployeeDB::Controller {
 
 	class HRController {
 	public:
-		static bool createHR(const HR&);
+		static bool createHR(HR&);
 	};
 }
 

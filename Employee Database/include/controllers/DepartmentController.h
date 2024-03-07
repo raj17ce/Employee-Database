@@ -11,6 +11,7 @@ namespace EmployeeDB::Controller {
 	class DepartmentController {
 	public:
 		static bool createDepartment(const Department&);
+		static int getDepartmentIDbyName(const std::string&);
 	};
 }
 

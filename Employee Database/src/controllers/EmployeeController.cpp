@@ -32,11 +32,11 @@ bool EmployeeController::createEmployee(const Employee& obj) {
 	return true;
 }
 
-int EmployeeController::selectEmployeeIDbyEmail(const std::string& email) {
+int EmployeeController::getEmployeeIDbyEmail(const std::string& email) {
 	std::string queryString = "SELECT employeeID FROM Employee WHERE email=\"" +email + "\";";
-	int selectedID{ 0 };
+	int employeeID{ -1 };
 
-	auto callbackLambda = [](void* data, int argc, char** argv, char** azColName) -> int {
+	auto getEmployeeIDCallback = [](void* data, int argc, char** argv, char** azColName) -> int {
 		int* eId = static_cast<int*>(data);
 		if (!strcmp(azColName[0], "employeeID")) {
 			*eId = std::stoi(argv[0]);
@@ -45,12 +45,12 @@ int EmployeeController::selectEmployeeIDbyEmail(const std::string& email) {
 	};
 
 	try {
-		DBManager::instance().executeSelectQuery(queryString.c_str(), callbackLambda, &selectedID);
+		DBManager::instance().executeSelectQuery(queryString.c_str(), getEmployeeIDCallback, &employeeID);
 	}
 	catch (const std::exception& e) {
 		std::cerr << e.what() << '\n';
 		return -1;
 	}
 
-	return selectedID;
+	return employeeID;
 }
