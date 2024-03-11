@@ -65,8 +65,8 @@ namespace EmployeeDB::Model {
         void setDepartmentID(int departmentID) {
             m_DepartmentID = departmentID;
         }
-        void setManagerID(int managerID) {
-            m_ManagerID = managerID;
+        void setMentorID(int mentorID) {
+            m_MentorID = mentorID;
         }
         void setBonus(int bonus) {
             m_Bonus = bonus;
@@ -108,8 +108,8 @@ namespace EmployeeDB::Model {
         int getDepartmentID() const {
             return m_DepartmentID;
         }
-        int getManagerID() const {
-            return m_ManagerID;
+        int getMentorID() const {
+            return m_MentorID;
         }
         int getBonus() const {
             return m_Bonus;
@@ -129,7 +129,7 @@ namespace EmployeeDB::Model {
 		Gender m_Gender;
 		int m_EmployeeID;
 		int m_DepartmentID;
-		int m_ManagerID;
+		int m_MentorID;
 		int m_Bonus;
 	};
 }

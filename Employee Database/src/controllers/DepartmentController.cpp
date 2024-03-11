@@ -1,4 +1,5 @@
 #include <exception>
+#include <iomanip>
 #include "DepartmentController.h"
 #include "DBManager.h"
 
@@ -44,4 +45,36 @@ int DepartmentController::getDepartmentIDbyName(const std::string& departmentNam
 	}
 
 	return departmentID;
+}
+
+bool DepartmentController::selectAllDepartmentIDAndName() {
+	std::string queryString = "SELECT departmentID,departmentName FROM Department";
+
+	//auto lambda = [](void* data, int argc, char** argv, char** azColName) {
+	//	int* count = static_cast<int*>(data);
+
+	//	if(count != nullptr && *count == 0) {
+	//		++(*count);
+	//		std::cout << "|--------------------|----------------------------------------|\n";
+	//		std::cout << "|" << std::setw(20) << std::left << azColName[0] << "|" << std::setw(40) << std::left << azColName[1] << "|\n";
+	//		std::cout << "|--------------------|----------------------------------------|\n";
+	//	}
+	//	std::cout << "|" << std::setw(20) << std::left << argv[0] << "|" << std::setw(40) << std::left << argv[1] << "|\n";
+	///*	int i;
+	//	for (i = 0; i < argc; i++) {
+	//		std::cout << "|" << std::setw(20) << std::left << azColName[i] << "|" << std::setw(40) << std::left << (argv[i] ? argv[i] : "NULL") << "|\n";
+	//	}*/
+	//	return 0;
+	//	};
+
+	try {
+		int i = 0;
+		DBManager::instance().executeSelectQuery(queryString.c_str());
+	}
+	catch (std::exception& e) {
+		std::cerr << e.what() << '\n';
+		return false;
+	}
+
+	return true;
 }

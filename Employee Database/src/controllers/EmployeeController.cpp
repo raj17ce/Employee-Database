@@ -6,7 +6,7 @@ using EmployeeDB::Controller::EmployeeController;
 using EmployeeDB::DBManager;
 
 bool EmployeeController::createEmployee(const Employee& obj) {
-	std::string queryString = "INSERT INTO Employee (firstName, middleName, lastName, dateOfBirth, mobileNo, email, address, gender, dateOfJoining, departmentID, managerID, performanceMetric, bonus)"
+	std::string queryString = "INSERT INTO Employee (firstName, middleName, lastName, dateOfBirth, mobileNo, email, address, gender, dateOfJoining, departmentID, mentorID, performanceMetric, bonus)"
 		+ std::string{ "VALUES (" } +
 		"\"" + obj.getFirstName() + "\"" + ", " +
 		"\"" + obj.getMiddleName() + "\"" + ", " +
@@ -18,7 +18,7 @@ bool EmployeeController::createEmployee(const Employee& obj) {
 		"\"" + EmployeeDB::Model::getGenderString(obj.getGender()) + "\"" + ", " +
 		"\"" + obj.getDateOfJoining() + "\"" + ", " +
 		std::to_string(obj.getDepartmentID()) + ", " +
-		std::to_string(obj.getManagerID()) + ", " +
+		std::to_string(obj.getMentorID()) + ", " +
 		std::to_string(obj.getPerformanceMetric()) + ", " +
 		std::to_string(obj.getBonus()) + ");";
 

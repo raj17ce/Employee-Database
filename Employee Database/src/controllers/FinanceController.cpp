@@ -29,7 +29,7 @@ bool FinanceController::createFinance(Finance& obj) {
 
 	std::string queryString = "INSERT INTO Finance (employeeID, accountingTool) VALUES (" +
 		std::to_string(employeeID) + ", " +
-		"\" " + obj.getAccountingTool() + "\");";
+		"\"" + obj.getAccountingTool() + "\");";
 
 	try {
 		DBManager::instance().executeQuery(queryString.c_str());

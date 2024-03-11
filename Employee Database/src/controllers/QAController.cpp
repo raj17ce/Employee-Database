@@ -29,7 +29,7 @@ bool QAController::createQA(QA& obj) {
 
 	std::string queryString = "INSERT INTO QA (employeeID, testingTool) VALUES (" +
 		std::to_string(employeeID) + ", " +
-		"\" " + obj.getTestingTool() + "\");";
+		"\"" + obj.getTestingTool() + "\");";
 
 	try {
 		DBManager::instance().executeQuery(queryString.c_str());

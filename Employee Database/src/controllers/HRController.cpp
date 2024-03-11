@@ -29,7 +29,7 @@ bool HRController::createHR(HR& obj) {
 
 	std::string queryString = "INSERT INTO HR (employeeID, hrSpecialization) VALUES (" +
 		std::to_string(employeeID) + ", " +
-		"\" " + obj.getHRSpecialization() + "\");";
+		"\"" + obj.getHRSpecialization() + "\");";
 
 	try {
 		DBManager::instance().executeQuery(queryString.c_str());

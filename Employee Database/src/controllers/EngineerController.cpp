@@ -29,7 +29,7 @@ bool EngineerController::createEngineer(Engineer& obj) {
 
 	std::string queryString = "INSERT INTO Engineer (employeeID, technology) VALUES (" +
 		std::to_string(employeeID) + ", " +
-		"\" " + obj.getTechnology() + "\");";
+		"\"" + obj.getTechnology() + "\");";
 
 	try {
 		DBManager::instance().executeQuery(queryString.c_str());

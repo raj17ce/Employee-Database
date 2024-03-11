@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <exception>
 #include "Config.h"
 #include "DBManager.h"
@@ -47,12 +48,14 @@ int DBManager::executeQuery(const char* queryString) {
 	return m_ResultCode;
 }
 
-int DBManager::callback(void* NotUsed, int argc, char** argv, char** azColName) {
+int DBManager::callback(void* notUsed, int argc, char** argv, char** azColName) {
+	std::cout << "|--------------------|----------------------------------------|\n";
 	int i;
 	for (i = 0; i < argc; i++) {
-		m_ResultString += azColName[i] + std::string{ " : " } + (argv[i] ? argv[i] : "NULL") + "\n";
+		std::cout << "|" << std::setw(20) << std::left << azColName[i] << "|" << std::setw(40) << std::left << (argv[i] ? argv[i] : "NULL") << "|\n";
 	}
-	std::cout<<'\n';
+	std::cout << "|--------------------|----------------------------------------|\n";
+	std::cout << std::endl;
 	return 0;
 }
 
