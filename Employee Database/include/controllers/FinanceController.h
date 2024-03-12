@@ -11,6 +11,7 @@ namespace EmployeeDB::Controller {
 	class FinanceController {
 	public:
 		static bool createFinance(Finance&);
+		static bool selectAllFinance();
 	};
 }
 

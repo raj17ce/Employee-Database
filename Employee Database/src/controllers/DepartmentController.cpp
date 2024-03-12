@@ -71,10 +71,23 @@ bool DepartmentController::selectAllDepartmentIDAndName() {
 		int i = 0;
 		DBManager::instance().executeSelectQuery(queryString.c_str());
 	}
-	catch (std::exception& e) {
+	catch (const std::exception& e) {
 		std::cerr << e.what() << '\n';
 		return false;
 	}
 
+	return true;
+}
+
+bool DepartmentController::selectAllDepartment() {
+	std::string queryString = "SELECT * FROM Department";
+
+	try {
+		DBManager::instance().executeSelectQuery(queryString.c_str());
+	}
+	catch (const std::exception& e) {
+		std::cerr<<e.what()<<'\n';
+		return false;
+	}
 	return true;
 }

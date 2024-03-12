@@ -61,3 +61,7 @@ CREATE TABLE "HR" (
 	"hrSpecialization"	TEXT,
 	FOREIGN KEY("employeeID") REFERENCES "Employee"("employeeID") ON DELETE CASCADE
 );
+
+CREATE VIEW ManagerView
+AS
+	SELECT Employee.*,Manager.teamSize,Manager.yearsOfExp,Manager.projectTitle,Manager.technology FROM Employee INNER JOIN Manager ON Employee.employeeID = Manager.managerID;

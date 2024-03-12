@@ -40,3 +40,15 @@ bool QAController::createQA(QA& obj) {
 	}
 	return true;
 }
+
+bool QAController::selectAllQA() {
+	std::string queryString = "SELECT * FROM Employee NATURAL JOIN QA";
+	try {
+		DBManager::instance().executeSelectQuery(queryString.c_str());
+	}
+	catch (const std::exception& e) {
+		std::cerr << e.what() << '\n';
+		return false;
+	}
+	return true;
+};

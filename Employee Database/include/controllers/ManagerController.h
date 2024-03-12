@@ -11,6 +11,7 @@ namespace EmployeeDB::Controller {
 	class ManagerController {
 	public:
 		static bool createManager(Manager&);
+		static bool selectAllManager();
 	};
 }
 

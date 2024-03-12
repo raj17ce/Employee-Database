@@ -40,3 +40,16 @@ bool FinanceController::createFinance(Finance& obj) {
 	}
 	return true;
 }
+
+bool FinanceController::selectAllFinance() {
+	std::string queryString = "SELECT * FROM Employee NATURAL JOIN Finance";
+
+	try {
+		DBManager::instance().executeSelectQuery(queryString.c_str());
+	}
+	catch (const std::exception& e) {
+		std::cerr << e.what() << '\n';
+		return false;
+	}
+	return true;
+};

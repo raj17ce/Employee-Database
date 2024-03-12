@@ -11,6 +11,7 @@ namespace EmployeeDB::Controller {
 	class EngineerController {
 	public:
 		static bool createEngineer(Engineer&);
+		static bool selectAllEngineer();
 	};
 }
 

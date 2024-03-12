@@ -11,6 +11,7 @@ namespace EmployeeDB::Controller {
 	class QAController {
 	public:
 		static bool createQA(QA&);
+		static bool selectAllQA();
 	};
 }
 

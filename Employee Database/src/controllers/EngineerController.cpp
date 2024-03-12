@@ -39,4 +39,18 @@ bool EngineerController::createEngineer(Engineer& obj) {
 		return false;
 	}
 	return true;
-} 
+}
+
+bool EngineerController::selectAllEngineer() {
+	//std::string queryString = "SELECT Employee.*,Engineer.technology FROM Employee INNER JOIN Engineer ON Employee.employeeID = Engineer.employeeID";
+	std::string queryString = "SELECT * FROM Employee NATURAL JOIN Engineer";
+
+	try {
+		DBManager::instance().executeSelectQuery(queryString.c_str());
+	}
+	catch (const std::exception& e) {
+		std::cerr << e.what() << '\n';
+		return false;
+	}
+	return true;
+};

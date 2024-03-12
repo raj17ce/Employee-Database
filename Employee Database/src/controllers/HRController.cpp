@@ -40,3 +40,16 @@ bool HRController::createHR(HR& obj) {
 	}
 	return true;
 }
+
+bool HRController::selectAllHR() {
+	std::string queryString = "SELECT * FROM Employee NATURAL JOIN HR";
+
+	try {
+		DBManager::instance().executeSelectQuery(queryString.c_str());
+	}
+	catch (const std::exception& e) {
+		std::cerr << e.what() << '\n';
+		return false;
+	}
+	return true;
+};

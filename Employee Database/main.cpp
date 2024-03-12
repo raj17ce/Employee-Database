@@ -1,11 +1,11 @@
 #include <iostream>
 #include <exception>
 #include "DBManager.h"
-#include "DepartmentController.h"
+#include "EngineerController.h"
 #include "Model.h"
 
-using EmployeeDB::Controller::DepartmentController;
+using EmployeeDB::Controller::EngineerController;
 
 int main() {
-	DepartmentController::selectAllDepartmentIDAndName();
+	EngineerController::selectAllEngineer();
 }
