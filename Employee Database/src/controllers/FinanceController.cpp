@@ -42,7 +42,7 @@ bool FinanceController::createFinance(Finance& obj) {
 }
 
 bool FinanceController::selectAllFinance() {
-	std::string queryString = "SELECT * FROM Employee NATURAL JOIN Finance";
+	std::string queryString = "SELECT * FROM Employee NATURAL JOIN Finance;";
 
 	try {
 		DBManager::instance().executeSelectQuery(queryString.c_str());
@@ -53,3 +53,7 @@ bool FinanceController::selectAllFinance() {
 	}
 	return true;
 };
+
+bool FinanceController::deleteFinanceByID(int ID) {
+	return EmployeeController::deleteEmployeeByID(ID);
+}

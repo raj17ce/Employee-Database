@@ -14,6 +14,7 @@ namespace EmployeeDB::Controller {
 		static int getDepartmentIDbyName(const std::string&);
 		static bool selectAllDepartmentIDAndName();
 		static bool selectAllDepartment();
+		static bool deleteDepartmentByID(int);
 	};
 }
 

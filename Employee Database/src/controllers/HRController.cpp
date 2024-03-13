@@ -42,7 +42,7 @@ bool HRController::createHR(HR& obj) {
 }
 
 bool HRController::selectAllHR() {
-	std::string queryString = "SELECT * FROM Employee NATURAL JOIN HR";
+	std::string queryString = "SELECT * FROM Employee NATURAL JOIN HR;";
 
 	try {
 		DBManager::instance().executeSelectQuery(queryString.c_str());
@@ -53,3 +53,7 @@ bool HRController::selectAllHR() {
 	}
 	return true;
 };
+
+bool HRController::deleteHRByID(int ID) {
+	return EmployeeController::deleteEmployeeByID(ID);
+}

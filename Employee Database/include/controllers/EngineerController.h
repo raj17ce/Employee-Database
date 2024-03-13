@@ -12,6 +12,7 @@ namespace EmployeeDB::Controller {
 	public:
 		static bool createEngineer(Engineer&);
 		static bool selectAllEngineer();
+		static bool deleteEngineerByID(int);
 	};
 }
 

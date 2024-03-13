@@ -11,6 +11,7 @@ namespace EmployeeDB {
 		static DBManager& instance();
 		int executeQuery(const char*);
 		int executeSelectQuery(const char*, int (*)(void*, int, char**, char**) = DBManager::callback, void* = 0);
+		static void executeCascadeQuery();
 
 		char* getErrorMessage() const {
 			return m_ErrorMessage;

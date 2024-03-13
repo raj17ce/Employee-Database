@@ -13,8 +13,8 @@ CREATE TABLE "Employee" (
 	"middleName"	TEXT,
 	"lastName"	TEXT NOT NULL,
 	"dateOfBirth"	TEXT,
-	"mobileNo"	NUMERIC NOT NULL UNIQUE,
-	"email" TEXT NOT NULL UNIQUE,
+	"mobileNo"	INTEGER NOT NULL UNIQUE,
+	"email"	TEXT NOT NULL UNIQUE,
 	"address"	TEXT NOT NULL,
 	"gender"	TEXT NOT NULL,
 	"dateOfJoining"	TEXT NOT NULL,
@@ -22,8 +22,9 @@ CREATE TABLE "Employee" (
 	"mentorID"	INTEGER,
 	"performanceMetric"	REAL,
 	"bonus"	REAL,
-	PRIMARY KEY("employeeID" AUTOINCREMENT),
-	UNIQUE("employeeID")
+	FOREIGN KEY("departmentID") REFERENCES "Department"("departmentID") ON DELETE SET NULL,
+	UNIQUE("employeeID"),
+	PRIMARY KEY("employeeID" AUTOINCREMENT)
 );
  
 CREATE TABLE "Manager" (

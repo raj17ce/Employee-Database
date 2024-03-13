@@ -48,7 +48,7 @@ int DepartmentController::getDepartmentIDbyName(const std::string& departmentNam
 }
 
 bool DepartmentController::selectAllDepartmentIDAndName() {
-	std::string queryString = "SELECT departmentID,departmentName FROM Department";
+	std::string queryString = "SELECT departmentID,departmentName FROM Department;";
 
 	//auto lambda = [](void* data, int argc, char** argv, char** azColName) {
 	//	int* count = static_cast<int*>(data);
@@ -80,13 +80,26 @@ bool DepartmentController::selectAllDepartmentIDAndName() {
 }
 
 bool DepartmentController::selectAllDepartment() {
-	std::string queryString = "SELECT * FROM Department";
+	std::string queryString = "SELECT * FROM Department;";
 
 	try {
 		DBManager::instance().executeSelectQuery(queryString.c_str());
 	}
 	catch (const std::exception& e) {
 		std::cerr<<e.what()<<'\n';
+		return false;
+	}
+	return true;
+}
+
+bool DepartmentController::deleteDepartmentByID(int ID) {
+	std::string queryString = "DELETE FROM Department WHERE departmentID = " + std::to_string(ID) + ";";
+
+	try {
+		DBManager::instance().executeQuery(queryString.c_str());
+	}
+	catch (const std::exception& e) {
+		std::cerr << e.what() << '\n';
 		return false;
 	}
 	return true;

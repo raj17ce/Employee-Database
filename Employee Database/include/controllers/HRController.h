@@ -12,6 +12,7 @@ namespace EmployeeDB::Controller {
 	public:
 		static bool createHR(HR&);
 		static bool selectAllHR();
+		static bool deleteHRByID(int);
 	};
 }
 

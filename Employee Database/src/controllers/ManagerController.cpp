@@ -24,10 +24,23 @@ bool ManagerController::createManager(Manager& obj) {
 }
 
 bool ManagerController::selectAllManager() {
-	std::string queryString = "SELECT * FROM ManagerView";
+	std::string queryString = "SELECT * FROM ManagerView;";
 	
 	try {
 		DBManager::instance().executeSelectQuery(queryString.c_str());
+	}
+	catch (const std::exception& e) {
+		std::cerr << e.what() << '\n';
+		return false;
+	}
+	return true;
+};
+
+bool ManagerController::deleteManagerByID(int ID) {
+	std::string queryString = "DELETE FROM Manager WHERE managerID = " + std::to_string(ID) + ";";
+
+	try {
+		DBManager::instance().executeQuery(queryString.c_str());
 	}
 	catch (const std::exception& e) {
 		std::cerr << e.what() << '\n';

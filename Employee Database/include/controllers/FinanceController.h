@@ -12,6 +12,7 @@ namespace EmployeeDB::Controller {
 	public:
 		static bool createFinance(Finance&);
 		static bool selectAllFinance();
+		static bool deleteFinanceByID(int);
 	};
 }
 

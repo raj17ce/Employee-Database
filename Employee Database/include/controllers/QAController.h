@@ -12,6 +12,7 @@ namespace EmployeeDB::Controller {
 	public:
 		static bool createQA(QA&);
 		static bool selectAllQA();
+		static bool deleteQAByID(int);
 	};
 }
 

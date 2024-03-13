@@ -71,3 +71,14 @@ int DBManager::executeSelectQuery(const char* queryString, int (*callback)(void*
 
 	return m_ResultCode;
 }
+
+void DBManager::executeCascadeQuery() {
+	std::string queryString = "PRAGMA foreign_keys = ON";
+
+	try {
+		instance().executeQuery(queryString.c_str());
+	}
+	catch (const std::exception& e) {
+		std::cerr << e.what() << '\n';
+	}
+}

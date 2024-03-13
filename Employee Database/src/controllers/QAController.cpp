@@ -42,7 +42,7 @@ bool QAController::createQA(QA& obj) {
 }
 
 bool QAController::selectAllQA() {
-	std::string queryString = "SELECT * FROM Employee NATURAL JOIN QA";
+	std::string queryString = "SELECT * FROM Employee NATURAL JOIN QA;";
 	try {
 		DBManager::instance().executeSelectQuery(queryString.c_str());
 	}
@@ -52,3 +52,7 @@ bool QAController::selectAllQA() {
 	}
 	return true;
 };
+
+bool QAController::deleteQAByID(int ID) {
+	return EmployeeController::deleteEmployeeByID(ID);
+}
