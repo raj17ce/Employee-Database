@@ -11,7 +11,7 @@ namespace EmployeeDB::Controller {
 	class FinanceController {
 	public:
 		static bool createFinance(Finance&);
-		static bool selectAllFinance();
+		static bool selectFinance(const std::string& attributeName = "", const std::string& attributeValue = "");
 		static bool deleteFinanceByID(int);
 	};
 }

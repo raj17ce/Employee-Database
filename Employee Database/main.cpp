@@ -1,8 +1,14 @@
 #include <iostream>
 #include <exception>
 #include "DBManager.h"
+#include "ManagerController.h"
 #include "Model.h"
 
+using EmployeeDB::Controller::ManagerController;
+using EmployeeDB::DBManager;
+
 int main() {
-	std::cout << "Hello World!\n";
+	DBManager::executeCascadeQuery();
+
+	ManagerController::selectManager();
 }

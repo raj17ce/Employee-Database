@@ -79,18 +79,18 @@ bool DepartmentController::selectAllDepartmentIDAndName() {
 	return true;
 }
 
-bool DepartmentController::selectAllDepartment() {
-	std::string queryString = "SELECT * FROM Department;";
+bool DepartmentController::selectDepartment(const std::string& attributeName, const std::string& attributeValue) {
+	std::string queryString = "SELECT * FROM Department " + ((attributeName.size() != 0) ? "WHERE " + attributeName + " = \"" + attributeValue + "\"":"") + ";";
 
 	try {
 		DBManager::instance().executeSelectQuery(queryString.c_str());
 	}
 	catch (const std::exception& e) {
-		std::cerr<<e.what()<<'\n';
+		std::cerr << e.what() << '\n';
 		return false;
 	}
 	return true;
-}
+};
 
 bool DepartmentController::deleteDepartmentByID(int ID) {
 	std::string queryString = "DELETE FROM Department WHERE departmentID = " + std::to_string(ID) + ";";

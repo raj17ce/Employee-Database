@@ -13,7 +13,7 @@ namespace EmployeeDB::Controller {
 		static bool createDepartment(const Department&);
 		static int getDepartmentIDbyName(const std::string&);
 		static bool selectAllDepartmentIDAndName();
-		static bool selectAllDepartment();
+		static bool selectDepartment(const std::string& attributeName = "", const std::string& attributeValue = "");
 		static bool deleteDepartmentByID(int);
 	};
 }

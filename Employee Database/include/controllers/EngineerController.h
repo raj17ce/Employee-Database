@@ -11,7 +11,7 @@ namespace EmployeeDB::Controller {
 	class EngineerController {
 	public:
 		static bool createEngineer(Engineer&);
-		static bool selectAllEngineer();
+		static bool selectEngineer(const std::string& attributeName="", const std::string& attributeValue="");
 		static bool deleteEngineerByID(int);
 	};
 }

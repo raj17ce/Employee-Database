@@ -11,7 +11,7 @@ namespace EmployeeDB::Controller {
 	class QAController {
 	public:
 		static bool createQA(QA&);
-		static bool selectAllQA();
+		static bool selectQA(const std::string& attributeName = "", const std::string& attributeValue = "");
 		static bool deleteQAByID(int);
 	};
 }

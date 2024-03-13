@@ -41,8 +41,8 @@ bool HRController::createHR(HR& obj) {
 	return true;
 }
 
-bool HRController::selectAllHR() {
-	std::string queryString = "SELECT * FROM Employee NATURAL JOIN HR;";
+bool HRController::selectHR(const std::string& attributeName, const std::string& attributeValue) {
+	std::string queryString = "SELECT * FROM Employee NATURAL JOIN HR " + ((attributeName.size() != 0) ? "WHERE " + attributeName + " = \"" + attributeValue + "\"" : "") + ";";
 
 	try {
 		DBManager::instance().executeSelectQuery(queryString.c_str());

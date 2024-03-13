@@ -11,7 +11,7 @@ namespace EmployeeDB::Controller {
 	class HRController {
 	public:
 		static bool createHR(HR&);
-		static bool selectAllHR();
+		static bool selectHR(const std::string& attributeName = "", const std::string& attributeValue = "");
 		static bool deleteHRByID(int);
 	};
 }

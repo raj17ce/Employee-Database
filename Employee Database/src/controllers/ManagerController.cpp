@@ -23,9 +23,9 @@ bool ManagerController::createManager(Manager& obj) {
 	return true;
 }
 
-bool ManagerController::selectAllManager() {
-	std::string queryString = "SELECT * FROM ManagerView;";
-	
+bool ManagerController::selectManager(const std::string& attributeName, const std::string& attributeValue) {
+	std::string queryString = "SELECT * FROM ManagerView " + ((attributeName.size() != 0) ? "WHERE " + attributeName + " = \"" + attributeValue + "\"" : "") + ";";
+
 	try {
 		DBManager::instance().executeSelectQuery(queryString.c_str());
 	}
