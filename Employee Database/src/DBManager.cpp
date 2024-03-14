@@ -12,7 +12,7 @@ DBManager& DBManager::instance() {
 }
 
 int DBManager::openConnection() {
-	m_ResultCode = sqlite3_open(EmployeeDB::Config::DbFilePath, &m_DB);
+	m_ResultCode = sqlite3_open(EmployeeDB::Config::DbFilePath.string().c_str(), &m_DB);
 
 	if (m_ResultCode == SQLITE_OK) {
 		std::cout << "Successfully opened DB connection" << '\n';
@@ -48,7 +48,7 @@ int DBManager::executeQuery(const char* queryString) {
 	return m_ResultCode;
 }
 
-int DBManager::callback(void* notUsed, int argc, char** argv, char** azColName) {
+int DBManager::callback(void* arg, int argc, char** argv, char** azColName) {
 	std::cout << "|--------------------|----------------------------------------|\n";
 	int i;
 	for (i = 0; i < argc; i++) {

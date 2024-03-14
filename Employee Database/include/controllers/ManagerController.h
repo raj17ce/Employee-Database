@@ -4,15 +4,15 @@
 #include <iostream>
 #include "Manager.h"
 
-namespace EmployeeDB::Controller {
+using EmployeeDB::Model::Manager;
 
-	using EmployeeDB::Model::Manager;
+namespace EmployeeDB::Controller {
 
 	class ManagerController {
 	public:
-		static bool createManager(Manager&);
+		static bool createManager(Manager& obj);
 		static bool selectManager(const std::string& attributeName = "", const std::string& attributeValue = "");
-		static bool deleteManagerByID(int);
+		static bool deleteManagerByID(int ID);
 	};
 }
 

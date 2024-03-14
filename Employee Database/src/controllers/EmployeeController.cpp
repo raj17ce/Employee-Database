@@ -67,3 +67,13 @@ bool EmployeeController::deleteEmployeeByID(int ID) {
 	}
 	return true;
 }
+
+bool EmployeeController::updateEmployee(const Employee& obj) {
+	std::string updateQueryCondition{""};
+
+	if (obj.getFirstName() == "#") {
+		updateQueryCondition = "firstName = \"" + obj.getFirstName() + "\"";
+	}
+
+	return true;
+}

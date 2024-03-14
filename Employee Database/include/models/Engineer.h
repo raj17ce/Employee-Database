@@ -7,6 +7,9 @@ namespace EmployeeDB::Model {
 
 	class Engineer : public Employee {
 	public:
+		Engineer() : m_Technology{ "" } {}
+		Engineer(bool isUpdateObj) : Employee{isUpdateObj}, m_Technology{"#"} {}
+
 		void setTechnology(const std::string& technology) {
 			m_Technology = technology;
 		}

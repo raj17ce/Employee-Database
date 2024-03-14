@@ -5,13 +5,13 @@
 using EmployeeDB::Controller::ManagerController;
 
 bool ManagerController::createManager(Manager& obj) {
-	std::string queryString = "INSERT INTO Manager (managerID, departmentID, teamSize, yearsOfExp, projectTitle, technology) VALUES (" +
+	std::string queryString = "INSERT INTO Manager (managerID, departmentID, teamSize, yearsOfExp, projectTitle, role) VALUES (" +
 		std::to_string(obj.getManagerID()) + ", " +
 		std::to_string(obj.getDepartmentID()) + ", " +
 		std::to_string(obj.getTeamSize()) + ", " +
 		std::to_string(obj.getYearsOfExperience()) + ", " +
-		"\"" + obj.getProjectTitle() + "\"" +
-		"\"" + obj.getTechnology() + "\");";
+		"\"" + obj.getProjectTitle() + "\"," +
+		"\"" + obj.getRole() + "\");";
 
 	try {
 		DBManager::instance().executeQuery(queryString.c_str());

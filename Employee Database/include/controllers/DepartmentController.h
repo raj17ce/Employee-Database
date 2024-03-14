@@ -4,17 +4,17 @@
 #include <iostream>
 #include "Department.h"
 
-namespace EmployeeDB::Controller {
+using EmployeeDB::Model::Department;
 
-	using EmployeeDB::Model::Department;
+namespace EmployeeDB::Controller {
 
 	class DepartmentController {
 	public:
-		static bool createDepartment(const Department&);
-		static int getDepartmentIDbyName(const std::string&);
+		static bool createDepartment(const Department& obj);
+		static int getDepartmentIDbyName(const std::string& departmentName);
 		static bool selectAllDepartmentIDAndName();
 		static bool selectDepartment(const std::string& attributeName = "", const std::string& attributeValue = "");
-		static bool deleteDepartmentByID(int);
+		static bool deleteDepartmentByID(int ID);
 	};
 }
 

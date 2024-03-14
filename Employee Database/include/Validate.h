@@ -6,9 +6,9 @@
 namespace EmployeeDB {
 	class Validate {
 	public:
-		static bool validateEmail(const std::string&);
-		static bool validateMobile(const std::string&);
-		static bool validateDate(const std::string&);
+		static bool validateEmail(const std::string& email);
+		static bool validateMobile(const std::string& number);
+		static bool validateDate(const std::string& date);
 	};
 }
 

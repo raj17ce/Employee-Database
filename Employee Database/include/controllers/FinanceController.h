@@ -4,15 +4,15 @@
 #include <iostream>
 #include "Finance.h"
 
-namespace EmployeeDB::Controller {
+using EmployeeDB::Model::Finance;
 
-	using EmployeeDB::Model::Finance;
+namespace EmployeeDB::Controller {
 
 	class FinanceController {
 	public:
-		static bool createFinance(Finance&);
+		static bool createFinance(Finance& obj);
 		static bool selectFinance(const std::string& attributeName = "", const std::string& attributeValue = "");
-		static bool deleteFinanceByID(int);
+		static bool deleteFinanceByID(int ID);
 	};
 }
 

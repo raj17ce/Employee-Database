@@ -52,8 +52,31 @@ bool EngineerController::selectEngineer(const std::string& attributeName, const 
 		return false;
 	}
 	return true;
-};
+}
 
 bool EngineerController::deleteEngineerByID(int ID) {
 	return EmployeeController::deleteEmployeeByID(ID);
+}
+
+bool EngineerController::updateEngineer(const Engineer& obj) {
+	std::string updateQueryCondition{""};
+
+	//to-do Update-Employee
+
+	if (obj.getTechnology() == "#") {
+		updateQueryCondition = "technology = \"" + obj.getTechnology() + "\"";
+	}
+
+	if (updateQueryCondition.size() != 0) {
+		std::string queryString = "UPDATE Engineer SET " + updateQueryCondition + "WHERE employeeID = " + std::to_string(obj.getEmployeeID()) + ";";
+
+		try {
+			DBManager::instance().executeQuery(queryString.c_str());
+		}
+		catch (const std::exception& e) {
+			std::cerr << e.what() << '\n';
+			return false;
+		}
+	}
+	return true;
 }

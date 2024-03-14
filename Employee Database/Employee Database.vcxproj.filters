@@ -68,9 +68,6 @@
     <ClInclude Include="include\models\Employee.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Model.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\models\Department.h">
       <Filter>Header Files</Filter>
     </ClInclude>

@@ -28,7 +28,40 @@ namespace EmployeeDB::Model {
 
 	class Employee {
 	public:
-        Employee() = default;
+        Employee() :
+            m_FirstName{""},
+            m_MiddleName{""},
+            m_LastName{""},
+            m_Email{""},
+            m_Address{""},
+            m_DateOfBirth{""},
+            m_DateOfJoining{""},
+            m_PerformanceMetric{ 0.0 },
+            m_MobileNumber{ 0 },
+            m_Gender{ Gender::Male },
+            m_EmployeeID{ 0 },
+            m_DepartmentID{ 0 },
+            m_MentorID{ 0 },
+            m_Bonus{ 0 } {
+        }
+
+        Employee(bool isUpdateObj) :
+            m_FirstName{ "#" },
+            m_MiddleName{ "#" },
+            m_LastName{ "#" },
+            m_Email{ "#" },
+            m_Address{ "#" },
+            m_DateOfBirth{ "#" },
+            m_DateOfJoining{ "#" },
+            m_PerformanceMetric{ -1.0 },
+            m_MobileNumber{ -1 },
+            m_Gender{ Gender::Other },
+            m_EmployeeID{ -1 },
+            m_DepartmentID{ -1 },
+            m_MentorID{ -1 },
+            m_Bonus{ -1 } {
+        }
+
         void setFirstName(const std::string& firstName) {
             m_FirstName = firstName;
         }
@@ -116,7 +149,7 @@ namespace EmployeeDB::Model {
         }
 
         virtual double computeSalary() { return 10.2; };
-	private:
+	    private:
 		std::string m_FirstName;
 		std::string m_MiddleName;
 		std::string m_LastName;

@@ -4,15 +4,15 @@
 #include <iostream>
 #include "QA.h"
 
-namespace EmployeeDB::Controller {
+using EmployeeDB::Model::QA;
 
-	using EmployeeDB::Model::QA;
+namespace EmployeeDB::Controller {
 
 	class QAController {
 	public:
-		static bool createQA(QA&);
+		static bool createQA(QA& obj);
 		static bool selectQA(const std::string& attributeName = "", const std::string& attributeValue = "");
-		static bool deleteQAByID(int);
+		static bool deleteQAByID(int ID);
 	};
 }
 

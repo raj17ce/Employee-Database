@@ -19,10 +19,11 @@ CREATE TABLE "Employee" (
 	"gender"	TEXT NOT NULL,
 	"dateOfJoining"	TEXT NOT NULL,
 	"departmentID"	INTEGER,
-	"mentorID"	INTEGER,
+	"mentorID"	INTEGER NOT NULL,
 	"performanceMetric"	REAL,
 	"bonus"	REAL,
 	FOREIGN KEY("departmentID") REFERENCES "Department"("departmentID") ON DELETE SET NULL,
+	FOREIGN KEY("mentorID") REFERENCES "Employee"("employeeID") ON DELETE SET NULL,
 	UNIQUE("employeeID"),
 	PRIMARY KEY("employeeID" AUTOINCREMENT)
 );
@@ -33,7 +34,7 @@ CREATE TABLE "Manager" (
 	"teamSize"	INTEGER NOT NULL,
 	"yearsOfExp"	REAL NOT NULL,
 	"projectTitle"	TEXT,
-	"technology" TEXT,
+	"role" TEXT,
 	PRIMARY KEY("managerID","departmentID"),
 	FOREIGN KEY("managerID") REFERENCES "Employee"("employeeID") ON DELETE CASCADE,
 	FOREIGN KEY("departmentID") REFERENCES "Department"("departmentID") ON DELETE CASCADE
@@ -65,4 +66,4 @@ CREATE TABLE "HR" (
 
 CREATE VIEW ManagerView
 AS
-	SELECT Employee.*,Manager.teamSize,Manager.yearsOfExp,Manager.projectTitle,Manager.technology FROM Employee INNER JOIN Manager ON Employee.employeeID = Manager.managerID;
+	SELECT Employee.*,Manager.teamSize,Manager.yearsOfExp,Manager.projectTitle,Manager.role FROM Employee INNER JOIN Manager ON Employee.employeeID = Manager.managerID;

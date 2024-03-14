@@ -180,7 +180,6 @@
     <ClInclude Include="include\models\Finance.h" />
     <ClInclude Include="include\models\HR.h" />
     <ClInclude Include="include\models\Manager.h" />
-    <ClInclude Include="include\Model.h" />
     <ClInclude Include="include\models\QA.h" />
     <ClInclude Include="include\Validate.h" />
     <ClInclude Include="lib\sqlite\sqlite3.h" />

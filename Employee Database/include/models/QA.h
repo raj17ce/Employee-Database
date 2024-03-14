@@ -6,6 +6,9 @@
 namespace EmployeeDB::Model {
 	class QA : public Employee {
 	public:
+		QA() : m_TestingTool{ "" } {}
+		QA(bool isUpdateObj) : Employee{ isUpdateObj }, m_TestingTool{ "#" } {}
+
 		void setTestingTool(const std::string& testingTool) {
 			m_TestingTool = testingTool;
 		}

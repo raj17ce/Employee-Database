@@ -4,15 +4,15 @@
 #include <iostream>
 #include "HR.h"
 
-namespace EmployeeDB::Controller {
+using EmployeeDB::Model::HR;
 
-	using EmployeeDB::Model::HR;
+namespace EmployeeDB::Controller {
 
 	class HRController {
 	public:
-		static bool createHR(HR&);
+		static bool createHR(HR& obj);
 		static bool selectHR(const std::string& attributeName = "", const std::string& attributeValue = "");
-		static bool deleteHRByID(int);
+		static bool deleteHRByID(int ID);
 	};
 }
 

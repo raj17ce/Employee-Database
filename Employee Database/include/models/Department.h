@@ -6,6 +6,22 @@
 namespace EmployeeDB::Model {
 	class Department {
 	public:
+        Department() : 
+            m_DepartmentName{ "" },
+            m_DepartmentID{ 0 },
+            m_BaseSalary{ 0.0 },
+            m_Allowance{ 0.0 },
+            m_Deduction{ 0.0 } {
+        }
+
+        Department(bool isUpdateObj) :
+            m_DepartmentName{ "#" },
+            m_DepartmentID{ -1 },
+            m_BaseSalary{ -1.0 },
+            m_Allowance{ -1.0 },
+            m_Deduction{ -1.0 } {
+        }
+
         void setDepartmentName(const std::string& name) {
             m_DepartmentName = name;
         }

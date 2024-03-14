@@ -6,6 +6,9 @@
 namespace EmployeeDB::Model {
 	class HR : public Employee {
 	public:
+		HR() : m_HRSpecialization{ "" } {}
+		HR(bool isUpdateObj) : Employee{ isUpdateObj }, m_HRSpecialization{ "#" } {}
+
 		void setHRSpecialization(const std::string& specialization) {
 			m_HRSpecialization = specialization;
 		}
