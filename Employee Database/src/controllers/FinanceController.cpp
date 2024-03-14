@@ -57,3 +57,37 @@ bool FinanceController::selectFinance(const std::string& attributeName, const st
 bool FinanceController::deleteFinanceByID(int ID) {
 	return EmployeeController::deleteEmployeeByID(ID);
 }
+
+std::string FinanceController::getUpdateQueryCondition(Finance& obj) {
+	std::string updateQueryCondition{ "" };
+
+	if (obj.getAccountingTool() != "#") {
+		updateQueryCondition = "accountingTool = \"" + obj.getAccountingTool() + "\""; 
+	}
+
+	return updateQueryCondition;
+}
+
+bool FinanceController::updateFinance(Finance& obj) {
+
+	bool employeeResult = EmployeeController::updateEmployee(obj);
+
+	if (!employeeResult) {
+		return false;
+	}
+
+	std::string updateQueryCondition = getUpdateQueryCondition(obj);
+
+	if (updateQueryCondition.size() != 0) {
+		std::string queryString = "UPDATE Finance SET " + updateQueryCondition + " WHERE employeeID = " + std::to_string(obj.getEmployeeID()) + ";";
+
+		try {
+			DBManager::instance().executeQuery(queryString.c_str());
+		}
+		catch (const std::exception& e) {
+			std::cerr << e.what() << '\n';
+			return false;
+		}
+	}
+	return true;
+}

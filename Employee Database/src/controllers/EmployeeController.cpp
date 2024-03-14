@@ -6,7 +6,7 @@ using EmployeeDB::Controller::EmployeeController;
 using EmployeeDB::DBManager;
 
 bool EmployeeController::createEmployee(const Employee& obj) {
-	std::string queryString = "INSERT INTO Employee (firstName, middleName, lastName, dateOfBirth, mobileNo, email, address, gender, dateOfJoining, departmentID, mentorID, performanceMetric, bonus)"
+	std::string queryString = "INSERT INTO Employee (firstName, middleName, lastName, dateOfBirth, mobileNumber, email, address, gender, dateOfJoining, departmentID, mentorID, performanceMetric, bonus) "
 		+ std::string{ "VALUES (" } +
 		"\"" + obj.getFirstName() + "\"" + ", " +
 		"\"" + obj.getMiddleName() + "\"" + ", " +
@@ -33,7 +33,7 @@ bool EmployeeController::createEmployee(const Employee& obj) {
 }
 
 int EmployeeController::getEmployeeIDbyEmail(const std::string& email) {
-	std::string queryString = "SELECT employeeID FROM Employee WHERE email=\"" +email + "\";";
+	std::string queryString = "SELECT employeeID FROM Employee WHERE email = \"" +email + "\";";
 	int employeeID{ -1 };
 
 	auto getEmployeeIDCallback = [](void* data, int argc, char** argv, char** azColName) -> int {
@@ -68,12 +68,96 @@ bool EmployeeController::deleteEmployeeByID(int ID) {
 	return true;
 }
 
-bool EmployeeController::updateEmployee(const Employee& obj) {
-	std::string updateQueryCondition{""};
+std::string EmployeeController::getUpdateQueryCondition(Employee& obj) {
+	std::string updateQueryCondition{ "" };
 
-	if (obj.getFirstName() == "#") {
-		updateQueryCondition = "firstName = \"" + obj.getFirstName() + "\"";
+	if (obj.getFirstName() != "#") {
+		updateQueryCondition += "firstName = \"" + obj.getFirstName() + "\"";
+	}
+	if (obj.getMiddleName() != "#") {
+		if (updateQueryCondition.size() != 0) {
+			updateQueryCondition += ", ";
+		}
+		updateQueryCondition += "middleName = \"" + obj.getMiddleName() + "\"";
+	}
+	if (obj.getLastName() != "#") {
+		if (updateQueryCondition.size() != 0) {
+			updateQueryCondition += ", ";
+		}
+		updateQueryCondition += "lastName = \"" + obj.getLastName() + "\"";
+	}
+	if (obj.getDateOfBirth() != "#") {
+		if (updateQueryCondition.size() != 0) {
+			updateQueryCondition += ", ";
+		}
+		updateQueryCondition += "dateOfBirth = \"" + obj.getDateOfBirth() + "\"";
+	}
+	if (obj.getMobileNumber() != -1) {
+		if (updateQueryCondition.size() != 0) {
+			updateQueryCondition += ", ";
+		}
+		updateQueryCondition += "mobileNumber = " + std::to_string(obj.getMobileNumber());
+	}
+	if (obj.getEmail() != "#") {
+		if (updateQueryCondition.size() != 0) {
+			updateQueryCondition += ", ";
+		}
+		updateQueryCondition += "email = \"" + obj.getEmail() + "\"";
+	}
+	if (obj.getAddress() != "#") {
+		if (updateQueryCondition.size() != 0) {
+			updateQueryCondition += ", ";
+		}
+		updateQueryCondition += "address = \"" + obj.getAddress() + "\"";
+	}
+	if (obj.getGender() != EmployeeDB::Model::Gender::Other) {
+		if (updateQueryCondition.size() != 0) {
+			updateQueryCondition += ", ";
+		}
+		updateQueryCondition += "gender = \"" + EmployeeDB::Model::getGenderString(obj.getGender()) + "\"";
+	}
+	if (obj.getDateOfJoining() != "#") {
+		if (updateQueryCondition.size() != 0) {
+			updateQueryCondition += ", ";
+		}
+		updateQueryCondition += "dateOfJoining = \"" + obj.getDateOfJoining() + "\"";
+	}
+	if (obj.getMentorID() != -1) {
+		if (updateQueryCondition.size() != 0) {
+			updateQueryCondition += ", ";
+		}
+		updateQueryCondition += "mentorID = " + std::to_string(obj.getMentorID());
+	}
+	if (obj.getPerformanceMetric() != -1.0) {
+		if (updateQueryCondition.size() != 0) {
+			updateQueryCondition += ", ";
+		}
+		updateQueryCondition += "performanceMetric = " + std::to_string(obj.getPerformanceMetric());
+	}
+	if (obj.getBonus() != -1.0) {
+		if (updateQueryCondition.size() != 0) {
+			updateQueryCondition += ", ";
+		}
+		updateQueryCondition += "bonus = " + std::to_string(obj.getBonus());
 	}
 
+	return updateQueryCondition;
+}
+
+bool EmployeeController::updateEmployee(Employee& obj) {
+
+	std::string updateQueryCondition = getUpdateQueryCondition(obj);
+
+	if (updateQueryCondition.size() != 0) {
+		std::string queryString = "UPDATE Employee SET " + updateQueryCondition + " WHERE employeeID = " + std::to_string(obj.getEmployeeID()) + ";";
+
+		try {
+			DBManager::instance().executeQuery(queryString.c_str());
+		}
+		catch (const std::exception& e) {
+			std::cerr << e.what() << '\n';
+			return false;
+		}
+	}
 	return true;
 }

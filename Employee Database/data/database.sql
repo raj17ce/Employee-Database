@@ -13,7 +13,7 @@ CREATE TABLE "Employee" (
 	"middleName"	TEXT,
 	"lastName"	TEXT NOT NULL,
 	"dateOfBirth"	TEXT,
-	"mobileNo"	INTEGER NOT NULL UNIQUE,
+	"mobileNumber"	INTEGER NOT NULL UNIQUE,
 	"email"	TEXT NOT NULL UNIQUE,
 	"address"	TEXT NOT NULL,
 	"gender"	TEXT NOT NULL,

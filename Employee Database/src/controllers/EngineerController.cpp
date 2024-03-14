@@ -58,17 +58,28 @@ bool EngineerController::deleteEngineerByID(int ID) {
 	return EmployeeController::deleteEmployeeByID(ID);
 }
 
-bool EngineerController::updateEngineer(const Engineer& obj) {
-	std::string updateQueryCondition{""};
+std::string EngineerController::getUpdateQueryCondition(Engineer& obj) {
+	std::string updateQueryCondition{ "" };
 
-	//to-do Update-Employee
-
-	if (obj.getTechnology() == "#") {
+	if (obj.getTechnology() != "#") {
 		updateQueryCondition = "technology = \"" + obj.getTechnology() + "\"";
 	}
 
+	return updateQueryCondition;
+}
+
+bool EngineerController::updateEngineer(Engineer& obj) {
+	
+	bool employeeResult = EmployeeController::updateEmployee(obj);
+
+	if (!employeeResult) {
+		return false;
+	}
+
+	std::string updateQueryCondition = getUpdateQueryCondition(obj);
+
 	if (updateQueryCondition.size() != 0) {
-		std::string queryString = "UPDATE Engineer SET " + updateQueryCondition + "WHERE employeeID = " + std::to_string(obj.getEmployeeID()) + ";";
+		std::string queryString = "UPDATE Engineer SET " + updateQueryCondition + " WHERE employeeID = " + std::to_string(obj.getEmployeeID()) + ";";
 
 		try {
 			DBManager::instance().executeQuery(queryString.c_str());

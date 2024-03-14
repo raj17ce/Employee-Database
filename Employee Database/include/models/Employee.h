@@ -86,6 +86,9 @@ namespace EmployeeDB::Model {
         void setPerformanceMetric(double performanceMetric) {
             m_PerformanceMetric = performanceMetric;
         }
+        void setBonus(double bonus) {
+            m_Bonus = bonus;
+        }
         void setMobileNumber(long long mobileNumber) {
             m_MobileNumber = mobileNumber;
         }
@@ -100,9 +103,6 @@ namespace EmployeeDB::Model {
         }
         void setMentorID(int mentorID) {
             m_MentorID = mentorID;
-        }
-        void setBonus(int bonus) {
-            m_Bonus = bonus;
         }
 
         const std::string& getFirstName() const {
@@ -129,6 +129,9 @@ namespace EmployeeDB::Model {
         double getPerformanceMetric() const {
             return m_PerformanceMetric;
         }
+        double getBonus() const {
+            return m_Bonus;
+        }
         long long getMobileNumber() const {
             return m_MobileNumber;
         }
@@ -144,9 +147,6 @@ namespace EmployeeDB::Model {
         int getMentorID() const {
             return m_MentorID;
         }
-        int getBonus() const {
-            return m_Bonus;
-        }
 
         virtual double computeSalary() { return 10.2; };
 	    private:
@@ -158,12 +158,12 @@ namespace EmployeeDB::Model {
         std::string m_DateOfBirth;
         std::string  m_DateOfJoining;
 		double m_PerformanceMetric;
+        double m_Bonus;
 		long long m_MobileNumber;
 		Gender m_Gender;
 		int m_EmployeeID;
 		int m_DepartmentID;
 		int m_MentorID;
-		int m_Bonus;
 	};
 }
 

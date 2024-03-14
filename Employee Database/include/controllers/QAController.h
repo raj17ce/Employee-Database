@@ -13,6 +13,9 @@ namespace EmployeeDB::Controller {
 		static bool createQA(QA& obj);
 		static bool selectQA(const std::string& attributeName = "", const std::string& attributeValue = "");
 		static bool deleteQAByID(int ID);
+		static bool updateQA(QA& obj);
+	private:
+		static std::string getUpdateQueryCondition(QA& obj);
 	};
 }
 

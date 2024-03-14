@@ -48,3 +48,48 @@ bool ManagerController::deleteManagerByID(int ID) {
 	}
 	return true;
 };
+
+std::string ManagerController::getUpdateQueryCondition(Manager& obj) {
+	std::string updateQueryCondition{ "" };
+
+	if (obj.getTeamSize() != -1) {
+		updateQueryCondition += "teamSize = " + std::to_string(obj.getTeamSize());
+	}
+	if (obj.getYearsOfExperience() != -1) {
+		if (updateQueryCondition.size() != 0) {
+			updateQueryCondition += ", ";
+		}
+		updateQueryCondition += "yearsOfExperience = " + std::to_string(obj.getYearsOfExperience());
+	}
+	if (obj.getProjectTitle() != "#") {
+		if (updateQueryCondition.size() != 0) {
+			updateQueryCondition += ", ";
+		}
+		updateQueryCondition += "projectTitle = \"" + obj.getProjectTitle() + "\"";
+	}
+	if (obj.getRole() != "#") {
+		if (updateQueryCondition.size() != 0) {
+			updateQueryCondition += ", ";
+		}
+		updateQueryCondition += "role = \"" + obj.getRole() + "\"";
+	}
+
+	return updateQueryCondition;
+}
+
+bool ManagerController::updateManager(Manager& obj) {
+
+	std::string updateQueryCondition = getUpdateQueryCondition(obj);
+
+	if (updateQueryCondition.size() != 0) {
+		std::string queryString = "UPDATE Manager SET " + updateQueryCondition + " WHERE managerID = " + std::to_string(obj.getManagerID()) + " AND departmentID = " + std::to_string(obj.getDepartmentID()) + ";";
+		try {
+			DBManager::instance().executeQuery(queryString.c_str());
+		}
+		catch (const std::exception& e) {
+			std::cerr << e.what() << '\n';
+			return false;
+		}
+	}
+	return true;
+}

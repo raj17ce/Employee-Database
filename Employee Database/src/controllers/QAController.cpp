@@ -57,3 +57,37 @@ bool QAController::selectQA(const std::string& attributeName, const std::string&
 bool QAController::deleteQAByID(int ID) {
 	return EmployeeController::deleteEmployeeByID(ID);
 }
+
+std::string QAController::getUpdateQueryCondition(QA& obj) {
+	std::string updateQueryCondition{ "" };
+
+	if (obj.getTestingTool() != "#") {
+		updateQueryCondition = "testingTool = \"" + obj.getTestingTool() + "\"";
+	}
+
+	return updateQueryCondition;
+}
+
+bool QAController::updateQA(QA& obj) {
+
+	bool employeeResult = EmployeeController::updateEmployee(obj);
+
+	if (!employeeResult) {
+		return false;
+	}
+
+	std::string updateQueryCondition = getUpdateQueryCondition(obj);
+
+	if (updateQueryCondition.size() != 0) {
+		std::string queryString = "UPDATE QA SET " + updateQueryCondition + " WHERE employeeID = " + std::to_string(obj.getEmployeeID()) + ";";
+
+		try {
+			DBManager::instance().executeQuery(queryString.c_str());
+		}
+		catch (const std::exception& e) {
+			std::cerr << e.what() << '\n';
+			return false;
+		}
+	}
+	return true;
+}

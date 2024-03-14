@@ -57,3 +57,37 @@ bool HRController::selectHR(const std::string& attributeName, const std::string&
 bool HRController::deleteHRByID(int ID) {
 	return EmployeeController::deleteEmployeeByID(ID);
 }
+
+std::string HRController::getUpdateQueryCondition(HR& obj) {
+	std::string updateQueryCondition{ "" };
+
+	if (obj.getHRSpecialization() != "#") {
+		updateQueryCondition = "hrSpecialization = \"" + obj.getHRSpecialization() + "\"";
+	}
+
+	return updateQueryCondition;
+}
+
+bool HRController::updateHR(HR& obj) {
+
+	bool employeeResult = EmployeeController::updateEmployee(obj);
+
+	if (!employeeResult) {
+		return false;
+	}
+
+	std::string updateQueryCondition = getUpdateQueryCondition(obj);
+
+	if (updateQueryCondition.size() != 0) {
+		std::string queryString = "UPDATE HR SET " + updateQueryCondition + " WHERE employeeID = " + std::to_string(obj.getEmployeeID()) + ";";
+
+		try {
+			DBManager::instance().executeQuery(queryString.c_str());
+		}
+		catch (const std::exception& e) {
+			std::cerr << e.what() << '\n';
+			return false;
+		}
+	}
+	return true;
+}

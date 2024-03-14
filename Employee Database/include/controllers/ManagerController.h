@@ -7,12 +7,15 @@
 using EmployeeDB::Model::Manager;
 
 namespace EmployeeDB::Controller {
-
+	
 	class ManagerController {
 	public:
 		static bool createManager(Manager& obj);
 		static bool selectManager(const std::string& attributeName = "", const std::string& attributeValue = "");
 		static bool deleteManagerByID(int ID);
+		static bool updateManager(Manager& obj);
+	private:
+		static std::string getUpdateQueryCondition(Manager& obj);
 	};
 }
 
