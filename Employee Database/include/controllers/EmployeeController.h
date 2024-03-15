@@ -12,6 +12,7 @@ namespace EmployeeDB::Controller {
 	public:
 		static bool createEmployee(const Employee& obj);
 		static int getEmployeeIDbyEmail(const std::string& email);
+		static int getDepartmentIDbyEmployeeID(int ID);
 		static bool deleteEmployeeByID(int ID);
 		static bool updateEmployee(Employee& obj);
 	private:

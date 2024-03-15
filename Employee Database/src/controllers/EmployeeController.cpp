@@ -55,6 +55,29 @@ int EmployeeController::getEmployeeIDbyEmail(const std::string& email) {
 	return employeeID;
 }
 
+int EmployeeController::getDepartmentIDbyEmployeeID(int ID) {
+	std::string queryString = "SELECT departmentID FROM Employee WHERE employeeID = " + std::to_string(ID) + ";";
+	int departmentID{ -1 };
+
+	auto getDepartmentIDCallback = [](void* data, int argc, char** argv, char** azColName) -> int {
+		int* eId = static_cast<int*>(data);
+		if (!strcmp(azColName[0], "departmentID")) {
+			*eId = std::stoi(argv[0]);
+		}
+		return 0;
+		};
+
+	try {
+		DBManager::instance().executeSelectQuery(queryString.c_str(), getDepartmentIDCallback, &departmentID);
+	}
+	catch (const std::exception& e) {
+		std::cerr << e.what() << '\n';
+		return -1;
+	}
+
+	return departmentID;
+}
+
 bool EmployeeController::deleteEmployeeByID(int ID) {
 	std::string queryString = "DELETE FROM Employee WHERE employeeID = " + std::to_string(ID) + ";";
 

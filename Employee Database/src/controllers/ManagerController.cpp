@@ -1,10 +1,21 @@
 #include <exception>
 #include "ManagerController.h"
+#include "EmployeeController.h"
 #include "DBManager.h"
 
-using EmployeeDB::Controller::ManagerController;
+using EmployeeDB::Controller::ManagerController, EmployeeDB::Controller::EmployeeController;
 
 bool ManagerController::createManager(Manager& obj) {
+
+	int departmentID = EmployeeController::getDepartmentIDbyEmployeeID(obj.getManagerID());
+
+	if (departmentID == -1) {
+		std::cerr << "Department was not found for provided managerID.";
+		return false;
+	}
+
+	obj.setDepartmentID(departmentID);
+
 	std::string queryString = "INSERT INTO Manager (managerID, departmentID, teamSize, yearsOfExp, projectTitle, role) VALUES (" +
 		std::to_string(obj.getManagerID()) + ", " +
 		std::to_string(obj.getDepartmentID()) + ", " +
@@ -82,7 +93,7 @@ bool ManagerController::updateManager(Manager& obj) {
 	std::string updateQueryCondition = getUpdateQueryCondition(obj);
 
 	if (updateQueryCondition.size() != 0) {
-		std::string queryString = "UPDATE Manager SET " + updateQueryCondition + " WHERE managerID = " + std::to_string(obj.getManagerID()) + " AND departmentID = " + std::to_string(obj.getDepartmentID()) + ";";
+		std::string queryString = "UPDATE Manager SET " + updateQueryCondition + " WHERE managerID = " + std::to_string(obj.getManagerID()) + ";";
 		try {
 			DBManager::instance().executeQuery(queryString.c_str());
 		}
