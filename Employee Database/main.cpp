@@ -1,20 +1,8 @@
 #include <iostream>
-#include <exception>
-#include "DBManager.h"
-#include "EngineerController.h"
+#include "MainView.h";
 
-using EmployeeDB::Controller::EngineerController;
-using EmployeeDB::DBManager;
+using EmployeeDB::View::MainView;
 
 int main() {
-	DBManager::executeCascadeQuery();
-
-	Engineer e{ true };
-
-	e.setEmployeeID(1);
-	e.setTechnology("CPP, Unreal");
-
-	EngineerController::updateEngineer(e);
-
-	EngineerController::selectEngineer();
+	MainView::mainMenuView();
 }
