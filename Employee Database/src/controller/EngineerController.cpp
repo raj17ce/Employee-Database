@@ -9,7 +9,7 @@ using EmployeeDB::Controller::EngineerController;
 using EmployeeDB::Controller::DepartmentController;
 using EmployeeDB::DBManager;
 
-bool EngineerController::createEngineer(Engineer& obj) {
+bool EngineerController::insertEngineer(Engineer& obj) {
 	int departmentID = DepartmentController::getDepartmentIDbyName("Engineer");
 
 	if (departmentID == -1) {
@@ -19,7 +19,7 @@ bool EngineerController::createEngineer(Engineer& obj) {
 
 	obj.setDepartmentID(departmentID);
 
-	bool employeeResult = EmployeeController::createEmployee(obj);
+	bool employeeResult = EmployeeController::insertEmployee(obj);
 
 	if (!employeeResult) {
 		return false;
@@ -33,6 +33,7 @@ bool EngineerController::createEngineer(Engineer& obj) {
 
 	try {
 		DBManager::instance().executeQuery(queryString.c_str());
+		std::cout << "Successfully inserted an Engineer.\n";
 	}
 	catch (const std::exception& e) {
 		std::cerr << e.what() << '\n';

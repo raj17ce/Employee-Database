@@ -6,7 +6,7 @@
 using EmployeeDB::Controller::DepartmentController;
 using EmployeeDB::DBManager;
 
-bool DepartmentController::createDepartment(const Department& obj) {
+bool DepartmentController::insertDepartment(const Department& obj) {
 	std::string queryString = "INSERT INTO Department (departmentName, baseSalary, allowance, deduction) "
 		+ std::string{ "VALUES (" } +
 		"\"" + obj.getDepartmentName() + "\"" + ", " +

@@ -9,7 +9,7 @@ using EmployeeDB::Controller::HRController;
 using EmployeeDB::Controller::DepartmentController;
 using EmployeeDB::DBManager;
 
-bool HRController::createHR(HR& obj) {
+bool HRController::insertHR(HR& obj) {
 	int departmentID = DepartmentController::getDepartmentIDbyName("HR");
 
 	if (departmentID == -1) {
@@ -19,7 +19,7 @@ bool HRController::createHR(HR& obj) {
 
 	obj.setDepartmentID(departmentID);
 
-	bool employeeResult = EmployeeController::createEmployee(obj);
+	bool employeeResult = EmployeeController::insertEmployee(obj);
 
 	if (!employeeResult) {
 		return false;

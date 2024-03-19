@@ -5,7 +5,7 @@
 
 using EmployeeDB::Controller::ManagerController, EmployeeDB::Controller::EmployeeController;
 
-bool ManagerController::createManager(Manager& obj) {
+bool ManagerController::insertManager(Manager& obj) {
 
 	int departmentID = EmployeeController::getDepartmentIDbyEmployeeID(obj.getManagerID());
 

@@ -5,7 +5,7 @@
 using EmployeeDB::Controller::EmployeeController;
 using EmployeeDB::DBManager;
 
-bool EmployeeController::createEmployee(const Employee& obj) {
+bool EmployeeController::insertEmployee(const Employee& obj) {
 	std::string queryString = "INSERT INTO Employee (firstName, middleName, lastName, dateOfBirth, mobileNumber, email, address, gender, dateOfJoining, departmentID, mentorID, performanceMetric, bonus) "
 		+ std::string{ "VALUES (" } +
 		"\"" + obj.getFirstName() + "\"" + ", " +

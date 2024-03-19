@@ -18,7 +18,7 @@ CREATE TABLE "Employee" (
 	"address"	TEXT NOT NULL,
 	"gender"	TEXT NOT NULL,
 	"dateOfJoining"	TEXT NOT NULL,
-	"departmentID"	INTEGER,
+	"departmentID"	INTEGER NOT NULL,
 	"mentorID"	INTEGER NOT NULL,
 	"performanceMetric"	REAL,
 	"bonus"	REAL,

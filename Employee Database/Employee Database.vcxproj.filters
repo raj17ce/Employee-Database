@@ -30,28 +30,34 @@
     <ClCompile Include="src\Validate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\controllers\EmployeeController.cpp">
+    <ClCompile Include="src\controller\EmployeeController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\controllers\EngineerController.cpp">
+    <ClCompile Include="src\controller\EngineerController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\controllers\FinanceController.cpp">
+    <ClCompile Include="src\controller\FinanceController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\controllers\QAController.cpp">
+    <ClCompile Include="src\controller\QAController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\controllers\HRController.cpp">
+    <ClCompile Include="src\controller\HRController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\controllers\DepartmentController.cpp">
+    <ClCompile Include="src\controller\DepartmentController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\controllers\ManagerController.cpp">
+    <ClCompile Include="src\controller\ManagerController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\view\MainView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\view\EngineerView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\view\EmployeeView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -114,6 +120,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\view\MainView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\view\EngineerView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\view\EmployeeView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

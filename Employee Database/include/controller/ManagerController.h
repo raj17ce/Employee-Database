@@ -10,7 +10,7 @@ namespace EmployeeDB::Controller {
 	
 	class ManagerController {
 	public:
-		static bool createManager(Manager& obj);
+		static bool insertManager(Manager& obj);
 		static bool selectManager(const std::string& attributeName = "", const std::string& attributeValue = "");
 		static bool deleteManagerByID(int ID);
 		static bool updateManager(Manager& obj);

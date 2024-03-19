@@ -154,15 +154,17 @@
     <ClCompile Include="lib\sqlite\shell.c" />
     <ClCompile Include="lib\sqlite\sqlite3.c" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="src\controllers\DepartmentController.cpp" />
-    <ClCompile Include="src\controllers\EmployeeController.cpp" />
-    <ClCompile Include="src\controllers\EngineerController.cpp" />
-    <ClCompile Include="src\controllers\FinanceController.cpp" />
-    <ClCompile Include="src\controllers\HRController.cpp" />
-    <ClCompile Include="src\controllers\ManagerController.cpp" />
-    <ClCompile Include="src\controllers\QAController.cpp" />
+    <ClCompile Include="src\controller\DepartmentController.cpp" />
+    <ClCompile Include="src\controller\EmployeeController.cpp" />
+    <ClCompile Include="src\controller\EngineerController.cpp" />
+    <ClCompile Include="src\controller\FinanceController.cpp" />
+    <ClCompile Include="src\controller\HRController.cpp" />
+    <ClCompile Include="src\controller\ManagerController.cpp" />
+    <ClCompile Include="src\controller\QAController.cpp" />
     <ClCompile Include="src\DBManager.cpp" />
     <ClCompile Include="src\Validate.cpp" />
+    <ClCompile Include="src\view\EmployeeView.cpp" />
+    <ClCompile Include="src\view\EngineerView.cpp" />
     <ClCompile Include="src\view\MainView.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -183,6 +185,8 @@
     <ClInclude Include="include\model\Manager.h" />
     <ClInclude Include="include\model\QA.h" />
     <ClInclude Include="include\Validate.h" />
+    <ClInclude Include="include\view\EmployeeView.h" />
+    <ClInclude Include="include\view\EngineerView.h" />
     <ClInclude Include="include\view\MainView.h" />
     <ClInclude Include="lib\sqlite\sqlite3.h" />
     <ClInclude Include="lib\sqlite\sqlite3ext.h" />

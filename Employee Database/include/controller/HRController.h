@@ -10,7 +10,7 @@ namespace EmployeeDB::Controller {
 
 	class HRController {
 	public:
-		static bool createHR(HR& obj);
+		static bool insertHR(HR& obj);
 		static bool selectHR(const std::string& attributeName = "", const std::string& attributeValue = "");
 		static bool deleteHRByID(int ID);
 		static bool updateHR(HR& obj);

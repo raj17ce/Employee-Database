@@ -2,6 +2,7 @@
 #define __Employee_H__
 
 #include <string>
+#include <algorithm>
 
 namespace EmployeeDB::Model {
 
@@ -10,21 +11,6 @@ namespace EmployeeDB::Model {
 		Female,
 		Other
 	};
-
-    inline std::string getGenderString(Gender g) {
-        std::string tempStr{ "Male" };
-        switch (g) {
-        case EmployeeDB::Model::Gender::Male:
-            break;
-        case EmployeeDB::Model::Gender::Female:
-            tempStr = "Female";
-            break;
-        case EmployeeDB::Model::Gender::Other:
-            tempStr = "Other";
-            break;
-        }
-        return tempStr;
-    }
 
 	class Employee {
 	public:
@@ -165,6 +151,37 @@ namespace EmployeeDB::Model {
 		int m_DepartmentID;
 		int m_MentorID;
 	};
+
+    inline std::string getGenderString(Gender g) {
+        std::string tempStr{ "Male" };
+        switch (g) {
+        case EmployeeDB::Model::Gender::Male:
+            break;
+        case EmployeeDB::Model::Gender::Female:
+            tempStr = "Female";
+            break;
+        case EmployeeDB::Model::Gender::Other:
+            tempStr = "Other";
+            break;
+        }
+        return tempStr;
+    }
+
+    inline Gender getGenderFromString(std::string& genderString) {
+        EmployeeDB::Model::Gender gender{ EmployeeDB::Model::Gender::Male };
+
+        std::transform(genderString.begin(), genderString.end(), genderString.begin(), ::tolower);
+        if (genderString == "male") {
+            gender = EmployeeDB::Model::Gender::Male;
+        }
+        else if (genderString == "female") {
+            gender = EmployeeDB::Model::Gender::Female;
+        }
+        else if (genderString == "other") {
+            gender = EmployeeDB::Model::Gender::Other;
+        }
+        return gender;
+    }
 }
 
 #endif

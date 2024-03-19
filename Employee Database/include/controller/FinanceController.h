@@ -10,7 +10,7 @@ namespace EmployeeDB::Controller {
 
 	class FinanceController {
 	public:
-		static bool createFinance(Finance& obj);
+		static bool insertFinance(Finance& obj);
 		static bool selectFinance(const std::string& attributeName = "", const std::string& attributeValue = "");
 		static bool deleteFinanceByID(int ID);
 		static bool updateFinance(Finance& obj);
