@@ -1,8 +1,9 @@
 #include "EmployeeView.h"
 #include "EngineerView.h"
+#include "Utility.h"
 #include "EngineerController.h"
 
-using EmployeeDB::View::EmployeeView,EmployeeDB::View::EngineerView;
+using EmployeeDB::View::EmployeeView, EmployeeDB::View::EngineerView, EmployeeDB::View::Utility;
 using EmployeeDB::Controller::EngineerController;
 
 bool EngineerView::insertEngineer() {
@@ -13,30 +14,11 @@ bool EngineerView::insertEngineer() {
 	EmployeeView::printEmployeeFields();
 	std::cout << "13. technology* : " << '\n';
 
-	bool isInvalidInput{false};
-
-	while (true) {
-		if (!isInvalidInput) {
-			std::cout << "Do you want to proceed with insertion? [y/n] : ";
-		}
-		unsigned char userChoice;
-		std::cin >> userChoice;
-
-		if (userChoice == 'y' || userChoice == 'Y') {
-			break;
-		}
-		else if (userChoice == 'n' || userChoice == 'N') {
-			return false;
-		}
-		else {
-			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			std::cerr << "Wrong Input, Please enter character [y/n] : ";
-			isInvalidInput = true;
-		}
+	if (!Utility::proceedFurther("insertion")) {
+		return false;
 	}
 
-	EmployeeView::getEmployeeInput(obj);
+	EmployeeView::getInsertEmployeeInput(obj);
 
 	std::string userInput;
 
@@ -56,28 +38,5 @@ bool EngineerView::insertEngineer() {
 
 	EngineerController::insertEngineer(obj);
 
-	isInvalidInput = false;
-
-	while (true) {
-		if (!isInvalidInput) {
-			std::cout << "Do you want to insert another Engineer? [y/n] : ";
-		}
-		unsigned char userChoice;
-		std::cin >> userChoice;
-
-		if (userChoice == 'y' || userChoice == 'Y') {
-			return true;
-		}
-		else if (userChoice == 'n' || userChoice == 'N') {
-			return false;
-		}
-		else {
-			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			std::cerr << "Wrong Input, Please enter character [y/n] : ";
-			isInvalidInput = true;
-		}
-	}
-
-	return false;
+	return Utility::repeatOperation("Engineer");
 }

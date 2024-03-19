@@ -16,7 +16,7 @@ bool ManagerController::insertManager(Manager& obj) {
 
 	obj.setDepartmentID(departmentID);
 
-	std::string queryString = "INSERT INTO Manager (managerID, departmentID, teamSize, yearsOfExp, projectTitle, role) VALUES (" +
+	std::string queryString = "INSERT INTO Manager (managerID, departmentID, teamSize, yearsOfExperience, projectTitle, role) VALUES (" +
 		std::to_string(obj.getManagerID()) + ", " +
 		std::to_string(obj.getDepartmentID()) + ", " +
 		std::to_string(obj.getTeamSize()) + ", " +

@@ -1,9 +1,15 @@
 #include <iostream>
-#include "MainView.h"
 #include "DBManager.h"
+#include "MainView.h"
+#include "DepartmentView.h"
+#include "ManagerView.h"
 #include "EngineerView.h"
+#include "FinanceView.h"
+#include "HRView.h"
+#include "QAView.h"
 
-using EmployeeDB::View::MainView, EmployeeDB::View::EngineerView;
+using EmployeeDB::View::MainView, EmployeeDB::View::DepartmentView, EmployeeDB::View::ManagerView;
+using EmployeeDB::View::EngineerView, EmployeeDB::View::FinanceView, EmployeeDB::View::HRView, EmployeeDB::View::QAView;
 using EmployeeDB::DBManager;
 
 void MainView::mainMenuView() {
@@ -123,9 +129,9 @@ void MainView::insertMenuSelection(short int userInput) {
 		case 0:
 			std::exit(0);
 		case 1:
-			/*while (continueInsertion) {
-				continueInsertion = DepartmentView::insert();
-			}*/
+			while (continueInsertion) {
+				continueInsertion = DepartmentView::insertDepartment();
+			}
 			break;
 		case 2:
 			while (continueInsertion) {
@@ -133,24 +139,24 @@ void MainView::insertMenuSelection(short int userInput) {
 			}
 			break;
 		case 3:
-			/*while (continueInsertion) {
-				continueInsertion = FinanceView::insert();
-			}*/
+			while (continueInsertion) {
+				continueInsertion = FinanceView::insertFinance();
+			}
 			break;
 		case 4:
-			/*while (continueInsertion) {
-				continueInsertion = HRView::insert();
-			}*/
+			while (continueInsertion) {
+				continueInsertion = HRView::insertHR();
+			}
 			break;
 		case 5:
-			/*while (continueInsertion) {
-				continueInsertion = QAView::insert();
-			}*/
+			while (continueInsertion) {
+				continueInsertion = QAView::insertQA();
+			}
 			break;
 		case 6:
-			/*while (continueInsertion) {
-				continueInsertion = ManagerView::insert();
-			}*/
+			while (continueInsertion) {
+				continueInsertion = ManagerView::insertManager();
+			}
 			break;
 	}
 }

@@ -32,7 +32,7 @@ CREATE TABLE "Manager" (
 	"managerID"	INTEGER NOT NULL,
 	"departmentID"	INTEGER NOT NULL,
 	"teamSize"	INTEGER NOT NULL,
-	"yearsOfExp"	REAL NOT NULL,
+	"yearsOfExperience"	REAL NOT NULL,
 	"projectTitle"	TEXT,
 	"role" TEXT,
 	PRIMARY KEY("managerID"),
@@ -42,25 +42,25 @@ CREATE TABLE "Manager" (
  
 CREATE TABLE "Engineer" (
 	"employeeID"	INTEGER NOT NULL,
-	"technology"	TEXT,
+	"technology"	TEXT NOT NULL,
 	FOREIGN KEY("employeeID") REFERENCES "Employee"("employeeID") ON DELETE CASCADE
 );
  
 CREATE TABLE "QA" (
 	"employeeID"	INTEGER NOT NULL,
-	"testingTool"	TEXT,
+	"testingTool"	TEXT NOT NULL,
 	FOREIGN KEY("employeeID") REFERENCES "Employee"("employeeID") ON DELETE CASCADE
 );
  
 CREATE TABLE "Finance" (
 	"employeeID"	INTEGER NOT NULL,
-	"accountingTool"	TEXT,
+	"accountingTool" TEXT NOT NULL,
 	FOREIGN KEY("employeeID") REFERENCES "Employee"("employeeID") ON DELETE CASCADE
 );
  
 CREATE TABLE "HR" (
 	"employeeID"	INTEGER NOT NULL,
-	"hrSpecialization"	TEXT,
+	"hrSpecialization"	TEXT NOT NULL,
 	FOREIGN KEY("employeeID") REFERENCES "Employee"("employeeID") ON DELETE CASCADE
 );
 

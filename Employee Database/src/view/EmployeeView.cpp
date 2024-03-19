@@ -19,13 +19,13 @@ void EmployeeView::printEmployeeFields() {
 	std::cout << "8. gender* :" << '\n';
 	std::cout << "9. dateOfJoining* :" << '\n';
 	std::cout << "10. managerID* :" << '\n';
-	std::cout << "11. performanceMetric* :" << '\n';
-	std::cout << "12. bonus* :" << '\n';
+	std::cout << "11. performanceMetric :" << '\n';
+	std::cout << "12. bonus :" << '\n';
 }
 
-void EmployeeView::getEmployeeInput(Employee& obj) {
+void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 	std::string userInput;
-	std::cin.ignore();
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
 	while (true) {
 		std::cout << "firstName* : ";
@@ -191,7 +191,12 @@ void EmployeeView::getEmployeeInput(Employee& obj) {
 			std::getline(std::cin, userInput);
 			userInput = userChoice + userInput;
 			try {
-				obj.setMentorID(std::stoi(userInput));
+				if (stoi(userInput) > 0) {
+					obj.setMentorID(stoi(userInput));
+				}
+				else {
+					throw "Negative Number";
+				}
 			}
 			catch (...) {
 				std::cout << "Wrong input...Please enter again!!\n";
@@ -201,43 +206,55 @@ void EmployeeView::getEmployeeInput(Employee& obj) {
 		}
 	}
 
-	while (true) {
-		std::cout << "performanceMetric* : ";
-		char userChoice = std::cin.get();
-		if (userChoice == '\n') {
-			std::cout << "performanceMetric is mandatory...Please enter again!!" << '\n';
-		}
-		else {
+	{
+		while (true) {
+			std::cout << "performanceMetric : ";
+			char userChoice = std::cin.get();
+
+			if (userChoice == '\n') {
+				break;
+			}
 			std::getline(std::cin, userInput);
 			userInput = userChoice + userInput;
+
 			try {
-				obj.setPerformanceMetric(std::stod(userInput));
+				if (stod(userInput) >= 0.0) {
+					obj.setPerformanceMetric(stod(userInput));
+					break;
+				}
+				else {
+					throw "Negative Number";
+				}
 			}
-			catch (...) {
-				std::cout << "Wrong input...Please enter real number!!\n";
-				continue;
+			catch(...) {
+				std::cerr << "Wrong input...Please enter Positive real number!!\n";
 			}
-			break;
 		}
 	}
 
-	while (true) {
-		std::cout << "bonus* : ";
-		char userChoice = std::cin.get();
-		if (userChoice == '\n') {
-			std::cout << "bonus is mandatory...Please enter again!!" << '\n';
-		}
-		else {
+	{
+		while (true) {
+			std::cout << "bonus : ";
+			char userChoice = std::cin.get();
+
+			if (userChoice == '\n') {
+				break;
+			}
 			std::getline(std::cin, userInput);
 			userInput = userChoice + userInput;
+
 			try {
-				obj.setBonus(std::stod(userInput));
+				if (stod(userInput) >= 0.0) {
+					obj.setBonus(stod(userInput));
+					break;
+				}
+				else {
+					throw "Negative Number";
+				}
 			}
 			catch (...) {
-				std::cout << "Wrong input...Please enter real number!!\n";
-				continue;
+				std::cerr << "Wrong input...Please enter Positive real number!!\n";
 			}
-			break;
 		}
 	}
 };

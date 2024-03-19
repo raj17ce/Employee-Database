@@ -155,12 +155,12 @@ namespace EmployeeDB::Model {
     inline std::string getGenderString(Gender g) {
         std::string tempStr{ "Male" };
         switch (g) {
-        case EmployeeDB::Model::Gender::Male:
+        case Gender::Male:
             break;
-        case EmployeeDB::Model::Gender::Female:
+        case Gender::Female:
             tempStr = "Female";
             break;
-        case EmployeeDB::Model::Gender::Other:
+        case Gender::Other:
             tempStr = "Other";
             break;
         }
@@ -168,17 +168,17 @@ namespace EmployeeDB::Model {
     }
 
     inline Gender getGenderFromString(std::string& genderString) {
-        EmployeeDB::Model::Gender gender{ EmployeeDB::Model::Gender::Male };
+        Gender gender{ Gender::Male };
 
         std::transform(genderString.begin(), genderString.end(), genderString.begin(), ::tolower);
         if (genderString == "male") {
-            gender = EmployeeDB::Model::Gender::Male;
+            gender = Gender::Male;
         }
         else if (genderString == "female") {
-            gender = EmployeeDB::Model::Gender::Female;
+            gender = Gender::Female;
         }
         else if (genderString == "other") {
-            gender = EmployeeDB::Model::Gender::Other;
+            gender = Gender::Other;
         }
         return gender;
     }

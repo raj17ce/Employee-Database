@@ -1,8 +1,13 @@
 #include <string>
+#include <iostream>
 #include <regex>
+#include <exception>
 #include "Validate.h"
+#include "EmployeeController.h"
 
 using EmployeeDB::Validate;
+using EmployeeDB::Controller::EmployeeController;
+
 
 bool Validate::validateEmail(const std::string& email) {
 	return std::regex_match(email, std::regex("(^[a-zA-Z0-9.]+@([a-zA-Z0-9\\-]+.)+[a-zA-Z0-9]{2,4}$)"));
@@ -19,4 +24,14 @@ bool Validate::validateDate(const std::string& date) {
 bool Validate::validateGender(std::string& gender) {
 	std::transform(gender.begin(), gender.end(), gender.begin(), ::tolower);
 	return (gender == "male" || gender == "female" || gender == "other");
+}
+
+bool Validate::validateManagerID(const std::string& managerID) {
+	bool regexResult = std::regex_match(managerID, std::regex("(^[0-9]+$)"));
+
+	if (!regexResult) {
+		return false;
+	}
+
+	return EmployeeController::checkEmployeeExistence(managerID);
 }
