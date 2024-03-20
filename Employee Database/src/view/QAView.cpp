@@ -36,5 +36,5 @@ bool QAView::insertQA() {
 
 	QAController::insertQA(obj);
 
-	return Utility::repeatOperation("QA");
+	return Utility::repeatOperation("insert", "QA");
 }

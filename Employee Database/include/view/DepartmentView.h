@@ -10,6 +10,9 @@ namespace EmployeeDB::View {
 		static void printDepartmentFields();
 		static void getInsertDepartmentInput(Department& obj);
 		static bool insertDepartment();
+		static void getUpdateDepartmentInput(Department& obj, int fieldNumber);
+		static bool getUpdateDepartmentIDInput(Department& obj);
+		static bool updateDepartment();
 	};
 }
 

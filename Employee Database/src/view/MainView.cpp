@@ -213,11 +213,14 @@ void MainView::updateMenuView() {
 }
 
 void MainView::updateMenuSelection(short int userInput) {
+	bool continueUpdation{ true };
 	switch (userInput) {
 	case 0:
 		std::exit(0);
 	case 1:
-		//DepartmentView::update();
+		while (continueUpdation) {
+			continueUpdation = DepartmentView::updateDepartment();
+		}
 		break;
 	case 2:
 		//EngineerView::update();

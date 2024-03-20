@@ -4,9 +4,10 @@
 #include <exception>
 #include "Validate.h"
 #include "EmployeeController.h"
+#include "DepartmentController.h"
 
 using EmployeeDB::Validate;
-using EmployeeDB::Controller::EmployeeController;
+using EmployeeDB::Controller::EmployeeController, EmployeeDB::Controller::DepartmentController;
 
 
 bool Validate::validateEmail(const std::string& email) {
@@ -26,12 +27,22 @@ bool Validate::validateGender(std::string& gender) {
 	return (gender == "male" || gender == "female" || gender == "other");
 }
 
-bool Validate::validateManagerID(const std::string& managerID) {
-	bool regexResult = std::regex_match(managerID, std::regex("(^[0-9]+$)"));
+bool Validate::validateEmployeeID(const std::string& employeeID) {
+	bool regexResult = std::regex_match(employeeID, std::regex("(^[0-9]+$)"));
 
 	if (!regexResult) {
 		return false;
 	}
 
-	return EmployeeController::checkEmployeeExistence(managerID);
+	return EmployeeController::checkEmployeeExistence(employeeID);
+}
+
+bool Validate::validateDepartmentID(const std::string& departmentID) {
+	bool regexResult = std::regex_match(departmentID, std::regex("(^[0-9]+$)"));
+
+	if (!regexResult) {
+		return false;
+	}
+
+	return DepartmentController::checkDepartmentExistence(departmentID);
 }

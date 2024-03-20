@@ -36,5 +36,5 @@ bool HRView::insertHR() {
 
 	HRController::insertHR(obj);
 
-	return Utility::repeatOperation("HR");
+	return Utility::repeatOperation("insert", "HR");
 }

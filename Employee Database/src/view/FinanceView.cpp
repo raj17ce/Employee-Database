@@ -36,5 +36,5 @@ bool FinanceView::insertFinance() {
 
 	FinanceController::insertFinance(obj);
 
-	return Utility::repeatOperation("Finance");
+	return Utility::repeatOperation("insert", "Finance");
 }

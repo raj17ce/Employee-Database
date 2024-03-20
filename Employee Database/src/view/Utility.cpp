@@ -29,12 +29,12 @@ bool Utility::proceedFurther(const std::string& operation) {
 	return false;
 }
 
-bool Utility::repeatOperation(const std::string& Entity) {
+bool Utility::repeatOperation(const std::string& operation, const std::string& Entity) {
 	bool isInvalidInput = false;
 
 	while (true) {
 		if (!isInvalidInput) {
-			std::cout << "Do you want to insert another "+ Entity +"? [y/n] : ";
+			std::cout << "Do you want to "+ operation + " another " + Entity +"? [y / n] : ";
 		}
 		
 		std::string inputLine;

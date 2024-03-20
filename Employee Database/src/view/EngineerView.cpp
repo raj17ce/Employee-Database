@@ -36,5 +36,5 @@ bool EngineerView::insertEngineer() {
 
 	EngineerController::insertEngineer(obj);
 
-	return Utility::repeatOperation("Engineer");
+	return Utility::repeatOperation("insert", "Engineer");
 }
