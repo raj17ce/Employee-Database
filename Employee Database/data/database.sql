@@ -66,4 +66,4 @@ CREATE TABLE "HR" (
 
 CREATE VIEW ManagerView
 AS
-	SELECT Employee.*,Manager.teamSize,Manager.yearsOfExp,Manager.projectTitle,Manager.role FROM Employee INNER JOIN Manager ON Employee.employeeID = Manager.managerID;
+	SELECT Employee.*,Manager.teamSize,Manager.yearsOfExperience,Manager.projectTitle,Manager.role FROM Employee INNER JOIN Manager ON Employee.employeeID = Manager.managerID;

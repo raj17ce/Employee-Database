@@ -15,6 +15,7 @@ namespace EmployeeDB::Model {
 		}
 
 		Manager(bool isUpdateObj) :
+			Employee{ isUpdateObj },
 			m_ProjectTitle{ "#" },
 			m_Role{ "#" },
 			m_YearsOfExperience{ -1.0 },

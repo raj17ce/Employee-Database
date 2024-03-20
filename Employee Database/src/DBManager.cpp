@@ -49,7 +49,7 @@ int DBManager::executeQuery(const char* queryString) {
 }
 
 int DBManager::executeCustomQuery(const char* queryString, int (*callback)(void*, int, char**, char**), void* arg) {
-	m_ResultCode = sqlite3_exec(m_DB, queryString, callback, &arg, &m_ErrorMessage);
+	m_ResultCode = sqlite3_exec(m_DB, queryString, callback, arg, &m_ErrorMessage);
 
 	if (m_ResultCode == SQLITE_OK) {
 		std::cout << "Successfully executed Query" << '\n';

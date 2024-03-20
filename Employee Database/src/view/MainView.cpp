@@ -235,7 +235,9 @@ void MainView::updateMenuSelection(short int userInput) {
 		//QAView::update();
 		break;
 	case 6:
-		//ManagerView::update();
+		while (continueUpdation) {
+			continueUpdation = ManagerView::updateManager();
+		}
 		break;
 	}
 }

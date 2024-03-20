@@ -9,7 +9,6 @@ using EmployeeDB::Controller::DepartmentController;
 using EmployeeDB::Validate;
 
 void DepartmentView::printDepartmentFields() {
-	std::cout << "Fields with * are required fields\n";
 	std::cout << "1. departmentName* : " << '\n';
 	std::cout << "2. baseSalary* : " << '\n';
 	std::cout << "3. allowance* : " << '\n';
@@ -56,7 +55,7 @@ void DepartmentView::getInsertDepartmentInput(Department& obj) {
 
 	while (true) {
 		std::cout << "allowance* : ";
-		std::getline(std::cin, userInput); //
+		std::getline(std::cin, userInput);
 		if (userInput.size() == 0) {
 			std::cout << "allowance is mandatory...Please enter again!!" << '\n';
 		}
@@ -106,6 +105,7 @@ bool DepartmentView::insertDepartment() {
 
 	system("cls");
 	std::cout << "------------------------------------------Insert Department-------------------------------------------------\n";
+	std::cout << "Fields with * are required fields\n";
 	printDepartmentFields();
 
 	if (!Utility::proceedFurther("insertion")) {
@@ -213,12 +213,12 @@ void DepartmentView::getUpdateDepartmentInput(Department& obj, int fieldNumber) 
 	}
 }
 
-bool DepartmentView::getUpdateDepartmentIDInput(Department& obj) {
+bool DepartmentView::getDepartmentIDInput(Department& obj, const std::string& operation) {
 	std::string userInput;
 
 	system("cls");
-	std::cout << "------------------------------------------Update Department-------------------------------------------------\n";
-	std::cout << "To update a Department, please enter departmentID.\n";
+	std::cout << "------------------------------------------"+ operation +" Department-------------------------------------------------\n";
+	std::cout << "To "+ operation +" a Department, please enter departmentID.\n";
 
 	while (true) {
 		std::cout << "departmentID* : ";
@@ -240,23 +240,24 @@ bool DepartmentView::getUpdateDepartmentIDInput(Department& obj) {
 	std::cin.get();
 
 	system("cls");
-	std::cout << "------------------------------------------Update Department-------------------------------------------------\n";
+	std::cout << "------------------------------------------"+ operation +" Department-------------------------------------------------\n";
 	DepartmentController::selectDepartment("departmentID", userInput);
 
-	return Utility::proceedFurther("Updating");
+	return Utility::proceedFurther(operation);
 }
 
 bool DepartmentView::updateDepartment() {
 	Department obj{ true };
 	bool isInvalidInput{ false };
 
-	if (!getUpdateDepartmentIDInput(obj)) {
+	if (!getDepartmentIDInput(obj, "Update")) {
 		return false;
 	}
 
 	while (true) {
 		system("cls");
 		std::cout << "------------------------------------------Update Department-------------------------------------------------\n";
+		std::cout << "Fields with * are required fields\n";
 		std::cout << "0. Exit" << '\n';
 		printDepartmentFields();
 		std::cout << "5. Go Back" << '\n';

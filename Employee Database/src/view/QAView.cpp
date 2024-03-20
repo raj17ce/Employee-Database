@@ -11,6 +11,7 @@ bool QAView::insertQA() {
 
 	system("cls");
 	std::cout << "------------------------------------------Insert QA-------------------------------------------------\n";
+	std::cout << "Fields with * are required fields\n";
 	EmployeeView::printEmployeeFields();
 	std::cout << "13. testingTool* : " << '\n';
 
