@@ -18,22 +18,22 @@ void DepartmentView::printDepartmentFields() {
 
 void DepartmentView::getInsertDepartmentInput(Department& obj) {
 	std::string userInput;
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-	while (true) {
-		std::cout << "departmentName* : ";
-		char userChoice = std::cin.get();
-		if (userChoice == '\n') {
-			std::cout << "departmentName is mandatory...Please enter again!!" << '\n';
-		}
-		else {
-			std::getline(std::cin, userInput);
-			userInput = userChoice + userInput;
-
-			obj.setDepartmentName(userInput);
-			break;
-		}
-	}
+	//while (true) {
+	//	std::cout << "departmentName* : ";
+	//	//char userChoice = std::cin.get();
+	//	std::getline(std::cin, userInput);
+	//	std::cout<<userInput.size()<<'\n';
+	//	if (userInput.size() == 1 && userInput[0] == '\n') {
+	//		std::cout << "departmentName is mandatory...Please enter again!!" << '\n';
+	//	}
+	//	else {
+	//		//std::getline(std::cin, userInput);
+	//		//userInput = userChoice + userInput;
+	//		obj.setDepartmentName(userInput);
+	//		break;
+	//	}
+	//}
 
 	while (true) {
 		std::cout << "baseSalary* : ";

@@ -19,7 +19,6 @@ void ManagerView::printManagerFields() {
 
 void ManagerView::getInsertManagerInput(Manager& obj) {
 	std::string userInput;
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
 	while (true) {
 		std::cout << "managerID* : ";
@@ -31,7 +30,7 @@ void ManagerView::getInsertManagerInput(Manager& obj) {
 			std::getline(std::cin, userInput);
 			userInput = userChoice + userInput;
 
-			if (Validate::validateManagerID(userInput)) {
+			if (true/*Validate::validateManagerID(userInput) */ ) {
 				obj.setManagerID(stoi(userInput));
 				break;
 			}

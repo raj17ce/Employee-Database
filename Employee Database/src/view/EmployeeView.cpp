@@ -25,7 +25,6 @@ void EmployeeView::printEmployeeFields() {
 
 void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 	std::string userInput;
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
 	while (true) {
 		std::cout << "firstName* : ";

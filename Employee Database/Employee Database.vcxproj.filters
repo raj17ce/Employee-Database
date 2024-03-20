@@ -72,10 +72,10 @@
     <ClCompile Include="src\view\DepartmentView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\view\ManagerView.cpp">
+    <ClCompile Include="src\view\Utility.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\view\Utility.cpp">
+    <ClCompile Include="src\view\ManagerView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -158,10 +158,10 @@
     <ClInclude Include="include\controller\ManagerController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\view\ManagerView.h">
+    <ClInclude Include="include\view\Utility.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\view\Utility.h">
+    <ClInclude Include="include\view\ManagerView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

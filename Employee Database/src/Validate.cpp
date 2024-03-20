@@ -26,12 +26,12 @@ bool Validate::validateGender(std::string& gender) {
 	return (gender == "male" || gender == "female" || gender == "other");
 }
 
-bool Validate::validateManagerID(const std::string& managerID) {
-	bool regexResult = std::regex_match(managerID, std::regex("(^[0-9]+$)"));
-
-	if (!regexResult) {
-		return false;
-	}
-
-	return EmployeeController::checkEmployeeExistence(managerID);
-}
+//bool Validate::validateManagerID(const std::string& managerID) {
+//	bool regexResult = std::regex_match(managerID, std::regex("(^[0-9]+$)"));
+//
+//	if (!regexResult) {
+//		return false;
+//	}
+//
+//	return EmployeeController::checkEmployeeExistence(managerID);
+//}

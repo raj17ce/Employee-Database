@@ -10,18 +10,17 @@ bool Utility::proceedFurther(const std::string& operation) {
 		if (!isInvalidInput) {
 			std::cout << "Do you want to proceed with "+ operation +"? [y/n] : ";
 		}
-		unsigned char userChoice;
-		std::cin >> userChoice;
 
-		if (userChoice == 'y' || userChoice == 'Y') {
+		std::string inputLine;
+		std::getline(std::cin, inputLine);
+
+		if (inputLine.size() == 1 && (inputLine[0] == 'y' || inputLine[0] == 'Y')) {
 			return true;
 		}
-		else if (userChoice == 'n' || userChoice == 'N') {
+		else if (inputLine.size() == 1 && (inputLine[0] == 'n' || inputLine[0] == 'N')) {
 			return false;
 		}
 		else {
-			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			std::cerr << "Wrong Input, Please enter character [y/n] : ";
 			isInvalidInput = true;
 		}
@@ -29,6 +28,7 @@ bool Utility::proceedFurther(const std::string& operation) {
 
 	return false;
 }
+
 bool Utility::repeatOperation(const std::string& Entity) {
 	bool isInvalidInput = false;
 
@@ -36,18 +36,17 @@ bool Utility::repeatOperation(const std::string& Entity) {
 		if (!isInvalidInput) {
 			std::cout << "Do you want to insert another "+ Entity +"? [y/n] : ";
 		}
-		unsigned char userChoice;
-		std::cin >> userChoice;
+		
+		std::string inputLine;
+		std::getline(std::cin, inputLine);
 
-		if (userChoice == 'y' || userChoice == 'Y') {
+		if (inputLine.size() == 1 && (inputLine[0] == 'y' || inputLine[0] == 'Y')) {
 			return true;
 		}
-		else if (userChoice == 'n' || userChoice == 'N') {
+		else if (inputLine.size() == 1 && (inputLine[0] == 'n' || inputLine[0] == 'N')) {
 			return false;
 		}
 		else {
-			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			std::cerr << "Wrong Input, Please enter character [y/n] : ";
 			isInvalidInput = true;
 		}
