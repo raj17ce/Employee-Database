@@ -24,13 +24,11 @@ bool EngineerView::insertEngineer() {
 
 	while (true) {
 		std::cout << "technology* : ";
-		char userChoice = std::cin.get();
-		if (userChoice == '\n') {
+		std::getline(std::cin, userInput);
+		if (userInput.size() == 0) {
 			std::cout << "Technology is mandatory...Please enter again!!" << '\n';
 		}
 		else {
-			std::getline(std::cin, userInput);
-			userInput = userChoice + userInput;
 			obj.setTechnology(userInput);
 			break;
 		}

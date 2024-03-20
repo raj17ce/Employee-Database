@@ -19,31 +19,25 @@ void DepartmentView::printDepartmentFields() {
 void DepartmentView::getInsertDepartmentInput(Department& obj) {
 	std::string userInput;
 
-	//while (true) {
-	//	std::cout << "departmentName* : ";
-	//	//char userChoice = std::cin.get();
-	//	std::getline(std::cin, userInput);
-	//	std::cout<<userInput.size()<<'\n';
-	//	if (userInput.size() == 1 && userInput[0] == '\n') {
-	//		std::cout << "departmentName is mandatory...Please enter again!!" << '\n';
-	//	}
-	//	else {
-	//		//std::getline(std::cin, userInput);
-	//		//userInput = userChoice + userInput;
-	//		obj.setDepartmentName(userInput);
-	//		break;
-	//	}
-	//}
+	while (true) {
+		std::cout << "departmentName* : ";
+		std::getline(std::cin, userInput);
+		if (userInput.size() == 0) {
+			std::cout << "departmentName is mandatory...Please enter again!!" << '\n';
+		}
+		else {
+			obj.setDepartmentName(userInput);
+			break;
+		}
+	}
 
 	while (true) {
 		std::cout << "baseSalary* : ";
-		char userChoice = std::cin.get();
-		if (userChoice == '\n') {
+		std::getline(std::cin, userInput);
+		if (userInput.size() == 0) {
 			std::cout << "baseSalary is mandatory...Please enter again!!" << '\n';
 		}
 		else {
-			std::getline(std::cin, userInput);
-			userInput = userChoice + userInput;
 			try {
 				if (stod(userInput) >= 0.0) {
 					obj.setBaseSalary(stod(userInput));
@@ -62,13 +56,11 @@ void DepartmentView::getInsertDepartmentInput(Department& obj) {
 
 	while (true) {
 		std::cout << "allowance* : ";
-		char userChoice = std::cin.get();
-		if (userChoice == '\n') {
+		std::getline(std::cin, userInput);
+		if (userInput.size() == 0) {
 			std::cout << "allowance is mandatory...Please enter again!!" << '\n';
 		}
 		else {
-			std::getline(std::cin, userInput);
-			userInput = userChoice + userInput;
 			try {
 				if (stod(userInput) >= 0.0) {
 					obj.setAllowance(stod(userInput));
@@ -87,13 +79,11 @@ void DepartmentView::getInsertDepartmentInput(Department& obj) {
 
 	while (true) {
 		std::cout << "deduction* : ";
-		char userChoice = std::cin.get();
-		if (userChoice == '\n') {
+		std::getline(std::cin, userInput);
+		if (userInput.size() == 0) {
 			std::cout << "deduction is mandatory...Please enter again!!" << '\n';
 		}
 		else {
-			std::getline(std::cin, userInput);
-			userInput = userChoice + userInput;
 			try {
 				if (stod(userInput) >= 0.0) {
 					obj.setDeduction(stod(userInput));
@@ -104,6 +94,7 @@ void DepartmentView::getInsertDepartmentInput(Department& obj) {
 			}
 			catch (...) {
 				std::cerr << "Wrong input...Please enter Positive real number!!\n";
+				continue;
 			}
 			break;
 		}

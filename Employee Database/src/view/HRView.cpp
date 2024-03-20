@@ -24,13 +24,11 @@ bool HRView::insertHR() {
 
 	while (true) {
 		std::cout << "hrSpecialization* : ";
-		char userChoice = std::cin.get();
-		if (userChoice == '\n') {
+		std::getline(std::cin, userInput);
+		if (userInput.size() == 0) {
 			std::cout << "hrSpecialization is mandatory...Please enter again!!" << '\n';
 		}
 		else {
-			std::getline(std::cin, userInput);
-			userInput = userChoice + userInput;
 			obj.setHRSpecialization(userInput);
 			break;
 		}

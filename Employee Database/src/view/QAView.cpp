@@ -24,13 +24,11 @@ bool QAView::insertQA() {
 
 	while (true) {
 		std::cout << "testingTool* : ";
-		char userChoice = std::cin.get();
-		if (userChoice == '\n') {
+		std::getline(std::cin, userInput);
+		if (userInput.size() == 0) {
 			std::cout << "testingTool is mandatory...Please enter again!!" << '\n';
 		}
 		else {
-			std::getline(std::cin, userInput);
-			userInput = userChoice + userInput;
 			obj.setTestingTool(userInput);
 			break;
 		}

@@ -14,7 +14,7 @@ bool Validate::validateEmail(const std::string& email) {
 }
 
 bool Validate::validateMobile(const std::string& number) {
-	return std::regex_match(number, std::regex("(^[7-8-9]{1}[0-9]{9}$)"));
+	return std::regex_match(number, std::regex("(^[6-9]{1}[0-9]{9}$)"));
 }
 
 bool Validate::validateDate(const std::string& date) {
@@ -26,12 +26,12 @@ bool Validate::validateGender(std::string& gender) {
 	return (gender == "male" || gender == "female" || gender == "other");
 }
 
-//bool Validate::validateManagerID(const std::string& managerID) {
-//	bool regexResult = std::regex_match(managerID, std::regex("(^[0-9]+$)"));
-//
-//	if (!regexResult) {
-//		return false;
-//	}
-//
-//	return EmployeeController::checkEmployeeExistence(managerID);
-//}
+bool Validate::validateManagerID(const std::string& managerID) {
+	bool regexResult = std::regex_match(managerID, std::regex("(^[0-9]+$)"));
+
+	if (!regexResult) {
+		return false;
+	}
+
+	return EmployeeController::checkEmployeeExistence(managerID);
+}

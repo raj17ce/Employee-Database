@@ -24,13 +24,11 @@ bool FinanceView::insertFinance() {
 
 	while (true) {
 		std::cout << "accountingTool* : ";
-		char userChoice = std::cin.get();
-		if (userChoice == '\n') {
+		std::getline(std::cin, userInput);
+		if (userInput.size() == 0) {
 			std::cout << "accountingTool is mandatory...Please enter again!!" << '\n';
 		}
 		else {
-			std::getline(std::cin, userInput);
-			userInput = userChoice + userInput;
 			obj.setAccountingTool(userInput);
 			break;
 		}

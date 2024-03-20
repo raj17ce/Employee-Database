@@ -22,15 +22,12 @@ void ManagerView::getInsertManagerInput(Manager& obj) {
 
 	while (true) {
 		std::cout << "managerID* : ";
-		char userChoice = std::cin.get();
-		if (userChoice == '\n') {
+		std::getline(std::cin, userInput);
+		if (userInput.size() == 0) {
 			std::cout << "managerID is mandatory...Please enter again!!" << '\n';
 		}
 		else {
-			std::getline(std::cin, userInput);
-			userInput = userChoice + userInput;
-
-			if (true/*Validate::validateManagerID(userInput) */ ) {
+			if (Validate::validateManagerID(userInput)) {
 				obj.setManagerID(stoi(userInput));
 				break;
 			}
@@ -42,13 +39,11 @@ void ManagerView::getInsertManagerInput(Manager& obj) {
 
 	while (true) {
 		std::cout << "teamSize* : ";
-		char userChoice = std::cin.get();
-		if (userChoice == '\n') {
+		std::getline(std::cin, userInput);
+		if (userInput.size() == 0) {
 			std::cout << "teamSize is mandatory...Please enter again!!" << '\n';
 		}
 		else {
-			std::getline(std::cin, userInput);
-			userInput = userChoice + userInput;
 			try {
 				if (std::stoi(userInput) >= 0) {
 					obj.setTeamSize(std::stoi(userInput));
@@ -67,13 +62,11 @@ void ManagerView::getInsertManagerInput(Manager& obj) {
 
 	while (true) {
 		std::cout << "yearsOfExperience* : ";
-		char userChoice = std::cin.get();
-		if (userChoice == '\n') {
+		std::getline(std::cin, userInput);
+		if (userInput.size() == 0) {
 			std::cout << "yearsOfExperience is mandatory...Please enter again!!" << '\n';
 		}
 		else {
-			std::getline(std::cin, userInput);
-			userInput = userChoice + userInput;
 			try {
 				if (std::stod(userInput) >= 0.0) {
 					obj.setYearsOfExperience(std::stod(userInput));
@@ -92,22 +85,16 @@ void ManagerView::getInsertManagerInput(Manager& obj) {
 
 	{
 		std::cout << "projectTitle : ";
-		char userChoice = std::cin.get();
-
-		if (userChoice != '\n') {
-			std::getline(std::cin, userInput);
-			userInput = userChoice + userInput;
+		std::getline(std::cin, userInput);
+		if (userInput.size() != 0) {
 			obj.setProjectTitle(userInput);
 		}
 	}
 
 	{
 		std::cout << "role : ";
-		char userChoice = std::cin.get();
-
-		if (userChoice != '\n') {
-			std::getline(std::cin, userInput);
-			userInput = userChoice + userInput;
+		std::getline(std::cin, userInput);
+		if (userInput.size() != 0) {
 			obj.setRole(userInput);
 		}
 	}

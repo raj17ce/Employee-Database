@@ -28,14 +28,11 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 
 	while (true) {
 		std::cout << "firstName* : ";
-		char userChoice = std::cin.get();
-		if (userChoice == '\n') {
+		std::getline(std::cin, userInput);
+		if (userInput.size() == 0) {
 			std::cout << "First Name is mandatory...Please enter again!!" << '\n';
 		}
 		else {
-			std::getline(std::cin, userInput);
-			userInput = userChoice + userInput;
-
 			obj.setFirstName(userInput);
 			break;
 		}
@@ -43,25 +40,19 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 
 	{
 		std::cout << "middleName : ";
-		char userChoice = std::cin.get();
-
-		if(userChoice != '\n') {
-			std::getline(std::cin, userInput);
-			userInput = userChoice + userInput;
+		std::getline(std::cin, userInput);
+		if(userInput.size() != 0) {
 			obj.setMiddleName(userInput);
 		}
 	}
 
 	while (true) {
 		std::cout << "lastName* : ";
-		char userChoice = std::cin.get();
-		if (userChoice == '\n') {
+		std::getline(std::cin, userInput);
+		if (userInput.size() == 0) {
 			std::cout << "Last Name is mandatory...Please enter again!!" << '\n';
 		}
 		else {
-			std::getline(std::cin, userInput);
-			userInput = userChoice + userInput;
-
 			obj.setLastName(userInput);
 			break;
 		}
@@ -70,14 +61,11 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 	{
 		std::cout << "dateOfBirth [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : ";
 		while (true) {
-			char userChoice = std::cin.get();
+			std::getline(std::cin, userInput);
 
-			if (userChoice == '\n') {
+			if (userInput.size() == 0) {
 				break;
 			}
-			std::getline(std::cin, userInput);
-			userInput = userChoice + userInput;
-
 			if (Validate::validateDate(userInput)) {
 				obj.setDateOfBirth(userInput);
 				break;
@@ -90,13 +78,11 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 
 	while (true) {
 		std::cout << "mobileNo* (Starting from [6-9]) : ";
-		char userChoice = std::cin.get();
-		if (userChoice == '\n') {
+		std::getline(std::cin, userInput);
+		if (userInput.size() == 0) {
 			std::cout << "mobileNo is mandatory...Please enter again!!" << '\n';
 		}
 		else {
-			std::getline(std::cin, userInput);
-			userInput = userChoice + userInput;
 			if (Validate::validateMobile(userInput)) {
 				obj.setMobileNumber(std::stoll(userInput));
 				break;
@@ -109,13 +95,11 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 
 	while (true) {
 		std::cout << "email* : ";
-		char userChoice = std::cin.get();
-		if (userChoice == '\n') {
+		std::getline(std::cin, userInput);
+		if (userInput.size() == 0) {
 			std::cout << "email is mandatory...Please enter again!!" << '\n';
 		}
 		else {
-			std::getline(std::cin, userInput);
-			userInput = userChoice + userInput;
 			if (Validate::validateEmail(userInput)) {
 				obj.setEmail(userInput);
 				break;
@@ -128,13 +112,11 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 
 	while (true) {
 		std::cout << "address* : ";
-		char userChoice = std::cin.get();
-		if (userChoice == '\n') {
+		std::getline(std::cin, userInput);
+		if (userInput.size() == 0) {
 			std::cout << "Address is mandatory...Please enter again!!" << '\n';
 		}
 		else {
-			std::getline(std::cin, userInput);
-			userInput = userChoice + userInput;
 			obj.setAddress(userInput);
 			break;
 		}
@@ -142,14 +124,11 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 
 	while (true) {
 		std::cout << "gender* : ";
-		char userChoice = std::cin.get();
-		if (userChoice == '\n') {
+		std::getline(std::cin, userInput);
+		if (userInput.size() == 0) {
 			std::cout << "Gender is mandatory...Please enter again!!" << '\n';
 		}
 		else {
-			std::getline(std::cin, userInput);
-			userInput = userChoice + userInput;
-
 			if (Validate::validateGender(userInput)) {
 				obj.setGender(EmployeeDB::Model::getGenderFromString(userInput));
 				break;
@@ -162,14 +141,12 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 
 	while (true) {
 		std::cout << "dateOfJoining* [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : ";
-		char userChoice = std::cin.get();
+		std::getline(std::cin, userInput);
 
-		if (userChoice == '\n') {
+		if (userInput.size() == 0) {
 			std::cout << "dateOfJoining is mandatory...Please enter again!!" << '\n';
 		}
 		else {
-			std::getline(std::cin, userInput);
-			userInput = userChoice + userInput;
 			if (Validate::validateDate(userInput)) {
 				obj.setDateOfJoining(userInput);
 				break;
@@ -182,13 +159,11 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 
 	while (true) {
 		std::cout << "mentorID* : ";
-		char userChoice = std::cin.get();
-		if (userChoice == '\n') {
+		std::getline(std::cin, userInput);
+		if (userInput.size() == 0) {
 			std::cout << "mentorID is mandatory...Please enter again!!" << '\n';
 		}
 		else {
-			std::getline(std::cin, userInput);
-			userInput = userChoice + userInput;
 			try {
 				if (stoi(userInput) > 0) {
 					obj.setMentorID(stoi(userInput));
@@ -208,14 +183,11 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 	{
 		while (true) {
 			std::cout << "performanceMetric : ";
-			char userChoice = std::cin.get();
+			std::getline(std::cin, userInput);
 
-			if (userChoice == '\n') {
+			if (userInput.size() == 0) {
 				break;
 			}
-			std::getline(std::cin, userInput);
-			userInput = userChoice + userInput;
-
 			try {
 				if (stod(userInput) >= 0.0) {
 					obj.setPerformanceMetric(stod(userInput));
@@ -234,14 +206,11 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 	{
 		while (true) {
 			std::cout << "bonus : ";
-			char userChoice = std::cin.get();
+			std::getline(std::cin, userInput);
 
-			if (userChoice == '\n') {
+			if (userInput.size() == 0) {
 				break;
 			}
-			std::getline(std::cin, userInput);
-			userInput = userChoice + userInput;
-
 			try {
 				if (stod(userInput) >= 0.0) {
 					obj.setBonus(stod(userInput));

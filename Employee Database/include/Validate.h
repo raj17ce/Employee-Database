@@ -10,7 +10,7 @@ namespace EmployeeDB {
 		static bool validateMobile(const std::string& number);
 		static bool validateDate(const std::string& date);
 		static bool validateGender(std::string& gender);
-		//static bool validateManagerID(const std::string& managerID);
+		static bool validateManagerID(const std::string& managerID);
 	};
 }
 
