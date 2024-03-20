@@ -27,3 +27,8 @@ TEST(TestValidate, TestGender) {
 	ASSERT_EQ(Validate::validateGender(std::string{"MaLe"}), true);
 	ASSERT_EQ(Validate::validateGender(std::string{ "OTherS" }), false);
 }
+
+int main(int argc, char** argv) {
+	testing::InitGoogleTest(&argc, argv);
+	return RUN_ALL_TESTS();
+}
