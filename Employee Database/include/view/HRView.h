@@ -6,6 +6,7 @@ namespace EmployeeDB::View {
 	class HRView {
 	public:
 		static bool insertHR();
+		static bool updateHR();
 	};
 }
 

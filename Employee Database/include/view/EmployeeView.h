@@ -10,6 +10,7 @@ namespace EmployeeDB::View {
 		static void printEmployeeFields();
 		static void getInsertEmployeeInput(Employee& obj);
 		static void getUpdateEmployeeInput(Employee& obj, int fieldNumber);
+		static void getEmployeeIDInput(Employee& obj, const std::string& operation, const std::string& entity);
 	};
 }
 

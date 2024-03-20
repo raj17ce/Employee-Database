@@ -6,6 +6,7 @@ namespace EmployeeDB::View {
 	class FinanceView {
 	public:
 		static bool insertFinance();
+		static bool updateFinance();
 	};
 }
 

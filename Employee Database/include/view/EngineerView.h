@@ -6,6 +6,7 @@ namespace EmployeeDB::View {
 	class EngineerView {
 	public:
 		static bool insertEngineer();
+		static bool updateEngineer();
 	};
 }
 

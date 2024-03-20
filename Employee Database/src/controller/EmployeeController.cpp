@@ -1,8 +1,9 @@
 #include <exception>
 #include "EmployeeController.h"
+#include "DepartmentController.h"
 #include "DBManager.h"
 
-using EmployeeDB::Controller::EmployeeController;
+using EmployeeDB::Controller::EmployeeController, EmployeeDB::Controller::DepartmentController;
 using EmployeeDB::DBManager;
 
 bool EmployeeController::insertEmployee(const Employee& obj) {
@@ -78,8 +79,18 @@ int EmployeeController::getDepartmentIDbyEmployeeID(int ID) {
 	return departmentID;
 }
 
-bool EmployeeController::checkEmployeeExistence(const std::string& employeeID) {
-	std::string queryString = "SELECT employeeID FROM Employee WHERE employeeID = " + employeeID + ";";
+bool EmployeeController::checkEmployeeExistence(const std::string& employeeID, const std::string& departmentName) {
+
+	int departmentID{ -1 };
+
+	if (departmentName != "*") {
+		departmentID = DepartmentController::getDepartmentIDbyName(departmentName);
+		if (departmentID == -1) {
+			return false;
+		}
+	}
+
+	std::string queryString = "SELECT employeeID FROM Employee WHERE employeeID = " + employeeID + (departmentID == -1 ? "" : " AND departmentID = " + std::to_string(departmentID)) + ";";
 
 	int callbackCount{ 0 };
 

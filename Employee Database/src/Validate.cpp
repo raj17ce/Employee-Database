@@ -5,9 +5,10 @@
 #include "Validate.h"
 #include "EmployeeController.h"
 #include "DepartmentController.h"
+#include "ManagerController.h"
 
 using EmployeeDB::Validate;
-using EmployeeDB::Controller::EmployeeController, EmployeeDB::Controller::DepartmentController;
+using EmployeeDB::Controller::EmployeeController, EmployeeDB::Controller::DepartmentController, EmployeeDB::Controller::ManagerController;
 
 
 bool Validate::validateEmail(const std::string& email) {
@@ -27,14 +28,24 @@ bool Validate::validateGender(std::string& gender) {
 	return (gender == "male" || gender == "female" || gender == "other");
 }
 
-bool Validate::validateEmployeeID(const std::string& employeeID) {
+bool Validate::validateEmployeeID(const std::string& employeeID, const std::string& departmentName) {
 	bool regexResult = std::regex_match(employeeID, std::regex("(^[0-9]+$)"));
 
 	if (!regexResult) {
 		return false;
 	}
 
-	return EmployeeController::checkEmployeeExistence(employeeID);
+	return EmployeeController::checkEmployeeExistence(employeeID, departmentName);
+}
+
+bool Validate::validateManagerID(const std::string& managerID) {
+	bool regexResult = std::regex_match(managerID, std::regex("(^[0-9]+$)"));
+
+	if (!regexResult) {
+		return false;
+	}
+
+	return ManagerController::checkManagerExistence(managerID);
 }
 
 bool Validate::validateDepartmentID(const std::string& departmentID) {

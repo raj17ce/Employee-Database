@@ -27,7 +27,7 @@ void ManagerView::getInsertManagerInput(Manager& obj) {
 			std::cout << "managerID is mandatory...Please enter again!!" << '\n';
 		}
 		else {
-			if (Validate::validateEmployeeID(userInput)) {
+			if (Validate::validateEmployeeID(userInput, "*")) {
 				obj.setManagerID(stoi(userInput));
 				break;
 			}
@@ -215,7 +215,7 @@ bool ManagerView::getManagerIDInput(Manager& obj, const std::string& operation) 
 			std::cout << "managerID is mandatory...Please enter again!!" << '\n';
 		}
 		else {
-			if (Validate::validateEmployeeID(userInput)) {
+			if (Validate::validateEmployeeID(userInput, "Manager")) {
 				obj.setManagerID(stoi(userInput));
 				obj.setEmployeeID(stoi(userInput));
 				break;

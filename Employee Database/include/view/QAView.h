@@ -6,6 +6,7 @@ namespace EmployeeDB::View {
 	class QAView {
 	public:
 		static bool insertQA();
+		static bool updateQA();
 	};
 }
 

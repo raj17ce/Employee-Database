@@ -444,3 +444,30 @@ void EmployeeView::getUpdateEmployeeInput(Employee& obj, int fieldNumber) {
 		break;
 	}
 };
+
+void EmployeeView::getEmployeeIDInput(Employee& obj, const std::string& operation, const std::string& entity) {
+	std::string userInput;
+
+	system("cls");
+	std::cout << "------------------------------------------" + operation + " "+ entity +"-------------------------------------------------\n";
+	std::cout << "To " + operation + " "+ entity +", please enter employeeID.\n";
+
+	while (true) {
+		std::cout << "employeeID* : ";
+		std::getline(std::cin, userInput);
+		if (userInput.size() == 0) {
+			std::cout << "employeeID is mandatory...Please enter again!!" << '\n';
+		}
+		else {
+			if (Validate::validateEmployeeID(userInput, entity)) {
+				obj.setEmployeeID(stoi(userInput));
+				break;
+			}
+			else {
+				std::cout << "Wrong input...Please enter positive integer number!!\n";
+			}
+		}
+	}
+
+	std::cin.get();
+}
