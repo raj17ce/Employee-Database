@@ -45,7 +45,8 @@ bool HRController::selectHR(const std::string& attributeName, const std::string&
 	std::string queryString = "SELECT * FROM Employee NATURAL JOIN HR " + ((attributeName.size() != 0) ? "WHERE " + attributeName + " = \"" + attributeValue + "\"" : "") + ";";
 
 	try {
-		DBManager::instance().executeSelectQuery(queryString.c_str());
+		int rowCount = DBManager::instance().executeSelectQuery(queryString.c_str());
+		std::cout << rowCount << std::string{ " record" } + (rowCount > 1 ? "s" : "") + " found\n";
 	}
 	catch (const std::exception& e) {
 		std::cerr << e.what() << '\n';

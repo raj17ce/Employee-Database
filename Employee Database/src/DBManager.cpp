@@ -48,7 +48,22 @@ int DBManager::executeQuery(const char* queryString) {
 	return m_ResultCode;
 }
 
-int DBManager::callback(void* arg, int argc, char** argv, char** azColName) {
+int DBManager::executeCustomQuery(const char* queryString, int (*callback)(void*, int, char**, char**), void* arg) {
+	m_ResultCode = sqlite3_exec(m_DB, queryString, callback, &arg, &m_ErrorMessage);
+
+	if (m_ResultCode == SQLITE_OK) {
+		std::cout << "Successfully executed Query" << '\n';
+	}
+	else {
+		throw std::runtime_error{ m_ErrorMessage };
+	}
+
+	return m_ResultCode;
+}
+
+int DBManager::selectCallback(void* arg, int argc, char** argv, char** azColName) {
+	int* rowCount = static_cast<int*>(arg);
+	(*rowCount)++;
 	std::cout << "|--------------------|----------------------------------------|\n";
 	int i;
 	for (i = 0; i < argc; i++) {
@@ -59,8 +74,9 @@ int DBManager::callback(void* arg, int argc, char** argv, char** azColName) {
 	return 0;
 }
 
-int DBManager::executeSelectQuery(const char* queryString, int (*callback)(void*, int, char**, char**), void* arg) {
-	m_ResultCode = sqlite3_exec(m_DB, queryString, callback, arg, &m_ErrorMessage);
+int DBManager::executeSelectQuery(const char* queryString) {
+	int rowCount{ 0 };
+	m_ResultCode = sqlite3_exec(m_DB, queryString, selectCallback, &rowCount, &m_ErrorMessage);
 
 	if (m_ResultCode == SQLITE_OK) {
 		std::cout << "Successfully executed Query" << '\n';
@@ -68,8 +84,26 @@ int DBManager::executeSelectQuery(const char* queryString, int (*callback)(void*
 	else {
 		throw std::runtime_error{ m_ErrorMessage };
 	}
+	return rowCount;
+}
 
-	return m_ResultCode;
+int DBManager::rowCountCallback(void* arg, int argc, char** argv, char** azColName) {
+	int* rowCount = static_cast<int*>(arg);
+	(*rowCount)++;
+	return 0;
+}
+
+int DBManager::executeRowCountQuery(const char* queryString) {
+	int rowCount{ 0 };
+	m_ResultCode = sqlite3_exec(m_DB, queryString, rowCountCallback, &rowCount, &m_ErrorMessage);
+
+	if (m_ResultCode == SQLITE_OK) {
+		std::cout << "Successfully executed Query" << '\n';
+	}
+	else {
+		throw std::runtime_error{ m_ErrorMessage };
+	}
+	return rowCount;
 }
 
 void DBManager::executeCascadeQuery() {

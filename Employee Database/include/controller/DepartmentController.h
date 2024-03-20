@@ -12,7 +12,7 @@ namespace EmployeeDB::Controller {
 	public:
 		static bool insertDepartment(const Department& obj);
 		static int getDepartmentIDbyName(const std::string& departmentName);
-		static bool selectAllDepartmentIDAndName();
+		static bool checkDepartmentExistence(const std::string& departmentID);
 		static bool selectDepartment(const std::string& attributeName = "", const std::string& attributeValue = "");
 		static bool deleteDepartmentByID(int ID);
 		static bool updateDepartment(Department& obj);

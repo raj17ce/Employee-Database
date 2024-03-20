@@ -37,7 +37,7 @@ int DepartmentController::getDepartmentIDbyName(const std::string& departmentNam
 		};
 
 	try {
-		DBManager::instance().executeSelectQuery(queryString.c_str(), getDepartmentIDCallback, &departmentID);
+		DBManager::instance().executeCustomQuery(queryString.c_str(), getDepartmentIDCallback, &departmentID);
 	}
 	catch (const std::exception& e) {
 		std::cerr << e.what() << '\n';
@@ -47,32 +47,19 @@ int DepartmentController::getDepartmentIDbyName(const std::string& departmentNam
 	return departmentID;
 }
 
-bool DepartmentController::selectAllDepartmentIDAndName() {
-	std::string queryString = "SELECT departmentID,departmentName FROM Department;";
+bool DepartmentController::checkDepartmentExistence(const std::string& departmentID) {
+	std::string queryString = "SELECT departmentID FROM Department WHERE departmentID = " + departmentID + ";";
 
-	//auto lambda = [](void* data, int argc, char** argv, char** azColName) {
-	//	int* count = static_cast<int*>(data);
-
-	//	if(count != nullptr && *count == 0) {
-	//		++(*count);
-	//		std::cout << "|--------------------|----------------------------------------|\n";
-	//		std::cout << "|" << std::setw(20) << std::left << azColName[0] << "|" << std::setw(40) << std::left << azColName[1] << "|\n";
-	//		std::cout << "|--------------------|----------------------------------------|\n";
-	//	}
-	//	std::cout << "|" << std::setw(20) << std::left << argv[0] << "|" << std::setw(40) << std::left << argv[1] << "|\n";
-	///*	int i;
-	//	for (i = 0; i < argc; i++) {
-	//		std::cout << "|" << std::setw(20) << std::left << azColName[i] << "|" << std::setw(40) << std::left << (argv[i] ? argv[i] : "NULL") << "|\n";
-	//	}*/
-	//	return 0;
-	//	};
+	int callbackCount{ 0 };
 
 	try {
-		int i = 0;
-		DBManager::instance().executeSelectQuery(queryString.c_str());
+		callbackCount = DBManager::instance().executeRowCountQuery(queryString.c_str());
 	}
-	catch (const std::exception& e) {
+	catch (std::exception& e) {
 		std::cerr << e.what() << '\n';
+	}
+
+	if (callbackCount == 0) {
 		return false;
 	}
 
@@ -83,7 +70,8 @@ bool DepartmentController::selectDepartment(const std::string& attributeName, co
 	std::string queryString = "SELECT * FROM Department " + ((attributeName.size() != 0) ? "WHERE " + attributeName + " = \"" + attributeValue + "\"":"") + ";";
 
 	try {
-		DBManager::instance().executeSelectQuery(queryString.c_str());
+		int rowCount = DBManager::instance().executeSelectQuery(queryString.c_str());
+		std::cout << rowCount << std::string{ " record" } + (rowCount > 1 ? "s" : "") + " found\n";
 	}
 	catch (const std::exception& e) {
 		std::cerr << e.what() << '\n';

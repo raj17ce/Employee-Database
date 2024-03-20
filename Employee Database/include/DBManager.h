@@ -9,7 +9,9 @@ namespace EmployeeDB {
 	public:
 		static DBManager& instance();
 		int executeQuery(const char* queryString);
-		int executeSelectQuery(const char* queryString, int (*callback)(void*, int, char**, char**) = DBManager::callback, void* arg = 0);
+		int executeCustomQuery(const char* queryString, int (*callback)(void*, int, char**, char**), void* arg);
+		int executeSelectQuery(const char* queryString);
+		int executeRowCountQuery(const char* queryString);
 		static void executeCascadeQuery();
 
 		char* getErrorMessage() const {
@@ -24,7 +26,8 @@ namespace EmployeeDB {
 		}
 		int openConnection();
 		int closeConnection();
-		static int callback(void* arg, int argc, char** argv, char** azColName);
+		static int selectCallback(void* arg, int argc, char** argv, char** azColName);
+		static int rowCountCallback(void* arg, int argc, char** argv, char** azColName);
 		sqlite3* m_DB;
 		int m_ResultCode;
 		char* m_ErrorMessage;
