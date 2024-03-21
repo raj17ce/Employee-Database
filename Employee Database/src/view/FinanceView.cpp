@@ -125,3 +125,21 @@ bool FinanceView::updateFinance() {
 
 	return Utility::repeatOperation("update", "Finance");
 }
+
+bool FinanceView::deleteFinance() {
+	Finance obj{ true };
+	bool isInvalidInput{ false };
+
+	EmployeeView::getEmployeeIDInput(obj, "Delete", "Finance");
+
+	system("cls");
+	std::cout << "------------------------------------------Delete Finance-------------------------------------------------\n";
+	FinanceController::selectFinance("Employee.employeeID", std::to_string(obj.getEmployeeID()));
+	if (!Utility::proceedFurther("Delete")) {
+		return false;
+	}
+
+	FinanceController::deleteFinanceByID(obj.getEmployeeID());
+
+	return Utility::repeatOperation("delete", "Finance");
+}

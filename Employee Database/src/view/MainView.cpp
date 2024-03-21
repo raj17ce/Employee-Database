@@ -1,13 +1,7 @@
 #include <iostream>
 #include <string>
 #include "DBManager.h"
-#include "MainView.h"
-#include "DepartmentView.h"
-#include "ManagerView.h"
-#include "EngineerView.h"
-#include "FinanceView.h"
-#include "HRView.h"
-#include "QAView.h"
+#include "View.h"
 
 using EmployeeDB::View::MainView, EmployeeDB::View::DepartmentView, EmployeeDB::View::ManagerView;
 using EmployeeDB::View::EngineerView, EmployeeDB::View::FinanceView, EmployeeDB::View::HRView, EmployeeDB::View::QAView;
@@ -291,26 +285,39 @@ void MainView::deleteMenuView() {
 }
 
 void MainView::deleteMenuSelection(short int userInput) {
+	bool continueDeletion{ true };
 	switch (userInput) {
 	case 0:
 		std::exit(0);
 	case 1:
-		//DepartmentView::delete();
+		while (continueDeletion) {
+			continueDeletion = DepartmentView::deleteDepartment();
+		}
 		break;
 	case 2:
-		//EngineerView::delete();
+		while (continueDeletion) {
+			continueDeletion = EngineerView::deleteEngineer();
+		}
 		break;
 	case 3:
-		//FinanceView::delete();
+		while (continueDeletion) {
+			continueDeletion = FinanceView::deleteFinance();
+		}
 		break;
 	case 4:
-		//HRView::delete();
+		while (continueDeletion) {
+			continueDeletion = HRView::deleteHR();
+		}
 		break;
 	case 5:
-		//QAView::delete();
+		while (continueDeletion) {
+			continueDeletion = QAView::deleteQA();
+		}
 		break;
 	case 6:
-		//ManagerView::delete();
+		while (continueDeletion) {
+			continueDeletion = ManagerView::deleteManager();
+		}
 		break;
 	}
 }

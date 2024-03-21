@@ -125,3 +125,21 @@ bool QAView::updateQA() {
 
 	return Utility::repeatOperation("update", "QA");
 }
+
+bool QAView::deleteQA() {
+	QA obj{ true };
+	bool isInvalidInput{ false };
+
+	EmployeeView::getEmployeeIDInput(obj, "Delete", "QA");
+
+	system("cls");
+	std::cout << "------------------------------------------Delete QA-------------------------------------------------\n";
+	QAController::selectQA("Employee.employeeID", std::to_string(obj.getEmployeeID()));
+	if (!Utility::proceedFurther("Delete")) {
+		return false;
+	}
+
+	QAController::deleteQAByID(obj.getEmployeeID());
+
+	return Utility::repeatOperation("delete", "QA");
+}

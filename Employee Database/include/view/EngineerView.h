@@ -7,6 +7,7 @@ namespace EmployeeDB::View {
 	public:
 		static bool insertEngineer();
 		static bool updateEngineer();
+		static bool deleteEngineer();
 	};
 }
 

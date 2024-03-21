@@ -125,3 +125,21 @@ bool EngineerView::updateEngineer() {
 
 	return Utility::repeatOperation("update", "Engineer");
 }
+
+bool EngineerView::deleteEngineer() {
+	Engineer obj{ true };
+	bool isInvalidInput{ false };
+
+	EmployeeView::getEmployeeIDInput(obj, "Delete", "Engineer");
+
+	system("cls");
+	std::cout << "------------------------------------------Delete Engineer-------------------------------------------------\n";
+	EngineerController::selectEngineer("Employee.employeeID", std::to_string(obj.getEmployeeID()));
+	if (!Utility::proceedFurther("Delete")) {
+		return false;
+	}
+
+	EngineerController::deleteEngineerByID(obj.getEmployeeID());
+
+	return Utility::repeatOperation("delete", "Engineer");
+}

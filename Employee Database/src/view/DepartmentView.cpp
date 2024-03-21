@@ -306,3 +306,16 @@ bool DepartmentView::updateDepartment() {
 
 	return Utility::repeatOperation("update", "Department");
 }
+
+bool DepartmentView::deleteDepartment() {
+	Department obj{ true };
+	bool isInvalidInput{ false };
+
+	if (!getDepartmentIDInput(obj, "Delete")) {
+		return false;
+	}
+
+	DepartmentController::deleteDepartmentByID(obj.getDepartmentID());
+
+	return Utility::repeatOperation("delete", "Department");
+}

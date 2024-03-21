@@ -125,3 +125,21 @@ bool HRView::updateHR() {
 
 	return Utility::repeatOperation("update", "HR");
 }
+
+bool HRView::deleteHR() {
+	HR obj{ true };
+	bool isInvalidInput{ false };
+
+	EmployeeView::getEmployeeIDInput(obj, "Delete", "HR");
+
+	system("cls");
+	std::cout << "------------------------------------------Delete HR-------------------------------------------------\n";
+	HRController::selectHR("Employee.employeeID", std::to_string(obj.getEmployeeID()));
+	if (!Utility::proceedFurther("Delete")) {
+		return false;
+	}
+
+	HRController::deleteHRByID(obj.getEmployeeID());
+
+	return Utility::repeatOperation("delete", "HR");
+}

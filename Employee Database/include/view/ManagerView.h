@@ -14,6 +14,7 @@ namespace EmployeeDB::View {
 		static void getUpdateManagerInput(Manager& obj, int fieldNumber);
 		static bool getManagerIDInput(Manager& obj, const std::string& operation);
 		static bool updateManager();
+		static bool deleteManager();
 	};
 }
 

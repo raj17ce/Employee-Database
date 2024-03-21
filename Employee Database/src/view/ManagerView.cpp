@@ -215,7 +215,7 @@ bool ManagerView::getManagerIDInput(Manager& obj, const std::string& operation) 
 			std::cout << "managerID is mandatory...Please enter again!!" << '\n';
 		}
 		else {
-			if (Validate::validateEmployeeID(userInput, "Manager")) {
+			if (Validate::validateManagerID(userInput)) {
 				obj.setManagerID(stoi(userInput));
 				obj.setEmployeeID(stoi(userInput));
 				break;
@@ -232,6 +232,9 @@ bool ManagerView::getManagerIDInput(Manager& obj, const std::string& operation) 
 	std::cout << "------------------------------------------"+ operation +" Manager-------------------------------------------------\n";
 	ManagerController::selectManager("employeeID", userInput);
 
+	if (operation == "Delete") {
+		std::cout << "Note : Deleting manager will not affect the corresponding Employee entry.\n";
+	}
 	return Utility::proceedFurther(operation);
 }
 
@@ -304,4 +307,17 @@ bool ManagerView::updateManager() {
 	ManagerController::updateManager(obj);
 
 	return Utility::repeatOperation("update", "Manager");
+}
+
+bool ManagerView::deleteManager() {
+	Manager obj{ true };
+	bool isInvalidInput{ false };
+
+	if (!getManagerIDInput(obj, "Delete")) {
+		return false;
+	}
+
+	ManagerController::deleteManagerByID(obj.getManagerID());
+
+	return Utility::repeatOperation("delete", "Manager");
 }

@@ -164,6 +164,9 @@
     <ClInclude Include="include\view\ManagerView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\View.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
