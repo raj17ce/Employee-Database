@@ -13,7 +13,7 @@ bool HRController::insertHR(HR& obj) {
 	int departmentID = DepartmentController::getDepartmentIDbyName("HR");
 
 	if (departmentID == -1) {
-		std::cerr << "HR department not found.";
+		std::cerr << "HR department not found. Please insert a department named HR.\n";
 		return false;
 	}
 
@@ -22,6 +22,7 @@ bool HRController::insertHR(HR& obj) {
 	bool employeeResult = EmployeeController::insertEmployee(obj);
 
 	if (!employeeResult) {
+		std::cerr << "HR could not be inserted.\n";
 		return false;
 	}
 
@@ -33,9 +34,11 @@ bool HRController::insertHR(HR& obj) {
 
 	try {
 		DBManager::instance().executeQuery(queryString.c_str());
+		std::cout << "Successfully inserted an HR.\n";
 	}
 	catch (const std::exception& e) {
 		std::cerr << e.what() << '\n';
+		std::cerr << "HR could not be inserted.\n";
 		return false;
 	}
 	return true;
@@ -56,7 +59,15 @@ bool HRController::selectHR(const std::string& attributeName, const std::string&
 };
 
 bool HRController::deleteHRByID(int ID) {
-	return EmployeeController::deleteEmployeeByID(ID);
+	int deleteResult = EmployeeController::deleteEmployeeByID(ID);
+
+	if (deleteResult) {
+		std::cout << "Successfully deleted an HR.\n";
+	}
+	else {
+		std::cerr << "HR could not be deleted.\n";
+	}
+	return deleteResult;
 }
 
 std::string HRController::getUpdateQueryCondition(HR& obj) {
@@ -74,6 +85,7 @@ bool HRController::updateHR(HR& obj) {
 	bool employeeResult = EmployeeController::updateEmployee(obj);
 
 	if (!employeeResult) {
+		std::cerr << "HR could not be updated.\n";
 		return false;
 	}
 
@@ -84,9 +96,11 @@ bool HRController::updateHR(HR& obj) {
 
 		try {
 			DBManager::instance().executeQuery(queryString.c_str());
+			std::cout << "Successfully updated an HR.\n";
 		}
 		catch (const std::exception& e) {
 			std::cerr << e.what() << '\n';
+			std::cerr << "HR could not be updated.\n";
 			return false;
 		}
 	}

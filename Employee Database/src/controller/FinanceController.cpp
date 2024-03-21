@@ -13,7 +13,7 @@ bool FinanceController::insertFinance(Finance& obj) {
 	int departmentID = DepartmentController::getDepartmentIDbyName("Finance");
 
 	if (departmentID == -1) {
-		std::cerr << "Finance department not found.";
+		std::cerr << "Finance department not found. Please insert a department named Finance.\n";
 		return false;
 	}
 
@@ -22,6 +22,7 @@ bool FinanceController::insertFinance(Finance& obj) {
 	bool employeeResult = EmployeeController::insertEmployee(obj);
 
 	if (!employeeResult) {
+		std::cerr << "Finance could not be inserted.\n";
 		return false;
 	}
 
@@ -33,9 +34,11 @@ bool FinanceController::insertFinance(Finance& obj) {
 
 	try {
 		DBManager::instance().executeQuery(queryString.c_str());
+		std::cout << "Successfully inserted a Finance.\n";
 	}
 	catch (const std::exception& e) {
 		std::cerr << e.what() << '\n';
+		std::cerr << "Finance could not be inserted.\n";
 		return false;
 	}
 	return true;
@@ -56,7 +59,15 @@ bool FinanceController::selectFinance(const std::string& attributeName, const st
 };
 
 bool FinanceController::deleteFinanceByID(int ID) {
-	return EmployeeController::deleteEmployeeByID(ID);
+	bool deleteResult = EmployeeController::deleteEmployeeByID(ID);
+
+	if (deleteResult) {
+		std::cout << "Successfully deleted a Finance.\n";
+	}
+	else {
+		std::cerr << "Finance could not be deleted.\n";
+	}
+	return deleteResult;
 }
 
 std::string FinanceController::getUpdateQueryCondition(Finance& obj) {
@@ -74,6 +85,7 @@ bool FinanceController::updateFinance(Finance& obj) {
 	bool employeeResult = EmployeeController::updateEmployee(obj);
 
 	if (!employeeResult) {
+		std::cerr << "Finance could not be updated.\n";
 		return false;
 	}
 
@@ -84,9 +96,11 @@ bool FinanceController::updateFinance(Finance& obj) {
 
 		try {
 			DBManager::instance().executeQuery(queryString.c_str());
+			std::cout << "Successfully updated a Finance.\n";
 		}
 		catch (const std::exception& e) {
 			std::cerr << e.what() << '\n';
+			std::cerr << "Finance could not be updated.\n";
 			return false;
 		}
 	}

@@ -23,6 +23,8 @@ void ManagerView::getInsertManagerInput(Manager& obj) {
 	while (true) {
 		std::cout << "managerID* : ";
 		std::getline(std::cin, userInput);
+		Utility::removeEmptySpaces(userInput);
+
 		if (userInput.size() == 0) {
 			std::cout << "managerID is mandatory...Please enter again!!" << '\n';
 		}
@@ -40,6 +42,8 @@ void ManagerView::getInsertManagerInput(Manager& obj) {
 	while (true) {
 		std::cout << "teamSize* : ";
 		std::getline(std::cin, userInput);
+		Utility::removeEmptySpaces(userInput);
+
 		if (userInput.size() == 0) {
 			std::cout << "teamSize is mandatory...Please enter again!!" << '\n';
 		}
@@ -63,6 +67,8 @@ void ManagerView::getInsertManagerInput(Manager& obj) {
 	while (true) {
 		std::cout << "yearsOfExperience* : ";
 		std::getline(std::cin, userInput);
+		Utility::removeEmptySpaces(userInput);
+
 		if (userInput.size() == 0) {
 			std::cout << "yearsOfExperience is mandatory...Please enter again!!" << '\n';
 		}
@@ -86,6 +92,8 @@ void ManagerView::getInsertManagerInput(Manager& obj) {
 	{
 		std::cout << "projectTitle : ";
 		std::getline(std::cin, userInput);
+		Utility::removeEmptySpaces(userInput);
+
 		if (userInput.size() != 0) {
 			obj.setProjectTitle(userInput);
 		}
@@ -94,6 +102,8 @@ void ManagerView::getInsertManagerInput(Manager& obj) {
 	{
 		std::cout << "role : ";
 		std::getline(std::cin, userInput);
+		Utility::removeEmptySpaces(userInput);
+
 		if (userInput.size() != 0) {
 			obj.setRole(userInput);
 		}
@@ -133,6 +143,8 @@ void ManagerView::getUpdateManagerInput(Manager& obj, int fieldNumber) {
 		while (true) {
 			std::cout << "teamSize* : ";
 			std::getline(std::cin, userInput);
+			Utility::removeEmptySpaces(userInput);
+
 			if (userInput.size() == 0) {
 				std::cout << "teamSize is mandatory...Please enter again!!" << '\n';
 			}
@@ -158,6 +170,8 @@ void ManagerView::getUpdateManagerInput(Manager& obj, int fieldNumber) {
 		while (true) {
 			std::cout << "yearsOfExperience* : ";
 			std::getline(std::cin, userInput);
+			Utility::removeEmptySpaces(userInput);
+
 			if (userInput.size() == 0) {
 				std::cout << "yearsOfExperience is mandatory...Please enter again!!" << '\n';
 			}
@@ -183,6 +197,8 @@ void ManagerView::getUpdateManagerInput(Manager& obj, int fieldNumber) {
 		{
 			std::cout << "projectTitle : ";
 			std::getline(std::cin, userInput);
+			Utility::removeEmptySpaces(userInput);
+
 			if (userInput.size() != 0) {
 				obj.setProjectTitle(userInput);
 			}
@@ -193,6 +209,8 @@ void ManagerView::getUpdateManagerInput(Manager& obj, int fieldNumber) {
 		{
 			std::cout << "role : ";
 			std::getline(std::cin, userInput);
+			Utility::removeEmptySpaces(userInput);
+
 			if (userInput.size() != 0) {
 				obj.setRole(userInput);
 			}
@@ -211,6 +229,8 @@ bool ManagerView::getManagerIDInput(Manager& obj, const std::string& operation) 
 	while (true) {
 		std::cout << "managerID* : ";
 		std::getline(std::cin, userInput);
+		Utility::removeEmptySpaces(userInput);
+
 		if (userInput.size() == 0) {
 			std::cout << "managerID is mandatory...Please enter again!!" << '\n';
 		}
@@ -225,8 +245,6 @@ bool ManagerView::getManagerIDInput(Manager& obj, const std::string& operation) 
 			}
 		}
 	}
-
-	std::cin.get();
 
 	system("cls");
 	std::cout << "------------------------------------------"+ operation +" Manager-------------------------------------------------\n";
@@ -264,6 +282,7 @@ bool ManagerView::updateManager() {
 		int userInput;
 		std::string inputLine;
 		std::getline(std::cin, inputLine);
+		Utility::removeEmptySpaces(inputLine);
 
 		if (inputLine.length() == 0) {
 			isInvalidInput = true;

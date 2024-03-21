@@ -21,14 +21,16 @@ bool ManagerController::insertManager(Manager& obj) {
 		std::to_string(obj.getDepartmentID()) + ", " +
 		std::to_string(obj.getTeamSize()) + ", " +
 		std::to_string(obj.getYearsOfExperience()) + ", " +
-		"\"" + obj.getProjectTitle() + "\"," +
-		"\"" + obj.getRole() + "\");";
+		(obj.getProjectTitle().size() == 0 ? "NULL" : "\"" + obj.getProjectTitle() + "\"") + "," +
+		(obj.getRole().size() == 0 ? "NULL" : "\"" + obj.getRole() + "\"") + "\");";
 
 	try {
 		DBManager::instance().executeQuery(queryString.c_str());
+		std::cout << "Successfully inserted a Manager.\n";
 	}
 	catch (std::exception& e) {
 		std::cerr << e.what() << '\n';
+		std::cerr << "Manager could not be inserted.\n";
 		return false;
 	}
 	return true;
@@ -53,9 +55,11 @@ bool ManagerController::deleteManagerByID(int ID) {
 
 	try {
 		DBManager::instance().executeQuery(queryString.c_str());
+		std::cout << "Successfully deleted a Manager.\n";
 	}
 	catch (const std::exception& e) {
 		std::cerr << e.what() << '\n';
+		std::cerr << "Manager could not be deleted.\n";
 		return false;
 	}
 	return true;
@@ -93,6 +97,7 @@ bool ManagerController::updateManager(Manager& obj) {
 	bool employeeResult = EmployeeController::updateEmployee(obj);
 
 	if (!employeeResult) {
+		std::cerr << "Manager could not be updated.\n";
 		return false;
 	}
 
@@ -102,9 +107,11 @@ bool ManagerController::updateManager(Manager& obj) {
 		std::string queryString = "UPDATE Manager SET " + updateQueryCondition + " WHERE managerID = " + std::to_string(obj.getManagerID()) + ";";
 		try {
 			DBManager::instance().executeQuery(queryString.c_str());
+			std::cout << "Successfully updated a Manager.\n";
 		}
 		catch (const std::exception& e) {
 			std::cerr << e.what() << '\n';
+			std::cerr << "Manager could not be updated.\n";
 			return false;
 		}
 	}

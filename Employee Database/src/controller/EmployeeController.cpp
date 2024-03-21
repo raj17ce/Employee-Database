@@ -10,9 +10,9 @@ bool EmployeeController::insertEmployee(const Employee& obj) {
 	std::string queryString = "INSERT INTO Employee (firstName, middleName, lastName, dateOfBirth, mobileNumber, email, address, gender, dateOfJoining, departmentID, mentorID, performanceMetric, bonus) "
 		+ std::string{ "VALUES (" } +
 		"\"" + obj.getFirstName() + "\"" + ", " +
-		"\"" + obj.getMiddleName() + "\"" + ", " +
+		(obj.getMiddleName().size() == 0 ? "NULL" : "\"" + obj.getMiddleName() + "\"") + ", " +
 		"\"" + obj.getLastName() + "\"" + ", " +
-		"\"" + obj.getDateOfBirth() + "\"" + ", " +
+		(obj.getDateOfBirth().size() == 0 ? "NULL" : "\"" + obj.getDateOfBirth() + "\"") + ", " +
 		std::to_string(obj.getMobileNumber()) + ", " +
 		"\"" + obj.getEmail() + "\"" + ", " +
 		"\"" + obj.getAddress() + "\"" + ", " +
@@ -20,8 +20,8 @@ bool EmployeeController::insertEmployee(const Employee& obj) {
 		"\"" + obj.getDateOfJoining() + "\"" + ", " +
 		std::to_string(obj.getDepartmentID()) + ", " +
 		std::to_string(obj.getMentorID()) + ", " +
-		std::to_string(obj.getPerformanceMetric()) + ", " +
-		std::to_string(obj.getBonus()) + ");";
+		(obj.getPerformanceMetric() == 0.0 ? "NULL" : std::to_string(obj.getPerformanceMetric())) + ", " +
+		(obj.getBonus() == 0.0 ? "NULL" : std::to_string(obj.getBonus())) + ");";
 
 	try {
 		DBManager::instance().executeQuery(queryString.c_str());

@@ -26,6 +26,8 @@ bool EngineerView::insertEngineer() {
 	while (true) {
 		std::cout << "technology* : ";
 		std::getline(std::cin, userInput);
+		Utility::removeEmptySpaces(userInput);
+
 		if (userInput.size() == 0) {
 			std::cout << "Technology is mandatory...Please enter again!!" << '\n';
 		}
@@ -71,6 +73,7 @@ bool EngineerView::updateEngineer() {
 		int userInput;
 		std::string inputLine;
 		std::getline(std::cin, inputLine);
+		Utility::removeEmptySpaces(inputLine);
 
 		if (inputLine.length() == 0) {
 			isInvalidInput = true;

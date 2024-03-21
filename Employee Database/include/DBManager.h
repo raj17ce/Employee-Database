@@ -12,7 +12,7 @@ namespace EmployeeDB {
 		int executeCustomQuery(const char* queryString, int (*callback)(void*, int, char**, char**), void* arg);
 		int executeSelectQuery(const char* queryString);
 		int executeRowCountQuery(const char* queryString);
-		static void executeCascadeQuery();
+		static void executeConfigQuery();
 
 		char* getErrorMessage() const {
 			return m_ErrorMessage;

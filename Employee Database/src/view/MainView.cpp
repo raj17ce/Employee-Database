@@ -8,7 +8,7 @@ using EmployeeDB::View::EngineerView, EmployeeDB::View::FinanceView, EmployeeDB:
 using EmployeeDB::DBManager;
 
 void MainView::mainMenuView() {
-	DBManager::executeCascadeQuery();
+	DBManager::executeConfigQuery();
 
 	bool isInvalidInput{ false };
 
@@ -23,6 +23,7 @@ void MainView::mainMenuView() {
 		int userInput;
 		std::string inputLine;
 		std::getline(std::cin, inputLine);
+		Utility::removeEmptySpaces(inputLine);
 
 		if (inputLine.length() == 0) {
 			isInvalidInput = true;
@@ -105,6 +106,7 @@ void MainView::insertMenuView() {
 		int userInput;
 		std::string inputLine;
 		std::getline(std::cin, inputLine);
+		Utility::removeEmptySpaces(inputLine);
 
 		if (inputLine.length() == 0) {
 			isInvalidInput = true;
@@ -183,6 +185,7 @@ void MainView::updateMenuView() {
 		int userInput;
 		std::string inputLine;
 		std::getline(std::cin, inputLine);
+		Utility::removeEmptySpaces(inputLine);
 
 		if (inputLine.length() == 0) {
 			isInvalidInput = true;
@@ -261,6 +264,7 @@ void MainView::deleteMenuView() {
 		int userInput;
 		std::string inputLine;
 		std::getline(std::cin, inputLine);
+		Utility::removeEmptySpaces(inputLine);
 
 		if (inputLine.length() == 0) {
 			isInvalidInput = true;
@@ -339,6 +343,7 @@ void MainView::viewMenuView() {
 		int userInput;
 		std::string inputLine;
 		std::getline(std::cin, inputLine);
+		Utility::removeEmptySpaces(inputLine);
 
 		if (inputLine.length() == 0) {
 			isInvalidInput = true;

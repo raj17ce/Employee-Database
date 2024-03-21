@@ -13,7 +13,7 @@ bool QAController::insertQA(QA& obj) {
 	int departmentID = DepartmentController::getDepartmentIDbyName("QA");
 
 	if (departmentID == -1) {
-		std::cerr << "QA department not found.";
+		std::cerr << "QA department not found. Please insert a department named QA.\n";
 		return false;
 	}
 
@@ -22,6 +22,7 @@ bool QAController::insertQA(QA& obj) {
 	bool employeeResult = EmployeeController::insertEmployee(obj);
 
 	if (!employeeResult) {
+		std::cerr << "QA could not be inserted.\n";
 		return false;
 	}
 
@@ -33,9 +34,11 @@ bool QAController::insertQA(QA& obj) {
 
 	try {
 		DBManager::instance().executeQuery(queryString.c_str());
+		std::cout << "Successfully inserted a QA.\n";
 	}
 	catch (const std::exception& e) {
 		std::cerr << e.what() << '\n';
+		std::cerr << "QA could not be inserted.\n";
 		return false;
 	}
 	return true;
@@ -56,7 +59,15 @@ bool QAController::selectQA(const std::string& attributeName, const std::string&
 };
 
 bool QAController::deleteQAByID(int ID) {
-	return EmployeeController::deleteEmployeeByID(ID);
+	int deleteResult = EmployeeController::deleteEmployeeByID(ID);
+
+	if (deleteResult) {
+		std::cout << "Successfully deleted a QA.\n";
+	}
+	else {
+		std::cerr << "QA could not be deleted.\n";
+	}
+	return deleteResult;
 }
 
 std::string QAController::getUpdateQueryCondition(QA& obj) {
@@ -74,6 +85,7 @@ bool QAController::updateQA(QA& obj) {
 	bool employeeResult = EmployeeController::updateEmployee(obj);
 
 	if (!employeeResult) {
+		std::cerr << "QA could not be updated.\n";
 		return false;
 	}
 
@@ -84,9 +96,11 @@ bool QAController::updateQA(QA& obj) {
 
 		try {
 			DBManager::instance().executeQuery(queryString.c_str());
+			std::cout << "Successfully updated a QA.\n";
 		}
 		catch (const std::exception& e) {
 			std::cerr << e.what() << '\n';
+			std::cerr << "QA could not be updated.\n";
 			return false;
 		}
 	}

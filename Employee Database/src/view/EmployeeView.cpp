@@ -2,8 +2,9 @@
 #include "EmployeeView.h"
 #include "EmployeeController.h"
 #include "Validate.h"
+#include "Utility.h"
 
-using EmployeeDB::View::EmployeeView;
+using EmployeeDB::View::EmployeeView, EmployeeDB::View::Utility;
 using EmployeeDB::Controller::EmployeeController;
 using EmployeeDB::Validate;
 
@@ -28,6 +29,8 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 	while (true) {
 		std::cout << "firstName* : ";
 		std::getline(std::cin, userInput);
+		Utility::removeEmptySpaces(userInput);
+
 		if (userInput.size() == 0) {
 			std::cout << "First Name is mandatory...Please enter again!!" << '\n';
 		}
@@ -40,6 +43,8 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 	{
 		std::cout << "middleName : ";
 		std::getline(std::cin, userInput);
+		Utility::removeEmptySpaces(userInput);
+
 		if(userInput.size() != 0) {
 			obj.setMiddleName(userInput);
 		}
@@ -48,6 +53,8 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 	while (true) {
 		std::cout << "lastName* : ";
 		std::getline(std::cin, userInput);
+		Utility::removeEmptySpaces(userInput);
+
 		if (userInput.size() == 0) {
 			std::cout << "Last Name is mandatory...Please enter again!!" << '\n';
 		}
@@ -61,6 +68,7 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 		std::cout << "dateOfBirth [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : ";
 		while (true) {
 			std::getline(std::cin, userInput);
+			Utility::removeEmptySpaces(userInput);
 
 			if (userInput.size() == 0) {
 				break;
@@ -78,6 +86,8 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 	while (true) {
 		std::cout << "mobileNo* (Starting from [6-9]) : ";
 		std::getline(std::cin, userInput);
+		Utility::removeEmptySpaces(userInput);
+
 		if (userInput.size() == 0) {
 			std::cout << "mobileNo is mandatory...Please enter again!!" << '\n';
 		}
@@ -95,6 +105,8 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 	while (true) {
 		std::cout << "email* : ";
 		std::getline(std::cin, userInput);
+		Utility::removeEmptySpaces(userInput);
+
 		if (userInput.size() == 0) {
 			std::cout << "email is mandatory...Please enter again!!" << '\n';
 		}
@@ -112,6 +124,8 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 	while (true) {
 		std::cout << "address* : ";
 		std::getline(std::cin, userInput);
+		Utility::removeEmptySpaces(userInput);
+
 		if (userInput.size() == 0) {
 			std::cout << "Address is mandatory...Please enter again!!" << '\n';
 		}
@@ -124,6 +138,8 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 	while (true) {
 		std::cout << "gender* : ";
 		std::getline(std::cin, userInput);
+		Utility::removeEmptySpaces(userInput);
+
 		if (userInput.size() == 0) {
 			std::cout << "Gender is mandatory...Please enter again!!" << '\n';
 		}
@@ -141,6 +157,7 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 	while (true) {
 		std::cout << "dateOfJoining* [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : ";
 		std::getline(std::cin, userInput);
+		Utility::removeEmptySpaces(userInput);
 
 		if (userInput.size() == 0) {
 			std::cout << "dateOfJoining is mandatory...Please enter again!!" << '\n';
@@ -159,6 +176,8 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 	while (true) {
 		std::cout << "mentorID* : ";
 		std::getline(std::cin, userInput);
+		Utility::removeEmptySpaces(userInput);
+
 		if (userInput.size() == 0) {
 			std::cout << "mentorID is mandatory...Please enter again!!" << '\n';
 		}
@@ -183,6 +202,7 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 		while (true) {
 			std::cout << "performanceMetric : ";
 			std::getline(std::cin, userInput);
+			Utility::removeEmptySpaces(userInput);
 
 			if (userInput.size() == 0) {
 				break;
@@ -206,6 +226,7 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 		while (true) {
 			std::cout << "bonus : ";
 			std::getline(std::cin, userInput);
+			Utility::removeEmptySpaces(userInput);
 
 			if (userInput.size() == 0) {
 				break;
@@ -234,6 +255,8 @@ void EmployeeView::getUpdateEmployeeInput(Employee& obj, int fieldNumber) {
 		while (true) {
 			std::cout << "firstName* : ";
 			std::getline(std::cin, userInput);
+			Utility::removeEmptySpaces(userInput);
+
 			if (userInput.size() == 0) {
 				std::cout << "First Name is mandatory...Please enter again!!" << '\n';
 			}
@@ -247,6 +270,8 @@ void EmployeeView::getUpdateEmployeeInput(Employee& obj, int fieldNumber) {
 		{
 			std::cout << "middleName : ";
 			std::getline(std::cin, userInput);
+			Utility::removeEmptySpaces(userInput);
+
 			if (userInput.size() != 0) {
 				obj.setMiddleName(userInput);
 			}
@@ -256,6 +281,8 @@ void EmployeeView::getUpdateEmployeeInput(Employee& obj, int fieldNumber) {
 		while (true) {
 			std::cout << "lastName* : ";
 			std::getline(std::cin, userInput);
+			Utility::removeEmptySpaces(userInput);
+
 			if (userInput.size() == 0) {
 				std::cout << "Last Name is mandatory...Please enter again!!" << '\n';
 			}
@@ -270,6 +297,7 @@ void EmployeeView::getUpdateEmployeeInput(Employee& obj, int fieldNumber) {
 			std::cout << "dateOfBirth [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : ";
 			while (true) {
 				std::getline(std::cin, userInput);
+				Utility::removeEmptySpaces(userInput);
 
 				if (userInput.size() == 0) {
 					break;
@@ -288,6 +316,8 @@ void EmployeeView::getUpdateEmployeeInput(Employee& obj, int fieldNumber) {
 		while (true) {
 			std::cout << "mobileNo* (Starting from [6-9]) : ";
 			std::getline(std::cin, userInput);
+			Utility::removeEmptySpaces(userInput);
+
 			if (userInput.size() == 0) {
 				std::cout << "mobileNo is mandatory...Please enter again!!" << '\n';
 			}
@@ -306,6 +336,8 @@ void EmployeeView::getUpdateEmployeeInput(Employee& obj, int fieldNumber) {
 		while (true) {
 			std::cout << "email* : ";
 			std::getline(std::cin, userInput);
+			Utility::removeEmptySpaces(userInput);
+
 			if (userInput.size() == 0) {
 				std::cout << "email is mandatory...Please enter again!!" << '\n';
 			}
@@ -324,6 +356,8 @@ void EmployeeView::getUpdateEmployeeInput(Employee& obj, int fieldNumber) {
 		while (true) {
 			std::cout << "address* : ";
 			std::getline(std::cin, userInput);
+			Utility::removeEmptySpaces(userInput);
+
 			if (userInput.size() == 0) {
 				std::cout << "Address is mandatory...Please enter again!!" << '\n';
 			}
@@ -337,6 +371,8 @@ void EmployeeView::getUpdateEmployeeInput(Employee& obj, int fieldNumber) {
 		while (true) {
 			std::cout << "gender* : ";
 			std::getline(std::cin, userInput);
+			Utility::removeEmptySpaces(userInput);
+
 			if (userInput.size() == 0) {
 				std::cout << "Gender is mandatory...Please enter again!!" << '\n';
 			}
@@ -355,6 +391,7 @@ void EmployeeView::getUpdateEmployeeInput(Employee& obj, int fieldNumber) {
 		while (true) {
 			std::cout << "dateOfJoining* [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : ";
 			std::getline(std::cin, userInput);
+			Utility::removeEmptySpaces(userInput);
 
 			if (userInput.size() == 0) {
 				std::cout << "dateOfJoining is mandatory...Please enter again!!" << '\n';
@@ -374,6 +411,8 @@ void EmployeeView::getUpdateEmployeeInput(Employee& obj, int fieldNumber) {
 		while (true) {
 			std::cout << "mentorID* : ";
 			std::getline(std::cin, userInput);
+			Utility::removeEmptySpaces(userInput);
+
 			if (userInput.size() == 0) {
 				std::cout << "mentorID is mandatory...Please enter again!!" << '\n';
 			}
@@ -399,6 +438,7 @@ void EmployeeView::getUpdateEmployeeInput(Employee& obj, int fieldNumber) {
 			while (true) {
 				std::cout << "performanceMetric : ";
 				std::getline(std::cin, userInput);
+				Utility::removeEmptySpaces(userInput);
 
 				if (userInput.size() == 0) {
 					break;
@@ -423,6 +463,7 @@ void EmployeeView::getUpdateEmployeeInput(Employee& obj, int fieldNumber) {
 			while (true) {
 				std::cout << "bonus : ";
 				std::getline(std::cin, userInput);
+				Utility::removeEmptySpaces(userInput);
 
 				if (userInput.size() == 0) {
 					break;
@@ -455,6 +496,8 @@ void EmployeeView::getEmployeeIDInput(Employee& obj, const std::string& operatio
 	while (true) {
 		std::cout << "employeeID* : ";
 		std::getline(std::cin, userInput);
+		Utility::removeEmptySpaces(userInput);
+
 		if (userInput.size() == 0) {
 			std::cout << "employeeID is mandatory...Please enter again!!" << '\n';
 		}
@@ -468,6 +511,4 @@ void EmployeeView::getEmployeeIDInput(Employee& obj, const std::string& operatio
 			}
 		}
 	}
-
-	std::cin.get();
 }

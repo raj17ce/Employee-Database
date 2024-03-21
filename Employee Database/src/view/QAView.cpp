@@ -26,6 +26,8 @@ bool QAView::insertQA() {
 	while (true) {
 		std::cout << "testingTool* : ";
 		std::getline(std::cin, userInput);
+		Utility::removeEmptySpaces(userInput);
+
 		if (userInput.size() == 0) {
 			std::cout << "testingTool is mandatory...Please enter again!!" << '\n';
 		}
@@ -71,6 +73,7 @@ bool QAView::updateQA() {
 		int userInput;
 		std::string inputLine;
 		std::getline(std::cin, inputLine);
+		Utility::removeEmptySpaces(inputLine);
 
 		if (inputLine.length() == 0) {
 			isInvalidInput = true;

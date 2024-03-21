@@ -21,6 +21,8 @@ void DepartmentView::getInsertDepartmentInput(Department& obj) {
 	while (true) {
 		std::cout << "departmentName* : ";
 		std::getline(std::cin, userInput);
+		Utility::removeEmptySpaces(userInput);
+
 		if (userInput.size() == 0) {
 			std::cout << "departmentName is mandatory...Please enter again!!" << '\n';
 		}
@@ -33,6 +35,8 @@ void DepartmentView::getInsertDepartmentInput(Department& obj) {
 	while (true) {
 		std::cout << "baseSalary* : ";
 		std::getline(std::cin, userInput);
+		Utility::removeEmptySpaces(userInput);
+
 		if (userInput.size() == 0) {
 			std::cout << "baseSalary is mandatory...Please enter again!!" << '\n';
 		}
@@ -56,6 +60,8 @@ void DepartmentView::getInsertDepartmentInput(Department& obj) {
 	while (true) {
 		std::cout << "allowance* : ";
 		std::getline(std::cin, userInput);
+		Utility::removeEmptySpaces(userInput);
+
 		if (userInput.size() == 0) {
 			std::cout << "allowance is mandatory...Please enter again!!" << '\n';
 		}
@@ -79,6 +85,8 @@ void DepartmentView::getInsertDepartmentInput(Department& obj) {
 	while (true) {
 		std::cout << "deduction* : ";
 		std::getline(std::cin, userInput);
+		Utility::removeEmptySpaces(userInput);
+
 		if (userInput.size() == 0) {
 			std::cout << "deduction is mandatory...Please enter again!!" << '\n';
 		}
@@ -126,6 +134,8 @@ void DepartmentView::getUpdateDepartmentInput(Department& obj, int fieldNumber) 
 			while (true) {
 				std::cout << "departmentName* : ";
 				std::getline(std::cin, userInput);
+				Utility::removeEmptySpaces(userInput);
+
 				if (userInput.size() == 0) {
 					std::cout << "departmentName is mandatory...Please enter again!!" << '\n';
 				}
@@ -140,6 +150,8 @@ void DepartmentView::getUpdateDepartmentInput(Department& obj, int fieldNumber) 
 			while (true) {
 				std::cout << "baseSalary* : ";
 				std::getline(std::cin, userInput);
+				Utility::removeEmptySpaces(userInput);
+
 				if (userInput.size() == 0) {
 					std::cout << "baseSalary is mandatory...Please enter again!!" << '\n';
 				}
@@ -165,6 +177,8 @@ void DepartmentView::getUpdateDepartmentInput(Department& obj, int fieldNumber) 
 			while (true) {
 				std::cout << "allowance* : ";
 				std::getline(std::cin, userInput);
+				Utility::removeEmptySpaces(userInput);
+
 				if (userInput.size() == 0) {
 					std::cout << "allowance is mandatory...Please enter again!!" << '\n';
 				}
@@ -190,6 +204,8 @@ void DepartmentView::getUpdateDepartmentInput(Department& obj, int fieldNumber) 
 			while (true) {
 				std::cout << "deduction* : ";
 				std::getline(std::cin, userInput);
+				Utility::removeEmptySpaces(userInput);
+
 				if (userInput.size() == 0) {
 					std::cout << "deduction is mandatory...Please enter again!!" << '\n';
 				}
@@ -223,6 +239,8 @@ bool DepartmentView::getDepartmentIDInput(Department& obj, const std::string& op
 	while (true) {
 		std::cout << "departmentID* : ";
 		std::getline(std::cin, userInput);
+		Utility::removeEmptySpaces(userInput);
+
 		if (userInput.size() == 0) {
 			std::cout << "departmentID is mandatory...Please enter again!!" << '\n';
 		}
@@ -236,8 +254,6 @@ bool DepartmentView::getDepartmentIDInput(Department& obj, const std::string& op
 			}
 		}
 	}
-
-	std::cin.get();
 
 	system("cls");
 	std::cout << "------------------------------------------"+ operation +" Department-------------------------------------------------\n";
@@ -271,6 +287,7 @@ bool DepartmentView::updateDepartment() {
 		int userInput;
 		std::string inputLine;
 		std::getline(std::cin, inputLine);
+		Utility::removeEmptySpaces(inputLine);
 
 		if (inputLine.length() == 0) {
 			isInvalidInput = true;

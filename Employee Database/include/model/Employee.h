@@ -28,7 +28,7 @@ namespace EmployeeDB::Model {
             m_EmployeeID{ 0 },
             m_DepartmentID{ 0 },
             m_MentorID{ 0 },
-            m_Bonus{ 0 } {
+            m_Bonus{ 0.0 } {
         }
 
         Employee(bool isUpdateObj) :
