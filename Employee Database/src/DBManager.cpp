@@ -1,10 +1,15 @@
 #include <iostream>
+#include <string>
 #include <iomanip>
 #include <exception>
 #include "Config.h"
 #include "DBManager.h"
+#include "Salary.h"
+#include "EmployeeController.h"
 
 using EmployeeDB::DBManager;
+using EmployeeDB::Model::Salary;
+using EmployeeDB::Controller::EmployeeController;
 
 DBManager& DBManager::instance() {
 	static DBManager dbManager;
@@ -77,6 +82,41 @@ int DBManager::selectCallback(void* arg, int argc, char** argv, char** azColName
 int DBManager::executeSelectQuery(const char* queryString) {
 	int rowCount{ 0 };
 	m_ResultCode = sqlite3_exec(m_DB, queryString, selectCallback, &rowCount, &m_ErrorMessage);
+
+	if (m_ResultCode == SQLITE_OK) {
+		std::cout << "Successfully executed Query" << '\n';
+	}
+	else {
+		throw std::runtime_error{ m_ErrorMessage };
+	}
+	return rowCount;
+}
+
+int DBManager::selectSalaryCallback(void* arg, int argc, char** argv, char** azColName) {
+	int* rowCount = static_cast<int*>(arg);
+	(*rowCount)++;
+
+	Salary obj;
+
+	std::cout << "|--------------------|----------------------------------------|\n";
+	int i;
+	for (i = 0; i < argc; i++) {
+		if (!strcmp(azColName[i], "employeeID")) {
+			obj.setEmployeeID(std::stoi(argv[i]));
+		}
+		std::cout << "|" << std::setw(20) << std::left << azColName[i] << "|" << std::setw(40) << std::left << (argv[i] ? argv[i] : "NULL") << "|\n";
+	}
+	EmployeeController::getSalaryDetails(obj);
+	double totalSalary = Employee::computeSalary(obj);
+	std::cout << "|" << std::setw(20) << std::left << "Total Salary" << "|" << std::setw(40) << std::left << totalSalary << "|\n";
+	std::cout << "|--------------------|----------------------------------------|\n";
+	std::cout << std::endl;
+	return 0;
+}
+
+int DBManager::executeSelectSalaryQuery(const char* queryString) {
+	int rowCount{ 0 };
+	m_ResultCode = sqlite3_exec(m_DB, queryString, selectSalaryCallback, &rowCount, &m_ErrorMessage);
 
 	if (m_ResultCode == SQLITE_OK) {
 		std::cout << "Successfully executed Query" << '\n';

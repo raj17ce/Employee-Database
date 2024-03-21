@@ -3,8 +3,9 @@
 
 #include <iostream>
 #include "Employee.h"
+#include "Salary.h"
 
-using EmployeeDB::Model::Employee;
+using EmployeeDB::Model::Employee, EmployeeDB::Model::Salary;
 
 namespace EmployeeDB::Controller {
 
@@ -16,6 +17,7 @@ namespace EmployeeDB::Controller {
 		static bool checkEmployeeExistence(const std::string& employeeID, const std::string& departmentName);
 		static bool deleteEmployeeByID(int ID);
 		static bool updateEmployee(Employee& obj);
+		static bool getSalaryDetails(Salary& obj);
 	private:
 		static std::string getUpdateQueryCondition(Employee& obj);
 	};

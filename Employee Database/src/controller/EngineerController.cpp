@@ -48,7 +48,7 @@ bool EngineerController::selectEngineer(const std::string& attributeName, const 
 	std::string queryString = "SELECT * FROM Employee NATURAL JOIN Engineer " + ((attributeName.size() != 0) ? "WHERE " + attributeName + " = \"" + attributeValue + "\"" : "") + ";";
 
 	try {
-		int rowCount = DBManager::instance().executeSelectQuery(queryString.c_str());
+		int rowCount = DBManager::instance().executeSelectSalaryQuery(queryString.c_str());
 		std::cout << rowCount << std::string{ " record" } + (rowCount > 1 ? "s" : "") + " found\n";
 	}
 	catch (const std::exception& e) {

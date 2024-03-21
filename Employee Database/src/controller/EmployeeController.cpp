@@ -214,3 +214,28 @@ bool EmployeeController::updateEmployee(Employee& obj) {
 	}
 	return true;
 }
+
+bool EmployeeController::getSalaryDetails(Salary& obj) {
+	std::string queryString = "SELECT * FROM SalaryView WHERE employeeID = " + std::to_string(obj.getEmployeeID()) + ";";
+
+	auto getSalaryDetailsCallback = [](void* data, int argc, char** argv, char** azColName) -> int {
+		Salary* salaryObj = static_cast<Salary*>(data);
+		
+		salaryObj->setDepartmentID(std::stoi(argv[1]));
+		salaryObj->setPerformanceMetric(std::stod(argv[2]));
+		salaryObj->setBonus(std::stod(argv[3]));
+		salaryObj->setBaseSalary(std::stod(argv[4]));
+		salaryObj->setAllowance(std::stod(argv[5]));
+		salaryObj->setDeduction(std::stod(argv[6]));
+		return 0;
+		};
+
+	try {
+		DBManager::instance().executeCustomQuery(queryString.c_str(), getSalaryDetailsCallback, &obj);
+	}
+	catch (const std::exception& e) {
+		std::cerr << e.what() << '\n';
+		return false;
+	}
+	return true;
+}

@@ -3,6 +3,7 @@
 
 #include <string>
 #include <algorithm>
+#include "Salary.h"
 
 namespace EmployeeDB::Model {
 
@@ -134,7 +135,7 @@ namespace EmployeeDB::Model {
             return m_MentorID;
         }
 
-        virtual double computeSalary() { return 10.2; };
+        static inline double computeSalary(Salary& obj);
 	    private:
 		std::string m_FirstName;
 		std::string m_MiddleName;
@@ -181,6 +182,18 @@ namespace EmployeeDB::Model {
             gender = Gender::Other;
         }
         return gender;
+    }
+
+    inline double Employee::computeSalary(Salary & obj) {
+        double totalSalary{ 0.0 };
+
+        totalSalary += obj.getBaseSalary();
+        totalSalary += obj.getAllowance();
+        totalSalary -= obj.getDeduction();
+        totalSalary += obj.getBonus();
+        totalSalary += (obj.getBaseSalary() * (obj.getPerformanceMetric() / 100));
+
+        return totalSalary;
     }
 }
 

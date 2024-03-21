@@ -17,10 +17,6 @@ namespace EmployeeDB::Model {
 		const std::string& getTechnology() const {
 			return m_Technology;
 		}
-
-		double computeSalary() override {
-			return 10.2;
-		};
 	private:
 		std::string m_Technology;
 	};

@@ -54,9 +54,6 @@ namespace EmployeeDB::Model {
 			return m_TeamSize;
 		}
 
-		double computeSalary() override {
-			return 10.2;
-		};
 	private:
 		std::string m_ProjectTitle;
 		std::string m_Role;

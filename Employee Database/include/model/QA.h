@@ -17,9 +17,6 @@ namespace EmployeeDB::Model {
 			return m_TestingTool;
 		}
 
-		double computeSalary() override {
-			return 10.2;
-		};
 	private:
 		std::string m_TestingTool;
 	};
