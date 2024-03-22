@@ -81,6 +81,6 @@ void Utility::removeEmptySpaces(std::string& str, const std::string& chars) {
 			}
 			++i;
 		}
-		str = std::move(preSpace);
+		str = std::move(tempStr);
 	}
 }

@@ -31,6 +31,7 @@ void MainView::mainMenuView() {
 		}
 		try {
 			userInput = stoi(inputLine);
+			
 			if (userInput >= 0 && userInput <= 5) {
 				mainMenuSelection(userInput);
 			}
@@ -368,11 +369,14 @@ void MainView::viewMenuView() {
 }
 
 void MainView::viewMenuSelection(short int userInput) {
+	bool continueViewing{ true };
 	switch (userInput) {
 	case 0:
 		std::exit(0);
 	case 1:
-		//DepartmentView::select();
+		while (continueViewing) {
+			continueViewing = DepartmentView::viewDepartment();
+		}
 		break;
 	case 2:
 		//EngineerView::select();

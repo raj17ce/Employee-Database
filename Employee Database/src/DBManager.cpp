@@ -155,13 +155,4 @@ void DBManager::executeConfigQuery() {
 	catch (const std::exception& e) {
 		std::cerr << e.what() << '\n';
 	}
-
-	queryString = "PRAGMA case_sensitive_like = ON;";
-
-	try {
-		instance().executeQuery(queryString.c_str());
-	}
-	catch (const std::exception& e) {
-		std::cerr << e.what() << '\n';
-	}
 }
