@@ -69,7 +69,7 @@ bool DepartmentController::checkDepartmentExistence(const std::string& departmen
 }
 
 bool DepartmentController::selectDepartment(const std::string& attributeName, const std::string& attributeValue) {
-	std::string queryString = "SELECT * FROM Department " + ((attributeName.size() != 0) ? "WHERE " + attributeName + " = \"" + attributeValue + "\"":"") + " COLLATE NOCASE;";
+	std::string queryString = "SELECT * FROM Department " + ((attributeName.size() != 0) ? "WHERE " + attributeName + " = \"" + attributeValue + "\" COLLATE NOCASE":"") + ";";
 
 	try {
 		int rowCount = DBManager::instance().executeSelectQuery(queryString.c_str());

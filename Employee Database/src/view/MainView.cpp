@@ -391,7 +391,9 @@ void MainView::viewMenuSelection(short int userInput) {
 		//QAView::select();
 		break;
 	case 6:
-		//ManagerView::select();
+		while (continueViewing) {
+			continueViewing = ManagerView::viewManager();
+		}
 		break;
 	}
 }

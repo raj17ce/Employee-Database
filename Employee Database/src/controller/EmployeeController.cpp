@@ -34,7 +34,7 @@ bool EmployeeController::insertEmployee(const Employee& obj) {
 }
 
 int EmployeeController::getEmployeeIDbyEmail(const std::string& email) {
-	std::string queryString = "SELECT employeeID FROM Employee WHERE email = \"" +email + "\";";
+	std::string queryString = "SELECT employeeID FROM Employee WHERE email = \"" +email + "\" COLLATE NOCASE;";
 	int employeeID{ -1 };
 
 	auto getEmployeeIDCallback = [](void* data, int argc, char** argv, char** azColName) -> int {
