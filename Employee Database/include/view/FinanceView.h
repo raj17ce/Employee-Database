@@ -8,6 +8,9 @@ namespace EmployeeDB::View {
 		static bool insertFinance();
 		static bool updateFinance();
 		static bool deleteFinance();
+		static bool viewFinance();
+	private:
+		static void viewFinanceConditional();
 	};
 }
 

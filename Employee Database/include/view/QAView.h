@@ -8,6 +8,9 @@ namespace EmployeeDB::View {
 		static bool insertQA();
 		static bool updateQA();
 		static bool deleteQA();
+		static bool viewQA();
+	private:
+		static void viewQAConditional();
 	};
 }
 

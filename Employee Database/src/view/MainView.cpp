@@ -379,16 +379,24 @@ void MainView::viewMenuSelection(short int userInput) {
 		}
 		break;
 	case 2:
-		//EngineerView::select();
+		while (continueViewing) {
+			continueViewing = EngineerView::viewEngineer();
+		}
 		break;
 	case 3:
-		//FinanceView::select();
+		while (continueViewing) {
+			continueViewing = FinanceView::viewFinance();
+		}
 		break;
 	case 4:
-		//HRView::select();
+		while (continueViewing) {
+			continueViewing = HRView::viewHR();
+		}
 		break;
 	case 5:
-		//QAView::select();
+		while (continueViewing) {
+			continueViewing = QAView::viewQA();
+		}
 		break;
 	case 6:
 		while (continueViewing) {

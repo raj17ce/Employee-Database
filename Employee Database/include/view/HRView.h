@@ -8,6 +8,9 @@ namespace EmployeeDB::View {
 		static bool insertHR();
 		static bool updateHR();
 		static bool deleteHR();
+		static bool viewHR();
+	private:
+		static void viewHRConditional();
 	};
 }
 
