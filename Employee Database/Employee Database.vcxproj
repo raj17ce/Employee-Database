@@ -183,6 +183,7 @@
     <ClInclude Include="include\controller\ManagerController.h" />
     <ClInclude Include="include\controller\QAController.h" />
     <ClInclude Include="include\DBManager.h" />
+    <ClInclude Include="include\EmployeeDB.h" />
     <ClInclude Include="include\model\Department.h" />
     <ClInclude Include="include\model\Employee.h" />
     <ClInclude Include="include\model\Engineer.h" />

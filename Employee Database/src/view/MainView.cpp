@@ -1,15 +1,11 @@
 #include <iostream>
 #include <string>
-#include "DBManager.h"
 #include "View.h"
 
 using EmployeeDB::View::MainView, EmployeeDB::View::DepartmentView, EmployeeDB::View::ManagerView;
 using EmployeeDB::View::EngineerView, EmployeeDB::View::FinanceView, EmployeeDB::View::HRView, EmployeeDB::View::QAView;
-using EmployeeDB::DBManager;
 
 void MainView::mainMenuView() {
-	DBManager::executeConfigQuery();
-
 	bool isInvalidInput{ false };
 
 	while (true) {

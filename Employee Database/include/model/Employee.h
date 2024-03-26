@@ -13,12 +13,40 @@ namespace EmployeeDB::Model {
 		Other
 	};
 
+    class Name {
+    public:
+        Name() : m_FirstName{""}, m_MiddleName{""}, m_LastName{""} {}
+        Name(bool isUpdateObj) : m_FirstName{ "#" }, m_MiddleName{ "#" }, m_LastName{ "#" } {}
+
+        void setFirstName(const std::string& firstName) {
+            m_FirstName = firstName;
+        }
+        void setMiddleName(const std::string& middleName) {
+            m_MiddleName = middleName;
+        }
+        void setLastName(const std::string& lastName) {
+            m_LastName = lastName;
+        }
+
+        const std::string& getFirstName() const {
+            return m_FirstName;
+        }
+        const std::string& getMiddleName() const {
+            return m_MiddleName;
+        }
+        const std::string& getLastName() const {
+            return m_LastName;
+        }
+    private:
+        std::string m_FirstName;
+        std::string m_MiddleName;
+        std::string m_LastName;
+    };
+
 	class Employee {
 	public:
         Employee() :
-            m_FirstName{""},
-            m_MiddleName{""},
-            m_LastName{""},
+            name{},
             m_Email{""},
             m_Address{""},
             m_DateOfBirth{""},
@@ -33,9 +61,7 @@ namespace EmployeeDB::Model {
         }
 
         Employee(bool isUpdateObj) :
-            m_FirstName{ "#" },
-            m_MiddleName{ "#" },
-            m_LastName{ "#" },
+            name{true},
             m_Email{ "#" },
             m_Address{ "#" },
             m_DateOfBirth{ "#" },
@@ -50,13 +76,13 @@ namespace EmployeeDB::Model {
         }
 
         void setFirstName(const std::string& firstName) {
-            m_FirstName = firstName;
+            name.setFirstName(firstName);
         }
         void setMiddleName(const std::string& middleName) {
-            m_MiddleName = middleName;
+            name.setMiddleName(middleName);
         }
         void setLastName(const std::string& lastName) {
-            m_LastName = lastName;
+            name.setLastName(lastName);
         }
         void setEmail(const std::string& email) {
             m_Email = email;
@@ -93,13 +119,13 @@ namespace EmployeeDB::Model {
         }
 
         const std::string& getFirstName() const {
-            return m_FirstName;
+            return name.getFirstName();
         }
         const std::string& getMiddleName() const {
-            return m_MiddleName;
+            return name.getMiddleName();
         }
         const std::string& getLastName() const {
-            return m_LastName;
+            return name.getLastName();
         }
         const std::string& getEmail() const {
             return m_Email;
@@ -137,9 +163,7 @@ namespace EmployeeDB::Model {
 
         static inline double computeSalary(Salary& obj);
 	    private:
-		std::string m_FirstName;
-		std::string m_MiddleName;
-		std::string m_LastName;
+        Name name;
         std::string m_Email;
         std::string m_Address;
         std::string m_DateOfBirth;
