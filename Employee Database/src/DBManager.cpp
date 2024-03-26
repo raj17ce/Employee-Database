@@ -6,10 +6,12 @@
 #include "DBManager.h"
 #include "Salary.h"
 #include "EmployeeController.h"
+#include "LogManager.h"
 
 using EmployeeDB::DBManager;
 using EmployeeDB::Model::Salary;
 using EmployeeDB::Controller::EmployeeController;
+using EmployeeDB::LogManager;
 
 DBManager& DBManager::instance() {
 	static DBManager dbManager;
@@ -19,7 +21,11 @@ DBManager& DBManager::instance() {
 int DBManager::openConnection() {
 	m_ResultCode = sqlite3_open(EmployeeDB::Config::DbFilePath.string().c_str(), &m_DB);
 
-	if (m_ResultCode != SQLITE_OK) {
+	if (m_ResultCode == SQLITE_OK) {
+		LogManager::instance().getLogger().debug("Successfully opened DB Connection");
+	}
+	else {
+		LogManager::instance().getLogger().error("Error opening DB connection");
 		std::cerr << "Error opening DB connection" << '\n';
 	}
 	return m_ResultCode;
@@ -28,25 +34,41 @@ int DBManager::openConnection() {
 int DBManager::closeConnection() {
 	m_ResultCode = sqlite3_close(m_DB);
 
-	if (m_ResultCode != SQLITE_OK) {
+	if (m_ResultCode == SQLITE_OK) {
+		LogManager::instance().getLogger().debug("Successfully closed DB Connection");
+	}
+	else {
+		LogManager::instance().getLogger().error("Error closing DB connection");
 		std::cerr << "Error closing DB connection" << '\n';
 	}
 	return m_ResultCode;
 }
 
 int DBManager::executeQuery(const char* queryString) {
+	LogManager::instance().getLogger().debug("started executing query : ", queryString);
+
 	m_ResultCode = sqlite3_exec(m_DB, queryString, 0, 0, &m_ErrorMessage);
 
-	if (m_ResultCode != SQLITE_OK) {
+	if (m_ResultCode == SQLITE_OK) {
+		LogManager::instance().getLogger().debug("Successfully executed query : ", queryString);
+	}
+	else {
+		LogManager::instance().getLogger().error("Error executing query : ", queryString, " : ", m_ErrorMessage);
 		throw std::runtime_error{ m_ErrorMessage };
 	}
 	return m_ResultCode;
 }
 
 int DBManager::executeCustomQuery(const char* queryString, int (*callback)(void*, int, char**, char**), void* arg) {
+	LogManager::instance().getLogger().debug("started executing query : ", queryString);
+
 	m_ResultCode = sqlite3_exec(m_DB, queryString, callback, arg, &m_ErrorMessage);
 
-	if (m_ResultCode != SQLITE_OK) {
+	if (m_ResultCode == SQLITE_OK) {
+		LogManager::instance().getLogger().debug("Successfully executed query : ", queryString);
+	}
+	else {
+		LogManager::instance().getLogger().error("Error executing query : ", queryString, " : ", m_ErrorMessage);
 		throw std::runtime_error{ m_ErrorMessage };
 	}
 	return m_ResultCode;
@@ -67,9 +89,15 @@ int DBManager::selectCallback(void* arg, int argc, char** argv, char** azColName
 
 int DBManager::executeSelectQuery(const char* queryString) {
 	int rowCount{ 0 };
+	LogManager::instance().getLogger().debug("started executing query : ", queryString);
+
 	m_ResultCode = sqlite3_exec(m_DB, queryString, selectCallback, &rowCount, &m_ErrorMessage);
 
-	if (m_ResultCode != SQLITE_OK) {
+	if (m_ResultCode == SQLITE_OK) {
+		LogManager::instance().getLogger().debug("Successfully executed query : ", queryString);
+	}
+	else {
+		LogManager::instance().getLogger().error("Error executing query : ", queryString, " : ", m_ErrorMessage);
 		throw std::runtime_error{ m_ErrorMessage };
 	}
 	return rowCount;
@@ -99,9 +127,15 @@ int DBManager::selectSalaryCallback(void* arg, int argc, char** argv, char** azC
 
 int DBManager::executeSelectSalaryQuery(const char* queryString) {
 	int rowCount{ 0 };
+	LogManager::instance().getLogger().debug("started executing query : ", queryString);
+
 	m_ResultCode = sqlite3_exec(m_DB, queryString, selectSalaryCallback, &rowCount, &m_ErrorMessage);
 
-	if (m_ResultCode != SQLITE_OK) {
+	if (m_ResultCode == SQLITE_OK) {
+		LogManager::instance().getLogger().debug("Successfully executed query : ", queryString);
+	}
+	else {
+		LogManager::instance().getLogger().error("Error executing query : ", queryString, " : ", m_ErrorMessage);
 		throw std::runtime_error{ m_ErrorMessage };
 	}
 	return rowCount;
@@ -115,9 +149,15 @@ int DBManager::rowCountCallback(void* arg, int argc, char** argv, char** azColNa
 
 int DBManager::executeRowCountQuery(const char* queryString) {
 	int rowCount{ 0 };
+	LogManager::instance().getLogger().debug("started executing query : ", queryString);
+
 	m_ResultCode = sqlite3_exec(m_DB, queryString, rowCountCallback, &rowCount, &m_ErrorMessage);
 
-	if (m_ResultCode != SQLITE_OK) {
+	if (m_ResultCode == SQLITE_OK) {
+		LogManager::instance().getLogger().debug("Successfully executed query : ", queryString);
+	}
+	else {
+		LogManager::instance().getLogger().error("Error executing query : ", queryString, " : ", m_ErrorMessage);
 		throw std::runtime_error{ m_ErrorMessage };
 	}
 	return rowCount;

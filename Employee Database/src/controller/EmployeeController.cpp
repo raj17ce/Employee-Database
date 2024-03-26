@@ -19,7 +19,7 @@ bool EmployeeController::insertEmployee(const Employee& obj) {
 		"\"" + EmployeeDB::Model::getGenderString(obj.getGender()) + "\"" + ", " +
 		"\"" + obj.getDateOfJoining() + "\"" + ", " +
 		std::to_string(obj.getDepartmentID()) + ", " +
-		std::to_string(obj.getMentorID()) + ", " +
+		(obj.getMentorID() == 0 ? "NULL" : std::to_string(obj.getMentorID())) + ", " +
 		(obj.getPerformanceMetric() == 0.0 ? "NULL" : std::to_string(obj.getPerformanceMetric())) + ", " +
 		(obj.getBonus() == 0.0 ? "NULL" : std::to_string(obj.getBonus())) + ");";
 
@@ -221,12 +221,12 @@ bool EmployeeController::getSalaryDetails(Salary& obj) {
 	auto getSalaryDetailsCallback = [](void* data, int argc, char** argv, char** azColName) -> int {
 		Salary* salaryObj = static_cast<Salary*>(data);
 		
-		salaryObj->setDepartmentID(std::stoi(argv[1]));
-		salaryObj->setPerformanceMetric(std::stod(argv[2]));
-		salaryObj->setBonus(std::stod(argv[3]));
-		salaryObj->setBaseSalary(std::stod(argv[4]));
-		salaryObj->setAllowance(std::stod(argv[5]));
-		salaryObj->setDeduction(std::stod(argv[6]));
+		salaryObj->setDepartmentID((argv[1] ? std::stoi(argv[1]) : 0));
+		salaryObj->setPerformanceMetric((argv[2] ? std::stoi(argv[2]) : 0.0));
+		salaryObj->setBonus((argv[3] ? std::stoi(argv[3]) : 0.0));
+		salaryObj->setBaseSalary((argv[4] ? std::stoi(argv[4]) : 0.0));
+		salaryObj->setAllowance((argv[5] ? std::stoi(argv[5]) : 0.0));
+		salaryObj->setDeduction((argv[6] ? std::stoi(argv[6]) : 0.0));
 		return 0;
 		};
 

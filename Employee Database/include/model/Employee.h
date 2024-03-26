@@ -52,12 +52,12 @@ namespace EmployeeDB::Model {
             m_DateOfBirth{""},
             m_DateOfJoining{""},
             m_PerformanceMetric{ 0.0 },
+            m_Bonus{ 0.0 },
             m_MobileNumber{ 0 },
             m_Gender{ Gender::Male },
             m_EmployeeID{ 0 },
             m_DepartmentID{ 0 },
-            m_MentorID{ 0 },
-            m_Bonus{ 0.0 } {
+            m_MentorID{ 0 } {
         }
 
         Employee(bool isUpdateObj) :
@@ -67,12 +67,12 @@ namespace EmployeeDB::Model {
             m_DateOfBirth{ "#" },
             m_DateOfJoining{ "#" },
             m_PerformanceMetric{ -1.0 },
+            m_Bonus{ -1.0 },
             m_MobileNumber{ -1 },
             m_Gender{ Gender::Other },
             m_EmployeeID{ -1 },
             m_DepartmentID{ -1 },
-            m_MentorID{ -1 },
-            m_Bonus{ -1 } {
+            m_MentorID{ -1 } {
         }
 
         void setFirstName(const std::string& firstName) {

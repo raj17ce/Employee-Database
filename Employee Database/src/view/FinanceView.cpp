@@ -181,7 +181,7 @@ void FinanceView::viewFinanceConditional() {
 			}
 			else if (userInput == 1) {
 				EmployeeView::getViewEmployeeInput(obj, 1);
-				FinanceController::selectFinance("employeeID", std::to_string(obj.getDepartmentID()));
+				FinanceController::selectFinance("employeeID", std::to_string(obj.getEmployeeID()));
 				break;
 			}
 			else if (userInput == 2) {

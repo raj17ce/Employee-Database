@@ -104,5 +104,8 @@ bool QAController::updateQA(QA& obj) {
 			return false;
 		}
 	}
+	else {
+		std::cout << "Successfully updated a QA.\n";
+	}
 	return true;
 }

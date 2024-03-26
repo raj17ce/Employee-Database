@@ -18,7 +18,7 @@ void EmployeeView::printEmployeeFields() {
 	std::cout << "7. address* :" << '\n';
 	std::cout << "8. gender* :" << '\n';
 	std::cout << "9. dateOfJoining* :" << '\n';
-	std::cout << "10. mentorID* :" << '\n';
+	std::cout << "10. mentorID :" << '\n';
 	std::cout << "11. performanceMetric :" << '\n';
 	std::cout << "12. bonus :" << '\n';
 }
@@ -189,28 +189,27 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 		}
 	}
 
-	while (true) {
-		std::cout << "mentorID* : ";
-		std::getline(std::cin, userInput);
-		Utility::removeEmptySpaces(userInput);
+	{
+		while (true) {
+			std::cout << "mentorID : ";
+			std::getline(std::cin, userInput);
+			Utility::removeEmptySpaces(userInput);
 
-		if (userInput.size() == 0) {
-			std::cout << "mentorID is mandatory...Please enter again!!" << '\n';
-		}
-		else {
+			if (userInput.size() == 0) {
+				break;
+			}
 			try {
-				if (stoi(userInput) > 0) {
+				if (stoi(userInput) >= 0.0) {
 					obj.setMentorID(stoi(userInput));
+					break;
 				}
 				else {
 					throw "Negative Number";
 				}
 			}
 			catch (...) {
-				std::cout << "Wrong input...Please enter again!!\n";
-				continue;
+				std::cerr << "Wrong input...Please enter Positive integer number!!\n";
 			}
-			break;
 		}
 	}
 
@@ -283,16 +282,16 @@ void EmployeeView::getUpdateEmployeeInput(Employee& obj, int fieldNumber) {
 		}
 		break;
 	case 2:
-	{
-		std::cout << "middleName : ";
-		std::getline(std::cin, userInput);
-		Utility::removeEmptySpaces(userInput);
+		{
+			std::cout << "middleName : ";
+			std::getline(std::cin, userInput);
+			Utility::removeEmptySpaces(userInput);
 
-		if (userInput.size() != 0) {
-			obj.setMiddleName(userInput);
+			if (userInput.size() != 0) {
+				obj.setMiddleName(userInput);
+			}
 		}
-	}
-	break;
+		break;
 	case 3:
 		while (true) {
 			std::cout << "lastName* : ";
@@ -309,25 +308,25 @@ void EmployeeView::getUpdateEmployeeInput(Employee& obj, int fieldNumber) {
 		}
 		break;
 	case 4:
-	{
-		std::cout << "dateOfBirth [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : ";
-		while (true) {
-			std::getline(std::cin, userInput);
-			Utility::removeEmptySpaces(userInput);
+		{
+			std::cout << "dateOfBirth [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : ";
+			while (true) {
+				std::getline(std::cin, userInput);
+				Utility::removeEmptySpaces(userInput);
 
-			if (userInput.size() == 0) {
-				break;
-			}
-			if (Validate::validateDate(userInput)) {
-				obj.setDateOfBirth(userInput);
-				break;
-			}
-			else {
-				std::cerr << "Please Enter the date in format [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : ";
+				if (userInput.size() == 0) {
+					break;
+				}
+				if (Validate::validateDate(userInput)) {
+					obj.setDateOfBirth(userInput);
+					break;
+				}
+				else {
+					std::cerr << "Please Enter the date in format [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : ";
+				}
 			}
 		}
-	}
-	break;
+		break;
 	case 5:
 		while (true) {
 			std::cout << "mobileNo* (Starting from [6-9]) : ";
@@ -424,81 +423,80 @@ void EmployeeView::getUpdateEmployeeInput(Employee& obj, int fieldNumber) {
 		}
 		break;
 	case 10:
-		while (true) {
-			std::cout << "mentorID* : ";
-			std::getline(std::cin, userInput);
-			Utility::removeEmptySpaces(userInput);
+		{
+			while (true) {
+				std::cout << "mentorID : ";
+				std::getline(std::cin, userInput);
+				Utility::removeEmptySpaces(userInput);
 
-			if (userInput.size() == 0) {
-				std::cout << "mentorID is mandatory...Please enter again!!" << '\n';
-			}
-			else {
+				if (userInput.size() == 0) {
+					break;
+				}
 				try {
-					if (stoi(userInput) > 0) {
+					if (stoi(userInput) >= 0.0) {
 						obj.setMentorID(stoi(userInput));
+						break;
 					}
 					else {
 						throw "Negative Number";
 					}
 				}
 				catch (...) {
-					std::cout << "Wrong input...Please enter again!!\n";
-					continue;
+					std::cerr << "Wrong input...Please enter Positive integer number!!\n";
 				}
-				break;
 			}
 		}
 		break;
 	case 11:
-	{
-		while (true) {
-			std::cout << "performanceMetric : ";
-			std::getline(std::cin, userInput);
-			Utility::removeEmptySpaces(userInput);
+		{
+			while (true) {
+				std::cout << "performanceMetric : ";
+				std::getline(std::cin, userInput);
+				Utility::removeEmptySpaces(userInput);
 
-			if (userInput.size() == 0) {
-				break;
-			}
-			try {
-				if (stod(userInput) >= 0.0) {
-					obj.setPerformanceMetric(stod(userInput));
+				if (userInput.size() == 0) {
 					break;
 				}
-				else {
-					throw "Negative Number";
+				try {
+					if (stod(userInput) >= 0.0) {
+						obj.setPerformanceMetric(stod(userInput));
+						break;
+					}
+					else {
+						throw "Negative Number";
+					}
+				}
+				catch (...) {
+					std::cerr << "Wrong input...Please enter Positive real number!!\n";
 				}
 			}
-			catch (...) {
-				std::cerr << "Wrong input...Please enter Positive real number!!\n";
-			}
 		}
-	}
-	break;
+		break;
 	case 12:
-	{
-		while (true) {
-			std::cout << "bonus : ";
-			std::getline(std::cin, userInput);
-			Utility::removeEmptySpaces(userInput);
+		{
+			while (true) {
+				std::cout << "bonus : ";
+				std::getline(std::cin, userInput);
+				Utility::removeEmptySpaces(userInput);
 
-			if (userInput.size() == 0) {
-				break;
-			}
-			try {
-				if (stod(userInput) >= 0.0) {
-					obj.setBonus(stod(userInput));
+				if (userInput.size() == 0) {
 					break;
 				}
-				else {
-					throw "Negative Number";
+				try {
+					if (stod(userInput) >= 0.0) {
+						obj.setBonus(stod(userInput));
+						break;
+					}
+					else {
+						throw "Negative Number";
+					}
+				}
+				catch (...) {
+					std::cerr << "Wrong input...Please enter Positive real number!!\n";
 				}
 			}
-			catch (...) {
-				std::cerr << "Wrong input...Please enter Positive real number!!\n";
-			}
 		}
-	}
-	break;
+		break;
 	}
 };
 

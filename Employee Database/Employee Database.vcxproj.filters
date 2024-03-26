@@ -78,6 +78,9 @@
     <ClCompile Include="src\view\ManagerView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="lib\logician\Log.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\DBManager.h">
@@ -173,5 +176,28 @@
     <ClInclude Include="include\EmployeeDB.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="lib\logician\Log.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\logician\Logician.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\logician\Registry.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\logician\Timer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\LogManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="data\sampleRecords.sql" />
+    <None Include="data\Employee.db" />
+    <None Include="data\database.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="data\EmployeeDB.log" />
   </ItemGroup>
 </Project>

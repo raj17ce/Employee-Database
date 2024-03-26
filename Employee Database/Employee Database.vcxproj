@@ -93,7 +93,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)$(ProjectName)\include\model\;$(SolutionDir)$(ProjectName)\lib\sqlite;$(SolutionDir)$(ProjectName)\include\;$(SolutionDir)$(ProjectName)\include\controller\;$(SolutionDir)$(ProjectName)\include\view\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)$(ProjectName)\include\model\;$(SolutionDir)$(ProjectName)\lib\logician\;$(SolutionDir)$(ProjectName)\lib\sqlite\;$(SolutionDir)$(ProjectName)\include\;$(SolutionDir)$(ProjectName)\include\controller\;$(SolutionDir)$(ProjectName)\include\view\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -109,7 +109,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)$(ProjectName)\include\model\;$(SolutionDir)$(ProjectName)\lib\sqlite;$(SolutionDir)$(ProjectName)\include\;$(SolutionDir)$(ProjectName)\include\controller\;$(SolutionDir)$(ProjectName)\include\view\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)$(ProjectName)\include\model\;$(SolutionDir)$(ProjectName)\lib\logician\;$(SolutionDir)$(ProjectName)\lib\sqlite\;$(SolutionDir)$(ProjectName)\include\;$(SolutionDir)$(ProjectName)\include\controller\;$(SolutionDir)$(ProjectName)\include\view\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -125,7 +125,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)$(ProjectName)\include\model\;$(SolutionDir)$(ProjectName)\lib\sqlite;$(SolutionDir)$(ProjectName)\include\;$(SolutionDir)$(ProjectName)\include\controller\;$(SolutionDir)$(ProjectName)\include\view\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)$(ProjectName)\include\model\;$(SolutionDir)$(ProjectName)\lib\logician\;$(SolutionDir)$(ProjectName)\lib\sqlite\;$(SolutionDir)$(ProjectName)\include\;$(SolutionDir)$(ProjectName)\include\controller\;$(SolutionDir)$(ProjectName)\include\view\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -141,7 +141,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)$(ProjectName)\include\model\;$(SolutionDir)$(ProjectName)\lib\sqlite;$(SolutionDir)$(ProjectName)\include\;$(SolutionDir)$(ProjectName)\include\controller\;$(SolutionDir)$(ProjectName)\include\view\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)$(ProjectName)\include\model\;$(SolutionDir)$(ProjectName)\lib\logician\;$(SolutionDir)$(ProjectName)\lib\sqlite\;$(SolutionDir)$(ProjectName)\include\;$(SolutionDir)$(ProjectName)\include\controller\;$(SolutionDir)$(ProjectName)\include\view\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="lib\logician\Log.cpp" />
     <ClCompile Include="lib\sqlite\shell.c" />
     <ClCompile Include="lib\sqlite\sqlite3.c" />
     <ClCompile Include="main.cpp" />
@@ -184,6 +185,7 @@
     <ClInclude Include="include\controller\QAController.h" />
     <ClInclude Include="include\DBManager.h" />
     <ClInclude Include="include\EmployeeDB.h" />
+    <ClInclude Include="include\LogManager.h" />
     <ClInclude Include="include\model\Department.h" />
     <ClInclude Include="include\model\Employee.h" />
     <ClInclude Include="include\model\Engineer.h" />
@@ -203,8 +205,20 @@
     <ClInclude Include="include\view\ManagerView.h" />
     <ClInclude Include="include\view\QAView.h" />
     <ClInclude Include="include\view\Utility.h" />
+    <ClInclude Include="lib\logician\Log.h" />
+    <ClInclude Include="lib\logician\Logician.h" />
+    <ClInclude Include="lib\logician\Registry.h" />
+    <ClInclude Include="lib\logician\Timer.h" />
     <ClInclude Include="lib\sqlite\sqlite3.h" />
     <ClInclude Include="lib\sqlite\sqlite3ext.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="data\database.sql" />
+    <None Include="data\Employee.db" />
+    <None Include="data\sampleRecords.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="data\EmployeeDB.log" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

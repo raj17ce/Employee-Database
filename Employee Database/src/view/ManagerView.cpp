@@ -473,7 +473,7 @@ void ManagerView::viewManagerConditional() {
 			}
 			else if (userInput == 1) {
 				EmployeeView::getViewEmployeeInput(obj, 1);
-				ManagerController::selectManager("employeeID", std::to_string(obj.getDepartmentID()));
+				ManagerController::selectManager("employeeID", std::to_string(obj.getEmployeeID()));
 				break;
 			}
 			else if (userInput == 2) {

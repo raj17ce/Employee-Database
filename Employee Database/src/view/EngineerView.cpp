@@ -181,7 +181,7 @@ void EngineerView::viewEngineerConditional() {
 			}
 			else if (userInput == 1) {
 				EmployeeView::getViewEmployeeInput(obj, 1);
-				EngineerController::selectEngineer("employeeID", std::to_string(obj.getDepartmentID()));
+				EngineerController::selectEngineer("employeeID", std::to_string(obj.getEmployeeID()));
 				break;
 			}
 			else if (userInput == 2) {

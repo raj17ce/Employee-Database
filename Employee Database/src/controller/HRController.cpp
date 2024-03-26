@@ -104,5 +104,8 @@ bool HRController::updateHR(HR& obj) {
 			return false;
 		}
 	}
+	else {
+		std::cout << "Successfully updated an HR.\n";
+	}
 	return true;
 }

@@ -115,6 +115,9 @@ bool ManagerController::updateManager(Manager& obj) {
 			return false;
 		}
 	}
+	else {
+		std::cout << "Successfully updated a Manager.\n";
+	}
 	return true;
 }
 

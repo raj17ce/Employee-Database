@@ -104,5 +104,8 @@ bool EngineerController::updateEngineer(Engineer& obj) {
 			return false;
 		}
 	}
+	else {
+		std::cout << "Successfully updated an Engineer.\n";
+	}
 	return true;
 }

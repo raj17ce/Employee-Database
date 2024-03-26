@@ -181,7 +181,7 @@ void QAView::viewQAConditional() {
 			}
 			else if (userInput == 1) {
 				EmployeeView::getViewEmployeeInput(obj, 1);
-				QAController::selectQA("employeeID", std::to_string(obj.getDepartmentID()));
+				QAController::selectQA("employeeID", std::to_string(obj.getEmployeeID()));
 				break;
 			}
 			else if (userInput == 2) {
