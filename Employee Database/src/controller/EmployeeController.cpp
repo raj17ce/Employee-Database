@@ -27,7 +27,7 @@ bool EmployeeController::insertEmployee(const Employee& obj) {
 		DBManager::instance().executeQuery(queryString.c_str());
 	}
 	catch (const std::exception& e) {
-		std::cerr << e.what() << '\n';
+		std::cerr << "\x1B[31m" << e.what() << "\033[0m\n";
 		return false;
 	}
 	return true;
@@ -35,7 +35,7 @@ bool EmployeeController::insertEmployee(const Employee& obj) {
 
 int EmployeeController::getEmployeeIDbyEmail(const std::string& email) {
 	std::string queryString = "SELECT employeeID FROM Employee WHERE email = \"" +email + "\" COLLATE NOCASE;";
-	int employeeID{ -1 };
+	auto employeeID{ -1 };
 
 	auto getEmployeeIDCallback = [](void* data, int argc, char** argv, char** azColName) -> int {
 		int* eId = static_cast<int*>(data);
@@ -49,7 +49,7 @@ int EmployeeController::getEmployeeIDbyEmail(const std::string& email) {
 		DBManager::instance().executeCustomQuery(queryString.c_str(), getEmployeeIDCallback, &employeeID);
 	}
 	catch (const std::exception& e) {
-		std::cerr << e.what() << '\n';
+		std::cerr << "\x1B[31m" << e.what() << "\033[0m\n";
 		return -1;
 	}
 
@@ -58,7 +58,7 @@ int EmployeeController::getEmployeeIDbyEmail(const std::string& email) {
 
 int EmployeeController::getDepartmentIDbyEmployeeID(int ID) {
 	std::string queryString = "SELECT departmentID FROM Employee WHERE employeeID = " + std::to_string(ID) + ";";
-	int departmentID{ -1 };
+	auto departmentID{ -1 };
 
 	auto getDepartmentIDCallback = [](void* data, int argc, char** argv, char** azColName) -> int {
 		int* eId = static_cast<int*>(data);
@@ -72,7 +72,7 @@ int EmployeeController::getDepartmentIDbyEmployeeID(int ID) {
 		DBManager::instance().executeCustomQuery(queryString.c_str(), getDepartmentIDCallback, &departmentID);
 	}
 	catch (const std::exception& e) {
-		std::cerr << e.what() << '\n';
+		std::cerr << "\x1B[31m" << e.what() << "\033[0m\n";
 		return -1;
 	}
 
@@ -81,7 +81,7 @@ int EmployeeController::getDepartmentIDbyEmployeeID(int ID) {
 
 bool EmployeeController::checkEmployeeExistence(const std::string& employeeID, const std::string& departmentName) {
 
-	int departmentID{ -1 };
+	auto departmentID{ -1 };
 
 	if (departmentName != "*") {
 		departmentID = DepartmentController::getDepartmentIDbyName(departmentName);
@@ -92,13 +92,13 @@ bool EmployeeController::checkEmployeeExistence(const std::string& employeeID, c
 
 	std::string queryString = "SELECT employeeID FROM Employee WHERE employeeID = " + employeeID + (departmentID == -1 ? "" : " AND departmentID = " + std::to_string(departmentID)) + ";";
 
-	int callbackCount{ 0 };
+	auto callbackCount{ 0 };
 
 	try {
 		callbackCount = DBManager::instance().executeRowCountQuery(queryString.c_str());
 	}
 	catch (std::exception& e) {
-		std::cerr << e.what() << '\n';
+		std::cerr << "\x1B[31m" << e.what() << "\033[0m\n";
 	}
 
 	if (callbackCount == 0) {
@@ -115,7 +115,7 @@ bool EmployeeController::deleteEmployeeByID(int ID) {
 		DBManager::instance().executeQuery(queryString.c_str());
 	}
 	catch (const std::exception& e) {
-		std::cerr << e.what() << '\n';
+		std::cerr << "\x1B[31m" << e.what() << "\033[0m\n";
 		return false;
 	}
 	return true;
@@ -208,7 +208,7 @@ bool EmployeeController::updateEmployee(Employee& obj) {
 			DBManager::instance().executeQuery(queryString.c_str());
 		}
 		catch (const std::exception& e) {
-			std::cerr << e.what() << '\n';
+			std::cerr << "\x1B[31m" << e.what() << "\033[0m\n";
 			return false;
 		}
 	}
@@ -234,7 +234,7 @@ bool EmployeeController::getSalaryDetails(Salary& obj) {
 		DBManager::instance().executeCustomQuery(queryString.c_str(), getSalaryDetailsCallback, &obj);
 	}
 	catch (const std::exception& e) {
-		std::cerr << e.what() << '\n';
+		std::cerr << "\x1B[31m" << e.what() << "\033[0m\n";
 		return false;
 	}
 	return true;

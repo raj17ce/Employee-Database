@@ -10,7 +10,7 @@ namespace EmployeeDB::View {
 		static bool deleteEngineer();
 		static bool viewEngineer();
 	private:
-		static void viewEngineerConditional();
+		static bool viewEngineerConditional();
 	};
 }
 

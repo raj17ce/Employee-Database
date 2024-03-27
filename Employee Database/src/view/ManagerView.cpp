@@ -26,7 +26,7 @@ void ManagerView::getInsertManagerInput(Manager& obj) {
 		Utility::removeEmptySpaces(userInput);
 
 		if (userInput.size() == 0) {
-			std::cout << "managerID is mandatory...Please enter again!!" << '\n';
+			std::cout << "\x1B[33m" << "managerID is mandatory...Please enter again!!" << "\x1B[0m\n";
 		}
 		else {
 			if (Validate::validateEmployeeID(userInput, "*")) {
@@ -34,7 +34,7 @@ void ManagerView::getInsertManagerInput(Manager& obj) {
 				break;
 			}
 			else {
-				std::cout << "Wrong input...Please enter positive integer number!!\n";
+				std::cout << "\x1B[33m" << "Wrong input...Please enter positive integer number!!" << "\x1B[0m\n";
 			}
 		}
 	}
@@ -45,7 +45,7 @@ void ManagerView::getInsertManagerInput(Manager& obj) {
 		Utility::removeEmptySpaces(userInput);
 
 		if (userInput.size() == 0) {
-			std::cout << "teamSize is mandatory...Please enter again!!" << '\n';
+			std::cout << "\x1B[33m" << "teamSize is mandatory...Please enter again!!" << "\x1B[0m\n";
 		}
 		else {
 			try {
@@ -57,7 +57,7 @@ void ManagerView::getInsertManagerInput(Manager& obj) {
 				}
 			}
 			catch (...) {
-				std::cout << "Wrong input...Please enter positive integer number!!\n";
+				std::cout << "\x1B[33m" << "Wrong input...Please enter positive integer number!!" << "\x1B[0m\n";
 				continue;
 			}
 			break;
@@ -70,7 +70,7 @@ void ManagerView::getInsertManagerInput(Manager& obj) {
 		Utility::removeEmptySpaces(userInput);
 
 		if (userInput.size() == 0) {
-			std::cout << "yearsOfExperience is mandatory...Please enter again!!" << '\n';
+			std::cout << "\x1B[33m" << "yearsOfExperience is mandatory...Please enter again!!" << "\x1B[0m\n";
 		}
 		else {
 			try {
@@ -82,7 +82,7 @@ void ManagerView::getInsertManagerInput(Manager& obj) {
 				}
 			}
 			catch (...) {
-				std::cout << "Wrong input...Please enter positive real number!!\n";
+				std::cout << "\x1B[33m" << "Wrong input...Please enter positive real number!!" << "\x1B[0m\n";
 				continue;
 			}
 			break;
@@ -114,8 +114,8 @@ bool ManagerView::insertManager() {
 	Manager obj;
 
 	system("cls");
-	std::cout << "------------------------------------------Insert Manager-------------------------------------------------\n";
-	std::cout << "Fields with * are required fields\n";
+	std::cout << "------------------------------------------" << "\x1B[36m" << "Insert Manager" << "\x1B[0m" << "-------------------------------------------------\n";
+	std::cout << "\x1B[36m" << "Fields with * are required fields" << "\x1B[0m\n";
 	printManagerFields();
 
 	if (!Utility::proceedFurther("insertion")) {
@@ -153,7 +153,7 @@ void ManagerView::getUpdateManagerInput(Manager& obj, int fieldNumber) {
 			Utility::removeEmptySpaces(userInput);
 
 			if (userInput.size() == 0) {
-				std::cout << "teamSize is mandatory...Please enter again!!" << '\n';
+				std::cout << "\x1B[33m" << "teamSize is mandatory...Please enter again!!" << "\x1B[0m\n";
 			}
 			else {
 				try {
@@ -165,7 +165,7 @@ void ManagerView::getUpdateManagerInput(Manager& obj, int fieldNumber) {
 					}
 				}
 				catch (...) {
-					std::cout << "Wrong input...Please enter positive integer number!!\n";
+					std::cout << "\x1B[33m" << "Wrong input...Please enter positive integer number!!" << "\x1B[0m\n";
 					continue;
 				}
 				break;
@@ -180,7 +180,7 @@ void ManagerView::getUpdateManagerInput(Manager& obj, int fieldNumber) {
 			Utility::removeEmptySpaces(userInput);
 
 			if (userInput.size() == 0) {
-				std::cout << "yearsOfExperience is mandatory...Please enter again!!" << '\n';
+				std::cout << "\x1B[33m" << "yearsOfExperience is mandatory...Please enter again!!" << "\x1B[0m\n";
 			}
 			else {
 				try {
@@ -192,7 +192,7 @@ void ManagerView::getUpdateManagerInput(Manager& obj, int fieldNumber) {
 					}
 				}
 				catch (...) {
-					std::cout << "Wrong input...Please enter positive real number!!\n";
+					std::cout << "\x1B[33m" << "Wrong input...Please enter positive real number!!" << "\x1B[0m\n";
 					continue;
 				}
 				break;
@@ -237,7 +237,7 @@ void ManagerView::getViewManagerInput(Manager& obj, int fieldNumber) {
 			Utility::removeEmptySpaces(userInput);
 
 			if (userInput.size() == 0) {
-				std::cout << "teamSize is mandatory...Please enter again!!" << '\n';
+				std::cout << "\x1B[33m" << "teamSize is mandatory...Please enter again!!" << "\x1B[0m\n";
 			}
 			else {
 				try {
@@ -249,7 +249,7 @@ void ManagerView::getViewManagerInput(Manager& obj, int fieldNumber) {
 					}
 				}
 				catch (...) {
-					std::cout << "Wrong input...Please enter positive integer number!!\n";
+					std::cout << "\x1B[33m" << "Wrong input...Please enter positive integer number!!" << "\x1B[0m\n";
 					continue;
 				}
 				break;
@@ -264,7 +264,7 @@ void ManagerView::getViewManagerInput(Manager& obj, int fieldNumber) {
 			Utility::removeEmptySpaces(userInput);
 
 			if (userInput.size() == 0) {
-				std::cout << "yearsOfExperience is mandatory...Please enter again!!" << '\n';
+				std::cout << "\x1B[33m" << "yearsOfExperience is mandatory...Please enter again!!" << "\x1B[0m\n";
 			}
 			else {
 				try {
@@ -276,7 +276,7 @@ void ManagerView::getViewManagerInput(Manager& obj, int fieldNumber) {
 					}
 				}
 				catch (...) {
-					std::cout << "Wrong input...Please enter positive real number!!\n";
+					std::cout << "\x1B[33m" << "Wrong input...Please enter positive real number!!" << "\x1B[0m\n";
 					continue;
 				}
 				break;
@@ -291,7 +291,7 @@ void ManagerView::getViewManagerInput(Manager& obj, int fieldNumber) {
 			Utility::removeEmptySpaces(userInput);
 
 			if (userInput.size() == 0) {
-				std::cout << "projectTitle is mandatory...Please enter again!!" << '\n';
+				std::cout << "\x1B[33m" << "projectTitle is mandatory...Please enter again!!" << "\x1B[0m\n";
 			}
 			else {
 				obj.setProjectTitle(userInput);
@@ -306,7 +306,7 @@ void ManagerView::getViewManagerInput(Manager& obj, int fieldNumber) {
 			Utility::removeEmptySpaces(userInput);
 
 			if (userInput.size() == 0) {
-				std::cout << "role is mandatory...Please enter again!!" << '\n';
+				std::cout << "\x1B[33m" << "role is mandatory...Please enter again!!" << "\x1B[0m\n";
 			}
 			else {
 				obj.setRole(userInput);
@@ -321,8 +321,8 @@ bool ManagerView::getManagerIDInput(Manager& obj, const std::string& operation) 
 	std::string userInput;
 
 	system("cls");
-	std::cout << "------------------------------------------"+ operation +" Manager-------------------------------------------------\n";
-	std::cout << "To "+ operation +" a Manager, please enter managerID.\n";
+	std::cout << "------------------------------------------" << "\x1B[36m" << operation <<" Manager" << "\x1B[0m" << "-------------------------------------------------\n";
+	std::cout << "\x1B[33m" << "To "+ operation +" a Manager, please enter managerID." << "\x1B[0m\n";
 
 	while (true) {
 		std::cout << "managerID* : ";
@@ -330,7 +330,7 @@ bool ManagerView::getManagerIDInput(Manager& obj, const std::string& operation) 
 		Utility::removeEmptySpaces(userInput);
 
 		if (userInput.size() == 0) {
-			std::cout << "managerID is mandatory...Please enter again!!" << '\n';
+			std::cout << "\x1B[33m" << "managerID is mandatory...Please enter again!!" << "\x1B[0m\n";
 		}
 		else {
 			if (Validate::validateManagerID(userInput)) {
@@ -339,24 +339,24 @@ bool ManagerView::getManagerIDInput(Manager& obj, const std::string& operation) 
 				break;
 			}
 			else {
-				std::cout << "Wrong input...Please enter positive integer number!!\n";
+				std::cout << "\x1B[33m" << "Wrong input...Please enter positive integer number!!" << "\x1B[0m\n";
 			}
 		}
 	}
 
 	system("cls");
-	std::cout << "------------------------------------------"+ operation +" Manager-------------------------------------------------\n";
+	std::cout << "------------------------------------------" << "\x1B[36m" << operation << " Manager" << "\x1B[0m" << "-------------------------------------------------\n";
 	ManagerController::selectManager("employeeID", userInput);
 
 	if (operation == "Delete") {
-		std::cout << "Note : Deleting manager will not affect the corresponding Employee entry.\n";
+		std::cout << "\x1B[31m" << "Note : Deleting manager will not affect the corresponding Employee entry." << "\x1B[0m\n";
 	}
 	return Utility::proceedFurther(operation);
 }
 
 bool ManagerView::updateManager() {
 	Manager obj{ true };
-	bool isInvalidInput{ false };
+	auto isInvalidInput{ false };
 
 	if (!getManagerIDInput(obj, "Update")) {
 		return false;
@@ -364,16 +364,16 @@ bool ManagerView::updateManager() {
 
 	while (true) {
 		system("cls");
-		std::cout << "------------------------------------------Update Manager-------------------------------------------------\n";
-		std::cout << "Fields with * are required fields\n";
+		std::cout << "------------------------------------------" << "\x1B[36m" << "Update Manager" << "\x1B[0m" << "-------------------------------------------------\n";
+		std::cout << "\x1B[36m" << "Fields with * are required fields" << "\x1B[0m\n";
 		std::cout << "0. Exit" << '\n';
 		EmployeeView::printEmployeeFields();
 		printUpdateManagerFields();
 		std::cout << "17. Go Back" << '\n';
-		std::cout << "Select the field you want to update, or select 0/17 for operations: \n";
+		std::cout << "\x1B[33m" << "Select the field you want to update, or select 0/17 for operations: " << "\x1B[0m\n";
 
 		if (isInvalidInput) {
-			std::cerr << "Wrong Input, Please enter an input in the range: [0-17]\n";
+			std::cerr << "\x1B[33m" << "Wrong Input, Please enter an input in the range: [0-17]" << "\x1B[0m\n";
 			isInvalidInput = false;
 		}
 
@@ -428,7 +428,7 @@ bool ManagerView::updateManager() {
 
 bool ManagerView::deleteManager() {
 	Manager obj{ true };
-	bool isInvalidInput{ false };
+	auto isInvalidInput{ false };
 
 	if (!getManagerIDInput(obj, "Delete")) {
 		return false;
@@ -439,21 +439,21 @@ bool ManagerView::deleteManager() {
 	return Utility::repeatOperation("delete", "Manager");
 }
 
-void ManagerView::viewManagerConditional() {
+bool ManagerView::viewManagerConditional() {
 	Manager obj;
-	bool isInvalidInput{ false };
+	auto isInvalidInput{ false };
 
 	while (true) {
 		system("cls");
-		std::cout << "------------------------------------------View Manager-------------------------------------------------\n";
+		std::cout << "------------------------------------------" << "\x1B[36m" << "View Manager" << "\x1B[0m" << "-------------------------------------------------\n";
 		std::cout << "0. Exit" << '\n';
 		EmployeeView::printViewEmployeeFields();
 		printViewManagerFields();
 		std::cout << "18. Go Back" << '\n';
-		std::cout << "Select the field by which you want to view the Manager, or select 0/18 for operations: \n";
+		std::cout << "\x1B[33m" << "Select the field by which you want to view the Manager, or select 0/18 for operations: " << "\x1B[0m\n";
 
 		if (isInvalidInput) {
-			std::cerr << "Wrong Input, Please enter an input in the range: [0-3]\n";
+			std::cerr << "\x1B[33m" << "Wrong Input, Please enter an input in the range: [0-3]" << "\x1B[0m\n";
 			isInvalidInput = false;
 		}
 
@@ -557,7 +557,7 @@ void ManagerView::viewManagerConditional() {
 				break;
 			}
 			else if (userInput == 18) {
-				return;
+				return false;
 			}
 			else {
 				isInvalidInput = true;
@@ -567,22 +567,23 @@ void ManagerView::viewManagerConditional() {
 			isInvalidInput = true;
 		}
 	}
+	return true;
 }
 
 bool ManagerView::viewManager() {
-	bool isInvalidInput{ false };
+	auto isInvalidInput{ false };
 
 	while (true) {
 		system("cls");
-		std::cout << "------------------------------------------View Manager-------------------------------------------------\n";
+		std::cout << "------------------------------------------" << "\x1B[36m" << "View Manager" << "\x1B[0m" << "-------------------------------------------------\n";
 		std::cout << "0. Exit" << '\n';
 		std::cout << "1. View Manager based on a field" << '\n';
 		std::cout << "2. View all Manager" << '\n';
 		std::cout << "3. Go Back" << '\n';
-		std::cout << "Select the operation [0-3]: \n";
+		std::cout << "\x1B[33m" << "Select the operation [0-3]: " << "\x1B[0m\n";
 
 		if (isInvalidInput) {
-			std::cerr << "Wrong Input, Please enter an input in the range: [0-3]\n";
+			std::cerr << "\x1B[33m" << "Wrong Input, Please enter an input in the range: [0-3]" << "\x1B[0m\n";
 			isInvalidInput = false;
 		}
 
@@ -601,7 +602,9 @@ bool ManagerView::viewManager() {
 				std::exit(0);
 			}
 			else if (userInput == 1) {
-				viewManagerConditional();
+				if (!viewManagerConditional()) {
+					return true;
+				}
 				break;
 			}
 			else if (userInput == 2) {

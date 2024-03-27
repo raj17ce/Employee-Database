@@ -10,8 +10,8 @@ bool QAView::insertQA() {
 	QA obj;
 
 	system("cls");
-	std::cout << "------------------------------------------Insert QA-------------------------------------------------\n";
-	std::cout << "Fields with * are required fields\n";
+	std::cout << "------------------------------------------" << "\x1B[36m" << "Insert QA" << "\x1B[0m" << "-------------------------------------------------\n";
+	std::cout << "\x1B[36m" << "Fields with * are required fields" << "\x1B[0m\n";
 	EmployeeView::printEmployeeFields();
 	std::cout << "13. testingTool* : " << '\n';
 
@@ -29,7 +29,7 @@ bool QAView::insertQA() {
 		Utility::removeEmptySpaces(userInput);
 
 		if (userInput.size() == 0) {
-			std::cout << "testingTool is mandatory...Please enter again!!" << '\n';
+			std::cout << "\x1B[33m" << "testingTool is mandatory...Please enter again!!" << "\x1B[0m\n";
 		}
 		else {
 			obj.setTestingTool(userInput);
@@ -44,12 +44,12 @@ bool QAView::insertQA() {
 
 bool QAView::updateQA() {
 	QA obj{ true };
-	bool isInvalidInput{ false };
+	auto isInvalidInput{ false };
 
 	EmployeeView::getEmployeeIDInput(obj, "Update", "QA");
 
 	system("cls");
-	std::cout << "------------------------------------------Update QA-------------------------------------------------\n";
+	std::cout << "------------------------------------------" << "\x1B[36m" << "Update QA" << "\x1B[0m" << "-------------------------------------------------\n";
 	QAController::selectQA("Employee.employeeID", std::to_string(obj.getEmployeeID()));
 	if (!Utility::proceedFurther("Update")) {
 		return false;
@@ -57,16 +57,16 @@ bool QAView::updateQA() {
 
 	while (true) {
 		system("cls");
-		std::cout << "------------------------------------------Update QA-------------------------------------------------\n";
-		std::cout << "Fields with * are required fields\n";
+		std::cout << "------------------------------------------" << "\x1B[36m" << "Update QA" << "\x1B[0m" << "-------------------------------------------------\n";
+		std::cout << "\x1B[36m" << "Fields with * are required fields" << "\x1B[0m\n";
 		std::cout << "0. Exit" << '\n';
 		EmployeeView::printEmployeeFields();
 		std::cout << "13. testingTool* : " << '\n';
 		std::cout << "14. Go Back" << '\n';
-		std::cout << "Select the field you want to update, or select 0/14 for operations: \n";
+		std::cout << "\x1B[33m" << "Select the field you want to update, or select 0/14 for operations: " << "\x1B[0m\n";
 
 		if (isInvalidInput) {
-			std::cerr << "Wrong Input, Please enter an input in the range: [0-14]\n";
+			std::cerr << "\x1B[33m" << "Wrong Input, Please enter an input in the range: [0-14]" << "\x1B[0m\n";
 			isInvalidInput = false;
 		}
 
@@ -98,7 +98,7 @@ bool QAView::updateQA() {
 					std::cout << "testingTool* : ";
 					std::getline(std::cin, inputLine);
 					if (inputLine.size() == 0) {
-						std::cout << "testingTool is mandatory...Please enter again!!" << '\n';
+						std::cout << "\x1B[33m" << "testingTool is mandatory...Please enter again!!" << "\x1B[0m\n";
 					}
 					else {
 						obj.setTestingTool(inputLine);
@@ -131,12 +131,12 @@ bool QAView::updateQA() {
 
 bool QAView::deleteQA() {
 	QA obj{ true };
-	bool isInvalidInput{ false };
+	auto isInvalidInput{ false };
 
 	EmployeeView::getEmployeeIDInput(obj, "Delete", "QA");
 
 	system("cls");
-	std::cout << "------------------------------------------Delete QA-------------------------------------------------\n";
+	std::cout << "------------------------------------------" << "\x1B[36m" << "Delete QA" << "\x1B[0m" << "-------------------------------------------------\n";
 	QAController::selectQA("Employee.employeeID", std::to_string(obj.getEmployeeID()));
 	if (!Utility::proceedFurther("Delete")) {
 		return false;
@@ -147,21 +147,21 @@ bool QAView::deleteQA() {
 	return Utility::repeatOperation("delete", "QA");
 }
 
-void QAView::viewQAConditional() {
+bool QAView::viewQAConditional() {
 	QA obj;
-	bool isInvalidInput{ false };
+	auto isInvalidInput{ false };
 
 	while (true) {
 		system("cls");
-		std::cout << "------------------------------------------View QA-------------------------------------------------\n";
+		std::cout << "------------------------------------------" << "\x1B[36m" << "View QA" << "\x1B[0m" << "-------------------------------------------------\n";
 		std::cout << "0. Exit" << '\n';
 		EmployeeView::printViewEmployeeFields();
 		std::cout << "14. testingTool* : " << '\n';
 		std::cout << "15. Go Back" << '\n';
-		std::cout << "Select the field by which you want to view the QA, or select 0/15 for operations: \n";
+		std::cout << "\x1B[33m" << "Select the field by which you want to view the QA, or select 0/15 for operations: " << "\x1B[0m\n";
 
 		if (isInvalidInput) {
-			std::cerr << "Wrong Input, Please enter an input in the range: [0-15]\n";
+			std::cerr << "\x1B[33m" << "Wrong Input, Please enter an input in the range: [0-15]" << "\x1B[0m\n";
 			isInvalidInput = false;
 		}
 
@@ -251,7 +251,7 @@ void QAView::viewQAConditional() {
 					Utility::removeEmptySpaces(inputLine);
 
 					if (inputLine.size() == 0) {
-						std::cout << "testingTool is mandatory...Please enter again!!" << '\n';
+						std::cout << "\x1B[33m" << "testingTool is mandatory...Please enter again!!" << "\x1B[0m\n";
 					}
 					else {
 						obj.setTestingTool(inputLine);
@@ -262,7 +262,7 @@ void QAView::viewQAConditional() {
 				break;
 			}
 			else if (userInput == 15) {
-				return;
+				return false;
 			}
 			else {
 				isInvalidInput = true;
@@ -272,22 +272,23 @@ void QAView::viewQAConditional() {
 			isInvalidInput = true;
 		}
 	}
+	return true;
 }
 
 bool QAView::viewQA() {
-	bool isInvalidInput{ false };
+	auto isInvalidInput{ false };
 
 	while (true) {
 		system("cls");
-		std::cout << "------------------------------------------View QA-------------------------------------------------\n";
+		std::cout << "------------------------------------------" << "\x1B[36m" << "View QA" << "\x1B[0m" << "-------------------------------------------------\n";
 		std::cout << "0. Exit" << '\n';
 		std::cout << "1. View QA based on a field" << '\n';
 		std::cout << "2. View all QA" << '\n';
 		std::cout << "3. Go Back" << '\n';
-		std::cout << "Select the operation [0-3]: \n";
+		std::cout << "\x1B[33m" << "Select the operation [0-3]: " << "\x1B[0m\n";
 
 		if (isInvalidInput) {
-			std::cerr << "Wrong Input, Please enter an input in the range: [0-3]\n";
+			std::cerr << "\x1B[33m" << "Wrong Input, Please enter an input in the range: [0-3]" << "\x1B[0m\n";
 			isInvalidInput = false;
 		}
 
@@ -306,7 +307,9 @@ bool QAView::viewQA() {
 				std::exit(0);
 			}
 			else if (userInput == 1) {
-				viewQAConditional();
+				if (!viewQAConditional()) {
+					return true;
+				}
 				break;
 			}
 			else if (userInput == 2) {

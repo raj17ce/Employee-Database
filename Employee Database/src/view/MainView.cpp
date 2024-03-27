@@ -6,13 +6,13 @@ using EmployeeDB::View::MainView, EmployeeDB::View::DepartmentView, EmployeeDB::
 using EmployeeDB::View::EngineerView, EmployeeDB::View::FinanceView, EmployeeDB::View::HRView, EmployeeDB::View::QAView;
 
 void MainView::mainMenuView() {
-	bool isInvalidInput{ false };
+	auto isInvalidInput{ false };
 
 	while (true) {
 		printMainMenu();
 
 		if (isInvalidInput) {
-			std::cerr << "Wrong Input, Please enter an input in the range: [0-5]\n";
+			std::cerr << "\x1B[33m" << "Wrong Input, Please enter an input in the range: [0-5]" << "\x1B[0m\n";
 			isInvalidInput = false;
 		}
 
@@ -43,14 +43,14 @@ void MainView::mainMenuView() {
 
 void MainView::printMainMenu() {
 	system("cls");
-	std::cout << "------------------------------------------Welcome to Employee Database-------------------------------------------------\n";
+	std::cout << "------------------------------------------"<< "\x1B[36m" <<"Welcome to Employee Database"<< "\x1B[0m" <<"-------------------------------------------------\n";
 	std::cout << "0. Exit\n";
 	std::cout << "1. Create Table\n";
 	std::cout << "2. Insert Data\n";
 	std::cout << "3. Update Data\n";
 	std::cout << "4. Delete Data\n";
 	std::cout << "5. View Data\n";
-	std::cout << "Please select an operation to perform:\n";
+	std::cout << "\x1B[33m" << "Please select an operation to perform: " << "\x1B[0m\n";
 }
 
 void MainView::mainMenuSelection(short int userInput) {
@@ -87,16 +87,16 @@ void MainView::printTableMenu() {
 }
 
 void MainView::insertMenuView() {
-	bool isInvalidInput{ false };
+	auto isInvalidInput{ false };
 
 	while (true) {
 		system("cls");
-		std::cout << "------------------------------------------Insert Menu-------------------------------------------------\n";
+		std::cout << "------------------------------------------" << "\x1B[36m" << "Insert Menu" << "\x1B[0m" << "-------------------------------------------------\n";
 		printTableMenu();
-		std::cout << "Please select an entity to insert:\n";
+		std::cout << "\x1B[33m" << "Please select an entity to insert: " << "\x1B[0m\n";
 
 		if (isInvalidInput) {
-			std::cerr << "Wrong Input, Please enter an input in the range: [0-7]\n";
+			std::cerr << "\x1B[33m" << "Wrong Input, Please enter an input in the range: [0-7]" << "\x1B[0m\n";
 			isInvalidInput = false;
 		}
 
@@ -128,7 +128,7 @@ void MainView::insertMenuView() {
 }
 
 void MainView::insertMenuSelection(short int userInput) {
-	bool continueInsertion{ true };
+	auto continueInsertion{ true };
 	switch (userInput) {
 		case 0:
 			std::exit(0);
@@ -166,16 +166,16 @@ void MainView::insertMenuSelection(short int userInput) {
 }
 
 void MainView::updateMenuView() {
-	bool isInvalidInput{ false };
+	auto isInvalidInput{ false };
 
 	while (true) {
 		system("cls");
-		std::cout << "------------------------------------------Update Menu-------------------------------------------------\n";
+		std::cout << "------------------------------------------" << "\x1B[36m" << "Update Menu" << "\x1B[0m" << "-------------------------------------------------\n";
 		printTableMenu();
-		std::cout << "Please select an entity to update:\n";
+		std::cout << "\x1B[33m" << "Please select an entity to update: " << "\x1B[0m\n";
 
 		if (isInvalidInput) {
-			std::cerr << "Wrong Input, Please enter an input in the range: [0-7]\n";
+			std::cerr << "\x1B[33m" << "Wrong Input, Please enter an input in the range: [0-7]" << "\x1B[0m\n";
 			isInvalidInput = false;
 		}
 
@@ -207,7 +207,7 @@ void MainView::updateMenuView() {
 }
 
 void MainView::updateMenuSelection(short int userInput) {
-	bool continueUpdation{ true };
+	auto continueUpdation{ true };
 	switch (userInput) {
 	case 0:
 		std::exit(0);
@@ -245,16 +245,16 @@ void MainView::updateMenuSelection(short int userInput) {
 }
 
 void MainView::deleteMenuView() {
-	bool isInvalidInput{ false };
+	auto isInvalidInput{ false };
 
 	while (true) {
 		system("cls");
-		std::cout << "------------------------------------------Delete Menu-------------------------------------------------\n";
+		std::cout << "------------------------------------------" << "\x1B[36m" << "Delete Menu" << "\x1B[0m" << "-------------------------------------------------\n";
 		printTableMenu();
-		std::cout << "Please select an entity to delete:\n";
+		std::cout << "\x1B[33m" << "Please select an entity to delete:" << "\x1B[0m\n";
 
 		if (isInvalidInput) {
-			std::cerr << "Wrong Input, Please enter an input in the range: [0-7]\n";
+			std::cerr << "\x1B[33m" << "Wrong Input, Please enter an input in the range: [0-7]" << "\x1B[0m\n";
 			isInvalidInput = false;
 		}
 
@@ -286,7 +286,7 @@ void MainView::deleteMenuView() {
 }
 
 void MainView::deleteMenuSelection(short int userInput) {
-	bool continueDeletion{ true };
+	auto continueDeletion{ true };
 	switch (userInput) {
 	case 0:
 		std::exit(0);
@@ -324,16 +324,16 @@ void MainView::deleteMenuSelection(short int userInput) {
 }
 
 void MainView::viewMenuView() {
-	bool isInvalidInput{ false };
+	auto isInvalidInput{ false };
 
 	while (true) {
 		system("cls");
-		std::cout << "------------------------------------------View Menu-------------------------------------------------\n";
+		std::cout << "------------------------------------------" << "\x1B[36m" << "View Menu" << "\x1B[0m" << "-------------------------------------------------\n";
 		printTableMenu();
-		std::cout << "Please select an entity to view:\n";
+		std::cout << "\x1B[33m" << "Please select an entity to view:" << "\x1B[0m\n";
 
 		if (isInvalidInput) {
-			std::cerr << "Wrong Input, Please enter an input in the range: [0-7]\n";
+			std::cerr << "\x1B[33m" << "Wrong Input, Please enter an input in the range: [0-7]" << "\x1B[0m\n";
 			isInvalidInput = false;
 		}
 
@@ -365,7 +365,7 @@ void MainView::viewMenuView() {
 }
 
 void MainView::viewMenuSelection(short int userInput) {
-	bool continueViewing{ true };
+	auto continueViewing{ true };
 	switch (userInput) {
 	case 0:
 		std::exit(0);

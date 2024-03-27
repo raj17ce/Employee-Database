@@ -16,11 +16,11 @@ bool DepartmentController::insertDepartment(const Department& obj) {
 
 	try {
 		DBManager::instance().executeQuery(queryString.c_str());
-		std::cout << "Successfully inserted a Department.\n";
+		std::cout << "\x1B[32m" << "Successfully inserted a Department." << "\033[0m\n";
 	}
 	catch (const std::exception& e) {
-		std::cerr << e.what() << '\n';
-		std::cerr << "Department could not be inserted.\n";
+		std::cerr << "\x1B[31m" << e.what() << "\033[0m\n";
+		std::cerr << "\x1B[31m" << "Department could not be inserted." << "\033[0m\n";
 		return false;
 	}
 	return true;
@@ -28,7 +28,7 @@ bool DepartmentController::insertDepartment(const Department& obj) {
 
 int DepartmentController::getDepartmentIDbyName(const std::string& departmentName) {
 	std::string queryString = "SELECT departmentID FROM Department WHERE departmentName = \"" + departmentName + "\" COLLATE NOCASE;";
-	int departmentID{ -1 };
+	auto departmentID{ -1 };
 
 	auto getDepartmentIDCallback = [](void* data, int argc, char** argv, char** azColName) -> int {
 		int* eId = static_cast<int*>(data);
@@ -42,7 +42,7 @@ int DepartmentController::getDepartmentIDbyName(const std::string& departmentNam
 		DBManager::instance().executeCustomQuery(queryString.c_str(), getDepartmentIDCallback, &departmentID);
 	}
 	catch (const std::exception& e) {
-		std::cerr << e.what() << '\n';
+		std::cerr << "\x1B[31m" << e.what() << "\033[0m\n";
 		return -1;
 	}
 
@@ -52,13 +52,13 @@ int DepartmentController::getDepartmentIDbyName(const std::string& departmentNam
 bool DepartmentController::checkDepartmentExistence(const std::string& departmentID) {
 	std::string queryString = "SELECT departmentID FROM Department WHERE departmentID = " + departmentID + ";";
 
-	int callbackCount{ 0 };
+	auto callbackCount{ 0 };
 
 	try {
 		callbackCount = DBManager::instance().executeRowCountQuery(queryString.c_str());
 	}
 	catch (std::exception& e) {
-		std::cerr << e.what() << '\n';
+		std::cerr << "\x1B[31m" << e.what() << "\033[0m\n";
 	}
 
 	if (callbackCount == 0) {
@@ -72,11 +72,11 @@ bool DepartmentController::selectDepartment(const std::string& attributeName, co
 	std::string queryString = "SELECT * FROM Department " + ((attributeName.size() != 0) ? "WHERE " + attributeName + " = \"" + attributeValue + "\" COLLATE NOCASE":"") + ";";
 
 	try {
-		int rowCount = DBManager::instance().executeSelectQuery(queryString.c_str());
-		std::cout << rowCount << std::string{ " record" } + (rowCount > 1 ? "s" : "") + " found\n";
+		auto rowCount = DBManager::instance().executeSelectQuery(queryString.c_str());
+		std::cout << "\x1B[32m" << rowCount << std::string{ " record" } + (rowCount > 1 ? "s" : "") + " found" << "\033[0m\n";
 	}
 	catch (const std::exception& e) {
-		std::cerr << e.what() << '\n';
+		std::cerr << "\x1B[31m" << e.what() << "\033[0m\n";
 		return false;
 	}
 	return true;
@@ -87,11 +87,11 @@ bool DepartmentController::deleteDepartmentByID(int ID) {
 
 	try {
 		DBManager::instance().executeQuery(queryString.c_str());
-		std::cout << "Successfully deleted a Department.\n";
+		std::cout << "\x1B[32m" << "Successfully deleted a Department." << "\033[0m\n";
 	}
 	catch (const std::exception& e) {
-		std::cerr << e.what() << '\n';
-		std::cerr << "Department could not be deleted.\n";
+		std::cerr << "\x1B[31m" << e.what() << "\033[0m\n";
+		std::cerr << "\x1B[31m" << "Department could not be deleted." << "\033[0m]\n";
 		return false;
 	}
 	return true;
@@ -133,11 +133,11 @@ bool DepartmentController::updateDepartment(Department& obj) {
 		std::string queryString = "UPDATE Department SET " + updateQueryCondition + " WHERE departmentID = " + std::to_string(obj.getDepartmentID()) + ";";
 		try {
 			DBManager::instance().executeQuery(queryString.c_str());
-			std::cout << "Successfully updated a Department.\n";
+			std::cout << "\x1B[32m" << "Successfully updated a Department." << "\033[0m\n";
 		}
 		catch (const std::exception& e) {
-			std::cerr << e.what() << '\n';
-			std::cerr << "Department could not be updated.\n";
+			std::cerr << "\x1B[31m" << e.what() << "\033[0m\n";
+			std::cerr << "\x1B[31m"<< "Department could not be updated." << "\033[0m\n";
 			return false;
 		}
 	}

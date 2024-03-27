@@ -4,11 +4,11 @@
 using EmployeeDB::View::Utility;
 
 bool Utility::proceedFurther(const std::string& operation) {
-	bool isInvalidInput{ false };
+	auto isInvalidInput{ false };
 
 	while (true) {
 		if (!isInvalidInput) {
-			std::cout << "Do you want to proceed with "+ operation +"? [y/n] : ";
+			std::cout << "\x1B[33m" << "Do you want to proceed with "+ operation +"? [y/n] : " << "\x1B[0m";
 		}
 
 		std::string inputLine;
@@ -22,7 +22,7 @@ bool Utility::proceedFurther(const std::string& operation) {
 			return false;
 		}
 		else {
-			std::cerr << "Wrong Input, Please enter character [y/n] : ";
+			std::cerr << "\x1B[33m" << "Wrong Input, Please enter character [y/n] : " << "\x1B[0m";
 			isInvalidInput = true;
 		}
 	}
@@ -31,11 +31,11 @@ bool Utility::proceedFurther(const std::string& operation) {
 }
 
 bool Utility::repeatOperation(const std::string& operation, const std::string& Entity) {
-	bool isInvalidInput = false;
+	auto isInvalidInput = false;
 
 	while (true) {
 		if (!isInvalidInput) {
-			std::cout << "Do you want to "+ operation + " another " + Entity +"? [y / n] : ";
+			std::cout << "\x1B[33m" << "Do you want to "+ operation + " another " + Entity +"? [y / n] : " << "\x1B[0m";
 		}
 		
 		std::string inputLine;
@@ -49,7 +49,7 @@ bool Utility::repeatOperation(const std::string& operation, const std::string& E
 			return false;
 		}
 		else {
-			std::cerr << "Wrong Input, Please enter character [y/n] : ";
+			std::cerr << "\x1B[33m" << "Wrong Input, Please enter character [y/n] : " << "\x1B[0m";
 			isInvalidInput = true;
 		}
 	}
@@ -66,8 +66,8 @@ void Utility::removeEmptySpaces(std::string& str, const std::string& chars) {
 		str.erase(0, str.find_first_not_of(chars));
 
 		std::string tempStr;
-		bool preSpace = false;
-		int i = 0;
+		auto preSpace{ false };
+		auto i{ 0 };
 		while (i < str.size()) {
 			if (str.at(i) != ' ') {
 				if (preSpace) {

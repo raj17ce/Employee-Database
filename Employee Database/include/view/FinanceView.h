@@ -10,7 +10,7 @@ namespace EmployeeDB::View {
 		static bool deleteFinance();
 		static bool viewFinance();
 	private:
-		static void viewFinanceConditional();
+		static bool viewFinanceConditional();
 	};
 }
 

@@ -48,7 +48,7 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 		Utility::removeEmptySpaces(userInput);
 
 		if (userInput.size() == 0) {
-			std::cout << "First Name is mandatory...Please enter again!!" << '\n';
+			std::cout << "\x1B[33m" << "First Name is mandatory...Please enter again!!" << "\x1B[0m\n";
 		}
 		else {
 			obj.setFirstName(userInput);
@@ -72,7 +72,7 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 		Utility::removeEmptySpaces(userInput);
 
 		if (userInput.size() == 0) {
-			std::cout << "Last Name is mandatory...Please enter again!!" << '\n';
+			std::cout << "\x1B[33m" << "Last Name is mandatory...Please enter again!!" << "\x1B[0m\n";
 		}
 		else {
 			obj.setLastName(userInput);
@@ -81,8 +81,8 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 	}
 
 	{
-		std::cout << "dateOfBirth [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : ";
 		while (true) {
+			std::cout << "dateOfBirth [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : ";
 			std::getline(std::cin, userInput);
 			Utility::removeEmptySpaces(userInput);
 
@@ -94,7 +94,7 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 				break;
 			}
 			else {
-				std::cerr << "Please Enter the date in format [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : ";
+				std::cerr << "\x1B[33m" << "Please Enter the date in format [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : " << "\x1B[0m\n";
 			}
 		}
 	}
@@ -105,7 +105,7 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 		Utility::removeEmptySpaces(userInput);
 
 		if (userInput.size() == 0) {
-			std::cout << "mobileNo is mandatory...Please enter again!!" << '\n';
+			std::cout << "\x1B[33m" << "mobileNo is mandatory...Please enter again!!" << "\x1B[0m\n";
 		}
 		else {
 			if (Validate::validateMobile(userInput)) {
@@ -113,7 +113,7 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 				break;
 			}
 			else {
-				std::cerr << "Wrong mobileNo...Please enter again!!\n";
+				std::cerr << "\x1B[33m" << "Wrong mobileNo...Please enter again!!" << "\x1B[0m\n";
 			}
 		}
 	}
@@ -124,7 +124,7 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 		Utility::removeEmptySpaces(userInput);
 
 		if (userInput.size() == 0) {
-			std::cout << "email is mandatory...Please enter again!!" << '\n';
+			std::cout << "\x1B[33m" << "email is mandatory...Please enter again!!" << "\x1B[0m\n";
 		}
 		else {
 			if (Validate::validateEmail(userInput)) {
@@ -132,7 +132,7 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 				break;
 			}
 			else {
-				std::cerr << "Wrong email...Please enter again!!\n";
+				std::cerr << "\x1B[33m" << "Wrong email...Please enter again!!" << "\x1B[0m\n";
 			}
 		}
 	}
@@ -143,7 +143,7 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 		Utility::removeEmptySpaces(userInput);
 
 		if (userInput.size() == 0) {
-			std::cout << "Address is mandatory...Please enter again!!" << '\n';
+			std::cout << "\x1B[33m" << "Address is mandatory...Please enter again!!" << "\x1B[0m\n";
 		}
 		else {
 			obj.setAddress(userInput);
@@ -157,7 +157,7 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 		Utility::removeEmptySpaces(userInput);
 
 		if (userInput.size() == 0) {
-			std::cout << "Gender is mandatory...Please enter again!!" << '\n';
+			std::cout << "\x1B[33m" << "Gender is mandatory...Please enter again!!" << "\x1B[0m\n";
 		}
 		else {
 			if (Validate::validateGender(userInput)) {
@@ -165,7 +165,7 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 				break;
 			}
 			else {
-				std::cerr << "Wrong input...Please enter again!!\n";
+				std::cerr << "\x1B[33m" << "Wrong input...Please enter again!!" << "\x1B[0m\n";
 			}
 		}
 	}
@@ -176,7 +176,7 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 		Utility::removeEmptySpaces(userInput);
 
 		if (userInput.size() == 0) {
-			std::cout << "dateOfJoining is mandatory...Please enter again!!" << '\n';
+			std::cout << "\x1B[33m" << "dateOfJoining is mandatory...Please enter again!!" << "\x1B[0m\n";
 		}
 		else {
 			if (Validate::validateDate(userInput)) {
@@ -184,7 +184,7 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 				break;
 			}
 			else {
-				std::cerr << "Please Enter the date in format [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : ";
+				std::cerr << "\x1B[33m" << "Please Enter the date in format [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : " << "\x1B[0m\n";
 			}
 		}
 	}
@@ -208,7 +208,7 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 				}
 			}
 			catch (...) {
-				std::cerr << "Wrong input...Please enter Positive integer number!!\n";
+				std::cerr << "\x1B[33m" << "Wrong input...Please enter Positive integer number!!" << "\x1B[0m\n";
 			}
 		}
 	}
@@ -232,7 +232,7 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 				}
 			}
 			catch (...) {
-				std::cerr << "Wrong input...Please enter Positive real number!!\n";
+				std::cerr << "\x1B[33m" << "Wrong input...Please enter Positive real number!!" << "\x1B[0m\n";
 			}
 		}
 	}
@@ -256,7 +256,7 @@ void EmployeeView::getInsertEmployeeInput(Employee& obj) {
 				}
 			}
 			catch (...) {
-				std::cerr << "Wrong input...Please enter Positive real number!!\n";
+				std::cerr << "\x1B[33m" << "Wrong input...Please enter Positive real number!!" << "\x1B[0m\n";
 			}
 		}
 	}
@@ -273,7 +273,7 @@ void EmployeeView::getUpdateEmployeeInput(Employee& obj, int fieldNumber) {
 			Utility::removeEmptySpaces(userInput);
 
 			if (userInput.size() == 0) {
-				std::cout << "First Name is mandatory...Please enter again!!" << '\n';
+				std::cout << "\x1B[33m" << "First Name is mandatory...Please enter again!!" << "\x1B[0m\n";
 			}
 			else {
 				obj.setFirstName(userInput);
@@ -299,7 +299,7 @@ void EmployeeView::getUpdateEmployeeInput(Employee& obj, int fieldNumber) {
 			Utility::removeEmptySpaces(userInput);
 
 			if (userInput.size() == 0) {
-				std::cout << "Last Name is mandatory...Please enter again!!" << '\n';
+				std::cout << "\x1B[33m" << "Last Name is mandatory...Please enter again!!" << "\x1B[0m\n";
 			}
 			else {
 				obj.setLastName(userInput);
@@ -309,8 +309,8 @@ void EmployeeView::getUpdateEmployeeInput(Employee& obj, int fieldNumber) {
 		break;
 	case 4:
 		{
-			std::cout << "dateOfBirth [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : ";
 			while (true) {
+				std::cout << "dateOfBirth [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : ";
 				std::getline(std::cin, userInput);
 				Utility::removeEmptySpaces(userInput);
 
@@ -322,7 +322,7 @@ void EmployeeView::getUpdateEmployeeInput(Employee& obj, int fieldNumber) {
 					break;
 				}
 				else {
-					std::cerr << "Please Enter the date in format [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : ";
+					std::cerr << "\x1B[33m" << "Please Enter the date in format [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : " << "\x1B[0m\n";
 				}
 			}
 		}
@@ -334,7 +334,7 @@ void EmployeeView::getUpdateEmployeeInput(Employee& obj, int fieldNumber) {
 			Utility::removeEmptySpaces(userInput);
 
 			if (userInput.size() == 0) {
-				std::cout << "mobileNo is mandatory...Please enter again!!" << '\n';
+				std::cout << "\x1B[33m" << "mobileNo is mandatory...Please enter again!!" << "\x1B[0m\n";
 			}
 			else {
 				if (Validate::validateMobile(userInput)) {
@@ -342,7 +342,7 @@ void EmployeeView::getUpdateEmployeeInput(Employee& obj, int fieldNumber) {
 					break;
 				}
 				else {
-					std::cerr << "Wrong mobileNo...Please enter again!!\n";
+					std::cerr << "\x1B[33m" << "Wrong mobileNo...Please enter again!!" << "\x1B[0m\n";
 				}
 			}
 		}
@@ -354,7 +354,7 @@ void EmployeeView::getUpdateEmployeeInput(Employee& obj, int fieldNumber) {
 			Utility::removeEmptySpaces(userInput);
 
 			if (userInput.size() == 0) {
-				std::cout << "email is mandatory...Please enter again!!" << '\n';
+				std::cout << "\x1B[33m" << "email is mandatory...Please enter again!!" << "\x1B[0m\n";
 			}
 			else {
 				if (Validate::validateEmail(userInput)) {
@@ -362,7 +362,7 @@ void EmployeeView::getUpdateEmployeeInput(Employee& obj, int fieldNumber) {
 					break;
 				}
 				else {
-					std::cerr << "Wrong email...Please enter again!!\n";
+					std::cerr << "\x1B[33m" << "Wrong email...Please enter again!!" << "\x1B[0m\n";
 				}
 			}
 		}
@@ -374,7 +374,7 @@ void EmployeeView::getUpdateEmployeeInput(Employee& obj, int fieldNumber) {
 			Utility::removeEmptySpaces(userInput);
 
 			if (userInput.size() == 0) {
-				std::cout << "Address is mandatory...Please enter again!!" << '\n';
+				std::cout << "\x1B[33m" << "Address is mandatory...Please enter again!!" << "\x1B[0m\n";
 			}
 			else {
 				obj.setAddress(userInput);
@@ -389,7 +389,7 @@ void EmployeeView::getUpdateEmployeeInput(Employee& obj, int fieldNumber) {
 			Utility::removeEmptySpaces(userInput);
 
 			if (userInput.size() == 0) {
-				std::cout << "Gender is mandatory...Please enter again!!" << '\n';
+				std::cout << "\x1B[33m" << "Gender is mandatory...Please enter again!!" << "\x1B[0m\n";
 			}
 			else {
 				if (Validate::validateGender(userInput)) {
@@ -397,7 +397,7 @@ void EmployeeView::getUpdateEmployeeInput(Employee& obj, int fieldNumber) {
 					break;
 				}
 				else {
-					std::cerr << "Wrong input...Please enter again!!\n";
+					std::cerr << "\x1B[33m" << "Wrong input...Please enter again!!" << "\x1B[0m\n";
 				}
 			}
 		}
@@ -409,7 +409,7 @@ void EmployeeView::getUpdateEmployeeInput(Employee& obj, int fieldNumber) {
 			Utility::removeEmptySpaces(userInput);
 
 			if (userInput.size() == 0) {
-				std::cout << "dateOfJoining is mandatory...Please enter again!!" << '\n';
+				std::cout << "\x1B[33m" << "dateOfJoining is mandatory...Please enter again!!" << "\x1B[0m\n";
 			}
 			else {
 				if (Validate::validateDate(userInput)) {
@@ -417,7 +417,7 @@ void EmployeeView::getUpdateEmployeeInput(Employee& obj, int fieldNumber) {
 					break;
 				}
 				else {
-					std::cerr << "Please Enter the date in format [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : ";
+					std::cerr << "\x1B[33m" << "Please Enter the date in format [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : " << "\x1B[0m\n";
 				}
 			}
 		}
@@ -442,7 +442,7 @@ void EmployeeView::getUpdateEmployeeInput(Employee& obj, int fieldNumber) {
 					}
 				}
 				catch (...) {
-					std::cerr << "Wrong input...Please enter Positive integer number!!\n";
+					std::cerr << "\x1B[33m" << "Wrong input...Please enter Positive integer number!!" << "\x1B[0m\n";
 				}
 			}
 		}
@@ -467,7 +467,7 @@ void EmployeeView::getUpdateEmployeeInput(Employee& obj, int fieldNumber) {
 					}
 				}
 				catch (...) {
-					std::cerr << "Wrong input...Please enter Positive real number!!\n";
+					std::cerr << "\x1B[33m" << "Wrong input...Please enter Positive real number!!" << "\x1B[0m\n";
 				}
 			}
 		}
@@ -492,7 +492,7 @@ void EmployeeView::getUpdateEmployeeInput(Employee& obj, int fieldNumber) {
 					}
 				}
 				catch (...) {
-					std::cerr << "Wrong input...Please enter Positive real number!!\n";
+					std::cerr << "\x1B[33m" << "Wrong input...Please enter Positive real number!!" << "\x1B[0m\n";
 				}
 			}
 		}
@@ -511,7 +511,7 @@ void EmployeeView::getViewEmployeeInput(Employee& obj, int fieldNumber) {
 			Utility::removeEmptySpaces(userInput);
 
 			if (userInput.size() == 0) {
-				std::cout << "employeeID is mandatory...Please enter again!!" << '\n';
+				std::cout << "\x1B[33m" << "employeeID is mandatory...Please enter again!!" << "\x1B[0m\n";
 			}
 			else {
 				try {
@@ -523,7 +523,7 @@ void EmployeeView::getViewEmployeeInput(Employee& obj, int fieldNumber) {
 					}
 				}
 				catch (...) {
-					std::cout << "Wrong input...Please enter again!!\n";
+					std::cout << "\x1B[33m" << "Wrong input...Please enter again!!" << "\x1B[0m\n";
 					continue;
 				}
 				break;
@@ -537,7 +537,7 @@ void EmployeeView::getViewEmployeeInput(Employee& obj, int fieldNumber) {
 			Utility::removeEmptySpaces(userInput);
 
 			if (userInput.size() == 0) {
-				std::cout << "First Name is mandatory...Please enter again!!" << '\n';
+				std::cout << "\x1B[33m" << "First Name is mandatory...Please enter again!!" << "\x1B[0m\n";
 			}
 			else {
 				obj.setFirstName(userInput);
@@ -552,7 +552,7 @@ void EmployeeView::getViewEmployeeInput(Employee& obj, int fieldNumber) {
 			Utility::removeEmptySpaces(userInput);
 
 			if (userInput.size() == 0) {
-				std::cout << "middleName is mandatory...Please enter again!!" << '\n';
+				std::cout << "\x1B[33m" << "middleName is mandatory...Please enter again!!" << "\x1B[0m\n";
 			}
 			else {
 				obj.setMiddleName(userInput);
@@ -567,7 +567,7 @@ void EmployeeView::getViewEmployeeInput(Employee& obj, int fieldNumber) {
 			Utility::removeEmptySpaces(userInput);
 
 			if (userInput.size() == 0) {
-				std::cout << "Last Name is mandatory...Please enter again!!" << '\n';
+				std::cout << "\x1B[33m" << "Last Name is mandatory...Please enter again!!" << "\x1B[0m\n";
 			}
 			else {
 				obj.setLastName(userInput);
@@ -582,7 +582,7 @@ void EmployeeView::getViewEmployeeInput(Employee& obj, int fieldNumber) {
 			Utility::removeEmptySpaces(userInput);
 
 			if (userInput.size() == 0) {
-				std::cout << "dateOfBirth is mandatory...Please enter again!!" << '\n';
+				std::cout << "\x1B[33m" << "dateOfBirth is mandatory...Please enter again!!" << "\x1B[0m\n";
 			}
 			else {
 				if (Validate::validateDate(userInput)) {
@@ -590,7 +590,7 @@ void EmployeeView::getViewEmployeeInput(Employee& obj, int fieldNumber) {
 					break;
 				}
 				else {
-					std::cerr << "Please Enter the date in format [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : ";
+					std::cerr << "\x1B[33m" << "Please Enter the date in format [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : " << "\x1B[0m\n";
 				}
 			}
 		}
@@ -602,7 +602,7 @@ void EmployeeView::getViewEmployeeInput(Employee& obj, int fieldNumber) {
 			Utility::removeEmptySpaces(userInput);
 
 			if (userInput.size() == 0) {
-				std::cout << "mobileNo is mandatory...Please enter again!!" << '\n';
+				std::cout << "\x1B[33m" << "mobileNo is mandatory...Please enter again!!" << "\x1B[0m\n";
 			}
 			else {
 				if (Validate::validateMobile(userInput)) {
@@ -610,7 +610,7 @@ void EmployeeView::getViewEmployeeInput(Employee& obj, int fieldNumber) {
 					break;
 				}
 				else {
-					std::cerr << "Wrong mobileNo...Please enter again!!\n";
+					std::cerr << "\x1B[33m" << "Wrong mobileNo...Please enter again!!" << "\x1B[0m\n";
 				}
 			}
 		}
@@ -622,7 +622,7 @@ void EmployeeView::getViewEmployeeInput(Employee& obj, int fieldNumber) {
 			Utility::removeEmptySpaces(userInput);
 
 			if (userInput.size() == 0) {
-				std::cout << "email is mandatory...Please enter again!!" << '\n';
+				std::cout << "\x1B[33m" << "email is mandatory...Please enter again!!" << "\x1B[0m\n";
 			}
 			else {
 				if (Validate::validateEmail(userInput)) {
@@ -630,7 +630,7 @@ void EmployeeView::getViewEmployeeInput(Employee& obj, int fieldNumber) {
 					break;
 				}
 				else {
-					std::cerr << "Wrong email...Please enter again!!\n";
+					std::cerr << "\x1B[33m" << "Wrong email...Please enter again!!" << "\x1B[0m\n";
 				}
 			}
 		}
@@ -642,7 +642,7 @@ void EmployeeView::getViewEmployeeInput(Employee& obj, int fieldNumber) {
 			Utility::removeEmptySpaces(userInput);
 
 			if (userInput.size() == 0) {
-				std::cout << "Address is mandatory...Please enter again!!" << '\n';
+				std::cout << "\x1B[33m" << "Address is mandatory...Please enter again!!" << "\x1B[0m\n";
 			}
 			else {
 				obj.setAddress(userInput);
@@ -657,7 +657,7 @@ void EmployeeView::getViewEmployeeInput(Employee& obj, int fieldNumber) {
 			Utility::removeEmptySpaces(userInput);
 
 			if (userInput.size() == 0) {
-				std::cout << "Gender is mandatory...Please enter again!!" << '\n';
+				std::cout << "\x1B[33m" << "Gender is mandatory...Please enter again!!" << "\x1B[0m\n";
 			}
 			else {
 				if (Validate::validateGender(userInput)) {
@@ -665,7 +665,7 @@ void EmployeeView::getViewEmployeeInput(Employee& obj, int fieldNumber) {
 					break;
 				}
 				else {
-					std::cerr << "Wrong input...Please enter again!!\n";
+					std::cerr << "\x1B[33m" << "Wrong input...Please enter again!!" << "\x1B[0m\n";
 				}
 			}
 		}
@@ -677,7 +677,7 @@ void EmployeeView::getViewEmployeeInput(Employee& obj, int fieldNumber) {
 			Utility::removeEmptySpaces(userInput);
 
 			if (userInput.size() == 0) {
-				std::cout << "dateOfJoining is mandatory...Please enter again!!" << '\n';
+				std::cout << "\x1B[33m" << "dateOfJoining is mandatory...Please enter again!!" << "\x1B[0m\n";
 			}
 			else {
 				if (Validate::validateDate(userInput)) {
@@ -685,7 +685,7 @@ void EmployeeView::getViewEmployeeInput(Employee& obj, int fieldNumber) {
 					break;
 				}
 				else {
-					std::cerr << "Please Enter the date in format [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : ";
+					std::cerr << "\x1B[33m" << "Please Enter the date in format [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : " << "\x1B[0m\n";
 				}
 			}
 		}
@@ -697,7 +697,7 @@ void EmployeeView::getViewEmployeeInput(Employee& obj, int fieldNumber) {
 			Utility::removeEmptySpaces(userInput);
 
 			if (userInput.size() == 0) {
-				std::cout << "mentorID is mandatory...Please enter again!!" << '\n';
+				std::cout << "\x1B[33m" << "mentorID is mandatory...Please enter again!!" << "\x1B[0m\n";
 			}
 			else {
 				try {
@@ -709,7 +709,7 @@ void EmployeeView::getViewEmployeeInput(Employee& obj, int fieldNumber) {
 					}
 				}
 				catch (...) {
-					std::cout << "Wrong input...Please enter again!!\n";
+					std::cout << "\x1B[33m" << "Wrong input...Please enter again!!" << "\x1B[0m\n";
 					continue;
 				}
 				break;
@@ -723,7 +723,7 @@ void EmployeeView::getViewEmployeeInput(Employee& obj, int fieldNumber) {
 			Utility::removeEmptySpaces(userInput);
 
 			if (userInput.size() == 0) {
-				std::cout << "performanceMetric is mandatory...Please enter again!!" << '\n';
+				std::cout << "\x1B[33m" << "performanceMetric is mandatory...Please enter again!!" << "\x1B[0m\n";
 			}
 			else {
 				try {
@@ -735,7 +735,7 @@ void EmployeeView::getViewEmployeeInput(Employee& obj, int fieldNumber) {
 					}
 				}
 				catch (...) {
-					std::cout << "Wrong input...Please enter again!!\n";
+					std::cout << "\x1B[33m" << "Wrong input...Please enter again!!" << "\x1B[0m\n";
 					continue;
 				}
 				break;
@@ -749,7 +749,7 @@ void EmployeeView::getViewEmployeeInput(Employee& obj, int fieldNumber) {
 			Utility::removeEmptySpaces(userInput);
 
 			if (userInput.size() == 0) {
-				std::cout << "bonus is mandatory...Please enter again!!" << '\n';
+				std::cout << "\x1B[33m" << "bonus is mandatory...Please enter again!!" << "\x1B[0m\n";
 			}
 			else {
 				try {
@@ -761,7 +761,7 @@ void EmployeeView::getViewEmployeeInput(Employee& obj, int fieldNumber) {
 					}
 				}
 				catch (...) {
-					std::cout << "Wrong input...Please enter again!!\n";
+					std::cout << "\x1B[33m" << "Wrong input...Please enter again!!" << "\x1B[0m\n";
 					continue;
 				}
 				break;
@@ -775,8 +775,8 @@ void EmployeeView::getEmployeeIDInput(Employee& obj, const std::string& operatio
 	std::string userInput;
 
 	system("cls");
-	std::cout << "------------------------------------------" + operation + " " + entity + "-------------------------------------------------\n";
-	std::cout << "To " + operation + " " + entity + ", please enter employeeID.\n";
+	std::cout << "------------------------------------------" << "\x1B[36m" << operation << " " + entity << "\x1B[0m" << "-------------------------------------------------\n";
+	std::cout << "\x1B[33m" << "To " + operation + " " + entity + ", please enter employeeID." << "\x1B[0m\n";
 
 	while (true) {
 		std::cout << "employeeID* : ";
@@ -784,7 +784,7 @@ void EmployeeView::getEmployeeIDInput(Employee& obj, const std::string& operatio
 		Utility::removeEmptySpaces(userInput);
 
 		if (userInput.size() == 0) {
-			std::cout << "employeeID is mandatory...Please enter again!!" << '\n';
+			std::cout << "\x1B[33m" << "employeeID is mandatory...Please enter again!!" << "\x1B[0m\n";
 		}
 		else {
 			if (Validate::validateEmployeeID(userInput, entity)) {
@@ -792,7 +792,7 @@ void EmployeeView::getEmployeeIDInput(Employee& obj, const std::string& operatio
 				break;
 			}
 			else {
-				std::cout << "Wrong input...Please enter positive integer number!!\n";
+				std::cout << "\x1B[33m" << "Wrong input...Please enter positive integer number!!" << "\x1B[0m\n";
 			}
 		}
 	}

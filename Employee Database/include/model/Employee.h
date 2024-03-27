@@ -3,6 +3,7 @@
 
 #include <string>
 #include <algorithm>
+#include <optional>
 #include "Salary.h"
 
 namespace EmployeeDB::Model {
@@ -32,14 +33,14 @@ namespace EmployeeDB::Model {
             return m_FirstName;
         }
         const std::string& getMiddleName() const {
-            return m_MiddleName;
+            return m_MiddleName.value_or("");
         }
         const std::string& getLastName() const {
             return m_LastName;
         }
     private:
         std::string m_FirstName;
-        std::string m_MiddleName;
+        std::optional<std::string> m_MiddleName;
         std::string m_LastName;
     };
 
@@ -134,16 +135,16 @@ namespace EmployeeDB::Model {
             return m_Address;
         }
         const std::string& getDateOfBirth() const {
-            return m_DateOfBirth;
+            return m_DateOfBirth.value_or("");
         }
         const std::string& getDateOfJoining() const {
             return m_DateOfJoining;
         }
         double getPerformanceMetric() const {
-            return m_PerformanceMetric;
+            return m_PerformanceMetric.value_or(0.0);
         }
         double getBonus() const {
-            return m_Bonus;
+            return m_Bonus.value_or(0.0);
         }
         long long getMobileNumber() const {
             return m_MobileNumber;
@@ -158,7 +159,7 @@ namespace EmployeeDB::Model {
             return m_DepartmentID;
         }
         int getMentorID() const {
-            return m_MentorID;
+            return m_MentorID.value_or(0);
         }
 
         static inline double computeSalary(Salary& obj);
@@ -166,15 +167,15 @@ namespace EmployeeDB::Model {
         Name name;
         std::string m_Email;
         std::string m_Address;
-        std::string m_DateOfBirth;
+        std::optional<std::string> m_DateOfBirth;
         std::string  m_DateOfJoining;
-		double m_PerformanceMetric;
-        double m_Bonus;
+		std::optional<double> m_PerformanceMetric;
+        std::optional<double> m_Bonus;
 		long long m_MobileNumber;
 		Gender m_Gender;
 		int m_EmployeeID;
 		int m_DepartmentID;
-		int m_MentorID;
+		std::optional<int> m_MentorID;
 	};
 
     inline std::string getGenderString(Gender g) {
@@ -209,7 +210,7 @@ namespace EmployeeDB::Model {
     }
 
     inline double Employee::computeSalary(Salary & obj) {
-        double totalSalary{ 0.0 };
+        auto totalSalary{ 0.0 };
 
         totalSalary += obj.getBaseSalary();
         totalSalary += obj.getAllowance();

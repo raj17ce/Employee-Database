@@ -1,11 +1,7 @@
-26/03/2024 15:53:53 : [DefaultLogger] : [Debug] : Successfully opened DB Connection 
-26/03/2024 15:53:53 : [DefaultLogger] : [Debug] : started executing query :  PRAGMA foreign_keys = ON; 
-26/03/2024 15:53:53 : [DefaultLogger] : [Debug] : Successfully executed query :  PRAGMA foreign_keys = ON; 
-26/03/2024 15:54:14 : [DefaultLogger] : [Debug] : started executing query :  SELECT * FROM Employee NATURAL JOIN Engineer WHERE employeeID = "1" COLLATE NOCASE; 
-26/03/2024 15:54:14 : [DefaultLogger] : [Debug] : started executing query :  SELECT * FROM SalaryView WHERE employeeID = 1; 
-26/03/2024 15:54:14 : [DefaultLogger] : [Debug] : Successfully executed query :  SELECT * FROM SalaryView WHERE employeeID = 1; 
-26/03/2024 15:54:14 : [DefaultLogger] : [Debug] : Successfully executed query :  SELECT * FROM Employee NATURAL JOIN Engineer WHERE employeeID = "1" COLLATE NOCASE; 
-26/03/2024 15:54:28 : [DefaultLogger] : [Debug] : Successfully closed DB Connection 
-26/03/2024 16:03:11 : [DefaultLogger] : [Debug] : Successfully opened DB Connection 
-26/03/2024 16:03:11 : [DefaultLogger] : [Debug] : started executing query :  PRAGMA foreign_keys = ON; 
-26/03/2024 16:03:11 : [DefaultLogger] : [Debug] : Successfully executed query :  PRAGMA foreign_keys = ON; 
+27/03/2024 17:53:08 : [DefaultLogger] : [Debug] : Successfully opened DB Connection 
+27/03/2024 17:53:08 : [DefaultLogger] : [Debug] : started executing query :  PRAGMA foreign_keys = ON; 
+27/03/2024 17:53:08 : [DefaultLogger] : [Debug] : Successfully executed query :  PRAGMA foreign_keys = ON; 
+27/03/2024 17:53:15 : [DefaultLogger] : [Debug] : started executing query :  SELECT * FROM Employee NATURAL JOIN Engineer ; 
+27/03/2024 17:53:15 : [DefaultLogger] : [Debug] : started executing query :  SELECT * FROM SalaryView WHERE employeeID = 29; 
+27/03/2024 17:53:15 : [DefaultLogger] : [Debug] : Successfully executed query :  SELECT * FROM SalaryView WHERE employeeID = 29; 
+27/03/2024 17:53:15 : [DefaultLogger] : [Debug] : Successfully executed query :  SELECT * FROM Employee NATURAL JOIN Engineer ; 

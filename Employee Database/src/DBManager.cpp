@@ -26,7 +26,7 @@ int DBManager::openConnection() {
 	}
 	else {
 		LogManager::instance().getLogger().error("Error opening DB connection");
-		std::cerr << "Error opening DB connection" << '\n';
+		std::cerr << "\x1B[31m" << "Error opening DB connection" << "\033[0m" << '\n';
 	}
 	return m_ResultCode;
 }
@@ -39,7 +39,7 @@ int DBManager::closeConnection() {
 	}
 	else {
 		LogManager::instance().getLogger().error("Error closing DB connection");
-		std::cerr << "Error closing DB connection" << '\n';
+		std::cerr << "\x1B[31m" << "Error closing DB connection" << "\033[0m" << '\n';
 	}
 	return m_ResultCode;
 }
@@ -88,7 +88,7 @@ int DBManager::selectCallback(void* arg, int argc, char** argv, char** azColName
 }
 
 int DBManager::executeSelectQuery(const char* queryString) {
-	int rowCount{ 0 };
+	auto rowCount{ 0 };
 	LogManager::instance().getLogger().debug("started executing query : ", queryString);
 
 	m_ResultCode = sqlite3_exec(m_DB, queryString, selectCallback, &rowCount, &m_ErrorMessage);
@@ -126,7 +126,7 @@ int DBManager::selectSalaryCallback(void* arg, int argc, char** argv, char** azC
 }
 
 int DBManager::executeSelectSalaryQuery(const char* queryString) {
-	int rowCount{ 0 };
+	auto rowCount{ 0 };
 	LogManager::instance().getLogger().debug("started executing query : ", queryString);
 
 	m_ResultCode = sqlite3_exec(m_DB, queryString, selectSalaryCallback, &rowCount, &m_ErrorMessage);
@@ -148,7 +148,7 @@ int DBManager::rowCountCallback(void* arg, int argc, char** argv, char** azColNa
 }
 
 int DBManager::executeRowCountQuery(const char* queryString) {
-	int rowCount{ 0 };
+	auto rowCount{ 0 };
 	LogManager::instance().getLogger().debug("started executing query : ", queryString);
 
 	m_ResultCode = sqlite3_exec(m_DB, queryString, rowCountCallback, &rowCount, &m_ErrorMessage);
@@ -170,6 +170,6 @@ void DBManager::executeConfigQuery() {
 		instance().executeQuery(queryString.c_str());
 	}
 	catch (const std::exception& e) {
-		std::cerr << e.what() << '\n';
+		std::cerr << "\x1B[31m" << e.what() << "\033[0m" << '\n';
 	}
 }

@@ -32,7 +32,7 @@ void DepartmentView::getInsertDepartmentInput(Department& obj) {
 		Utility::removeEmptySpaces(userInput);
 
 		if (userInput.size() == 0) {
-			std::cout << "departmentName is mandatory...Please enter again!!" << '\n';
+			std::cout << "\x1B[33m" << "departmentName is mandatory...Please enter again!!" << "\x1B[0m\n";
 		}
 		else {
 			obj.setDepartmentName(userInput);
@@ -46,7 +46,7 @@ void DepartmentView::getInsertDepartmentInput(Department& obj) {
 		Utility::removeEmptySpaces(userInput);
 
 		if (userInput.size() == 0) {
-			std::cout << "baseSalary is mandatory...Please enter again!!" << '\n';
+			std::cout << "\x1B[33m" << "baseSalary is mandatory...Please enter again!!" << "\x1B[0m\n";
 		}
 		else {
 			try {
@@ -58,7 +58,7 @@ void DepartmentView::getInsertDepartmentInput(Department& obj) {
 				}
 			}
 			catch (...) {
-				std::cout << "Wrong input...Please enter Positive real number!!\n";
+				std::cout << "\x1B[33m" << "Wrong input...Please enter Positive real number!!" << "\x1B[0m\n";
 				continue;
 			}
 			break;
@@ -71,7 +71,7 @@ void DepartmentView::getInsertDepartmentInput(Department& obj) {
 		Utility::removeEmptySpaces(userInput);
 
 		if (userInput.size() == 0) {
-			std::cout << "allowance is mandatory...Please enter again!!" << '\n';
+			std::cout << "\x1B[33m" << "allowance is mandatory...Please enter again!!" << "\x1B[0m\n";
 		}
 		else {
 			try {
@@ -83,7 +83,7 @@ void DepartmentView::getInsertDepartmentInput(Department& obj) {
 				}
 			}
 			catch (...) {
-				std::cout << "Wrong input...Please Positive enter real number!!\n";
+				std::cout << "\x1B[33m" << "Wrong input...Please Positive enter real number!!" << "\x1B[0m\n";
 				continue;
 			}
 			break;
@@ -96,7 +96,7 @@ void DepartmentView::getInsertDepartmentInput(Department& obj) {
 		Utility::removeEmptySpaces(userInput);
 
 		if (userInput.size() == 0) {
-			std::cout << "deduction is mandatory...Please enter again!!" << '\n';
+			std::cout << "\x1B[33m" << "deduction is mandatory...Please enter again!!" << "\x1B[0m\n";
 		}
 		else {
 			try {
@@ -108,7 +108,7 @@ void DepartmentView::getInsertDepartmentInput(Department& obj) {
 				}
 			}
 			catch (...) {
-				std::cerr << "Wrong input...Please enter Positive real number!!\n";
+				std::cerr << "\x1B[33m" << "Wrong input...Please enter Positive real number!!" << "\x1B[0m\n";
 				continue;
 			}
 			break;
@@ -120,8 +120,8 @@ bool DepartmentView::insertDepartment() {
 	Department obj;
 
 	system("cls");
-	std::cout << "------------------------------------------Insert Department-------------------------------------------------\n";
-	std::cout << "Fields with * are required fields\n";
+	std::cout << "------------------------------------------" << "\x1B[36m" << "Insert Department" << "\x1B[0m" << "-------------------------------------------------\n";
+	std::cout << "\x1B[36m" << "Fields with * are required fields" << "\x1B[0m\n";
 	printDepartmentFields();
 
 	if (!Utility::proceedFurther("insertion")) {
@@ -145,7 +145,7 @@ void DepartmentView::getUpdateDepartmentInput(Department& obj, int fieldNumber) 
 				Utility::removeEmptySpaces(userInput);
 
 				if (userInput.size() == 0) {
-					std::cout << "departmentName is mandatory...Please enter again!!" << '\n';
+					std::cout << "\x1B[33m" << "departmentName is mandatory...Please enter again!!" << "\x1B[0m\n";
 				}
 				else {
 					obj.setDepartmentName(userInput);
@@ -161,7 +161,7 @@ void DepartmentView::getUpdateDepartmentInput(Department& obj, int fieldNumber) 
 				Utility::removeEmptySpaces(userInput);
 
 				if (userInput.size() == 0) {
-					std::cout << "baseSalary is mandatory...Please enter again!!" << '\n';
+					std::cout << "\x1B[33m" << "baseSalary is mandatory...Please enter again!!" << "\x1B[0m\n";
 				}
 				else {
 					try {
@@ -173,7 +173,7 @@ void DepartmentView::getUpdateDepartmentInput(Department& obj, int fieldNumber) 
 						}
 					}
 					catch (...) {
-						std::cout << "Wrong input...Please enter Positive real number!!\n";
+						std::cout << "\x1B[33m" << "Wrong input...Please enter Positive real number!!" << "\x1B[0m\n";
 						continue;
 					}
 					break;
@@ -188,7 +188,7 @@ void DepartmentView::getUpdateDepartmentInput(Department& obj, int fieldNumber) 
 				Utility::removeEmptySpaces(userInput);
 
 				if (userInput.size() == 0) {
-					std::cout << "allowance is mandatory...Please enter again!!" << '\n';
+					std::cout << "\x1B[33m" << "allowance is mandatory...Please enter again!!" << "\x1B[0m\n";
 				}
 				else {
 					try {
@@ -200,7 +200,7 @@ void DepartmentView::getUpdateDepartmentInput(Department& obj, int fieldNumber) 
 						}
 					}
 					catch (...) {
-						std::cout << "Wrong input...Please Positive enter real number!!\n";
+						std::cout << "\x1B[33m" << "Wrong input...Please Positive enter real number!!" << "\x1B[0m\n";
 						continue;
 					}
 					break;
@@ -215,7 +215,7 @@ void DepartmentView::getUpdateDepartmentInput(Department& obj, int fieldNumber) 
 				Utility::removeEmptySpaces(userInput);
 
 				if (userInput.size() == 0) {
-					std::cout << "deduction is mandatory...Please enter again!!" << '\n';
+					std::cout << "\x1B[33m" << "deduction is mandatory...Please enter again!!" << "\x1B[0m\n";
 				}
 				else {
 					try {
@@ -227,7 +227,7 @@ void DepartmentView::getUpdateDepartmentInput(Department& obj, int fieldNumber) 
 						}
 					}
 					catch (...) {
-						std::cerr << "Wrong input...Please enter Positive real number!!\n";
+						std::cerr << "\x1B[33m" << "Wrong input...Please enter Positive real number!!" << "\x1B[0m\n";
 						continue;
 					}
 					break;
@@ -248,7 +248,7 @@ void DepartmentView::getViewDepartmentInput(Department& obj, int fieldNumber) {
 			Utility::removeEmptySpaces(userInput);
 
 			if (userInput.size() == 0) {
-				std::cout << "departmentID is mandatory...Please enter again!!" << '\n';
+				std::cout << "\x1B[33m" << "departmentID is mandatory...Please enter again!!" << "\x1B[0m\n";
 			}
 			else {
 				try {
@@ -260,7 +260,7 @@ void DepartmentView::getViewDepartmentInput(Department& obj, int fieldNumber) {
 					}
 				}
 				catch (...) {
-					std::cout << "Wrong input...Please enter again!!\n";
+					std::cout << "\x1B[33m" << "Wrong input...Please enter again!!" << "\x1B[0m\n";
 					continue;
 				}
 				break;
@@ -274,7 +274,7 @@ void DepartmentView::getViewDepartmentInput(Department& obj, int fieldNumber) {
 			Utility::removeEmptySpaces(userInput);
 
 			if (userInput.size() == 0) {
-				std::cout << "departmentName is mandatory...Please enter again!!" << '\n';
+				std::cout << "\x1B[33m" << "departmentName is mandatory...Please enter again!!" << "\x1B[0m\n";
 			}
 			else {
 				obj.setDepartmentName(userInput);
@@ -290,7 +290,7 @@ void DepartmentView::getViewDepartmentInput(Department& obj, int fieldNumber) {
 			Utility::removeEmptySpaces(userInput);
 
 			if (userInput.size() == 0) {
-				std::cout << "baseSalary is mandatory...Please enter again!!" << '\n';
+				std::cout << "\x1B[33m" << "baseSalary is mandatory...Please enter again!!" << "\x1B[0m\n";
 			}
 			else {
 				try {
@@ -302,7 +302,7 @@ void DepartmentView::getViewDepartmentInput(Department& obj, int fieldNumber) {
 					}
 				}
 				catch (...) {
-					std::cout << "Wrong input...Please enter Positive real number!!\n";
+					std::cout << "\x1B[33m" << "Wrong input...Please enter Positive real number!!" << "\x1B[0m\n";
 					continue;
 				}
 				break;
@@ -317,7 +317,7 @@ void DepartmentView::getViewDepartmentInput(Department& obj, int fieldNumber) {
 			Utility::removeEmptySpaces(userInput);
 
 			if (userInput.size() == 0) {
-				std::cout << "allowance is mandatory...Please enter again!!" << '\n';
+				std::cout << "\x1B[33m" << "allowance is mandatory...Please enter again!!" << "\x1B[0m\n";
 			}
 			else {
 				try {
@@ -329,7 +329,7 @@ void DepartmentView::getViewDepartmentInput(Department& obj, int fieldNumber) {
 					}
 				}
 				catch (...) {
-					std::cout << "Wrong input...Please Positive enter real number!!\n";
+					std::cout << "\x1B[33m" << "Wrong input...Please Positive enter real number!!" << "\x1B[0m\n";
 					continue;
 				}
 				break;
@@ -344,7 +344,7 @@ void DepartmentView::getViewDepartmentInput(Department& obj, int fieldNumber) {
 			Utility::removeEmptySpaces(userInput);
 
 			if (userInput.size() == 0) {
-				std::cout << "deduction is mandatory...Please enter again!!" << '\n';
+				std::cout << "\x1B[33m" << "deduction is mandatory...Please enter again!!" << "\x1B[0m\n";
 			}
 			else {
 				try {
@@ -356,7 +356,7 @@ void DepartmentView::getViewDepartmentInput(Department& obj, int fieldNumber) {
 					}
 				}
 				catch (...) {
-					std::cerr << "Wrong input...Please enter Positive real number!!\n";
+					std::cerr << "\x1B[33m" << "Wrong input...Please enter Positive real number!!" << "\x1B[0m\n";
 					continue;
 				}
 				break;
@@ -370,8 +370,8 @@ bool DepartmentView::getDepartmentIDInput(Department& obj, const std::string& op
 	std::string userInput;
 
 	system("cls");
-	std::cout << "------------------------------------------"+ operation +" Department-------------------------------------------------\n";
-	std::cout << "To "+ operation +" a Department, please enter departmentID.\n";
+	std::cout << "------------------------------------------" << "\x1B[36m" << operation <<" Department"<< "\x1B[0m" <<"-------------------------------------------------\n";
+	std::cout << "\x1B[33m" << "To "+ operation +" a Department, please enter departmentID." << "\x1B[0m\n";
 
 	while (true) {
 		std::cout << "departmentID* : ";
@@ -379,7 +379,7 @@ bool DepartmentView::getDepartmentIDInput(Department& obj, const std::string& op
 		Utility::removeEmptySpaces(userInput);
 
 		if (userInput.size() == 0) {
-			std::cout << "departmentID is mandatory...Please enter again!!" << '\n';
+			std::cout << "\x1B[33m" << "departmentID is mandatory...Please enter again!!" << "\x1B[0m\n";
 		}
 		else {
 			if (Validate::validateDepartmentID(userInput)) {
@@ -387,13 +387,13 @@ bool DepartmentView::getDepartmentIDInput(Department& obj, const std::string& op
 				break;
 			}
 			else {
-				std::cout << "Wrong input...Please enter positive integer number!!\n";
+				std::cout << "\x1B[33m" << "Wrong input...Please enter positive integer number!!" << "\x1B[0m\n";
 			}
 		}
 	}
 
 	system("cls");
-	std::cout << "------------------------------------------"+ operation +" Department-------------------------------------------------\n";
+	std::cout << "------------------------------------------" << "\x1B[36m" << operation << " Department" << "\x1B[0m" << "-------------------------------------------------\n";
 	DepartmentController::selectDepartment("departmentID", userInput);
 
 	return Utility::proceedFurther(operation);
@@ -401,7 +401,7 @@ bool DepartmentView::getDepartmentIDInput(Department& obj, const std::string& op
 
 bool DepartmentView::updateDepartment() {
 	Department obj{ true };
-	bool isInvalidInput{ false };
+	auto isInvalidInput{ false };
 
 	if (!getDepartmentIDInput(obj, "Update")) {
 		return false;
@@ -409,15 +409,15 @@ bool DepartmentView::updateDepartment() {
 
 	while (true) {
 		system("cls");
-		std::cout << "------------------------------------------Update Department-------------------------------------------------\n";
-		std::cout << "Fields with * are required fields\n";
+		std::cout << "------------------------------------------" << "\x1B[36m" << "Update Department" << "\x1B[0m" << "-------------------------------------------------\n";
+		std::cout << "\x1B[36m" << "Fields with * are required fields" << "\x1B[0m\n";
 		std::cout << "0. Exit" << '\n';
 		printDepartmentFields();
 		std::cout << "5. Go Back" << '\n';
-		std::cout << "Select the field you want to update, or select 0/5 for operations: \n";
+		std::cout << "\x1B[33m" << "Select the field you want to update, or select 0/5 for operations:" << "\x1B[0m\n";
 
 		if (isInvalidInput) {
-			std::cerr << "Wrong Input, Please enter an input in the range: [0-5]\n";
+			std::cerr << "\x1B[33m" << "Wrong Input, Please enter an input in the range: [0-5]" << "\x1B[0m\n";
 			isInvalidInput = false;
 		}
 
@@ -463,7 +463,7 @@ bool DepartmentView::updateDepartment() {
 
 bool DepartmentView::deleteDepartment() {
 	Department obj{ true };
-	bool isInvalidInput{ false };
+	auto isInvalidInput{ false };
 
 	if (!getDepartmentIDInput(obj, "Delete")) {
 		return false;
@@ -474,20 +474,20 @@ bool DepartmentView::deleteDepartment() {
 	return Utility::repeatOperation("delete", "Department");
 }
 
-void DepartmentView::viewDepartmentConditional() {
+bool DepartmentView::viewDepartmentConditional() {
 	Department obj;
-	bool isInvalidInput{ false };
+	auto isInvalidInput{ false };
 
 	while (true) {
 		system("cls");
-		std::cout << "------------------------------------------View Department-------------------------------------------------\n";
+		std::cout << "------------------------------------------" << "\x1B[36m" << "View Department" << "\x1B[0m" << "-------------------------------------------------\n";
 		std::cout << "0. Exit" << '\n';
 		printViewDepartmentFields();
 		std::cout << "6. Go Back" << '\n';
-		std::cout << "Select the field by which you want to view the Department, or select 0/6 for operations: \n";
+		std::cout << "\x1B[33m" << "Select the field by which you want to view the Department, or select 0/6 for operations:" << "\x1B[0m\n";
 
 		if (isInvalidInput) {
-			std::cerr << "Wrong Input, Please enter an input in the range: [0-3]\n";
+			std::cerr << "\x1B[33m" << "Wrong Input, Please enter an input in the range: [0-3]" << "\x1B[0m\n";
 			isInvalidInput = false;
 		}
 
@@ -521,17 +521,17 @@ void DepartmentView::viewDepartmentConditional() {
 				break;
 			}
 			else if (userInput == 4) {
-				getViewDepartmentInput(obj, 3);
+				getViewDepartmentInput(obj, 4);
 				DepartmentController::selectDepartment("allowance", std::to_string(obj.getAllowance()));
 				break;
 			}
 			else if (userInput == 5) {
-				getViewDepartmentInput(obj, 3);
+				getViewDepartmentInput(obj, 5);
 				DepartmentController::selectDepartment("deduction", std::to_string(obj.getDeduction()));
 				break;
 			}
 			else if (userInput == 6) {
-				return;
+				return false;
 			}
 			else {
 				isInvalidInput = true;
@@ -541,22 +541,23 @@ void DepartmentView::viewDepartmentConditional() {
 			isInvalidInput = true;
 		}
 	}
+	return true;
 }
 
 bool DepartmentView::viewDepartment() {
-	bool isInvalidInput{ false };
+	auto isInvalidInput{ false };
 
 	while (true) {
 		system("cls");
-		std::cout << "------------------------------------------View Department-------------------------------------------------\n";
+		std::cout << "------------------------------------------" << "\x1B[36m" << "View Department" << "\x1B[0m" << "-------------------------------------------------\n";
 		std::cout << "0. Exit" << '\n';
 		std::cout << "1. View Department based on a field" << '\n';
 		std::cout << "2. View all Department" << '\n';
 		std::cout << "3. Go Back" << '\n';
-		std::cout << "Select the operation [0-3]: \n";
+		std::cout << "\x1B[33m" << "Select the operation [0-3]: " << "\x1B[0m\n";
 
 		if (isInvalidInput) {
-			std::cerr << "Wrong Input, Please enter an input in the range: [0-3]\n";
+			std::cerr << "\x1B[33m" << "Wrong Input, Please enter an input in the range: [0-3]" << "\x1B[0m\n";
 			isInvalidInput = false;
 		}
 
@@ -575,7 +576,9 @@ bool DepartmentView::viewDepartment() {
 				std::exit(0);
 			}
 			else if (userInput == 1) {
-				viewDepartmentConditional();
+				if (!viewDepartmentConditional()) {
+					return true;
+				}
 				break;
 			}
 			else if (userInput == 2) {
