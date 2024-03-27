@@ -148,6 +148,14 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\fixture\DepartmentFixture.h" />
+    <ClInclude Include="include\fixture\EmployeeFixture.h" />
+    <ClInclude Include="include\fixture\EngineerFixture.h" />
+    <ClInclude Include="include\fixture\FinanceFixture.h" />
+    <ClInclude Include="include\fixture\HRFixture.h" />
+    <ClInclude Include="include\fixture\ManagerFixture.h" />
+    <ClInclude Include="include\fixture\QAFixture.h" />
+    <ClInclude Include="include\fixture\SalaryFixture.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
