@@ -162,7 +162,6 @@ namespace EmployeeDB::Model {
             return m_MentorID.value_or(0);
         }
 
-        static inline double computeSalary(Salary& obj);
 	    private:
         Name name;
         std::string m_Email;
@@ -207,18 +206,6 @@ namespace EmployeeDB::Model {
             gender = Gender::Other;
         }
         return gender;
-    }
-
-    inline double Employee::computeSalary(Salary & obj) {
-        auto totalSalary{ 0.0 };
-
-        totalSalary += obj.getBaseSalary();
-        totalSalary += obj.getAllowance();
-        totalSalary -= obj.getDeduction();
-        totalSalary += obj.getBonus();
-        totalSalary += (obj.getBaseSalary() * (obj.getPerformanceMetric() / 100));
-
-        return totalSalary;
     }
 }
 

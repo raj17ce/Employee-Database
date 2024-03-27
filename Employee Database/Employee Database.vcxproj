@@ -94,6 +94,8 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir)$(ProjectName)\include\model\;$(SolutionDir)$(ProjectName)\lib\logician\;$(SolutionDir)$(ProjectName)\lib\sqlite\;$(SolutionDir)$(ProjectName)\include\;$(SolutionDir)$(ProjectName)\include\controller\;$(SolutionDir)$(ProjectName)\include\view\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile />
+      <PrecompiledHeaderOutputFile />
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -110,6 +112,8 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir)$(ProjectName)\include\model\;$(SolutionDir)$(ProjectName)\lib\logician\;$(SolutionDir)$(ProjectName)\lib\sqlite\;$(SolutionDir)$(ProjectName)\include\;$(SolutionDir)$(ProjectName)\include\controller\;$(SolutionDir)$(ProjectName)\include\view\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile />
+      <PrecompiledHeaderOutputFile />
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -126,6 +130,8 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir)$(ProjectName)\include\model\;$(SolutionDir)$(ProjectName)\lib\logician\;$(SolutionDir)$(ProjectName)\lib\sqlite\;$(SolutionDir)$(ProjectName)\include\;$(SolutionDir)$(ProjectName)\include\controller\;$(SolutionDir)$(ProjectName)\include\view\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile />
+      <PrecompiledHeaderOutputFile />
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -142,6 +148,8 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir)$(ProjectName)\include\model\;$(SolutionDir)$(ProjectName)\lib\logician\;$(SolutionDir)$(ProjectName)\lib\sqlite\;$(SolutionDir)$(ProjectName)\include\;$(SolutionDir)$(ProjectName)\include\controller\;$(SolutionDir)$(ProjectName)\include\view\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile />
+      <PrecompiledHeaderOutputFile />
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -216,10 +224,19 @@
     <None Include="data\database.sql" />
     <None Include="data\Employee.db" />
     <None Include="data\sampleRecords.sql" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="data\EmployeeDB.log" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="..\packages\gmock.1.11.0\build\native\gmock.targets" Condition="Exists('..\packages\gmock.1.11.0\build\native\gmock.targets')" />
+  </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\gmock.1.11.0\build\native\gmock.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\gmock.1.11.0\build\native\gmock.targets'))" />
+  </Target>
 </Project>

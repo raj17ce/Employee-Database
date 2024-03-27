@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Employee Database", "Employee Database\Employee Database.vcxproj", "{597DD8F4-C43F-4726-ADFE-A6F9845F85F3}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Employee Database Test", "Employee Database Test\Employee Database Test.vcxproj", "{C16CF231-D27E-4110-B809-9E3F4DC3C77F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{597DD8F4-C43F-4726-ADFE-A6F9845F85F3}.Release|x64.Build.0 = Release|x64
 		{597DD8F4-C43F-4726-ADFE-A6F9845F85F3}.Release|x86.ActiveCfg = Release|Win32
 		{597DD8F4-C43F-4726-ADFE-A6F9845F85F3}.Release|x86.Build.0 = Release|Win32
+		{C16CF231-D27E-4110-B809-9E3F4DC3C77F}.Debug|x64.ActiveCfg = Debug|x64
+		{C16CF231-D27E-4110-B809-9E3F4DC3C77F}.Debug|x64.Build.0 = Debug|x64
+		{C16CF231-D27E-4110-B809-9E3F4DC3C77F}.Debug|x86.ActiveCfg = Debug|Win32
+		{C16CF231-D27E-4110-B809-9E3F4DC3C77F}.Debug|x86.Build.0 = Debug|Win32
+		{C16CF231-D27E-4110-B809-9E3F4DC3C77F}.Release|x64.ActiveCfg = Release|x64
+		{C16CF231-D27E-4110-B809-9E3F4DC3C77F}.Release|x64.Build.0 = Release|x64
+		{C16CF231-D27E-4110-B809-9E3F4DC3C77F}.Release|x86.ActiveCfg = Release|Win32
+		{C16CF231-D27E-4110-B809-9E3F4DC3C77F}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

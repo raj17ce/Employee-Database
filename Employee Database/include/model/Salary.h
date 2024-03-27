@@ -57,6 +57,8 @@ namespace EmployeeDB::Model {
         double getDeduction() const {
             return m_Deduction;
         }
+
+        inline double computeSalary();
 	private:
 		int m_EmployeeID;
 		int m_DepartmentID;
@@ -66,6 +68,18 @@ namespace EmployeeDB::Model {
 		double m_Allowance;
 		double m_Deduction;
 	};
+
+    inline double Salary::computeSalary() {
+        auto totalSalary{ 0.0 };
+
+        totalSalary += m_BaseSalary;
+        totalSalary += m_Allowance;
+        totalSalary -= m_Deduction;
+        totalSalary += m_Deduction;
+        totalSalary += (m_BaseSalary * (m_PerformanceMetric / 100));
+
+        return totalSalary;
+    }
 }
 
 #endif

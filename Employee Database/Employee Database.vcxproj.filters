@@ -196,6 +196,7 @@
     <None Include="data\sampleRecords.sql" />
     <None Include="data\Employee.db" />
     <None Include="data\database.sql" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="data\EmployeeDB.log" />
