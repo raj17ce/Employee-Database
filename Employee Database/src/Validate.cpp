@@ -12,7 +12,7 @@ using EmployeeDB::Controller::EmployeeController, EmployeeDB::Controller::Depart
 
 
 bool Validate::validateEmail(const std::string& email) {
-	return std::regex_match(email, std::regex("(^[a-zA-Z0-9.]+@([a-zA-Z0-9\\-]+.)+[a-zA-Z0-9]{2,4}$)"));
+	return std::regex_match(email, std::regex("(^[a-zA-Z0-9\\.]+@([a-zA-Z0-9\\-]+\\.)+[a-zA-Z0-9]{2,4}$)"));
 }
 
 bool Validate::validateMobile(const std::string& number) {

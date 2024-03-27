@@ -6,7 +6,7 @@ INSERT INTO Department ("departmentName", "baseSalary", "allowance", "deduction"
 ('QA', 59000, 4800, 1900);
 
 -- Populate Employee Table
-INSERT INTO Employee ("firstName", "middleName", "lastName", "dateOfBirth", "mobileNo", "email", "address", "gender", "dateOfJoining", "departmentID", "mentorID", "performanceMetric", "bonus") VALUES 
+INSERT INTO Employee ("firstName", "middleName", "lastName", "dateOfBirth", "mobileNumber", "email", "address", "gender", "dateOfJoining", "departmentID", "mentorID", "performanceMetric", "bonus") VALUES 
 ('John', 'Doe', 'Smith', '15-05-1990', 1234567891, 'john.smith@example.com', '123 Main St, City, Country', 'Male', '10-01-2020', 1, NULL, 0.85, 500),
 ('David', 'Lee', 'Brown', '03-04-1993', 1234509876, 'david.brown@example.com', '345 Oak St, City, Country', 'Male', '12-11-2022', 1, 2, 0.78, 450),
 ('Daniel', 'Joseph', 'Garcia', '22-06-1989', 1234567892, 'daniel.garcia@example.com', '234 Cedar St, City, Country', 'Male', '30-08-2018', 1, 3, 0.85, 550),
@@ -77,7 +77,7 @@ INSERT INTO QA ("employeeID", "testingTool") VALUES
 (28, 'LoadRunner');
  
 -- Populating Manager table
-INSERT INTO Manager ("managerID", "departmentID", "teamSize", "yearsOfExp", "projectTitle", "role") VALUES 
+INSERT INTO Manager ("managerID", "departmentID", "teamSize", "yearsOfExperience", "projectTitle", "role") VALUES 
 (1, 1, 15, 10, 'Project A', 'Java'),
 (5, 1, 18, 12, 'Project E', 'C#'),
 (8, 2, 12, 8, 'Project B', 'Python'),
