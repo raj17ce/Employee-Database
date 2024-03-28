@@ -195,7 +195,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="data\Employee.db" />
     <None Include="packages.config" />
+    <None Include="pch.pch" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="data\EmployeeDB.log" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
