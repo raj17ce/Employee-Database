@@ -395,6 +395,7 @@ bool DepartmentView::getDepartmentIDInput(Department& obj, const std::string& op
 	system("cls");
 	std::cout << "------------------------------------------" << "\x1B[36m" << operation << " Department" << "\x1B[0m" << "-------------------------------------------------\n";
 	DepartmentController::selectDepartment("departmentID", userInput);
+	std::cout << "\x1B[31m" << "Deleting the Department will also delete all of it's Employees." << "\x1B[0m\n";
 
 	return Utility::proceedFurther(operation);
 }

@@ -166,6 +166,7 @@
     <ClCompile Include="src\controller\DepartmentController.cpp" />
     <ClCompile Include="src\controller\EmployeeController.cpp" />
     <ClCompile Include="src\controller\EngineerController.cpp" />
+    <ClCompile Include="src\controller\ExportController.cpp" />
     <ClCompile Include="src\controller\FinanceController.cpp" />
     <ClCompile Include="src\controller\HRController.cpp" />
     <ClCompile Include="src\controller\ManagerController.cpp" />
@@ -187,6 +188,7 @@
     <ClInclude Include="include\controller\DepartmentController.h" />
     <ClInclude Include="include\controller\EmployeeController.h" />
     <ClInclude Include="include\controller\EngineerController.h" />
+    <ClInclude Include="include\controller\ExportController.h" />
     <ClInclude Include="include\controller\FinanceController.h" />
     <ClInclude Include="include\controller\HRController.h" />
     <ClInclude Include="include\controller\ManagerController.h" />

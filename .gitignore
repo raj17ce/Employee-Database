@@ -31,8 +31,9 @@
 *.out
 *.app
 
-# Logs
+# Data Files
 *.log
+*.csv
 
 #folders
 bin/

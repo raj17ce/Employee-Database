@@ -19,7 +19,7 @@ DBManager& DBManager::instance() {
 }
 
 int DBManager::openConnection() {
-	m_ResultCode = sqlite3_open(EmployeeDB::Config::DbFilePath.string().c_str(), &m_DB);
+	m_ResultCode = sqlite3_open(EmployeeDB::Config::DBFilePath.string().c_str(), &m_DB);
 
 	if (m_ResultCode == SQLITE_OK) {
 		LogManager::instance().getLogger().debug("Successfully opened DB Connection");
