@@ -171,6 +171,7 @@
     <ClCompile Include="src\controller\HRController.cpp" />
     <ClCompile Include="src\controller\ManagerController.cpp" />
     <ClCompile Include="src\controller\QAController.cpp" />
+    <ClCompile Include="src\controller\TableController.cpp" />
     <ClCompile Include="src\DBManager.cpp" />
     <ClCompile Include="src\Validate.cpp" />
     <ClCompile Include="src\view\DepartmentView.cpp" />
@@ -193,6 +194,7 @@
     <ClInclude Include="include\controller\HRController.h" />
     <ClInclude Include="include\controller\ManagerController.h" />
     <ClInclude Include="include\controller\QAController.h" />
+    <ClInclude Include="include\controller\TableController.h" />
     <ClInclude Include="include\DBManager.h" />
     <ClInclude Include="include\EmployeeDB.h" />
     <ClInclude Include="include\LogManager.h" />
@@ -204,6 +206,7 @@
     <ClInclude Include="include\model\Manager.h" />
     <ClInclude Include="include\model\QA.h" />
     <ClInclude Include="include\model\Salary.h" />
+    <ClInclude Include="include\model\Table.h" />
     <ClInclude Include="include\Validate.h" />
     <ClInclude Include="include\View.h" />
     <ClInclude Include="include\view\DepartmentView.h" />
