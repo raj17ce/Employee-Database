@@ -2,7 +2,7 @@
 #include <string>
 #include "View.h"
 
-using EmployeeDB::View::MainView, EmployeeDB::View::DepartmentView, EmployeeDB::View::ManagerView, EmployeeDB::View::ExportView;
+using EmployeeDB::View::MainView, EmployeeDB::View::DepartmentView, EmployeeDB::View::ManagerView, EmployeeDB::View::ExportView, EmployeeDB::View::TableView;
 using EmployeeDB::View::EngineerView, EmployeeDB::View::FinanceView, EmployeeDB::View::HRView, EmployeeDB::View::QAView;
 
 void MainView::mainMenuView() {
@@ -45,7 +45,7 @@ void MainView::printMainMenu() {
 	system("cls");
 	std::cout << "------------------------------------------"<< "\x1B[36m" <<"Welcome to Employee Database"<< "\x1B[0m" <<"-------------------------------------------------\n";
 	std::cout << "0. Exit\n";
-	std::cout << "1. Create Table\n";
+	std::cout << "1. Table Operations\n";
 	std::cout << "2. Insert Data\n";
 	std::cout << "3. Update Data\n";
 	std::cout << "4. Delete Data\n";
@@ -59,7 +59,7 @@ void MainView::mainMenuSelection(short int userInput) {
 		case 0:
 			std::exit(0);
 		case 1:
-			//createTableView();
+			tableMenuView();
 			break;
 		case 2:
 			insertMenuView();
@@ -78,6 +78,68 @@ void MainView::mainMenuSelection(short int userInput) {
 			break;
 	}
 };
+
+void MainView::tableMenuView() {
+	auto isInvalidInput{ false };
+
+	while (true) {
+		system("cls");
+		std::cout << "------------------------------------------" << "\x1B[36m" << "Table Menu" << "\x1B[0m" << "-------------------------------------------------\n";
+		std::cout << "0. Exit\n";
+		std::cout << "1. Create Table\n";
+		std::cout << "2. Delete Table\n";
+		std::cout << "3. Main Menu\n";
+		std::cout << "\x1B[33m" << "Please select an operation to perform: " << "\x1B[0m\n";
+
+		if (isInvalidInput) {
+			std::cerr << "\x1B[33m" << "Wrong Input, Please enter an input in the range: [0-3]" << "\x1B[0m\n";
+			isInvalidInput = false;
+		}
+
+		int userInput;
+		std::string inputLine;
+		std::getline(std::cin, inputLine);
+		Utility::removeEmptySpaces(inputLine);
+
+		if (inputLine.length() == 0) {
+			isInvalidInput = true;
+			continue;
+		}
+		try {
+			userInput = stoi(inputLine);
+			if (userInput >= 0 && userInput <= 2) {
+				tableMenuSelection(userInput);
+			}
+			else if (userInput == 3) {
+				return;
+			}
+			else {
+				isInvalidInput = true;
+			}
+		}
+		catch (...) {
+			isInvalidInput = true;
+		}
+	}
+}
+
+void MainView::tableMenuSelection(short int userInput) {
+	auto continueOperation{ true };
+	switch (userInput) {
+	case 0:
+		std::exit(0);
+	case 1:
+		while (continueOperation) {
+			continueOperation = TableView::createTable();
+		}
+		break;
+	case 2:
+		while (continueOperation) {
+			continueOperation = TableView::deleteTable();
+		}
+		break;
+	}
+}
 
 void MainView::printTableMenu() {
 	std::cout << "0. Exit\n";

@@ -10,6 +10,9 @@ namespace EmployeeDB::View {
 		static void printMainMenu();
 		static void mainMenuSelection(short int userInput);
 
+		static void tableMenuView();
+		static void tableMenuSelection(short int userInput);
+
 		static void printTableMenu();
 
 		static void insertMenuView();

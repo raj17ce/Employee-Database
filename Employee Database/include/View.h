@@ -9,6 +9,8 @@
 #include "./view/FinanceView.h"
 #include "./view/HRView.h"
 #include "./view/QAView.h"
+#include "./view/ExportView.h"
+#include "./view/TableView.h"
 #include "./view/Utility.h"
 
 #endif
