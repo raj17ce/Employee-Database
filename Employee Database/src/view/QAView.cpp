@@ -21,20 +21,9 @@ bool QAView::insertQA() {
 
 	EmployeeView::getInsertEmployeeInput(obj);
 
-	std::string userInput;
-
-	while (true) {
-		std::cout << "testingTool* : ";
-		std::getline(std::cin, userInput);
-		Utility::removeEmptySpaces(userInput);
-
-		if (userInput.size() == 0) {
-			std::cout << "\x1B[33m" << "testingTool is mandatory...Please enter again!!" << "\x1B[0m\n";
-		}
-		else {
-			obj.setTestingTool(userInput);
-			break;
-		}
+	{
+		auto testingTool = Utility::getUserInputString("testingTool").value();
+		obj.setTestingTool(testingTool);
 	}
 
 	QAController::insertQA(obj);
@@ -94,16 +83,9 @@ bool QAView::updateQA() {
 				}
 			}
 			else if (userInput == 13) {
-				while (true) {
-					std::cout << "testingTool* : ";
-					std::getline(std::cin, inputLine);
-					if (inputLine.size() == 0) {
-						std::cout << "\x1B[33m" << "testingTool is mandatory...Please enter again!!" << "\x1B[0m\n";
-					}
-					else {
-						obj.setTestingTool(inputLine);
-						break;
-					}
+				{
+					auto testingTool = Utility::getUserInputString("testingTool").value();
+					obj.setTestingTool(testingTool);
 				}
 				if (Utility::repeatOperation("update", "field")) {
 					continue;
@@ -191,7 +173,7 @@ bool QAView::viewQAConditional() {
 			}
 			else if (userInput == 3) {
 				EmployeeView::getViewEmployeeInput(obj, 3);
-				QAController::selectQA("middleName", obj.getMiddleName());
+				QAController::selectQA("middleName", obj.getMiddleName().value());
 				break;
 			}
 			else if (userInput == 4) {
@@ -201,7 +183,7 @@ bool QAView::viewQAConditional() {
 			}
 			else if (userInput == 5) {
 				EmployeeView::getViewEmployeeInput(obj, 5);
-				QAController::selectQA("dateOfBirth", obj.getDateOfBirth());
+				QAController::selectQA("dateOfBirth", obj.getDateOfBirth().value());
 				break;
 			}
 			else if (userInput == 6) {
@@ -231,32 +213,23 @@ bool QAView::viewQAConditional() {
 			}
 			else if (userInput == 11) {
 				EmployeeView::getViewEmployeeInput(obj, 11);
-				QAController::selectQA("mentorID", std::to_string(obj.getMentorID()));
+				QAController::selectQA("mentorID", std::to_string(obj.getMentorID().value()));
 				break;
 			}
 			else if (userInput == 12) {
 				EmployeeView::getViewEmployeeInput(obj, 12);
-				QAController::selectQA("performanceMetric", std::to_string(obj.getPerformanceMetric()));
+				QAController::selectQA("performanceMetric", std::to_string(obj.getPerformanceMetric().value()));
 				break;
 			}
 			else if (userInput == 13) {
 				EmployeeView::getViewEmployeeInput(obj, 13);
-				QAController::selectQA("bonus", std::to_string(obj.getBonus()));
+				QAController::selectQA("bonus", std::to_string(obj.getBonus().value()));
 				break;
 			}
 			else if (userInput == 14) {
-				while (true) {
-					std::cout << "testingTool* : ";
-					std::getline(std::cin, inputLine);
-					Utility::removeEmptySpaces(inputLine);
-
-					if (inputLine.size() == 0) {
-						std::cout << "\x1B[33m" << "testingTool is mandatory...Please enter again!!" << "\x1B[0m\n";
-					}
-					else {
-						obj.setTestingTool(inputLine);
-						break;
-					}
+				{
+					auto testingTool = Utility::getUserInputString("testingTool").value();
+					obj.setTestingTool(testingTool);
 				}
 				QAController::selectQA("testingTool", obj.getTestingTool());
 				break;

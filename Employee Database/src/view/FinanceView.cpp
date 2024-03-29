@@ -21,20 +21,9 @@ bool FinanceView::insertFinance() {
 
 	EmployeeView::getInsertEmployeeInput(obj);
 
-	std::string userInput;
-
-	while (true) {
-		std::cout << "accountingTool* : ";
-		std::getline(std::cin, userInput);
-		Utility::removeEmptySpaces(userInput);
-
-		if (userInput.size() == 0) {
-			std::cout << "\x1B[33m" << "accountingTool is mandatory...Please enter again!!" << "\x1B[0m\n";
-		}
-		else {
-			obj.setAccountingTool(userInput);
-			break;
-		}
+	{
+		auto accountingTool = Utility::getUserInputString("accountingTool").value();
+		obj.setAccountingTool(accountingTool);
 	}
 
 	FinanceController::insertFinance(obj);
@@ -94,16 +83,9 @@ bool FinanceView::updateFinance() {
 				}
 			}
 			else if (userInput == 13) {
-				while (true) {
-					std::cout << "accountingTool* : ";
-					std::getline(std::cin, inputLine);
-					if (inputLine.size() == 0) {
-						std::cout << "\x1B[33m" << "accountingTool is mandatory...Please enter again!!" << "\x1B[0m\n";
-					}
-					else {
-						obj.setAccountingTool(inputLine);
-						break;
-					}
+				{
+					auto accountingTool = Utility::getUserInputString("accountingTool").value();
+					obj.setAccountingTool(accountingTool);
 				}
 				if (Utility::repeatOperation("update", "field")) {
 					continue;
@@ -191,7 +173,7 @@ bool FinanceView::viewFinanceConditional() {
 			}
 			else if (userInput == 3) {
 				EmployeeView::getViewEmployeeInput(obj, 3);
-				FinanceController::selectFinance("middleName", obj.getMiddleName());
+				FinanceController::selectFinance("middleName", obj.getMiddleName().value());
 				break;
 			}
 			else if (userInput == 4) {
@@ -201,7 +183,7 @@ bool FinanceView::viewFinanceConditional() {
 			}
 			else if (userInput == 5) {
 				EmployeeView::getViewEmployeeInput(obj, 5);
-				FinanceController::selectFinance("dateOfBirth", obj.getDateOfBirth());
+				FinanceController::selectFinance("dateOfBirth", obj.getDateOfBirth().value());
 				break;
 			}
 			else if (userInput == 6) {
@@ -231,32 +213,23 @@ bool FinanceView::viewFinanceConditional() {
 			}
 			else if (userInput == 11) {
 				EmployeeView::getViewEmployeeInput(obj, 11);
-				FinanceController::selectFinance("mentorID", std::to_string(obj.getMentorID()));
+				FinanceController::selectFinance("mentorID", std::to_string(obj.getMentorID().value()));
 				break;
 			}
 			else if (userInput == 12) {
 				EmployeeView::getViewEmployeeInput(obj, 12);
-				FinanceController::selectFinance("performanceMetric", std::to_string(obj.getPerformanceMetric()));
+				FinanceController::selectFinance("performanceMetric", std::to_string(obj.getPerformanceMetric().value()));
 				break;
 			}
 			else if (userInput == 13) {
 				EmployeeView::getViewEmployeeInput(obj, 13);
-				FinanceController::selectFinance("bonus", std::to_string(obj.getBonus()));
+				FinanceController::selectFinance("bonus", std::to_string(obj.getBonus().value()));
 				break;
 			}
 			else if (userInput == 14) {
-				while (true) {
-					std::cout << "accountingTool* : ";
-					std::getline(std::cin, inputLine);
-					Utility::removeEmptySpaces(inputLine);
-
-					if (inputLine.size() == 0) {
-						std::cout << "\x1B[33m" << "accountingTool is mandatory...Please enter again!!" << "\x1B[0m\n";
-					}
-					else {
-						obj.setAccountingTool(inputLine);
-						break;
-					}
+				{
+					auto accountingTool = Utility::getUserInputString("accountingTool").value();
+					obj.setAccountingTool(accountingTool);
 				}
 				FinanceController::selectFinance("accountingTool", obj.getAccountingTool());
 				break;

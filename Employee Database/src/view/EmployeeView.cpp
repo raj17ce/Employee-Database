@@ -40,760 +40,256 @@ void EmployeeView::printViewEmployeeFields() {
 }
 
 void EmployeeView::getInsertEmployeeInput(Employee& obj) {
-	std::string userInput;
+	
+	{
+		auto firstName = Utility::getUserInputString("firstName").value();
+		obj.setFirstName(firstName);
+	}
 
-	while (true) {
-		std::cout << "firstName* : ";
-		std::getline(std::cin, userInput);
-		Utility::removeEmptySpaces(userInput);
-
-		if (userInput.size() == 0) {
-			std::cout << "\x1B[33m" << "First Name is mandatory...Please enter again!!" << "\x1B[0m\n";
-		}
-		else {
-			obj.setFirstName(userInput);
-			break;
+	{
+		auto middleName = Utility::getUserInputString("middleName", 0, false);
+		if (middleName.has_value()) {
+			obj.setMiddleName(middleName.value());
 		}
 	}
 
 	{
-		std::cout << "middleName : ";
-		std::getline(std::cin, userInput);
-		Utility::removeEmptySpaces(userInput);
-
-		if (userInput.size() != 0) {
-			obj.setMiddleName(userInput);
-		}
+		auto lastName = Utility::getUserInputString("lastName").value();
+		obj.setLastName(lastName);
 	}
 
-	while (true) {
-		std::cout << "lastName* : ";
-		std::getline(std::cin, userInput);
-		Utility::removeEmptySpaces(userInput);
-
-		if (userInput.size() == 0) {
-			std::cout << "\x1B[33m" << "Last Name is mandatory...Please enter again!!" << "\x1B[0m\n";
-		}
-		else {
-			obj.setLastName(userInput);
-			break;
+	{
+		auto dateOfBirth = Utility::getUserInputDate("dateOfBirth", Validate::validateDate, false);
+		if (dateOfBirth.has_value()) {
+			obj.setDateOfBirth(dateOfBirth.value());
 		}
 	}
 
 	{
-		while (true) {
-			std::cout << "dateOfBirth [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : ";
-			std::getline(std::cin, userInput);
-			Utility::removeEmptySpaces(userInput);
-
-			if (userInput.size() == 0) {
-				break;
-			}
-			if (Validate::validateDate(userInput)) {
-				obj.setDateOfBirth(userInput);
-				break;
-			}
-			else {
-				std::cerr << "\x1B[33m" << "Please Enter the date in format [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : " << "\x1B[0m\n";
-			}
-		}
+		auto mobileNo = Utility::getUserInputLL("mobileNo", Validate::validateMobile).value();
+		obj.setMobileNumber(mobileNo);
 	}
 
-	while (true) {
-		std::cout << "mobileNo* (Starting from [6-9]) : ";
-		std::getline(std::cin, userInput);
-		Utility::removeEmptySpaces(userInput);
-
-		if (userInput.size() == 0) {
-			std::cout << "\x1B[33m" << "mobileNo is mandatory...Please enter again!!" << "\x1B[0m\n";
-		}
-		else {
-			if (Validate::validateMobile(userInput)) {
-				obj.setMobileNumber(std::stoll(userInput));
-				break;
-			}
-			else {
-				std::cerr << "\x1B[33m" << "Wrong mobileNo...Please enter again!!" << "\x1B[0m\n";
-			}
-		}
+	{
+		auto email = Utility::getUserInputString("email", Validate::validateEmail).value();
+		obj.setEmail(email);
 	}
 
-	while (true) {
-		std::cout << "email* : ";
-		std::getline(std::cin, userInput);
-		Utility::removeEmptySpaces(userInput);
-
-		if (userInput.size() == 0) {
-			std::cout << "\x1B[33m" << "email is mandatory...Please enter again!!" << "\x1B[0m\n";
-		}
-		else {
-			if (Validate::validateEmail(userInput)) {
-				obj.setEmail(userInput);
-				break;
-			}
-			else {
-				std::cerr << "\x1B[33m" << "Wrong email...Please enter again!!" << "\x1B[0m\n";
-			}
-		}
+	{
+		auto address = Utility::getUserInputString("address").value();
+		obj.setAddress(address);
 	}
 
-	while (true) {
-		std::cout << "address* : ";
-		std::getline(std::cin, userInput);
-		Utility::removeEmptySpaces(userInput);
-
-		if (userInput.size() == 0) {
-			std::cout << "\x1B[33m" << "Address is mandatory...Please enter again!!" << "\x1B[0m\n";
-		}
-		else {
-			obj.setAddress(userInput);
-			break;
-		}
+	{
+		auto gender = Utility::getUserInputGender("gender", Validate::validateGender).value();
+		obj.setGender(EmployeeDB::Model::getGenderFromString(gender));
+	}
+	
+	{
+		auto dateOfJoining = Utility::getUserInputDate("dateOfJoining", Validate::validateDate).value();
+		obj.setDateOfJoining(dateOfJoining);
 	}
 
-	while (true) {
-		std::cout << "gender* : ";
-		std::getline(std::cin, userInput);
-		Utility::removeEmptySpaces(userInput);
-
-		if (userInput.size() == 0) {
-			std::cout << "\x1B[33m" << "Gender is mandatory...Please enter again!!" << "\x1B[0m\n";
-		}
-		else {
-			if (Validate::validateGender(userInput)) {
-				obj.setGender(EmployeeDB::Model::getGenderFromString(userInput));
-				break;
-			}
-			else {
-				std::cerr << "\x1B[33m" << "Wrong input...Please enter again!!" << "\x1B[0m\n";
-			}
-		}
-	}
-
-	while (true) {
-		std::cout << "dateOfJoining* [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : ";
-		std::getline(std::cin, userInput);
-		Utility::removeEmptySpaces(userInput);
-
-		if (userInput.size() == 0) {
-			std::cout << "\x1B[33m" << "dateOfJoining is mandatory...Please enter again!!" << "\x1B[0m\n";
-		}
-		else {
-			if (Validate::validateDate(userInput)) {
-				obj.setDateOfJoining(userInput);
-				break;
-			}
-			else {
-				std::cerr << "\x1B[33m" << "Please Enter the date in format [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : " << "\x1B[0m\n";
-			}
+	{
+		auto mentorID = Utility::getUserInputInt("mentorID", 0, false);
+		if (mentorID.has_value()) {
+			obj.setMentorID(mentorID.value());
 		}
 	}
 
 	{
-		while (true) {
-			std::cout << "mentorID : ";
-			std::getline(std::cin, userInput);
-			Utility::removeEmptySpaces(userInput);
-
-			if (userInput.size() == 0) {
-				break;
-			}
-			try {
-				if (stoi(userInput) >= 0.0) {
-					obj.setMentorID(stoi(userInput));
-					break;
-				}
-				else {
-					throw "Negative Number";
-				}
-			}
-			catch (...) {
-				std::cerr << "\x1B[33m" << "Wrong input...Please enter Positive integer number!!" << "\x1B[0m\n";
-			}
+		auto performanceMetric = Utility::getUserInputDouble("performanceMetric", false);
+		if (performanceMetric.has_value()) {
+			obj.setPerformanceMetric(performanceMetric.value());
 		}
 	}
 
 	{
-		while (true) {
-			std::cout << "performanceMetric : ";
-			std::getline(std::cin, userInput);
-			Utility::removeEmptySpaces(userInput);
-
-			if (userInput.size() == 0) {
-				break;
-			}
-			try {
-				if (stod(userInput) >= 0.0) {
-					obj.setPerformanceMetric(stod(userInput));
-					break;
-				}
-				else {
-					throw "Negative Number";
-				}
-			}
-			catch (...) {
-				std::cerr << "\x1B[33m" << "Wrong input...Please enter Positive real number!!" << "\x1B[0m\n";
-			}
-		}
-	}
-
-	{
-		while (true) {
-			std::cout << "bonus : ";
-			std::getline(std::cin, userInput);
-			Utility::removeEmptySpaces(userInput);
-
-			if (userInput.size() == 0) {
-				break;
-			}
-			try {
-				if (stod(userInput) >= 0.0) {
-					obj.setBonus(stod(userInput));
-					break;
-				}
-				else {
-					throw "Negative Number";
-				}
-			}
-			catch (...) {
-				std::cerr << "\x1B[33m" << "Wrong input...Please enter Positive real number!!" << "\x1B[0m\n";
-			}
+		auto bonus = Utility::getUserInputDouble("bonus", false);
+		if (bonus.has_value()) {
+			obj.setBonus(bonus.value());
 		}
 	}
 };
 
 void EmployeeView::getUpdateEmployeeInput(Employee& obj, int fieldNumber) {
-	std::string userInput;
 
 	switch (fieldNumber) {
 	case 1:
-		while (true) {
-			std::cout << "firstName* : ";
-			std::getline(std::cin, userInput);
-			Utility::removeEmptySpaces(userInput);
-
-			if (userInput.size() == 0) {
-				std::cout << "\x1B[33m" << "First Name is mandatory...Please enter again!!" << "\x1B[0m\n";
-			}
-			else {
-				obj.setFirstName(userInput);
-				break;
-			}
-		}
-		break;
+	{
+		auto firstName = Utility::getUserInputString("firstName").value();
+		obj.setFirstName(firstName);
+	}
+	break;
 	case 2:
-		{
-			std::cout << "middleName : ";
-			std::getline(std::cin, userInput);
-			Utility::removeEmptySpaces(userInput);
-
-			if (userInput.size() != 0) {
-				obj.setMiddleName(userInput);
-			}
+	{
+		auto middleName = Utility::getUserInputString("middleName", 0, false);
+		if (middleName.has_value()) {
+			obj.setMiddleName(middleName.value());
 		}
-		break;
+	}
+	break;
 	case 3:
-		while (true) {
-			std::cout << "lastName* : ";
-			std::getline(std::cin, userInput);
-			Utility::removeEmptySpaces(userInput);
-
-			if (userInput.size() == 0) {
-				std::cout << "\x1B[33m" << "Last Name is mandatory...Please enter again!!" << "\x1B[0m\n";
-			}
-			else {
-				obj.setLastName(userInput);
-				break;
-			}
-		}
-		break;
+	{
+		auto lastName = Utility::getUserInputString("lastName").value();
+		obj.setLastName(lastName);
+	}
+	break;
 	case 4:
-		{
-			while (true) {
-				std::cout << "dateOfBirth [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : ";
-				std::getline(std::cin, userInput);
-				Utility::removeEmptySpaces(userInput);
-
-				if (userInput.size() == 0) {
-					break;
-				}
-				if (Validate::validateDate(userInput)) {
-					obj.setDateOfBirth(userInput);
-					break;
-				}
-				else {
-					std::cerr << "\x1B[33m" << "Please Enter the date in format [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : " << "\x1B[0m\n";
-				}
-			}
+	{
+		auto dateOfBirth = Utility::getUserInputDate("dateOfBirth", Validate::validateDate, false);
+		if (dateOfBirth.has_value()) {
+			obj.setDateOfBirth(dateOfBirth.value());
 		}
-		break;
+	}
+	break;
 	case 5:
-		while (true) {
-			std::cout << "mobileNo* (Starting from [6-9]) : ";
-			std::getline(std::cin, userInput);
-			Utility::removeEmptySpaces(userInput);
-
-			if (userInput.size() == 0) {
-				std::cout << "\x1B[33m" << "mobileNo is mandatory...Please enter again!!" << "\x1B[0m\n";
-			}
-			else {
-				if (Validate::validateMobile(userInput)) {
-					obj.setMobileNumber(std::stoll(userInput));
-					break;
-				}
-				else {
-					std::cerr << "\x1B[33m" << "Wrong mobileNo...Please enter again!!" << "\x1B[0m\n";
-				}
-			}
-		}
-		break;
+	{
+		auto mobileNo = Utility::getUserInputLL("mobileNo", Validate::validateMobile).value();
+		obj.setMobileNumber(mobileNo);
+	}
+	break;
 	case 6:
-		while (true) {
-			std::cout << "email* : ";
-			std::getline(std::cin, userInput);
-			Utility::removeEmptySpaces(userInput);
-
-			if (userInput.size() == 0) {
-				std::cout << "\x1B[33m" << "email is mandatory...Please enter again!!" << "\x1B[0m\n";
-			}
-			else {
-				if (Validate::validateEmail(userInput)) {
-					obj.setEmail(userInput);
-					break;
-				}
-				else {
-					std::cerr << "\x1B[33m" << "Wrong email...Please enter again!!" << "\x1B[0m\n";
-				}
-			}
-		}
-		break;
+	{
+		auto email = Utility::getUserInputString("email", Validate::validateEmail).value();
+		obj.setEmail(email);
+	}
+	break;
 	case 7:
-		while (true) {
-			std::cout << "address* : ";
-			std::getline(std::cin, userInput);
-			Utility::removeEmptySpaces(userInput);
-
-			if (userInput.size() == 0) {
-				std::cout << "\x1B[33m" << "Address is mandatory...Please enter again!!" << "\x1B[0m\n";
-			}
-			else {
-				obj.setAddress(userInput);
-				break;
-			}
-		}
-		break;
+	{
+		auto address = Utility::getUserInputString("address").value();
+		obj.setAddress(address);
+	}
+	break;
 	case 8:
-		while (true) {
-			std::cout << "gender* : ";
-			std::getline(std::cin, userInput);
-			Utility::removeEmptySpaces(userInput);
-
-			if (userInput.size() == 0) {
-				std::cout << "\x1B[33m" << "Gender is mandatory...Please enter again!!" << "\x1B[0m\n";
-			}
-			else {
-				if (Validate::validateGender(userInput)) {
-					obj.setGender(EmployeeDB::Model::getGenderFromString(userInput));
-					break;
-				}
-				else {
-					std::cerr << "\x1B[33m" << "Wrong input...Please enter again!!" << "\x1B[0m\n";
-				}
-			}
-		}
-		break;
+	{
+		auto gender = Utility::getUserInputGender("gender", Validate::validateGender).value();
+		obj.setGender(EmployeeDB::Model::getGenderFromString(gender));
+	}
+	break;
 	case 9:
-		while (true) {
-			std::cout << "dateOfJoining* [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : ";
-			std::getline(std::cin, userInput);
-			Utility::removeEmptySpaces(userInput);
-
-			if (userInput.size() == 0) {
-				std::cout << "\x1B[33m" << "dateOfJoining is mandatory...Please enter again!!" << "\x1B[0m\n";
-			}
-			else {
-				if (Validate::validateDate(userInput)) {
-					obj.setDateOfJoining(userInput);
-					break;
-				}
-				else {
-					std::cerr << "\x1B[33m" << "Please Enter the date in format [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : " << "\x1B[0m\n";
-				}
-			}
-		}
-		break;
+	{
+		auto dateOfJoining = Utility::getUserInputDate("dateOfJoining", Validate::validateDate).value();
+		obj.setDateOfJoining(dateOfJoining);
+	}
+	break;
 	case 10:
-		{
-			while (true) {
-				std::cout << "mentorID : ";
-				std::getline(std::cin, userInput);
-				Utility::removeEmptySpaces(userInput);
-
-				if (userInput.size() == 0) {
-					break;
-				}
-				try {
-					if (stoi(userInput) >= 0.0) {
-						obj.setMentorID(stoi(userInput));
-						break;
-					}
-					else {
-						throw "Negative Number";
-					}
-				}
-				catch (...) {
-					std::cerr << "\x1B[33m" << "Wrong input...Please enter Positive integer number!!" << "\x1B[0m\n";
-				}
-			}
+	{
+		std::optional<int> mentorID = Utility::getUserInputInt("mentorID", 0, false);
+		if (mentorID.has_value()) {
+			obj.setMentorID(mentorID.value());
 		}
-		break;
+	}
+	break;
 	case 11:
-		{
-			while (true) {
-				std::cout << "performanceMetric : ";
-				std::getline(std::cin, userInput);
-				Utility::removeEmptySpaces(userInput);
-
-				if (userInput.size() == 0) {
-					break;
-				}
-				try {
-					if (stod(userInput) >= 0.0) {
-						obj.setPerformanceMetric(stod(userInput));
-						break;
-					}
-					else {
-						throw "Negative Number";
-					}
-				}
-				catch (...) {
-					std::cerr << "\x1B[33m" << "Wrong input...Please enter Positive real number!!" << "\x1B[0m\n";
-				}
-			}
+	{
+		auto performanceMetric = Utility::getUserInputDouble("performanceMetric", false);
+		if (performanceMetric.has_value()) {
+			obj.setPerformanceMetric(performanceMetric.value());
 		}
-		break;
+	}
+	break;
 	case 12:
-		{
-			while (true) {
-				std::cout << "bonus : ";
-				std::getline(std::cin, userInput);
-				Utility::removeEmptySpaces(userInput);
-
-				if (userInput.size() == 0) {
-					break;
-				}
-				try {
-					if (stod(userInput) >= 0.0) {
-						obj.setBonus(stod(userInput));
-						break;
-					}
-					else {
-						throw "Negative Number";
-					}
-				}
-				catch (...) {
-					std::cerr << "\x1B[33m" << "Wrong input...Please enter Positive real number!!" << "\x1B[0m\n";
-				}
-			}
+	{
+		auto bonus = Utility::getUserInputDouble("bonus", false);
+		if (bonus.has_value()) {
+			obj.setBonus(bonus.value());
 		}
 		break;
+	}
 	}
 };
 
 void EmployeeView::getViewEmployeeInput(Employee& obj, int fieldNumber) {
-	std::string userInput;
 
 	switch (fieldNumber) {
 	case 1:
-		while (true) {
-			std::cout << "employeeID* : ";
-			std::getline(std::cin, userInput);
-			Utility::removeEmptySpaces(userInput);
-
-			if (userInput.size() == 0) {
-				std::cout << "\x1B[33m" << "employeeID is mandatory...Please enter again!!" << "\x1B[0m\n";
-			}
-			else {
-				try {
-					if (stoi(userInput) > 0) {
-						obj.setEmployeeID(stoi(userInput));
-					}
-					else {
-						throw "Negative Number";
-					}
-				}
-				catch (...) {
-					std::cout << "\x1B[33m" << "Wrong input...Please enter again!!" << "\x1B[0m\n";
-					continue;
-				}
-				break;
-			}
-		}
-		break;
+	{
+		auto employeeID = Utility::getUserInputInt("employeeID").value();
+		obj.setEmployeeID(employeeID);
+	}
+	break;
 	case 2:
-		while (true) {
-			std::cout << "firstName* : ";
-			std::getline(std::cin, userInput);
-			Utility::removeEmptySpaces(userInput);
-
-			if (userInput.size() == 0) {
-				std::cout << "\x1B[33m" << "First Name is mandatory...Please enter again!!" << "\x1B[0m\n";
-			}
-			else {
-				obj.setFirstName(userInput);
-				break;
-			}
-		}
-		break;
+	{
+		auto firstName = Utility::getUserInputString("firstName").value();
+		obj.setFirstName(firstName);
+	}
+	break;
 	case 3:
-		while (true) {
-			std::cout << "middleName* : ";
-			std::getline(std::cin, userInput);
-			Utility::removeEmptySpaces(userInput);
-
-			if (userInput.size() == 0) {
-				std::cout << "\x1B[33m" << "middleName is mandatory...Please enter again!!" << "\x1B[0m\n";
-			}
-			else {
-				obj.setMiddleName(userInput);
-				break;
-			}
-		}
-		break;
+	{
+		auto middleName = Utility::getUserInputString("middleName").value();
+		obj.setMiddleName(middleName);
+	}
+	break;
 	case 4:
-		while (true) {
-			std::cout << "lastName* : ";
-			std::getline(std::cin, userInput);
-			Utility::removeEmptySpaces(userInput);
-
-			if (userInput.size() == 0) {
-				std::cout << "\x1B[33m" << "Last Name is mandatory...Please enter again!!" << "\x1B[0m\n";
-			}
-			else {
-				obj.setLastName(userInput);
-				break;
-			}
-		}
-		break;
+	{
+		auto lastName = Utility::getUserInputString("lastName").value();
+		obj.setLastName(lastName);
+	}
+	break;
 	case 5:
-		while (true) {
-			std::cout << "dateOfBirth* [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : ";
-			std::getline(std::cin, userInput);
-			Utility::removeEmptySpaces(userInput);
-
-			if (userInput.size() == 0) {
-				std::cout << "\x1B[33m" << "dateOfBirth is mandatory...Please enter again!!" << "\x1B[0m\n";
-			}
-			else {
-				if (Validate::validateDate(userInput)) {
-					obj.setDateOfBirth(userInput);
-					break;
-				}
-				else {
-					std::cerr << "\x1B[33m" << "Please Enter the date in format [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : " << "\x1B[0m\n";
-				}
-			}
-		}
-		break;
+	{
+		auto dateOfBirth = Utility::getUserInputDate("dateOfBirth", Validate::validateDate).value();
+		obj.setDateOfBirth(dateOfBirth);
+	}
+	break;
 	case 6:
-		while (true) {
-			std::cout << "mobileNo* (Starting from [6-9]) : ";
-			std::getline(std::cin, userInput);
-			Utility::removeEmptySpaces(userInput);
-
-			if (userInput.size() == 0) {
-				std::cout << "\x1B[33m" << "mobileNo is mandatory...Please enter again!!" << "\x1B[0m\n";
-			}
-			else {
-				if (Validate::validateMobile(userInput)) {
-					obj.setMobileNumber(std::stoll(userInput));
-					break;
-				}
-				else {
-					std::cerr << "\x1B[33m" << "Wrong mobileNo...Please enter again!!" << "\x1B[0m\n";
-				}
-			}
-		}
-		break;
+	{
+		auto mobileNo = Utility::getUserInputLL("mobileNo", Validate::validateMobile).value();
+		obj.setMobileNumber(mobileNo);
+	}
+	break;
 	case 7:
-		while (true) {
-			std::cout << "email* : ";
-			std::getline(std::cin, userInput);
-			Utility::removeEmptySpaces(userInput);
-
-			if (userInput.size() == 0) {
-				std::cout << "\x1B[33m" << "email is mandatory...Please enter again!!" << "\x1B[0m\n";
-			}
-			else {
-				if (Validate::validateEmail(userInput)) {
-					obj.setEmail(userInput);
-					break;
-				}
-				else {
-					std::cerr << "\x1B[33m" << "Wrong email...Please enter again!!" << "\x1B[0m\n";
-				}
-			}
-		}
-		break;
+	{
+		auto email = Utility::getUserInputString("email", Validate::validateEmail).value();
+		obj.setEmail(email);
+	}
+	break;
 	case 8:
-		while (true) {
-			std::cout << "address* : ";
-			std::getline(std::cin, userInput);
-			Utility::removeEmptySpaces(userInput);
-
-			if (userInput.size() == 0) {
-				std::cout << "\x1B[33m" << "Address is mandatory...Please enter again!!" << "\x1B[0m\n";
-			}
-			else {
-				obj.setAddress(userInput);
-				break;
-			}
-		}
-		break;
+	{
+		auto address = Utility::getUserInputString("address").value();
+		obj.setAddress(address);
+	}
+	break;
 	case 9:
-		while (true) {
-			std::cout << "gender* : ";
-			std::getline(std::cin, userInput);
-			Utility::removeEmptySpaces(userInput);
-
-			if (userInput.size() == 0) {
-				std::cout << "\x1B[33m" << "Gender is mandatory...Please enter again!!" << "\x1B[0m\n";
-			}
-			else {
-				if (Validate::validateGender(userInput)) {
-					obj.setGender(EmployeeDB::Model::getGenderFromString(userInput));
-					break;
-				}
-				else {
-					std::cerr << "\x1B[33m" << "Wrong input...Please enter again!!" << "\x1B[0m\n";
-				}
-			}
-		}
-		break;
+	{
+		auto gender = Utility::getUserInputGender("gender", Validate::validateGender).value();
+		obj.setGender(EmployeeDB::Model::getGenderFromString(gender));
+	}
+	break;
 	case 10:
-		while (true) {
-			std::cout << "dateOfJoining* [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : ";
-			std::getline(std::cin, userInput);
-			Utility::removeEmptySpaces(userInput);
-
-			if (userInput.size() == 0) {
-				std::cout << "\x1B[33m" << "dateOfJoining is mandatory...Please enter again!!" << "\x1B[0m\n";
-			}
-			else {
-				if (Validate::validateDate(userInput)) {
-					obj.setDateOfJoining(userInput);
-					break;
-				}
-				else {
-					std::cerr << "\x1B[33m" << "Please Enter the date in format [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : " << "\x1B[0m\n";
-				}
-			}
-		}
-		break;
+	{
+		auto dateOfJoining = Utility::getUserInputDate("dateOfJoining", Validate::validateDate).value();
+		obj.setDateOfJoining(dateOfJoining);
+	}
+	break;
 	case 11:
-		while (true) {
-			std::cout << "mentorID* : ";
-			std::getline(std::cin, userInput);
-			Utility::removeEmptySpaces(userInput);
-
-			if (userInput.size() == 0) {
-				std::cout << "\x1B[33m" << "mentorID is mandatory...Please enter again!!" << "\x1B[0m\n";
-			}
-			else {
-				try {
-					if (stoi(userInput) > 0) {
-						obj.setMentorID(stoi(userInput));
-					}
-					else {
-						throw "Negative Number";
-					}
-				}
-				catch (...) {
-					std::cout << "\x1B[33m" << "Wrong input...Please enter again!!" << "\x1B[0m\n";
-					continue;
-				}
-				break;
-			}
-		}
+	{
+		auto mentorID = Utility::getUserInputInt("mentorID").value();
+		obj.setMentorID(mentorID);
 		break;
+	}
 	case 12:
-		while (true) {
-			std::cout << "performanceMetric* : ";
-			std::getline(std::cin, userInput);
-			Utility::removeEmptySpaces(userInput);
-
-			if (userInput.size() == 0) {
-				std::cout << "\x1B[33m" << "performanceMetric is mandatory...Please enter again!!" << "\x1B[0m\n";
-			}
-			else {
-				try {
-					if (stod(userInput) > 0.0) {
-						obj.setPerformanceMetric(stoi(userInput));
-					}
-					else {
-						throw "Negative Number";
-					}
-				}
-				catch (...) {
-					std::cout << "\x1B[33m" << "Wrong input...Please enter again!!" << "\x1B[0m\n";
-					continue;
-				}
-				break;
-			}
-		}
-		break;
+	{
+		auto performanceMetric = Utility::getUserInputDouble("performanceMetric").value();
+		obj.setPerformanceMetric(performanceMetric);
+	}
+	break;
 	case 13:
-		while (true) {
-			std::cout << "bonus* : ";
-			std::getline(std::cin, userInput);
-			Utility::removeEmptySpaces(userInput);
-
-			if (userInput.size() == 0) {
-				std::cout << "\x1B[33m" << "bonus is mandatory...Please enter again!!" << "\x1B[0m\n";
-			}
-			else {
-				try {
-					if (stod(userInput) > 0.0) {
-						obj.setBonus(stoi(userInput));
-					}
-					else {
-						throw "Negative Number";
-					}
-				}
-				catch (...) {
-					std::cout << "\x1B[33m" << "Wrong input...Please enter again!!" << "\x1B[0m\n";
-					continue;
-				}
-				break;
-			}
-		}
-		break;
+	{
+		auto bonus = Utility::getUserInputDouble("bonus").value();
+		obj.setBonus(bonus);
+	}
+	break;
 	}
 };
 
 void EmployeeView::getEmployeeIDInput(Employee& obj, const std::string& operation, const std::string& entity) {
-	std::string userInput;
 
 	system("cls");
 	std::cout << "------------------------------------------" << "\x1B[36m" << operation << " " + entity << "\x1B[0m" << "-------------------------------------------------\n";
 	std::cout << "\x1B[33m" << "To " + operation + " " + entity + ", please enter employeeID." << "\x1B[0m\n";
 
-	while (true) {
-		std::cout << "employeeID* : ";
-		std::getline(std::cin, userInput);
-		Utility::removeEmptySpaces(userInput);
-
-		if (userInput.size() == 0) {
-			std::cout << "\x1B[33m" << "employeeID is mandatory...Please enter again!!" << "\x1B[0m\n";
-		}
-		else {
-			if (Validate::validateEmployeeID(userInput, entity)) {
-				obj.setEmployeeID(stoi(userInput));
-				break;
-			}
-			else {
-				std::cout << "\x1B[33m" << "Wrong input...Please enter positive integer number!!" << "\x1B[0m\n";
-			}
-		}
-	}
+	auto employeeID = Utility::getUserInputInt("employeeID",Validate::validateEmployeeID,entity).value();
+	obj.setEmployeeID(employeeID);
 }

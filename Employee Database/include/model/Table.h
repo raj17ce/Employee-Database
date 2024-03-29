@@ -2,6 +2,7 @@
 #define __Table_H__
 
 #include <string>
+#include <array>
 #include <vector>
 
 namespace EmployeeDB::Model {

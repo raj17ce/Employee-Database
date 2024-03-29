@@ -21,20 +21,9 @@ bool HRView::insertHR() {
 
 	EmployeeView::getInsertEmployeeInput(obj);
 
-	std::string userInput;
-
-	while (true) {
-		std::cout << "hrSpecialization* : ";
-		std::getline(std::cin, userInput);
-		Utility::removeEmptySpaces(userInput);
-
-		if (userInput.size() == 0) {
-			std::cout << "\x1B[33m" << "hrSpecialization is mandatory...Please enter again!!" << "\x1B[0m\n";
-		}
-		else {
-			obj.setHRSpecialization(userInput);
-			break;
-		}
+	{
+		auto hrSpecialization = Utility::getUserInputString("hrSpecialization").value();
+		obj.setHRSpecialization(hrSpecialization);
 	}
 
 	HRController::insertHR(obj);
@@ -94,16 +83,9 @@ bool HRView::updateHR() {
 				}
 			}
 			else if (userInput == 13) {
-				while (true) {
-					std::cout << "hrSpecialization* : ";
-					std::getline(std::cin, inputLine);
-					if (inputLine.size() == 0) {
-						std::cout << "\x1B[33m" << "hrSpecialization is mandatory...Please enter again!!" << "\x1B[0m\n";
-					}
-					else {
-						obj.setHRSpecialization(inputLine);
-						break;
-					}
+				{
+					auto hrSpecialization = Utility::getUserInputString("hrSpecialization").value();
+					obj.setHRSpecialization(hrSpecialization);
 				}
 				if (Utility::repeatOperation("update", "field")) {
 					continue;
@@ -191,7 +173,7 @@ bool HRView::viewHRConditional() {
 			}
 			else if (userInput == 3) {
 				EmployeeView::getViewEmployeeInput(obj, 3);
-				HRController::selectHR("middleName", obj.getMiddleName());
+				HRController::selectHR("middleName", obj.getMiddleName().value());
 				break;
 			}
 			else if (userInput == 4) {
@@ -201,7 +183,7 @@ bool HRView::viewHRConditional() {
 			}
 			else if (userInput == 5) {
 				EmployeeView::getViewEmployeeInput(obj, 5);
-				HRController::selectHR("dateOfBirth", obj.getDateOfBirth());
+				HRController::selectHR("dateOfBirth", obj.getDateOfBirth().value());
 				break;
 			}
 			else if (userInput == 6) {
@@ -231,32 +213,23 @@ bool HRView::viewHRConditional() {
 			}
 			else if (userInput == 11) {
 				EmployeeView::getViewEmployeeInput(obj, 11);
-				HRController::selectHR("mentorID", std::to_string(obj.getMentorID()));
+				HRController::selectHR("mentorID", std::to_string(obj.getMentorID().value()));
 				break;
 			}
 			else if (userInput == 12) {
 				EmployeeView::getViewEmployeeInput(obj, 12);
-				HRController::selectHR("performanceMetric", std::to_string(obj.getPerformanceMetric()));
+				HRController::selectHR("performanceMetric", std::to_string(obj.getPerformanceMetric().value()));
 				break;
 			}
 			else if (userInput == 13) {
 				EmployeeView::getViewEmployeeInput(obj, 13);
-				HRController::selectHR("bonus", std::to_string(obj.getBonus()));
+				HRController::selectHR("bonus", std::to_string(obj.getBonus().value()));
 				break;
 			}
 			else if (userInput == 14) {
-				while (true) {
-					std::cout << "hrSpecialization* : ";
-					std::getline(std::cin, inputLine);
-					Utility::removeEmptySpaces(inputLine);
-
-					if (inputLine.size() == 0) {
-						std::cout << "\x1B[33m" << "hrSpecialization is mandatory...Please enter again!!" << "\x1B[0m\n";
-					}
-					else {
-						obj.setHRSpecialization(inputLine);
-						break;
-					}
+				{
+					auto hrSpecialization = Utility::getUserInputString("hrSpecialization").value();
+					obj.setHRSpecialization(hrSpecialization);
 				}
 				HRController::selectHR("hrSpecialization", obj.getHRSpecialization());
 				break;

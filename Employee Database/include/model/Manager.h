@@ -8,8 +8,8 @@ namespace EmployeeDB::Model {
 	class Manager : public Employee {
 	public:
 		Manager() :
-			m_ProjectTitle{""},
-			m_Role{""},
+			m_ProjectTitle{std::nullopt},
+			m_Role{ std::nullopt },
 			m_YearsOfExperience{ 0.0 },
 			m_ManagerID{ 0 },
 			m_TeamSize{ 0 } {
@@ -17,16 +17,16 @@ namespace EmployeeDB::Model {
 
 		Manager(bool isUpdateObj) :
 			Employee{ isUpdateObj },
-			m_ProjectTitle{ "#" },
-			m_Role{ "#" },
+			m_ProjectTitle{ std::nullopt },
+			m_Role{ std::nullopt },
 			m_YearsOfExperience{ -1.0 },
 			m_ManagerID{ -1 },
 			m_TeamSize{ -1 } {
 		}
-		void setProjectTitle(const std::string& projectTitle) {
+		void setProjectTitle(const std::optional<std::string>& projectTitle) {
 			m_ProjectTitle = projectTitle;
 		}
-		void setRole(const std::string& role) {
+		void setRole(const std::optional<std::string>& role) {
 			m_Role = role;
 		}
 		void setYearsOfExperience(double yearsOfExperience) {
@@ -39,11 +39,11 @@ namespace EmployeeDB::Model {
 			m_TeamSize = teamSize;
 		}
 
-		const std::string& getProjectTitle() const {
-			return m_ProjectTitle.value_or("");
+		const std::optional<std::string>& getProjectTitle() const {
+			return m_ProjectTitle;
 		}
-		const std::string& getRole() const {
-			return m_ProjectTitle.value_or("");
+		const std::optional<std::string>& getRole() const {
+			return m_ProjectTitle;
 		}
 		double getYearsOfExperience() const {
 			return m_YearsOfExperience;

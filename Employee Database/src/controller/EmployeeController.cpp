@@ -10,18 +10,18 @@ bool EmployeeController::insertEmployee(const Employee& obj) {
 	std::string queryString = "INSERT INTO Employee (firstName, middleName, lastName, dateOfBirth, mobileNumber, email, address, gender, dateOfJoining, departmentID, mentorID, performanceMetric, bonus) "
 		+ std::string{ "VALUES (" } +
 		"\"" + obj.getFirstName() + "\"" + ", " +
-		(obj.getMiddleName().size() == 0 ? "NULL" : "\"" + obj.getMiddleName() + "\"") + ", " +
+		(obj.getMiddleName().has_value() ? "\"" + obj.getMiddleName().value() + "\"" : "NULL") + ", " +
 		"\"" + obj.getLastName() + "\"" + ", " +
-		(obj.getDateOfBirth().size() == 0 ? "NULL" : "\"" + obj.getDateOfBirth() + "\"") + ", " +
+		(obj.getDateOfBirth().has_value() ? "\"" + obj.getDateOfBirth().value() + "\"" : "NULL") + ", " +
 		std::to_string(obj.getMobileNumber()) + ", " +
 		"\"" + obj.getEmail() + "\"" + ", " +
 		"\"" + obj.getAddress() + "\"" + ", " +
 		"\"" + EmployeeDB::Model::getGenderString(obj.getGender()) + "\"" + ", " +
 		"\"" + obj.getDateOfJoining() + "\"" + ", " +
 		std::to_string(obj.getDepartmentID()) + ", " +
-		(obj.getMentorID() == 0 ? "NULL" : std::to_string(obj.getMentorID())) + ", " +
-		(obj.getPerformanceMetric() == 0.0 ? "NULL" : std::to_string(obj.getPerformanceMetric())) + ", " +
-		(obj.getBonus() == 0.0 ? "NULL" : std::to_string(obj.getBonus())) + ");";
+		(obj.getMentorID().has_value() ? std::to_string(obj.getMentorID().value()) : "NULL") + ", " +
+		(obj.getPerformanceMetric().has_value() ? std::to_string(obj.getPerformanceMetric().value()) : "NULL") + ", " +
+		(obj.getBonus().has_value() ? std::to_string(obj.getBonus().value()) : "NULL") + ");";
 
 	try {
 		DBManager::instance().executeQuery(queryString.c_str());
@@ -127,11 +127,11 @@ std::string EmployeeController::getUpdateQueryCondition(Employee& obj) {
 	if (obj.getFirstName() != "#") {
 		updateQueryCondition += "firstName = \"" + obj.getFirstName() + "\"";
 	}
-	if (obj.getMiddleName() != "#") {
+	if (obj.getMiddleName().has_value()) {
 		if (updateQueryCondition.size() != 0) {
 			updateQueryCondition += ", ";
 		}
-		updateQueryCondition += "middleName = \"" + obj.getMiddleName() + "\"";
+		updateQueryCondition += "middleName = \"" + obj.getMiddleName().value() + "\"";
 	}
 	if (obj.getLastName() != "#") {
 		if (updateQueryCondition.size() != 0) {
@@ -139,11 +139,11 @@ std::string EmployeeController::getUpdateQueryCondition(Employee& obj) {
 		}
 		updateQueryCondition += "lastName = \"" + obj.getLastName() + "\"";
 	}
-	if (obj.getDateOfBirth() != "#") {
+	if (obj.getDateOfBirth().has_value()) {
 		if (updateQueryCondition.size() != 0) {
 			updateQueryCondition += ", ";
 		}
-		updateQueryCondition += "dateOfBirth = \"" + obj.getDateOfBirth() + "\"";
+		updateQueryCondition += "dateOfBirth = \"" + obj.getDateOfBirth().value() + "\"";
 	}
 	if (obj.getMobileNumber() != -1) {
 		if (updateQueryCondition.size() != 0) {
@@ -175,23 +175,23 @@ std::string EmployeeController::getUpdateQueryCondition(Employee& obj) {
 		}
 		updateQueryCondition += "dateOfJoining = \"" + obj.getDateOfJoining() + "\"";
 	}
-	if (obj.getMentorID() != -1) {
+	if (obj.getMentorID().has_value()) {
 		if (updateQueryCondition.size() != 0) {
 			updateQueryCondition += ", ";
 		}
-		updateQueryCondition += "mentorID = " + std::to_string(obj.getMentorID());
+		updateQueryCondition += "mentorID = " + std::to_string(obj.getMentorID().value());
 	}
-	if (obj.getPerformanceMetric() != -1.0) {
+	if (obj.getPerformanceMetric().has_value()) {
 		if (updateQueryCondition.size() != 0) {
 			updateQueryCondition += ", ";
 		}
-		updateQueryCondition += "performanceMetric = " + std::to_string(obj.getPerformanceMetric());
+		updateQueryCondition += "performanceMetric = " + std::to_string(obj.getPerformanceMetric().value());
 	}
-	if (obj.getBonus() != -1.0) {
+	if (obj.getBonus().has_value()) {
 		if (updateQueryCondition.size() != 0) {
 			updateQueryCondition += ", ";
 		}
-		updateQueryCondition += "bonus = " + std::to_string(obj.getBonus());
+		updateQueryCondition += "bonus = " + std::to_string(obj.getBonus().value());
 	}
 
 	return updateQueryCondition;

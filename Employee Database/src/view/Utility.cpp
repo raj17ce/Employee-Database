@@ -84,3 +84,271 @@ void Utility::removeEmptySpaces(std::string& str, const std::string& chars) {
 		str = std::move(tempStr);
 	}
 }
+
+std::optional<int> Utility::getUserInputInt(const std::string& inputText, std::function<bool(const std::string&)> validator, bool isMandatory) {
+	auto isInvalidInput{ false };
+
+	std::string userInput;
+	std::optional<int> result{std::nullopt};
+	do {
+		isInvalidInput = false;
+		std::cout << inputText << (isMandatory ? "*" : "") << " : ";
+		std::getline(std::cin, userInput);
+		Utility::removeEmptySpaces(userInput);
+
+		if (userInput.size() == 0 && isMandatory) {
+			std::cout << "\x1B[33m" << inputText <<" is mandatory...Please enter again!!" << "\x1B[0m\n";
+		}
+		else if (userInput.size() == 0 && !isMandatory) {
+			break;
+		}
+		else {
+			try {
+				if (validator) {
+					if (validator(userInput)) {
+						result = stoi(userInput);
+						break;
+					}
+					else {
+						throw "Wrong Input\n";
+					}
+				}
+				else {
+					result = stoi(userInput);
+					if (result < 0) {
+						throw "Negative Number\n";
+					}
+					break;
+				}
+			}
+			catch (...) {
+				isInvalidInput = true;
+				std::cout << "\x1B[33m" << "Wrong input...Please enter positive integer number!!" << "\x1B[0m\n";
+			}
+		}
+	} while (isMandatory || isInvalidInput);
+
+	return result;
+}
+
+std::optional<int> Utility::getUserInputInt(const std::string& inputText, std::function<bool(const std::string&, const std::string&)> validator, const std::string& entity) {
+
+	std::string userInput;
+	std::optional<int> result{ std::nullopt };
+
+	do {
+		std::cout << inputText << "* : ";
+		std::getline(std::cin, userInput);
+		Utility::removeEmptySpaces(userInput);
+
+		if (userInput.size() == 0) {
+			std::cout << "\x1B[33m" << inputText << " is mandatory...Please enter again!!" << "\x1B[0m\n";
+		}
+		else {
+			try {
+				if (validator(userInput, entity)) {
+					result = stoi(userInput);
+					break;
+				}
+				else {
+					throw "Wrong Input\n";
+				}
+			}
+			catch (...) {
+				std::cout << "\x1B[33m" << "Wrong input...Please enter positive integer number!!" << "\x1B[0m\n";
+			}
+		}
+	} while (true);
+
+	return result;
+}
+
+std::optional<long long> Utility::getUserInputLL(const std::string& inputText, std::function<bool(const std::string&)> validator, bool isMandatory) {
+	auto isInvalidInput{ false };
+
+	std::string userInput;
+	std::optional<long long> result{ std::nullopt };
+	do {
+		isInvalidInput = false;
+		std::cout << inputText << (isMandatory ? "*" : "") << " (Starting from [6-9]) : ";
+		std::getline(std::cin, userInput);
+		Utility::removeEmptySpaces(userInput);
+
+		if (userInput.size() == 0 && isMandatory) {
+			std::cout << "\x1B[33m" << inputText << " is mandatory...Please enter again!!" << "\x1B[0m\n";
+		}
+		else if (userInput.size() == 0 && !isMandatory) {
+			break;
+		}
+		else {
+			try {
+				if (validator) {
+					if (validator(userInput)) {
+						result = stoll(userInput);
+						break;
+					}
+					else {
+						throw "Wrong Input\n";
+					}
+				}
+				else {
+					result = stoll(userInput);
+					if (result < 0) {
+						throw "Negative Number\n";
+					}
+					break;
+				}				
+			}
+			catch (...) {
+				isInvalidInput = true;
+				std::cout << "\x1B[33m" << "Wrong input...Please enter positive integer number!!" << "\x1B[0m\n";
+			}
+		}
+	} while (isMandatory || isInvalidInput);
+
+	return result;
+}
+
+std::optional<double> Utility::getUserInputDouble(const std::string& inputText, bool isMandatory) {
+	auto isInvalidInput{ false };
+
+	std::string userInput;
+	std::optional<double> result{std::nullopt};
+	do {
+		isInvalidInput = false;
+		std::cout << inputText << (isMandatory ? "*" : "") << " : ";
+		std::getline(std::cin, userInput);
+		Utility::removeEmptySpaces(userInput);
+
+		if (userInput.size() == 0 && isMandatory) {
+			std::cout << "\x1B[33m" << inputText << " is mandatory...Please enter again!!" << "\x1B[0m\n";
+		}
+		else if (userInput.size() == 0 && !isMandatory) {
+			break;
+		}
+		else {
+			try {
+				result = stod(userInput);
+				if (result < 0.0) {
+					throw "Negative Number\n";
+				}
+				break;
+			}
+			catch (...) {
+				isInvalidInput = true;
+				std::cout << "\x1B[33m" << "Wrong input...Please enter positive integer number!!" << "\x1B[0m\n";
+			}
+		}
+	} while (isMandatory || isInvalidInput);
+
+	return result;
+}
+
+std::optional<std::string> Utility::getUserInputString(const std::string& inputText, std::function<bool(const std::string&)> validator, bool isMandatory) {
+	auto isInvalidInput{ false };
+
+	std::string userInput;
+	std::optional<std::string> result{ std::nullopt };
+	do {
+		isInvalidInput = false;
+		std::cout << inputText << (isMandatory ? "*" : "") << " : ";
+		std::getline(std::cin, userInput);
+		Utility::removeEmptySpaces(userInput);
+
+		if (userInput.size() == 0 && isMandatory) {
+			std::cout << "\x1B[33m" << inputText << " is mandatory...Please enter again!!" << "\x1B[0m\n";
+		}
+		else if (userInput.size() == 0 && !isMandatory) {
+			break;
+		}
+		else {
+			if (validator) {
+				if (validator(userInput)) {
+					result = userInput;
+					break;
+				}
+				else {
+					isInvalidInput = true;
+					std::cerr << "\x1B[33m" << "Wrong " << inputText << "... Please enter again!!" << "\x1B[0m\n";
+				}
+			}
+			else {
+				result = userInput;
+				break;
+			}
+		}
+	} while (isMandatory || isInvalidInput);
+
+	return result;
+}
+
+std::optional<std::string> Utility::getUserInputGender(const std::string& inputText, std::function<bool(std::string&)> validator, bool isMandatory) {
+	auto isInvalidInput{ false };
+	
+	std::string userInput;
+	std::optional<std::string> result{ std::nullopt };
+	do {
+		isInvalidInput = false;
+		std::cout << inputText << (isMandatory ? "*" : "") << " : ";
+		std::getline(std::cin, userInput);
+		Utility::removeEmptySpaces(userInput);
+
+		if (userInput.size() == 0 && isMandatory) {
+			std::cout << "\x1B[33m" << inputText << " is mandatory...Please enter again!!" << "\x1B[0m\n";
+		}
+		else if (userInput.size() == 0 && !isMandatory) {
+			break;
+		}
+		else {
+			if (validator) {
+				if (validator(userInput)) {
+					result = userInput;
+					break;
+				}
+				else {
+					isInvalidInput = true;
+					std::cerr << "\x1B[33m" << "Wrong " << inputText << "... Please enter again!!" << "\x1B[0m\n";
+				}
+			}
+			else {
+				result = userInput;
+				break;
+			}
+		}
+	} while (isMandatory || isInvalidInput);
+
+	return result;
+}
+
+std::optional<std::string> Utility::getUserInputDate(const std::string& inputText, std::function<bool(const std::string&)> validator, bool isMandatory) {
+	auto isInvalidInput{ false };
+
+	std::string userInput;
+	std::optional<std::string> result{ std::nullopt };
+	do {
+		isInvalidInput = false;
+		std::cout << inputText << (isMandatory ? "*" : "") << " [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : ";
+		std::getline(std::cin, userInput);
+		Utility::removeEmptySpaces(userInput);
+
+		if (userInput.size() == 0 && isMandatory) {
+			std::cout << "\x1B[33m" << inputText << " is mandatory...Please enter again!!" << "\x1B[0m\n";
+		}
+		else if (userInput.size() == 0 && !isMandatory) {
+			break;
+		}
+		else {
+			if (validator(userInput)) {
+				result = userInput;
+				break;
+			}
+			else {
+				isInvalidInput = true;
+				std::cerr << "\x1B[33m" << "Please Enter the date in format [dd-mm-yyyy or dd/mm/yyyy or dd.mm.yyyy] : " << "\x1B[0m\n";
+			}
+		}
+	}
+	while (isMandatory || isInvalidInput);
+
+	return result;
+}

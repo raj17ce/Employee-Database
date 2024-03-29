@@ -24,95 +24,25 @@ void DepartmentView::printViewDepartmentFields() {
 }
 
 void DepartmentView::getInsertDepartmentInput(Department& obj) {
-	std::string userInput;
 
-	while (true) {
-		std::cout << "departmentName* : ";
-		std::getline(std::cin, userInput);
-		Utility::removeEmptySpaces(userInput);
-
-		if (userInput.size() == 0) {
-			std::cout << "\x1B[33m" << "departmentName is mandatory...Please enter again!!" << "\x1B[0m\n";
-		}
-		else {
-			obj.setDepartmentName(userInput);
-			break;
-		}
+	{
+		auto departmentName = Utility::getUserInputString("departmentName").value();
+		obj.setDepartmentName(departmentName);
 	}
 
-	while (true) {
-		std::cout << "baseSalary* : ";
-		std::getline(std::cin, userInput);
-		Utility::removeEmptySpaces(userInput);
-
-		if (userInput.size() == 0) {
-			std::cout << "\x1B[33m" << "baseSalary is mandatory...Please enter again!!" << "\x1B[0m\n";
-		}
-		else {
-			try {
-				if (stod(userInput) >= 0.0) {
-					obj.setBaseSalary(stod(userInput));
-				}
-				else {
-					throw "Negative Number";
-				}
-			}
-			catch (...) {
-				std::cout << "\x1B[33m" << "Wrong input...Please enter Positive real number!!" << "\x1B[0m\n";
-				continue;
-			}
-			break;
-		}
+	{
+		auto baseSalary = Utility::getUserInputDouble("baseSalary").value();
+		obj.setBaseSalary(baseSalary);
 	}
 
-	while (true) {
-		std::cout << "allowance* : ";
-		std::getline(std::cin, userInput);
-		Utility::removeEmptySpaces(userInput);
-
-		if (userInput.size() == 0) {
-			std::cout << "\x1B[33m" << "allowance is mandatory...Please enter again!!" << "\x1B[0m\n";
-		}
-		else {
-			try {
-				if (stod(userInput) >= 0.0) {
-					obj.setAllowance(stod(userInput));
-				}
-				else {
-					throw "Negative Number";
-				}
-			}
-			catch (...) {
-				std::cout << "\x1B[33m" << "Wrong input...Please Positive enter real number!!" << "\x1B[0m\n";
-				continue;
-			}
-			break;
-		}
+	{
+		auto allowance = Utility::getUserInputDouble("allowance").value();
+		obj.setBaseSalary(allowance);
 	}
 
-	while (true) {
-		std::cout << "deduction* : ";
-		std::getline(std::cin, userInput);
-		Utility::removeEmptySpaces(userInput);
-
-		if (userInput.size() == 0) {
-			std::cout << "\x1B[33m" << "deduction is mandatory...Please enter again!!" << "\x1B[0m\n";
-		}
-		else {
-			try {
-				if (stod(userInput) >= 0.0) {
-					obj.setDeduction(stod(userInput));
-				}
-				else {
-					throw "Negative Number";
-				}
-			}
-			catch (...) {
-				std::cerr << "\x1B[33m" << "Wrong input...Please enter Positive real number!!" << "\x1B[0m\n";
-				continue;
-			}
-			break;
-		}
+	{
+		auto deduction = Utility::getUserInputDouble("deduction").value();
+		obj.setBaseSalary(deduction);
 	}
 };
 
@@ -135,267 +65,87 @@ bool DepartmentView::insertDepartment() {
 }
 
 void DepartmentView::getUpdateDepartmentInput(Department& obj, int fieldNumber) {
-	std::string userInput;
-
 	switch (fieldNumber) {
 		case 1:
-			while (true) {
-				std::cout << "departmentName* : ";
-				std::getline(std::cin, userInput);
-				Utility::removeEmptySpaces(userInput);
-
-				if (userInput.size() == 0) {
-					std::cout << "\x1B[33m" << "departmentName is mandatory...Please enter again!!" << "\x1B[0m\n";
-				}
-				else {
-					obj.setDepartmentName(userInput);
-					break;
-				}
-			}
+		{
+			auto departmentName = Utility::getUserInputString("departmentName").value();
+			obj.setDepartmentName(departmentName);
 			break;
-
+		}
 		case 2:
-			while (true) {
-				std::cout << "baseSalary* : ";
-				std::getline(std::cin, userInput);
-				Utility::removeEmptySpaces(userInput);
-
-				if (userInput.size() == 0) {
-					std::cout << "\x1B[33m" << "baseSalary is mandatory...Please enter again!!" << "\x1B[0m\n";
-				}
-				else {
-					try {
-						if (stod(userInput) >= 0.0) {
-							obj.setBaseSalary(stod(userInput));
-						}
-						else {
-							throw "Negative Number";
-						}
-					}
-					catch (...) {
-						std::cout << "\x1B[33m" << "Wrong input...Please enter Positive real number!!" << "\x1B[0m\n";
-						continue;
-					}
-					break;
-				}
-			}
+		{
+			auto baseSalary = Utility::getUserInputDouble("baseSalary").value();
+			obj.setBaseSalary(baseSalary);
 			break;
-
+		}
 		case 3:
-			while (true) {
-				std::cout << "allowance* : ";
-				std::getline(std::cin, userInput);
-				Utility::removeEmptySpaces(userInput);
-
-				if (userInput.size() == 0) {
-					std::cout << "\x1B[33m" << "allowance is mandatory...Please enter again!!" << "\x1B[0m\n";
-				}
-				else {
-					try {
-						if (stod(userInput) >= 0.0) {
-							obj.setAllowance(stod(userInput));
-						}
-						else {
-							throw "Negative Number";
-						}
-					}
-					catch (...) {
-						std::cout << "\x1B[33m" << "Wrong input...Please Positive enter real number!!" << "\x1B[0m\n";
-						continue;
-					}
-					break;
-				}
-			}
+		{
+			auto allowance = Utility::getUserInputDouble("allowance").value();
+			obj.setBaseSalary(allowance);
 			break;
+		}
 
 		case 4:
-			while (true) {
-				std::cout << "deduction* : ";
-				std::getline(std::cin, userInput);
-				Utility::removeEmptySpaces(userInput);
-
-				if (userInput.size() == 0) {
-					std::cout << "\x1B[33m" << "deduction is mandatory...Please enter again!!" << "\x1B[0m\n";
-				}
-				else {
-					try {
-						if (stod(userInput) >= 0.0) {
-							obj.setDeduction(stod(userInput));
-						}
-						else {
-							throw "Negative Number";
-						}
-					}
-					catch (...) {
-						std::cerr << "\x1B[33m" << "Wrong input...Please enter Positive real number!!" << "\x1B[0m\n";
-						continue;
-					}
-					break;
-				}
-			}
+		{
+			auto deduction = Utility::getUserInputDouble("deduction").value();
+			obj.setBaseSalary(deduction);
 			break;
+		}
 	}
 }
 
 void DepartmentView::getViewDepartmentInput(Department& obj, int fieldNumber) {
-	std::string userInput;
 
 	switch (fieldNumber) {
-	case 1:
-		while (true) {
-			std::cout << "departmentID* : ";
-			std::getline(std::cin, userInput);
-			Utility::removeEmptySpaces(userInput);
-
-			if (userInput.size() == 0) {
-				std::cout << "\x1B[33m" << "departmentID is mandatory...Please enter again!!" << "\x1B[0m\n";
-			}
-			else {
-				try {
-					if (stoi(userInput) > 0) {
-						obj.setDepartmentID(stoi(userInput));
-					}
-					else {
-						throw "Negative Number";
-					}
-				}
-				catch (...) {
-					std::cout << "\x1B[33m" << "Wrong input...Please enter again!!" << "\x1B[0m\n";
-					continue;
-				}
-				break;
-			}
+		case 1:
+		{
+			auto departmentID = Utility::getUserInputInt("departmentID").value();
+			obj.setDepartmentID(departmentID);
+			break;
 		}
-		break;
-	case 2:
-		while (true) {
-			std::cout << "departmentName* : ";
-			std::getline(std::cin, userInput);
-			Utility::removeEmptySpaces(userInput);
-
-			if (userInput.size() == 0) {
-				std::cout << "\x1B[33m" << "departmentName is mandatory...Please enter again!!" << "\x1B[0m\n";
-			}
-			else {
-				obj.setDepartmentName(userInput);
-				break;
-			}
+		case 2:
+		{
+			auto departmentName = Utility::getUserInputString("departmentName").value();
+			obj.setDepartmentName(departmentName);
+			break;
 		}
-		break;
-
-	case 3:
-		while (true) {
-			std::cout << "baseSalary* : ";
-			std::getline(std::cin, userInput);
-			Utility::removeEmptySpaces(userInput);
-
-			if (userInput.size() == 0) {
-				std::cout << "\x1B[33m" << "baseSalary is mandatory...Please enter again!!" << "\x1B[0m\n";
-			}
-			else {
-				try {
-					if (stod(userInput) >= 0.0) {
-						obj.setBaseSalary(stod(userInput));
-					}
-					else {
-						throw "Negative Number";
-					}
-				}
-				catch (...) {
-					std::cout << "\x1B[33m" << "Wrong input...Please enter Positive real number!!" << "\x1B[0m\n";
-					continue;
-				}
-				break;
-			}
+		case 3:
+		{
+			auto baseSalary = Utility::getUserInputDouble("baseSalary").value();
+			obj.setBaseSalary(baseSalary);
+			break;
 		}
-		break;
-
-	case 4:
-		while (true) {
-			std::cout << "allowance* : ";
-			std::getline(std::cin, userInput);
-			Utility::removeEmptySpaces(userInput);
-
-			if (userInput.size() == 0) {
-				std::cout << "\x1B[33m" << "allowance is mandatory...Please enter again!!" << "\x1B[0m\n";
-			}
-			else {
-				try {
-					if (stod(userInput) >= 0.0) {
-						obj.setAllowance(stod(userInput));
-					}
-					else {
-						throw "Negative Number";
-					}
-				}
-				catch (...) {
-					std::cout << "\x1B[33m" << "Wrong input...Please Positive enter real number!!" << "\x1B[0m\n";
-					continue;
-				}
-				break;
-			}
+		case 4:
+		{
+			auto allowance = Utility::getUserInputDouble("allowance").value();
+			obj.setBaseSalary(allowance);
+			break;
 		}
-		break;
 
-	case 5:
-		while (true) {
-			std::cout << "deduction* : ";
-			std::getline(std::cin, userInput);
-			Utility::removeEmptySpaces(userInput);
-
-			if (userInput.size() == 0) {
-				std::cout << "\x1B[33m" << "deduction is mandatory...Please enter again!!" << "\x1B[0m\n";
-			}
-			else {
-				try {
-					if (stod(userInput) >= 0.0) {
-						obj.setDeduction(stod(userInput));
-					}
-					else {
-						throw "Negative Number";
-					}
-				}
-				catch (...) {
-					std::cerr << "\x1B[33m" << "Wrong input...Please enter Positive real number!!" << "\x1B[0m\n";
-					continue;
-				}
-				break;
-			}
+		case 5:
+		{
+			auto deduction = Utility::getUserInputDouble("deduction").value();
+			obj.setBaseSalary(deduction);
+			break;
 		}
-		break;
 	}
 }
 
 bool DepartmentView::getDepartmentIDInput(Department& obj, const std::string& operation) {
-	std::string userInput;
 
 	system("cls");
 	std::cout << "------------------------------------------" << "\x1B[36m" << operation <<" Department"<< "\x1B[0m" <<"-------------------------------------------------\n";
 	std::cout << "\x1B[33m" << "To "+ operation +" a Department, please enter departmentID." << "\x1B[0m\n";
 
-	while (true) {
-		std::cout << "departmentID* : ";
-		std::getline(std::cin, userInput);
-		Utility::removeEmptySpaces(userInput);
-
-		if (userInput.size() == 0) {
-			std::cout << "\x1B[33m" << "departmentID is mandatory...Please enter again!!" << "\x1B[0m\n";
-		}
-		else {
-			if (Validate::validateDepartmentID(userInput)) {
-				obj.setDepartmentID(stoi(userInput));
-				break;
-			}
-			else {
-				std::cout << "\x1B[33m" << "Wrong input...Please enter positive integer number!!" << "\x1B[0m\n";
-			}
-		}
-	}
+	auto departmentID = Utility::getUserInputInt("departmentID", Validate::validateDepartmentID).value();
+	obj.setDepartmentID(departmentID);
 
 	system("cls");
 	std::cout << "------------------------------------------" << "\x1B[36m" << operation << " Department" << "\x1B[0m" << "-------------------------------------------------\n";
-	DepartmentController::selectDepartment("departmentID", userInput);
-	std::cout << "\x1B[31m" << "Deleting the Department will also delete all of it's Employees." << "\x1B[0m\n";
+	DepartmentController::selectDepartment("departmentID", std::to_string(departmentID));
+	if (operation == "Delete") {
+		std::cout << "\x1B[31m" << "Note : Deleting the Department will also delete all of it's Employees." << "\x1B[0m\n";
+	}
 
 	return Utility::proceedFurther(operation);
 }

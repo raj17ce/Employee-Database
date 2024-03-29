@@ -16,13 +16,13 @@ namespace EmployeeDB::Model {
 
     class Name {
     public:
-        Name() : m_FirstName{""}, m_MiddleName{""}, m_LastName{""} {}
-        Name(bool isUpdateObj) : m_FirstName{ "#" }, m_MiddleName{ "#" }, m_LastName{ "#" } {}
+        Name() : m_FirstName{""}, m_MiddleName{std::nullopt}, m_LastName{""} {}
+        Name(bool isUpdateObj) : m_FirstName{ "#" }, m_MiddleName{ std::nullopt }, m_LastName{ "#" } {}
 
         void setFirstName(const std::string& firstName) {
             m_FirstName = firstName;
         }
-        void setMiddleName(const std::string& middleName) {
+        void setMiddleName(const std::optional<std::string>& middleName) {
             m_MiddleName = middleName;
         }
         void setLastName(const std::string& lastName) {
@@ -32,8 +32,8 @@ namespace EmployeeDB::Model {
         const std::string& getFirstName() const {
             return m_FirstName;
         }
-        const std::string& getMiddleName() const {
-            return m_MiddleName.value_or("");
+        const std::optional<std::string>& getMiddleName() const {
+            return m_MiddleName;
         }
         const std::string& getLastName() const {
             return m_LastName;
@@ -52,13 +52,13 @@ namespace EmployeeDB::Model {
             m_Address{""},
             m_DateOfBirth{""},
             m_DateOfJoining{""},
-            m_PerformanceMetric{ 0.0 },
-            m_Bonus{ 0.0 },
+            m_PerformanceMetric{ std::nullopt },
+            m_Bonus{ std::nullopt },
             m_MobileNumber{ 0 },
             m_Gender{ Gender::Male },
             m_EmployeeID{ 0 },
             m_DepartmentID{ 0 },
-            m_MentorID{ 0 } {
+            m_MentorID{ std::nullopt } {
         }
 
         Employee(bool isUpdateObj) :
@@ -67,19 +67,19 @@ namespace EmployeeDB::Model {
             m_Address{ "#" },
             m_DateOfBirth{ "#" },
             m_DateOfJoining{ "#" },
-            m_PerformanceMetric{ -1.0 },
-            m_Bonus{ -1.0 },
+            m_PerformanceMetric{ std::nullopt },
+            m_Bonus{ std::nullopt },
             m_MobileNumber{ -1 },
             m_Gender{ Gender::Other },
             m_EmployeeID{ -1 },
             m_DepartmentID{ -1 },
-            m_MentorID{ -1 } {
+            m_MentorID{ std::nullopt } {
         }
 
         void setFirstName(const std::string& firstName) {
             name.setFirstName(firstName);
         }
-        void setMiddleName(const std::string& middleName) {
+        void setMiddleName(const std::optional<std::string>& middleName) {
             name.setMiddleName(middleName);
         }
         void setLastName(const std::string& lastName) {
@@ -97,10 +97,10 @@ namespace EmployeeDB::Model {
         void setDateOfJoining(const std::string& dateOfJoining) {
             m_DateOfJoining = dateOfJoining;
         }
-        void setPerformanceMetric(double performanceMetric) {
+        void setPerformanceMetric(const std::optional<double>& performanceMetric) {
             m_PerformanceMetric = performanceMetric;
         }
-        void setBonus(double bonus) {
+        void setBonus(const std::optional<double>& bonus) {
             m_Bonus = bonus;
         }
         void setMobileNumber(long long mobileNumber) {
@@ -115,14 +115,14 @@ namespace EmployeeDB::Model {
         void setDepartmentID(int departmentID) {
             m_DepartmentID = departmentID;
         }
-        void setMentorID(int mentorID) {
+        void setMentorID(const std::optional<int>& mentorID) {
             m_MentorID = mentorID;
         }
 
         const std::string& getFirstName() const {
             return name.getFirstName();
         }
-        const std::string& getMiddleName() const {
+        const std::optional<std::string>& getMiddleName() const {
             return name.getMiddleName();
         }
         const std::string& getLastName() const {
@@ -134,17 +134,17 @@ namespace EmployeeDB::Model {
         const std::string& getAddress() const {
             return m_Address;
         }
-        const std::string& getDateOfBirth() const {
-            return m_DateOfBirth.value_or("");
+        const std::optional<std::string>& getDateOfBirth() const {
+            return m_DateOfBirth;
         }
         const std::string& getDateOfJoining() const {
             return m_DateOfJoining;
         }
-        double getPerformanceMetric() const {
-            return m_PerformanceMetric.value_or(0.0);
+        std::optional<double> getPerformanceMetric() const {
+            return m_PerformanceMetric;
         }
-        double getBonus() const {
-            return m_Bonus.value_or(0.0);
+        std::optional<double> getBonus() const {
+            return m_Bonus;
         }
         long long getMobileNumber() const {
             return m_MobileNumber;
@@ -158,8 +158,8 @@ namespace EmployeeDB::Model {
         int getDepartmentID() const {
             return m_DepartmentID;
         }
-        int getMentorID() const {
-            return m_MentorID.value_or(0);
+        std::optional<int> getMentorID() const {
+            return m_MentorID;
         }
 
 	    private:

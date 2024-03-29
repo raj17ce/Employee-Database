@@ -13,19 +13,7 @@ bool ExportView::exportToCSV(const std::string& entity) {
 	std::cout << "------------------------------------------" << "\x1B[36m" << "Export "<< entity << "\x1B[0m" << "-------------------------------------------------\n";
 	std::cout << "\x1B[33m" << "Enter filename for exporting " << entity << "Table(do not add .csv extension)\n" << "\x1B[0m\n";
 	
-	std::string userInput;
-	while (true) {
-		std::cout << "filename* : ";
-		std::getline(std::cin, userInput);
-		Utility::removeEmptySpaces(userInput);
-
-		if (userInput.size() == 0) {
-			std::cout << "\x1B[33m" << "filename is mandatory...Please enter again!!" << "\x1B[0m\n";
-		}
-		else {
-			break;
-		}
-	}
+	auto userInput = Utility::getUserInputString("filename").value();
 
 	std::filesystem::path filename{userInput};
 

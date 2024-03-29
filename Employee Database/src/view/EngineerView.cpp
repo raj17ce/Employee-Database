@@ -21,20 +21,9 @@ bool EngineerView::insertEngineer() {
 
 	EmployeeView::getInsertEmployeeInput(obj);
 
-	std::string userInput;
-
-	while (true) {
-		std::cout << "technology* : ";
-		std::getline(std::cin, userInput);
-		Utility::removeEmptySpaces(userInput);
-
-		if (userInput.size() == 0) {
-			std::cout << "\x1B[33m" << "Technology is mandatory...Please enter again!!" << "\x1B[0m\n";
-		}
-		else {
-			obj.setTechnology(userInput);
-			break;
-		}
+	{
+		auto technology = Utility::getUserInputString("technology").value();
+		obj.setTechnology(technology);
 	}
 
 	EngineerController::insertEngineer(obj);
@@ -94,16 +83,9 @@ bool EngineerView::updateEngineer() {
 				}
 			}
 			else if (userInput == 13) {
-				while (true) {
-					std::cout << "technology* : ";
-					std::getline(std::cin, inputLine);
-					if (inputLine.size() == 0) {
-						std::cout << "\x1B[33m" << "Technology is mandatory...Please enter again!!" << "\x1B[0m\n";
-					}
-					else {
-						obj.setTechnology(inputLine);
-						break;
-					}
+				{
+					auto technology = Utility::getUserInputString("technology").value();
+					obj.setTechnology(technology);
 				}
 				if (Utility::repeatOperation("update", "field")) {
 					continue;
@@ -191,7 +173,7 @@ bool EngineerView::viewEngineerConditional() {
 			}
 			else if (userInput == 3) {
 				EmployeeView::getViewEmployeeInput(obj, 3);
-				EngineerController::selectEngineer("middleName", obj.getMiddleName());
+				EngineerController::selectEngineer("middleName", obj.getMiddleName().value());
 				break;
 			}
 			else if (userInput == 4) {
@@ -201,7 +183,7 @@ bool EngineerView::viewEngineerConditional() {
 			}
 			else if (userInput == 5) {
 				EmployeeView::getViewEmployeeInput(obj, 5);
-				EngineerController::selectEngineer("dateOfBirth", obj.getDateOfBirth());
+				EngineerController::selectEngineer("dateOfBirth", obj.getDateOfBirth().value());
 				break;
 			}
 			else if (userInput == 6) {
@@ -231,32 +213,23 @@ bool EngineerView::viewEngineerConditional() {
 			}
 			else if (userInput == 11) {
 				EmployeeView::getViewEmployeeInput(obj, 11);
-				EngineerController::selectEngineer("mentorID", std::to_string(obj.getMentorID()));
+				EngineerController::selectEngineer("mentorID", std::to_string(obj.getMentorID().value()));
 				break;
 			}
 			else if (userInput == 12) {
 				EmployeeView::getViewEmployeeInput(obj, 12);
-				EngineerController::selectEngineer("performanceMetric", std::to_string(obj.getPerformanceMetric()));
+				EngineerController::selectEngineer("performanceMetric", std::to_string(obj.getPerformanceMetric().value()));
 				break;
 			}
 			else if (userInput == 13) {
 				EmployeeView::getViewEmployeeInput(obj, 13);
-				EngineerController::selectEngineer("bonus", std::to_string(obj.getBonus()));
+				EngineerController::selectEngineer("bonus", std::to_string(obj.getBonus().value()));
 				break;
 			}
 			else if (userInput == 14) {
-				while (true) {
-					std::cout << "technology* : ";
-					std::getline(std::cin, inputLine);
-					Utility::removeEmptySpaces(inputLine);
-
-					if (inputLine.size() == 0) {
-						std::cout << "\x1B[33m" << "technology is mandatory...Please enter again!!" << "\x1B[0m\n";
-					}
-					else {
-						obj.setTechnology(inputLine);
-						break;
-					}
+				{
+					auto technology = Utility::getUserInputString("technology").value();
+					obj.setTechnology(technology);
 				}
 				EngineerController::selectEngineer("technology", obj.getTechnology());
 				break;
