@@ -65,7 +65,7 @@ namespace EmployeeDB::Model {
             name{true},
             m_Email{ "#" },
             m_Address{ "#" },
-            m_DateOfBirth{ "#" },
+            m_DateOfBirth{ std::nullopt },
             m_DateOfJoining{ "#" },
             m_PerformanceMetric{ std::nullopt },
             m_Bonus{ std::nullopt },

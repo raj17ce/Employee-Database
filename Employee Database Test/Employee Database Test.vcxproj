@@ -149,6 +149,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="include\controller\DepartmentControllerTest.h" />
+    <ClInclude Include="include\controller\EmployeeControllerTest.h" />
     <ClInclude Include="include\fixture\DepartmentFixture.h" />
     <ClInclude Include="include\fixture\EmployeeFixture.h" />
     <ClInclude Include="include\fixture\EngineerFixture.h" />
@@ -184,6 +185,7 @@
       </PrecompiledHeaderOutputFile>
     </ClCompile>
     <ClCompile Include="src\controller\DepartmentControllerTest.cpp" />
+    <ClCompile Include="src\controller\EmployeeControllerTest.cpp" />
     <ClCompile Include="src\ValidateTest.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
