@@ -92,7 +92,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>$(SolutionDir)bin-int\x64\Debug\Employee Database\Validate;$(SolutionDir)bin-int\x64\Debug\Employee Database\EmployeeController;$(SolutionDir)bin-int\x64\Debug\Employee Database\DepartmentController;$(SolutionDir)bin-int\x64\Debug\Employee Database\ManagerController;$(SolutionDir)bin-int\x64\Debug\Employee Database\DBManager;$(SolutionDir)bin-int\x64\Debug\Employee Database\sqlite3;$(SolutionDir)bin-int\x64\Debug\Employee Database\Log;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)bin-int\x64\Debug\Employee Database\Validate;$(SolutionDir)bin-int\x64\Debug\Employee Database\EmployeeController;$(SolutionDir)bin-int\x64\Debug\Employee Database\DepartmentController;$(SolutionDir)bin-int\x64\Debug\Employee Database\ManagerController;$(SolutionDir)bin-int\x64\Debug\Employee Database\DBManager;$(SolutionDir)bin-int\x64\Debug\Employee Database\sqlite3;$(SolutionDir)bin-int\x64\Debug\Employee Database\Log;$(SolutionDir)bin-int\x64\Debug\Employee Database\EngineerController;$(SolutionDir)bin-int\x64\Debug\Employee Database\FinanceController;$(SolutionDir)bin-int\x64\Debug\Employee Database\HRController;$(SolutionDir)bin-int\x64\Debug\Employee Database\QAController;$(SolutionDir)bin-int\x64\Debug\Employee Database\ExportController;$(SolutionDir)bin-int\x64\Debug\Employee Database\TableController;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)bin-int\x64\Debug\Employee Database\</AdditionalLibraryDirectories>
     </Link>
     <ProjectReference>
@@ -150,6 +150,11 @@
   <ItemGroup>
     <ClInclude Include="include\controller\DepartmentControllerTest.h" />
     <ClInclude Include="include\controller\EmployeeControllerTest.h" />
+    <ClInclude Include="include\controller\EngineerControllerTest.h" />
+    <ClInclude Include="include\controller\FinanceControllerTest.h" />
+    <ClInclude Include="include\controller\HRControllerTest.h" />
+    <ClInclude Include="include\controller\ManagerControllerTest.h" />
+    <ClInclude Include="include\controller\QAControllerTest.h" />
     <ClInclude Include="include\fixture\DepartmentFixture.h" />
     <ClInclude Include="include\fixture\EmployeeFixture.h" />
     <ClInclude Include="include\fixture\EngineerFixture.h" />
@@ -186,6 +191,10 @@
     </ClCompile>
     <ClCompile Include="src\controller\DepartmentControllerTest.cpp" />
     <ClCompile Include="src\controller\EmployeeControllerTest.cpp" />
+    <ClCompile Include="src\controller\EngineerControllerTest.cpp" />
+    <ClCompile Include="src\controller\FinanceControllerTest.cpp" />
+    <ClCompile Include="src\controller\HRControllerTest.cpp" />
+    <ClCompile Include="src\controller\QAControllerTest.cpp" />
     <ClCompile Include="src\ValidateTest.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -200,7 +209,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="data\Employee.db" />
     <None Include="packages.config" />
     <None Include="pch.pch" />
   </ItemGroup>

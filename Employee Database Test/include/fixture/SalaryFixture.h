@@ -1,7 +1,7 @@
 #ifndef __SalaryFixture_H__
 #define __SalaryFixture_H__
 
-#include "../../pch.h";
+#include "../../pch.h"
 #include "./model/Salary.h"
 
 using EmployeeDB::Model::Salary;

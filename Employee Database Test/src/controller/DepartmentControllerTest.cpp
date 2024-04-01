@@ -49,7 +49,7 @@ TEST_F(DepartmentFixture, checkDepartmentExistenceFalse) {
 	ASSERT_FALSE(DepartmentController::checkDepartmentExistence("47"));
 }
 
-TEST_F(DepartmentFixture, SelectDepartmentSuccess) {
+TEST_F(DepartmentFixture, selectDepartmentSuccess) {
 	ASSERT_TRUE(DepartmentController::selectDepartment());
 	ASSERT_TRUE(DepartmentController::selectDepartment("departmentName", "Engineer"));
 	ASSERT_TRUE(DepartmentController::selectDepartment("baseSalary", "65000"));
@@ -58,7 +58,7 @@ TEST_F(DepartmentFixture, SelectDepartmentSuccess) {
 	ASSERT_EQ(4, DBManager::instance().executeRowCountQuery(queryString.c_str()));
 }
 
-TEST_F(DepartmentFixture, SelectDepartmentFailure) {
+TEST_F(DepartmentFixture, selectDepartmentFailure) {
 	ASSERT_FALSE(DepartmentController::selectDepartment("departmenttName", "Engineer"));
 	ASSERT_FALSE(DepartmentController::selectDepartment("baseSalaryyy", "65000"));
 

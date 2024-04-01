@@ -1,7 +1,7 @@
 #ifndef __EmployeeFixture_H__
 #define __EmployeeFixture_H__
 
-#include "../../pch.h";
+#include "../../pch.h"
 #include "./model/Employee.h"
 #include "DBManager.h"
 
@@ -27,6 +27,8 @@ public:
         employee->setDepartmentID(1);
         employee->setPerformanceMetric(0.85);
         employee->setBonus(500.0);
+
+        DBManager::instance().executeConfigQuery();
 
         std::string queryString = "INSERT INTO Department (\"departmentID\", \"departmentName\", \"baseSalary\", \"allowance\", \"deduction\") VALUES"
             "(1, 'Engineer', 65000, 7000, 3000),"

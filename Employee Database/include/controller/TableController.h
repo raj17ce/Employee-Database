@@ -14,7 +14,7 @@ namespace EmployeeDB::Controller {
 	public:
 		static bool createTable(Table& obj);
 		static bool deleteTable(const std::string& tableName);
-	private:
+	protected:
 		static std::string getCreateTableQuery(Table& obj);
 	};
 }

@@ -19,6 +19,8 @@ public:
         department->setAllowance(3400.0);
         department->setDeduction(1200.0);
 
+        DBManager::instance().executeConfigQuery();
+
         std::string queryString = "INSERT INTO Department (\"departmentID\", \"departmentName\", \"baseSalary\", \"allowance\", \"deduction\") VALUES"
             "(1, 'Engineer', 65000, 7000, 3000),"
             "(2, 'Finance', 65000, 6000, 2500),"

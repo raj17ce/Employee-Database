@@ -1,7 +1,7 @@
 #ifndef __TableFixture_H__
 #define __TableFixture_H__
 
-#include "../../pch.h";
+#include "../../pch.h"
 #include "./model/Table.h"
 
 using EmployeeDB::Model::Table;
