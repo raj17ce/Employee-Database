@@ -35,22 +35,22 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\$(ProjectName)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
-    <IncludePath>$(SolutionDir)packages\gmock.1.11.0\lib\native\include\;$(SolutionDir)Employee Database Test\;$(SolutionDir)Employee Database\include\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)packages\gmock.1.11.0\lib\native\include\;$(SolutionDir)Employee Database Test\include\fixture\;$(SolutionDir)Employee Database Test\include\controller\;$(SolutionDir)Employee Database Test\;$(SolutionDir)Employee Database\include\;$(IncludePath);$(SolutionDir)Employee Database\include\model\;$(SolutionDir)Employee Database\lib\logician\;$(SolutionDir)Employee Database\lib\sqlite\;$(SolutionDir)Employee Database\include\controller\;$(SolutionDir)Employee Database\include\view\</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\$(ProjectName)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
-    <IncludePath>$(SolutionDir)packages\gmock.1.11.0\lib\native\include\;$(SolutionDir)Employee Database Test\;$(SolutionDir)Employee Database\include\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)packages\gmock.1.11.0\lib\native\include\;$(SolutionDir)Employee Database Test\include\fixture\;$(SolutionDir)Employee Database Test\include\controller\;$(SolutionDir)Employee Database Test\;$(SolutionDir)Employee Database\include\;$(IncludePath);$(SolutionDir)Employee Database\include\model\;$(SolutionDir)Employee Database\lib\logician\;$(SolutionDir)Employee Database\lib\sqlite\;$(SolutionDir)Employee Database\include\controller\;$(SolutionDir)Employee Database\include\view\</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\$(ProjectName)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
-    <IncludePath>$(SolutionDir)packages\gmock.1.11.0\lib\native\include\;$(SolutionDir)Employee Database Test\;$(SolutionDir)Employee Database\include\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)packages\gmock.1.11.0\lib\native\include\;$(SolutionDir)Employee Database Test\include\fixture\;$(SolutionDir)Employee Database Test\include\controller\;$(SolutionDir)Employee Database Test\;$(SolutionDir)Employee Database\include\;$(IncludePath);$(SolutionDir)Employee Database\include\model\;$(SolutionDir)Employee Database\lib\logician\;$(SolutionDir)Employee Database\lib\sqlite\;$(SolutionDir)Employee Database\include\controller\;$(SolutionDir)Employee Database\include\view\</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\$(ProjectName)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
-    <IncludePath>$(SolutionDir)packages\gmock.1.11.0\lib\native\include\;$(SolutionDir)Employee Database Test\;$(SolutionDir)Employee Database\include\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)packages\gmock.1.11.0\lib\native\include\;$(SolutionDir)Employee Database Test\include\fixture\;$(SolutionDir)Employee Database Test\include\controller\;$(SolutionDir)Employee Database Test\;$(SolutionDir)Employee Database\include\;$(IncludePath);$(SolutionDir)Employee Database\include\model\;$(SolutionDir)Employee Database\lib\logician\;$(SolutionDir)Employee Database\lib\sqlite\;$(SolutionDir)Employee Database\include\controller\;$(SolutionDir)Employee Database\include\view\</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -148,6 +148,7 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\controller\DepartmentControllerTest.h" />
     <ClInclude Include="include\fixture\DepartmentFixture.h" />
     <ClInclude Include="include\fixture\EmployeeFixture.h" />
     <ClInclude Include="include\fixture\EngineerFixture.h" />
@@ -156,6 +157,7 @@
     <ClInclude Include="include\fixture\ManagerFixture.h" />
     <ClInclude Include="include\fixture\QAFixture.h" />
     <ClInclude Include="include\fixture\SalaryFixture.h" />
+    <ClInclude Include="include\fixture\TableFixture.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +183,7 @@
       <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeaderOutputFile>
     </ClCompile>
+    <ClCompile Include="src\controller\DepartmentControllerTest.cpp" />
     <ClCompile Include="src\ValidateTest.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

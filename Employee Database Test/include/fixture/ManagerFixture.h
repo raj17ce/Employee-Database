@@ -1,3 +1,6 @@
+#ifndef __ManagerFixture_H__
+#define __ManagerFixture_H__
+
 #include "../../pch.h";
 #include "./model/Manager.h"
 
@@ -7,8 +10,8 @@ using EmployeeDB::Model::Gender;
 class ManagerFixture : public testing::Test {
 public:
     void SetUp() {
-        manager = new Manager{};
-        emptyManager = new Manager{};
+        manager = std::make_unique<Manager>();
+        updateManager = std::make_unique<Manager>(true);
 
         manager->setFirstName("John");
         manager->setMiddleName("Doe");
@@ -31,11 +34,8 @@ public:
         manager->setRole("Java");
     }
 
-    void TearDown() {
-        delete manager;
-        delete emptyManager;
-    }
-private:
-    Manager* manager;
-    Manager* emptyManager;
+    std::unique_ptr<Manager> manager;
+    std::unique_ptr<Manager> updateManager;
 };
+
+#endif

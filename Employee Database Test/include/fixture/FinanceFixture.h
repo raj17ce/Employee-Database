@@ -1,3 +1,6 @@
+#ifndef __FinanceFixture_H__
+#define __FinanceFixture_H__
+
 #include "../../pch.h";
 #include "./model/Finance.h"
 
@@ -7,8 +10,8 @@ using EmployeeDB::Model::Gender;
 class FinanceFixture : public testing::Test {
 public:
     void SetUp() {
-        finance = new Finance{};
-        emptyFinance = new Finance{};
+        finance = std::make_unique<Finance>();
+        updateFinance = std::make_unique<Finance>(true);
 
         finance->setFirstName("Jane");
         finance->setMiddleName("Doe");
@@ -27,11 +30,8 @@ public:
         finance->setAccountingTool("QuickBooks");
     }
 
-    void TearDown() {
-        delete finance;
-        delete emptyFinance;
-    }
-private:
-    Finance* finance;
-    Finance* emptyFinance;
+    std::unique_ptr<Finance> finance;
+    std::unique_ptr<Finance> updateFinance;
 };
+
+#endif

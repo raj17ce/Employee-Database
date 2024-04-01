@@ -173,3 +173,14 @@ void DBManager::executeConfigQuery() {
 		std::cerr << "\x1B[31m" << e.what() << "\033[0m" << '\n';
 	}
 }
+
+void DBManager::executeTruncateQuery(const char* tableName) {
+	std::string queryString = std::string{ "DELETE FROM " } + tableName + ";";
+
+	try {
+		instance().executeQuery(queryString.c_str());
+	}
+	catch (const std::exception& e) {
+		std::cerr << "\x1B[31m" << e.what() << "\033[0m" << '\n';
+	}
+}

@@ -1,3 +1,6 @@
+#ifndef __EngineerFixture_H__
+#define __EngineerFixture_H__
+
 #include "../../pch.h";
 #include "./model/Engineer.h"
 
@@ -7,8 +10,8 @@ using EmployeeDB::Model::Gender;
 class EngineerFixture : public testing::Test {
 public:
     void SetUp() {
-        engineer = new Engineer{};
-        emptyEngineer = new Engineer{};
+        engineer = std::make_unique<Engineer>();
+        updateEngineer = std::make_unique<Engineer>(true);
 
         engineer->setFirstName("John");
         engineer->setMiddleName("Doe");
@@ -26,11 +29,8 @@ public:
         engineer->setTechnology("Java");
     }
 
-    void TearDown() {
-        delete engineer;
-        delete emptyEngineer;
-    }
-private:
-    Engineer* engineer;
-    Engineer* emptyEngineer;
+    std::unique_ptr<Engineer> engineer;
+    std::unique_ptr<Engineer> updateEngineer;
 };
+
+#endif

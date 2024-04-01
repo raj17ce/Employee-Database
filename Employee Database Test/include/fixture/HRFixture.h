@@ -1,3 +1,6 @@
+#ifndef __HRFixture_H__
+#define __HRFixture_H__
+
 #include "../../pch.h";
 #include "./model/HR.h"
 
@@ -7,8 +10,8 @@ using EmployeeDB::Model::Gender;
 class HRFixture : public testing::Test {
 public:
     void SetUp() {
-        hr = new HR{};
-        emptyHr = new HR{};
+        hr = std::make_unique<HR>();
+        updateHr = std::make_unique<HR>(true);
 
         hr->setFirstName("Michael");
         hr->setMiddleName("James");
@@ -27,11 +30,8 @@ public:
         hr->setHRSpecialization("Recruitment");
     }
 
-    void TearDown() {
-        delete hr;
-        delete emptyHr;
-    }
-private:
-    HR* hr;
-    HR* emptyHr;
+    std::unique_ptr<HR> hr;
+    std::unique_ptr<HR> updateHr;
 };
+
+#endif

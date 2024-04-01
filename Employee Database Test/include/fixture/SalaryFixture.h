@@ -1,3 +1,6 @@
+#ifndef __SalaryFixture_H__
+#define __SalaryFixture_H__
+
 #include "../../pch.h";
 #include "./model/Salary.h"
 
@@ -6,8 +9,8 @@ using EmployeeDB::Model::Salary;
 class SalaryFixture : public testing::Test {
 public:
 	void SetUp() {
-		salary = new Salary{};
-		emptySalary = new Salary{};
+		salary = std::make_unique<Salary>();
+		updateSalary = std::make_unique<Salary>(true);
 
 		salary->setDepartmentID(1);
 		salary->setBaseSalary(65000.0);
@@ -17,11 +20,8 @@ public:
 		salary->setBonus(5000.0);
 	}
 
-	void TearDown() {
-		delete salary;
-		delete emptySalary;
-	}
-private:
-	Salary* salary;
-	Salary* emptySalary;
+	std::unique_ptr<Salary> salary;
+	std::unique_ptr<Salary> updateSalary;
 };
+
+#endif

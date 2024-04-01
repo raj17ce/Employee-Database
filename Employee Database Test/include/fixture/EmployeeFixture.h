@@ -1,3 +1,6 @@
+#ifndef __EmployeeFixture_H__
+#define __EmployeeFixture_H__
+
 #include "../../pch.h";
 #include "./model/Employee.h"
 
@@ -7,8 +10,8 @@ using EmployeeDB::Model::Gender;
 class EmployeeFixture : public testing::Test {
 public:
     void SetUp() {
-        employee = new Employee{};
-        emptyEmployee = new Employee{};
+        employee = std::make_unique<Employee>();
+        updateEmployee = std::make_unique<Employee>(true);
 
         employee->setFirstName("John");
         employee->setMiddleName("Doe");
@@ -25,12 +28,8 @@ public:
         employee->setBonus(500.0);
     }
 
-    void TearDown() {
-        delete employee;
-        delete emptyEmployee;
-    }
-
-private:
-    Employee* employee;
-    Employee* emptyEmployee;
+    std::unique_ptr<Employee> employee;
+    std::unique_ptr<Employee> updateEmployee;
 };
+
+#endif

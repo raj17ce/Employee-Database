@@ -1,3 +1,6 @@
+#ifndef __QAFixture_H__
+#define __QAFixture_H__
+
 #include "../../pch.h";
 #include "./model/QA.h"
 
@@ -7,8 +10,8 @@ using EmployeeDB::Model::Gender;
 class QAFixture : public testing::Test {
 public:
     void SetUp() {
-        qa = new QA{};
-        emptyQa = new QA{};
+        qa = std::make_unique<QA>();
+        updateQa = std::make_unique<QA>(true);
 
         qa->setFirstName("Emily");
         qa->setMiddleName("Anne");
@@ -27,11 +30,8 @@ public:
         qa->setTestingTool("Selenium");
     }
 
-    void TearDown() {
-        delete qa;
-        delete emptyQa;
-    }
-private:
-    QA* qa;
-    QA* emptyQa;
+    std::unique_ptr<QA> qa;
+    std::unique_ptr<QA> updateQa;
 };
+
+#endif

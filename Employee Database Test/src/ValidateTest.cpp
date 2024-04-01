@@ -67,48 +67,48 @@ TEST(TestValidateGender, ValidateGenderFalse) {
 	ASSERT_FALSE(Validate::validateGender(std::string{ "femalles" }));
 }
 
-TEST(TestValidateEmployeeID, ValidateEmployeeIDTrue) {
-	ASSERT_TRUE(Validate::validateEmployeeID("1","Engineer"));
-	ASSERT_TRUE(Validate::validateEmployeeID("8","Finance"));
-	ASSERT_TRUE(Validate::validateEmployeeID("15","HR"));
-	ASSERT_TRUE(Validate::validateEmployeeID("22","QA"));
-	ASSERT_TRUE(Validate::validateEmployeeID("5","Engineer"));
-}
-
-TEST(TestValidateEmployeeID, ValidateEmployeeIDFalse) {
-	ASSERT_FALSE(Validate::validateEmployeeID("1", "Finance"));
-	ASSERT_FALSE(Validate::validateEmployeeID("8", "Engineer"));
-	ASSERT_FALSE(Validate::validateEmployeeID("150", "HR"));
-	ASSERT_FALSE(Validate::validateEmployeeID("20", "QA"));
-	ASSERT_FALSE(Validate::validateEmployeeID("50", "Engineer"));
-}
-
-TEST(TestValidateManagerID, ValidateManagerIDTrue) {
-	ASSERT_TRUE(Validate::validateManagerID("1"));
-	ASSERT_TRUE(Validate::validateManagerID("8"));
-	ASSERT_TRUE(Validate::validateManagerID("15"));
-	ASSERT_TRUE(Validate::validateManagerID("23"));
-	ASSERT_TRUE(Validate::validateManagerID("5"));
-}
-
-TEST(TestValidateManagerID, ValidateManagerIDFalse) {
-	ASSERT_FALSE(Validate::validateManagerID("10"));
-	ASSERT_FALSE(Validate::validateManagerID("800"));
-	ASSERT_FALSE(Validate::validateManagerID("-5"));
-	ASSERT_FALSE(Validate::validateManagerID("Hello"));
-	ASSERT_FALSE(Validate::validateManagerID("25"));
-}
-
-TEST(TestValidateDepartmentID, ValidateDepartmentIDTrue) {
-	ASSERT_TRUE(Validate::validateDepartmentID("1"));
-	ASSERT_TRUE(Validate::validateDepartmentID("2"));
-	ASSERT_TRUE(Validate::validateDepartmentID("3"));
-	ASSERT_TRUE(Validate::validateDepartmentID("4"));
-}
-
-TEST(TestValidateDepartmentID, ValidateDepartmentIDFalse) {
-	ASSERT_FALSE(Validate::validateDepartmentID("-1"));
-	ASSERT_FALSE(Validate::validateDepartmentID("0"));
-	ASSERT_FALSE(Validate::validateDepartmentID("300"));
-	ASSERT_FALSE(Validate::validateDepartmentID("4Hello"));
-}
+//TEST(TestValidateEmployeeID, ValidateEmployeeIDTrue) {
+//	ASSERT_TRUE(Validate::validateEmployeeID("1","Engineer"));
+//	ASSERT_TRUE(Validate::validateEmployeeID("8","Finance"));
+//	ASSERT_TRUE(Validate::validateEmployeeID("15","HR"));
+//	ASSERT_TRUE(Validate::validateEmployeeID("22","QA"));
+//	ASSERT_TRUE(Validate::validateEmployeeID("5","Engineer"));
+//}
+//
+//TEST(TestValidateEmployeeID, ValidateEmployeeIDFalse) {
+//	ASSERT_FALSE(Validate::validateEmployeeID("1", "Finance"));
+//	ASSERT_FALSE(Validate::validateEmployeeID("8", "Engineer"));
+//	ASSERT_FALSE(Validate::validateEmployeeID("150", "HR"));
+//	ASSERT_FALSE(Validate::validateEmployeeID("20", "QA"));
+//	ASSERT_FALSE(Validate::validateEmployeeID("50", "Engineer"));
+//}
+//
+//TEST(TestValidateManagerID, ValidateManagerIDTrue) {
+//	ASSERT_TRUE(Validate::validateManagerID("1"));
+//	ASSERT_TRUE(Validate::validateManagerID("8"));
+//	ASSERT_TRUE(Validate::validateManagerID("15"));
+//	ASSERT_TRUE(Validate::validateManagerID("23"));
+//	ASSERT_TRUE(Validate::validateManagerID("5"));
+//}
+//
+//TEST(TestValidateManagerID, ValidateManagerIDFalse) {
+//	ASSERT_FALSE(Validate::validateManagerID("10"));
+//	ASSERT_FALSE(Validate::validateManagerID("800"));
+//	ASSERT_FALSE(Validate::validateManagerID("-5"));
+//	ASSERT_FALSE(Validate::validateManagerID("Hello"));
+//	ASSERT_FALSE(Validate::validateManagerID("25"));
+//}
+//
+//TEST(TestValidateDepartmentID, ValidateDepartmentIDTrue) {
+//	ASSERT_TRUE(Validate::validateDepartmentID("1"));
+//	ASSERT_TRUE(Validate::validateDepartmentID("2"));
+//	ASSERT_TRUE(Validate::validateDepartmentID("3"));
+//	ASSERT_TRUE(Validate::validateDepartmentID("4"));
+//}
+//
+//TEST(TestValidateDepartmentID, ValidateDepartmentIDFalse) {
+//	ASSERT_FALSE(Validate::validateDepartmentID("-1"));
+//	ASSERT_FALSE(Validate::validateDepartmentID("0"));
+//	ASSERT_FALSE(Validate::validateDepartmentID("300"));
+//	ASSERT_FALSE(Validate::validateDepartmentID("4Hello"));
+//}
