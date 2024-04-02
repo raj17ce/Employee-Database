@@ -69,7 +69,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)bin-int\x64\Debug\Employee Database\Validate;$(SolutionDir)bin-int\x64\Debug\Employee Database\EmployeeController;$(SolutionDir)bin-int\x64\Debug\Employee Database\DepartmentController;$(SolutionDir)bin-int\x64\Debug\Employee Database\ManagerController;$(SolutionDir)bin-int\x64\Debug\Employee Database\DBManager;$(SolutionDir)bin-int\x64\Debug\Employee Database\sqlite3;$(SolutionDir)bin-int\x64\Debug\Employee Database\Log;$(SolutionDir)bin-int\x64\Debug\Employee Database\EngineerController;$(SolutionDir)bin-int\x64\Debug\Employee Database\FinanceController;$(SolutionDir)bin-int\x64\Debug\Employee Database\HRController;$(SolutionDir)bin-int\x64\Debug\Employee Database\QAController;$(SolutionDir)bin-int\x64\Debug\Employee Database\ExportController;$(SolutionDir)bin-int\x64\Debug\Employee Database\TableController;$(SolutionDir)bin-int\x64\Debug\Employee Database\Utility;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)bin-int\x64\Debug\Employee Database\</AdditionalLibraryDirectories>
     </Link>
     <ProjectReference>
@@ -92,7 +92,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>$(SolutionDir)bin-int\x64\Debug\Employee Database\Validate;$(SolutionDir)bin-int\x64\Debug\Employee Database\EmployeeController;$(SolutionDir)bin-int\x64\Debug\Employee Database\DepartmentController;$(SolutionDir)bin-int\x64\Debug\Employee Database\ManagerController;$(SolutionDir)bin-int\x64\Debug\Employee Database\DBManager;$(SolutionDir)bin-int\x64\Debug\Employee Database\sqlite3;$(SolutionDir)bin-int\x64\Debug\Employee Database\Log;$(SolutionDir)bin-int\x64\Debug\Employee Database\EngineerController;$(SolutionDir)bin-int\x64\Debug\Employee Database\FinanceController;$(SolutionDir)bin-int\x64\Debug\Employee Database\HRController;$(SolutionDir)bin-int\x64\Debug\Employee Database\QAController;$(SolutionDir)bin-int\x64\Debug\Employee Database\ExportController;$(SolutionDir)bin-int\x64\Debug\Employee Database\TableController;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)bin-int\x64\Debug\Employee Database\Validate;$(SolutionDir)bin-int\x64\Debug\Employee Database\EmployeeController;$(SolutionDir)bin-int\x64\Debug\Employee Database\DepartmentController;$(SolutionDir)bin-int\x64\Debug\Employee Database\ManagerController;$(SolutionDir)bin-int\x64\Debug\Employee Database\DBManager;$(SolutionDir)bin-int\x64\Debug\Employee Database\sqlite3;$(SolutionDir)bin-int\x64\Debug\Employee Database\Log;$(SolutionDir)bin-int\x64\Debug\Employee Database\EngineerController;$(SolutionDir)bin-int\x64\Debug\Employee Database\FinanceController;$(SolutionDir)bin-int\x64\Debug\Employee Database\HRController;$(SolutionDir)bin-int\x64\Debug\Employee Database\QAController;$(SolutionDir)bin-int\x64\Debug\Employee Database\ExportController;$(SolutionDir)bin-int\x64\Debug\Employee Database\TableController;$(SolutionDir)bin-int\x64\Debug\Employee Database\Utility;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)bin-int\x64\Debug\Employee Database\</AdditionalLibraryDirectories>
     </Link>
     <ProjectReference>
@@ -116,7 +116,7 @@
       <SubSystem>Console</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)bin-int\x64\Debug\Employee Database\Validate;$(SolutionDir)bin-int\x64\Debug\Employee Database\EmployeeController;$(SolutionDir)bin-int\x64\Debug\Employee Database\DepartmentController;$(SolutionDir)bin-int\x64\Debug\Employee Database\ManagerController;$(SolutionDir)bin-int\x64\Debug\Employee Database\DBManager;$(SolutionDir)bin-int\x64\Debug\Employee Database\sqlite3;$(SolutionDir)bin-int\x64\Debug\Employee Database\Log;$(SolutionDir)bin-int\x64\Debug\Employee Database\EngineerController;$(SolutionDir)bin-int\x64\Debug\Employee Database\FinanceController;$(SolutionDir)bin-int\x64\Debug\Employee Database\HRController;$(SolutionDir)bin-int\x64\Debug\Employee Database\QAController;$(SolutionDir)bin-int\x64\Debug\Employee Database\ExportController;$(SolutionDir)bin-int\x64\Debug\Employee Database\TableController;$(SolutionDir)bin-int\x64\Debug\Employee Database\Utility;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)bin-int\x64\Debug\Employee Database\</AdditionalLibraryDirectories>
     </Link>
     <ProjectReference>
@@ -140,7 +140,7 @@
       <SubSystem>Console</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)bin-int\x64\Debug\Employee Database\Validate;$(SolutionDir)bin-int\x64\Debug\Employee Database\EmployeeController;$(SolutionDir)bin-int\x64\Debug\Employee Database\DepartmentController;$(SolutionDir)bin-int\x64\Debug\Employee Database\ManagerController;$(SolutionDir)bin-int\x64\Debug\Employee Database\DBManager;$(SolutionDir)bin-int\x64\Debug\Employee Database\sqlite3;$(SolutionDir)bin-int\x64\Debug\Employee Database\Log;$(SolutionDir)bin-int\x64\Debug\Employee Database\EngineerController;$(SolutionDir)bin-int\x64\Debug\Employee Database\FinanceController;$(SolutionDir)bin-int\x64\Debug\Employee Database\HRController;$(SolutionDir)bin-int\x64\Debug\Employee Database\QAController;$(SolutionDir)bin-int\x64\Debug\Employee Database\ExportController;$(SolutionDir)bin-int\x64\Debug\Employee Database\TableController;$(SolutionDir)bin-int\x64\Debug\Employee Database\Utility;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)bin-int\x64\Debug\Employee Database\</AdditionalLibraryDirectories>
     </Link>
     <ProjectReference>
@@ -202,6 +202,9 @@
     <ClCompile Include="src\controller\ManagerControllerTest.cpp" />
     <ClCompile Include="src\controller\QAControllerTest.cpp" />
     <ClCompile Include="src\controller\TableControllerTest.cpp" />
+    <ClCompile Include="src\model\EmployeeTest.cpp" />
+    <ClCompile Include="src\model\SalaryTest.cpp" />
+    <ClCompile Include="src\UtilityTest.cpp" />
     <ClCompile Include="src\ValidateTest.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

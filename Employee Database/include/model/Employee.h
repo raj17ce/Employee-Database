@@ -11,7 +11,8 @@ namespace EmployeeDB::Model {
 	enum class Gender {
 		Male,
 		Female,
-		Other
+		Other,
+        Default
 	};
 
     class Name {
@@ -55,7 +56,7 @@ namespace EmployeeDB::Model {
             m_PerformanceMetric{ std::nullopt },
             m_Bonus{ std::nullopt },
             m_MobileNumber{ 0 },
-            m_Gender{ Gender::Male },
+            m_Gender{ Gender::Default },
             m_EmployeeID{ 0 },
             m_DepartmentID{ 0 },
             m_MentorID{ std::nullopt } {
@@ -70,7 +71,7 @@ namespace EmployeeDB::Model {
             m_PerformanceMetric{ std::nullopt },
             m_Bonus{ std::nullopt },
             m_MobileNumber{ -1 },
-            m_Gender{ Gender::Other },
+            m_Gender{ Gender::Default },
             m_EmployeeID{ -1 },
             m_DepartmentID{ -1 },
             m_MentorID{ std::nullopt } {
@@ -178,9 +179,10 @@ namespace EmployeeDB::Model {
 	};
 
     inline std::string getGenderString(Gender g) {
-        std::string tempStr{ "Male" };
+        std::string tempStr{ "" };
         switch (g) {
         case Gender::Male:
+            tempStr = "Male";
             break;
         case Gender::Female:
             tempStr = "Female";
@@ -193,7 +195,7 @@ namespace EmployeeDB::Model {
     }
 
     inline Gender getGenderFromString(std::string& genderString) {
-        Gender gender{ Gender::Male };
+        Gender gender{ Gender::Default };
 
         std::transform(genderString.begin(), genderString.end(), genderString.begin(), ::tolower);
         if (genderString == "male") {

@@ -163,7 +163,7 @@ std::string EmployeeController::getUpdateQueryCondition(Employee& obj) {
 		}
 		updateQueryCondition += "address = \"" + obj.getAddress() + "\"";
 	}
-	if (obj.getGender() != EmployeeDB::Model::Gender::Other) {
+	if (obj.getGender() != EmployeeDB::Model::Gender::Default) {
 		if (updateQueryCondition.size() != 0) {
 			updateQueryCondition += ", ";
 		}

@@ -17,7 +17,7 @@ public:
 		salary->setBaseSalary(65000.0);
 		salary->setAllowance(7000.0);
 		salary->setDeduction(3000.0);
-		salary->setPerformanceMetric(100.0);
+		salary->setPerformanceMetric(84);
 		salary->setBonus(5000.0);
 
 		emptySalary->setEmployeeID(1);

@@ -75,7 +75,7 @@ namespace EmployeeDB::Model {
         totalSalary += m_BaseSalary;
         totalSalary += m_Allowance;
         totalSalary -= m_Deduction;
-        totalSalary += m_Deduction;
+        totalSalary += m_Bonus;
         totalSalary += (m_BaseSalary * (m_PerformanceMetric / 100));
 
         return totalSalary;
