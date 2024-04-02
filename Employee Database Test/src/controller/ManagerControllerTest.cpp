@@ -70,6 +70,13 @@ TEST_F(ManagerFixture, getUpdateQueryConditionNonEmpty) {
 	ASSERT_STREQ("teamSize = 20, projectTitle = \"Project Z\"", ManagerControllerTest::getUpdateQueryCondition(*updateManager).c_str());
 }
 
+TEST_F(ManagerFixture, getUpdateQueryConditionMultiple) {
+
+	updateManager->setTeamSize(20);
+	updateManager->setProjectTitle("Project Z");
+	ASSERT_STREQ("teamSize = 20, projectTitle = \"Project Z\"", ManagerControllerTest::getUpdateQueryCondition(*updateManager).c_str());
+}
+
 TEST_F(ManagerFixture, updateManagerSuccess) {
 
 	updateManager->setManagerID(1);

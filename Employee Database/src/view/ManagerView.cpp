@@ -266,7 +266,7 @@ bool ManagerView::viewManagerConditional() {
 		std::cout << "\x1B[33m" << "Select the field by which you want to view the Manager, or select 0/18 for operations: " << "\x1B[0m\n";
 
 		if (isInvalidInput) {
-			std::cerr << "\x1B[33m" << "Wrong Input, Please enter an input in the range: [0-3]" << "\x1B[0m\n";
+			std::cerr << "\x1B[33m" << "Wrong Input, Please enter an input in the range: [0-18]" << "\x1B[0m\n";
 			isInvalidInput = false;
 		}
 

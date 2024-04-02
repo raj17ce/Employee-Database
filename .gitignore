@@ -38,4 +38,5 @@
 #folders
 bin/
 bin-int/
+packages/
 .vs/

@@ -91,6 +91,15 @@ TEST_F(DepartmentFixture, getUpdateQueryConditionNonEmpty) {
 	ASSERT_STREQ("departmentName = \"R&D\", allowance = 5000.000000", DepartmentControllerTest::getUpdateQueryCondition(*updateDepartment).c_str());
 }
 
+TEST_F(DepartmentFixture, getUpdateQueryConditionMultiple) {
+	updateDepartment->setDepartmentName("Marketing");
+	updateDepartment->setAllowance(5000.00);
+	ASSERT_STREQ("departmentName = \"Marketing\", allowance = 5000.000000", DepartmentControllerTest::getUpdateQueryCondition(*updateDepartment).c_str());
+
+	updateDepartment->setDepartmentName("R&D");
+	ASSERT_STREQ("departmentName = \"R&D\", allowance = 5000.000000", DepartmentControllerTest::getUpdateQueryCondition(*updateDepartment).c_str());
+}
+
 TEST_F(DepartmentFixture, updateDepartmentSuccess) {
 
 	updateDepartment->setDepartmentID(1);

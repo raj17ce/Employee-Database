@@ -37,12 +37,12 @@ void DepartmentView::getInsertDepartmentInput(Department& obj) {
 
 	{
 		auto allowance = Utility::getUserInputDouble("allowance").value();
-		obj.setBaseSalary(allowance);
+		obj.setAllowance(allowance);
 	}
 
 	{
 		auto deduction = Utility::getUserInputDouble("deduction").value();
-		obj.setBaseSalary(deduction);
+		obj.setDeduction(deduction);
 	}
 };
 
@@ -81,14 +81,14 @@ void DepartmentView::getUpdateDepartmentInput(Department& obj, int fieldNumber) 
 		case 3:
 		{
 			auto allowance = Utility::getUserInputDouble("allowance").value();
-			obj.setBaseSalary(allowance);
+			obj.setAllowance(allowance);
 			break;
 		}
 
 		case 4:
 		{
 			auto deduction = Utility::getUserInputDouble("deduction").value();
-			obj.setBaseSalary(deduction);
+			obj.setDeduction(deduction);
 			break;
 		}
 	}
@@ -118,14 +118,14 @@ void DepartmentView::getViewDepartmentInput(Department& obj, int fieldNumber) {
 		case 4:
 		{
 			auto allowance = Utility::getUserInputDouble("allowance").value();
-			obj.setBaseSalary(allowance);
+			obj.setAllowance(allowance);
 			break;
 		}
 
 		case 5:
 		{
 			auto deduction = Utility::getUserInputDouble("deduction").value();
-			obj.setBaseSalary(deduction);
+			obj.setDeduction(deduction);
 			break;
 		}
 	}
@@ -238,7 +238,7 @@ bool DepartmentView::viewDepartmentConditional() {
 		std::cout << "\x1B[33m" << "Select the field by which you want to view the Department, or select 0/6 for operations:" << "\x1B[0m\n";
 
 		if (isInvalidInput) {
-			std::cerr << "\x1B[33m" << "Wrong Input, Please enter an input in the range: [0-3]" << "\x1B[0m\n";
+			std::cerr << "\x1B[33m" << "Wrong Input, Please enter an input in the range: [0-6]" << "\x1B[0m\n";
 			isInvalidInput = false;
 		}
 
