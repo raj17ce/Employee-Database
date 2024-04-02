@@ -164,6 +164,7 @@
     <ClInclude Include="include\fixture\QAFixture.h" />
     <ClInclude Include="include\fixture\SalaryFixture.h" />
     <ClInclude Include="include\fixture\TableFixture.h" />
+    <ClInclude Include="include\fixture\ValidateFixture.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
