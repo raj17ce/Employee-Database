@@ -9,16 +9,16 @@ using EmployeeDB::DBManager;
 TEST_F(HRFixture, insertHRSuccess) {
 	ASSERT_TRUE(HRController::insertHR(*hr));
 
-	std::string queryString = "SELECT * FROM Employee NATURAL JOIN HR WHERE firstName = \"Michael\" and hrSpecialization = \"Recruitment\";";
-	ASSERT_EQ(1, DBManager::instance().executeRowCountQuery(queryString.c_str()));
+	std::string_view queryString = "SELECT * FROM Employee NATURAL JOIN HR WHERE firstName = \"Michael\" and hrSpecialization = \"Recruitment\";";
+	ASSERT_EQ(1, DBManager::instance().executeRowCountQuery(queryString.data()));
 }
 
 TEST_F(HRFixture, insertHRFailure) {
 	ASSERT_TRUE(HRController::insertHR(*hr));
 	ASSERT_FALSE(HRController::insertHR(*hr));
 
-	std::string queryString = "SELECT * FROM Employee NATURAL JOIN HR WHERE firstName = \"Michael\" and hrSpecialization = \"Recruitment\";";
-	ASSERT_EQ(1, DBManager::instance().executeRowCountQuery(queryString.c_str()));
+	std::string_view queryString = "SELECT * FROM Employee NATURAL JOIN HR WHERE firstName = \"Michael\" and hrSpecialization = \"Recruitment\";";
+	ASSERT_EQ(1, DBManager::instance().executeRowCountQuery(queryString.data()));
 }
 
 TEST_F(HRFixture, selectHRSuccess) {
@@ -26,24 +26,24 @@ TEST_F(HRFixture, selectHRSuccess) {
 	ASSERT_TRUE(HRController::selectHR("firstName", "David"));
 	ASSERT_TRUE(HRController::selectHR("hrSpecialization", "Human Resource"));
 
-	std::string queryString = "SELECT * FROM HR;";
-	ASSERT_EQ(2, DBManager::instance().executeRowCountQuery(queryString.c_str()));
+	std::string_view queryString = "SELECT * FROM HR;";
+	ASSERT_EQ(2, DBManager::instance().executeRowCountQuery(queryString.data()));
 }
 
 TEST_F(HRFixture, selectHRFailure) {
 	ASSERT_FALSE(HRController::selectHR("firstNamme", "Devin"));
 	ASSERT_FALSE(HRController::selectHR("bonuss", "65000"));
 
-	std::string queryString = "SELECT * FROM HR;";
-	ASSERT_EQ(2, DBManager::instance().executeRowCountQuery(queryString.c_str()));
+	std::string_view queryString = "SELECT * FROM HR;";
+	ASSERT_EQ(2, DBManager::instance().executeRowCountQuery(queryString.data()));
 }
 
 TEST_F(HRFixture, deleteHRByID) {
 	ASSERT_TRUE(HRController::deleteHRByID(1));
 	ASSERT_TRUE(HRController::deleteHRByID(2));
 
-	std::string queryString = "SELECT * FROM HR";
-	ASSERT_EQ(0, DBManager::instance().executeRowCountQuery(queryString.c_str()));
+	std::string_view queryString = "SELECT * FROM HR";
+	ASSERT_EQ(0, DBManager::instance().executeRowCountQuery(queryString.data()));
 }
 
 TEST_F(HRFixture, getUpdateQueryConditionEmpty) {
@@ -62,14 +62,14 @@ TEST_F(HRFixture, updateHRSuccess) {
 
 	ASSERT_TRUE(HRController::updateHR(*updateHr));
 
-	std::string queryString = "SELECT * FROM HR";
-	ASSERT_EQ(2, DBManager::instance().executeRowCountQuery(queryString.c_str()));
+	std::string_view queryString = "SELECT * FROM HR";
+	ASSERT_EQ(2, DBManager::instance().executeRowCountQuery(queryString.data()));
 
 	queryString = "SELECT * FROM Employee NATURAL JOIN HR WHERE firstName = \"David\"";
-	ASSERT_EQ(0, DBManager::instance().executeRowCountQuery(queryString.c_str()));
+	ASSERT_EQ(0, DBManager::instance().executeRowCountQuery(queryString.data()));
 
 	queryString = "SELECT * FROM Employee NATURAL JOIN HR WHERE firstName = \"Devin\"";
-	ASSERT_EQ(1, DBManager::instance().executeRowCountQuery(queryString.c_str()));
+	ASSERT_EQ(1, DBManager::instance().executeRowCountQuery(queryString.data()));
 }
 
 TEST_F(HRFixture, updateHRFailure) {

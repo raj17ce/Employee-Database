@@ -12,7 +12,7 @@ public:
 
         DBManager::instance().executeConfigQuery();
 
-        std::string queryString = "INSERT INTO Department (\"departmentID\", \"departmentName\", \"baseSalary\", \"allowance\", \"deduction\") VALUES"
+        std::string_view queryString = "INSERT INTO Department (\"departmentID\", \"departmentName\", \"baseSalary\", \"allowance\", \"deduction\") VALUES"
             "(1, 'Engineer', 65000, 7000, 3000),"
             "(2, 'Finance', 65000, 6000, 2500),"
             "(3, 'HR', 55000, 4000, 1500),"
@@ -48,7 +48,7 @@ public:
             "(7, 4, 18, 12, 'Project C', 'gTest');";
 
         try {
-            DBManager::instance().executeQuery(queryString.c_str());
+            DBManager::instance().executeQuery(queryString.data());
         }
         catch (const std::exception& e) {
             std::cerr << "\x1B[31m" << e.what() << "\033[0m\n";

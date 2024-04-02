@@ -12,16 +12,16 @@ using EmployeeDB::DBManager;
 TEST_F(EmployeeFixture, insertEmployeeSuccess) {
 	ASSERT_TRUE(EmployeeController::insertEmployee(*employee));
 
-	std::string queryString = "SELECT * FROM Employee WHERE firstName = \"John\";";
-	ASSERT_EQ(1, DBManager::instance().executeRowCountQuery(queryString.c_str()));
+	std::string_view queryString = "SELECT * FROM Employee WHERE firstName = \"John\";";
+	ASSERT_EQ(1, DBManager::instance().executeRowCountQuery(queryString.data()));
 }
 
 TEST_F(EmployeeFixture, insertEmployeeFailure) {
 	ASSERT_TRUE(EmployeeController::insertEmployee(*employee));
 	ASSERT_FALSE(EmployeeController::insertEmployee(*employee));
 
-	std::string queryString = "SELECT * FROM Employee WHERE firstName = \"John\";";
-	ASSERT_EQ(1, DBManager::instance().executeRowCountQuery(queryString.c_str()));
+	std::string_view queryString = "SELECT * FROM Employee WHERE firstName = \"John\";";
+	ASSERT_EQ(1, DBManager::instance().executeRowCountQuery(queryString.data()));
 }
 
 TEST_F(EmployeeFixture, getEmployeeIDbyEmailSuccess) {
@@ -73,8 +73,8 @@ TEST_F(EmployeeFixture, deleteEmployeeByID) {
 	ASSERT_TRUE(EmployeeController::deleteEmployeeByID(3));
 	ASSERT_TRUE(EmployeeController::deleteEmployeeByID(4));
 
-	std::string queryString = "SELECT * FROM Employee";
-	ASSERT_EQ(0, DBManager::instance().executeRowCountQuery(queryString.c_str()));
+	std::string_view queryString = "SELECT * FROM Employee";
+	ASSERT_EQ(0, DBManager::instance().executeRowCountQuery(queryString.data()));
 }
 
 TEST_F(EmployeeFixture, getSalaryDetailsSuccess) {
@@ -127,14 +127,14 @@ TEST_F(EmployeeFixture, updateEmployeeSuccess) {
 
 	ASSERT_TRUE(EmployeeController::updateEmployee(*updateEmployee));
 
-	std::string queryString = "SELECT * FROM Employee";
-	ASSERT_EQ(4, DBManager::instance().executeRowCountQuery(queryString.c_str()));
+	std::string_view queryString = "SELECT * FROM Employee";
+	ASSERT_EQ(4, DBManager::instance().executeRowCountQuery(queryString.data()));
 
 	queryString = "SELECT * FROM Employee WHERE firstName = \"David\"";
-	ASSERT_EQ(0, DBManager::instance().executeRowCountQuery(queryString.c_str()));
+	ASSERT_EQ(0, DBManager::instance().executeRowCountQuery(queryString.data()));
 
 	queryString = "SELECT * FROM Employee WHERE firstName = \"Devin\"";
-	ASSERT_EQ(1, DBManager::instance().executeRowCountQuery(queryString.c_str()));
+	ASSERT_EQ(1, DBManager::instance().executeRowCountQuery(queryString.data()));
 }
 
 TEST_F(EmployeeFixture, updateEmployeeFailure) {

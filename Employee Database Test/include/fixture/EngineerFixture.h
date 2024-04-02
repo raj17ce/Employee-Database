@@ -32,7 +32,7 @@ public:
 
         DBManager::instance().executeConfigQuery();
 
-        std::string queryString = "INSERT INTO Department (\"departmentID\", \"departmentName\", \"baseSalary\", \"allowance\", \"deduction\") VALUES"
+        std::string_view queryString = "INSERT INTO Department (\"departmentID\", \"departmentName\", \"baseSalary\", \"allowance\", \"deduction\") VALUES"
             "(1, 'Engineer', 65000, 7000, 3000);"
             "INSERT INTO Employee(\"employeeID\", \"firstName\", \"middleName\", \"lastName\", \"dateOfBirth\", \"mobileNumber\", \"email\", \"address\", \"gender\", \"dateOfJoining\", \"departmentID\", \"mentorID\", \"performanceMetric\", \"bonus\") VALUES"
             "(1, 'David', 'Lee', 'Brown', '03-04-1993', 1234509876, 'david.brown@example.com', '345 Oak St, City, Country', 'Male', '12-11-2022', 1, NULL, 0.78, 450),"
@@ -42,7 +42,7 @@ public:
             "(2, 'Python');";
 
         try {
-            DBManager::instance().executeQuery(queryString.c_str());
+            DBManager::instance().executeQuery(queryString.data());
         }
         catch (const std::exception& e) {
             std::cerr << "\x1B[31m" << e.what() << "\033[0m\n";

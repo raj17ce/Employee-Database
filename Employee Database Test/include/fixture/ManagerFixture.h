@@ -24,7 +24,7 @@ public:
 
         DBManager::instance().executeConfigQuery();
 
-        std::string queryString = "INSERT INTO Department (\"departmentID\", \"departmentName\", \"baseSalary\", \"allowance\", \"deduction\") VALUES"
+        std::string_view queryString = "INSERT INTO Department (\"departmentID\", \"departmentName\", \"baseSalary\", \"allowance\", \"deduction\") VALUES"
             "(1, 'Engineer', 65000, 7000, 3000),"
             "(2, 'Finance', 62000, 8000, 4000);"
             "INSERT INTO Employee(\"employeeID\", \"firstName\", \"middleName\", \"lastName\", \"dateOfBirth\", \"mobileNumber\", \"email\", \"address\", \"gender\", \"dateOfJoining\", \"departmentID\", \"mentorID\", \"performanceMetric\", \"bonus\") VALUES"
@@ -36,7 +36,7 @@ public:
             "(2, 1, 18, 12, 'Project E', 'C#');";
 
         try {
-            DBManager::instance().executeQuery(queryString.c_str());
+            DBManager::instance().executeQuery(queryString.data());
         }
         catch (const std::exception& e) {
             std::cerr << "\x1B[31m" << e.what() << "\033[0m\n";

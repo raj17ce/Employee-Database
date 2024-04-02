@@ -5,7 +5,7 @@ using EmployeeDB::Controller::TableController;
 using EmployeeDB::DBManager;
 
 std::string TableController::getCreateTableQuery(Table& obj) {	
-	std::string queryString = "CREATE TABLE \"" + obj.getTableName() + "\" ( ";
+	std::string queryString = "CREATE TABLE \"" + obj.getTableName() + "\" (";
 
 	auto isFirstAttribute{ true };
 
@@ -35,7 +35,7 @@ std::string TableController::getCreateTableQuery(Table& obj) {
 		queryString += keyConstraints;
 	}
 
-	queryString += " );";
+	queryString += ");";
 
 	return queryString;
 }

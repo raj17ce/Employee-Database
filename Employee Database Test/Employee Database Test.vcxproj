@@ -151,13 +151,16 @@
     <ClInclude Include="include\controller\DepartmentControllerTest.h" />
     <ClInclude Include="include\controller\EmployeeControllerTest.h" />
     <ClInclude Include="include\controller\EngineerControllerTest.h" />
+    <ClInclude Include="include\controller\ExportControllerTest.h" />
     <ClInclude Include="include\controller\FinanceControllerTest.h" />
     <ClInclude Include="include\controller\HRControllerTest.h" />
     <ClInclude Include="include\controller\ManagerControllerTest.h" />
     <ClInclude Include="include\controller\QAControllerTest.h" />
+    <ClInclude Include="include\controller\TableControllerTest.h" />
     <ClInclude Include="include\fixture\DepartmentFixture.h" />
     <ClInclude Include="include\fixture\EmployeeFixture.h" />
     <ClInclude Include="include\fixture\EngineerFixture.h" />
+    <ClInclude Include="include\fixture\ExportFixture.h" />
     <ClInclude Include="include\fixture\FinanceFixture.h" />
     <ClInclude Include="include\fixture\HRFixture.h" />
     <ClInclude Include="include\fixture\ManagerFixture.h" />
@@ -193,10 +196,12 @@
     <ClCompile Include="src\controller\DepartmentControllerTest.cpp" />
     <ClCompile Include="src\controller\EmployeeControllerTest.cpp" />
     <ClCompile Include="src\controller\EngineerControllerTest.cpp" />
+    <ClCompile Include="src\controller\ExportControllerTest.cpp" />
     <ClCompile Include="src\controller\FinanceControllerTest.cpp" />
     <ClCompile Include="src\controller\HRControllerTest.cpp" />
     <ClCompile Include="src\controller\ManagerControllerTest.cpp" />
     <ClCompile Include="src\controller\QAControllerTest.cpp" />
+    <ClCompile Include="src\controller\TableControllerTest.cpp" />
     <ClCompile Include="src\ValidateTest.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

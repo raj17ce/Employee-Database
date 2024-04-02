@@ -3,8 +3,10 @@
 
 #include "../../pch.h"
 #include "./model/Table.h"
+#include "DBManager.h"
 
 using EmployeeDB::Model::Table;
+using EmployeeDB::DBManager;
 
 class TableFixture : public ::testing::Test {
 public:
@@ -29,6 +31,14 @@ public:
 
 		emptyTable = std::make_unique<Table>();
 		emptyTable->setTableName("Roles");
+	}
+
+	void TearDown() override {
+		std::string_view queryString = "DROP TABLE IF EXISTS Dpt";
+		DBManager::instance().executeQuery(queryString.data());
+
+		queryString = "DROP TABLE IF EXISTS Roles";
+		DBManager::instance().executeQuery(queryString.data());
 	}
 
 	std::unique_ptr<Table> table;

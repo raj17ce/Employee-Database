@@ -9,16 +9,16 @@ using EmployeeDB::DBManager;
 TEST_F(EngineerFixture, insertEngineerSuccess) {
 	ASSERT_TRUE(EngineerController::insertEngineer(*engineer));
 
-	std::string queryString = "SELECT * FROM Employee NATURAL JOIN Engineer WHERE firstName = \"John\" and technology = \"CPP\";";
-	ASSERT_EQ(1, DBManager::instance().executeRowCountQuery(queryString.c_str()));
+	std::string_view queryString = "SELECT * FROM Employee NATURAL JOIN Engineer WHERE firstName = \"John\" and technology = \"CPP\";";
+	ASSERT_EQ(1, DBManager::instance().executeRowCountQuery(queryString.data()));
 }
 
 TEST_F(EngineerFixture, insertEngineerFailure) {
 	ASSERT_TRUE(EngineerController::insertEngineer(*engineer));
 	ASSERT_FALSE(EngineerController::insertEngineer(*engineer));
 
-	std::string queryString = "SELECT * FROM Employee NATURAL JOIN Engineer WHERE firstName = \"John\" and technology = \"CPP\";";
-	ASSERT_EQ(1, DBManager::instance().executeRowCountQuery(queryString.c_str()));
+	std::string_view queryString = "SELECT * FROM Employee NATURAL JOIN Engineer WHERE firstName = \"John\" and technology = \"CPP\";";
+	ASSERT_EQ(1, DBManager::instance().executeRowCountQuery(queryString.data()));
 }
 
 TEST_F(EngineerFixture, selectEngineerSuccess) {
@@ -26,24 +26,24 @@ TEST_F(EngineerFixture, selectEngineerSuccess) {
 	ASSERT_TRUE(EngineerController::selectEngineer("firstName", "David"));
 	ASSERT_TRUE(EngineerController::selectEngineer("technology", "Python"));
 
-	std::string queryString = "SELECT * FROM Engineer;";
-	ASSERT_EQ(2, DBManager::instance().executeRowCountQuery(queryString.c_str()));
+	std::string_view queryString = "SELECT * FROM Engineer;";
+	ASSERT_EQ(2, DBManager::instance().executeRowCountQuery(queryString.data()));
 }
 
 TEST_F(EngineerFixture, selectEngineerFailure) {
 	ASSERT_FALSE(EngineerController::selectEngineer("firstNamme", "Devin"));
 	ASSERT_FALSE(EngineerController::selectEngineer("bonuss", "65000"));
 
-	std::string queryString = "SELECT * FROM Engineer;";
-	ASSERT_EQ(2, DBManager::instance().executeRowCountQuery(queryString.c_str()));
+	std::string_view queryString = "SELECT * FROM Engineer;";
+	ASSERT_EQ(2, DBManager::instance().executeRowCountQuery(queryString.data()));
 }
 
 TEST_F(EngineerFixture, deleteEngineerByID) {
 	ASSERT_TRUE(EngineerController::deleteEngineerByID(1));
 	ASSERT_TRUE(EngineerController::deleteEngineerByID(2));
 
-	std::string queryString = "SELECT * FROM Engineer";
-	ASSERT_EQ(0, DBManager::instance().executeRowCountQuery(queryString.c_str()));
+	std::string_view queryString = "SELECT * FROM Engineer";
+	ASSERT_EQ(0, DBManager::instance().executeRowCountQuery(queryString.data()));
 }
 
 TEST_F(EngineerFixture, getUpdateQueryConditionEmpty) {
@@ -62,14 +62,14 @@ TEST_F(EngineerFixture, updateEngineerSuccess) {
 
 	ASSERT_TRUE(EngineerController::updateEngineer(*updateEngineer));
 
-	std::string queryString = "SELECT * FROM Engineer";
-	ASSERT_EQ(2, DBManager::instance().executeRowCountQuery(queryString.c_str()));
+	std::string_view queryString = "SELECT * FROM Engineer";
+	ASSERT_EQ(2, DBManager::instance().executeRowCountQuery(queryString.data()));
 
 	queryString = "SELECT * FROM Employee NATURAL JOIN Engineer WHERE firstName = \"David\"";
-	ASSERT_EQ(0, DBManager::instance().executeRowCountQuery(queryString.c_str()));
+	ASSERT_EQ(0, DBManager::instance().executeRowCountQuery(queryString.data()));
 
 	queryString = "SELECT * FROM Employee NATURAL JOIN Engineer WHERE firstName = \"Devin\"";
-	ASSERT_EQ(1, DBManager::instance().executeRowCountQuery(queryString.c_str()));
+	ASSERT_EQ(1, DBManager::instance().executeRowCountQuery(queryString.data()));
 }
 
 TEST_F(EngineerFixture, updateEngineerFailure) {

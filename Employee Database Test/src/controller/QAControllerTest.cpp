@@ -9,16 +9,16 @@ using EmployeeDB::DBManager;
 TEST_F(QAFixture, insertQASuccess) {
 	ASSERT_TRUE(QAController::insertQA(*qa));
 
-	std::string queryString = "SELECT * FROM Employee NATURAL JOIN QA WHERE firstName = \"Emily\" and testingTool = \"Selenium\";";
-	ASSERT_EQ(1, DBManager::instance().executeRowCountQuery(queryString.c_str()));
+	std::string_view queryString = "SELECT * FROM Employee NATURAL JOIN QA WHERE firstName = \"Emily\" and testingTool = \"Selenium\";";
+	ASSERT_EQ(1, DBManager::instance().executeRowCountQuery(queryString.data()));
 }
 
 TEST_F(QAFixture, insertQAFailure) {
 	ASSERT_TRUE(QAController::insertQA(*qa));
 	ASSERT_FALSE(QAController::insertQA(*qa));
 
-	std::string queryString = "SELECT * FROM Employee NATURAL JOIN QA WHERE firstName = \"Emily\" and testingTool = \"Selenium\";";
-	ASSERT_EQ(1, DBManager::instance().executeRowCountQuery(queryString.c_str()));
+	std::string_view queryString = "SELECT * FROM Employee NATURAL JOIN QA WHERE firstName = \"Emily\" and testingTool = \"Selenium\";";
+	ASSERT_EQ(1, DBManager::instance().executeRowCountQuery(queryString.data()));
 }
 
 TEST_F(QAFixture, selectQASuccess) {
@@ -26,24 +26,24 @@ TEST_F(QAFixture, selectQASuccess) {
 	ASSERT_TRUE(QAController::selectQA("firstName", "David"));
 	ASSERT_TRUE(QAController::selectQA("testingTool", "Jira"));
 
-	std::string queryString = "SELECT * FROM QA;";
-	ASSERT_EQ(2, DBManager::instance().executeRowCountQuery(queryString.c_str()));
+	std::string_view queryString = "SELECT * FROM QA;";
+	ASSERT_EQ(2, DBManager::instance().executeRowCountQuery(queryString.data()));
 }
 
 TEST_F(QAFixture, selectQAFailure) {
 	ASSERT_FALSE(QAController::selectQA("firstNamme", "Devin"));
 	ASSERT_FALSE(QAController::selectQA("bonuss", "65000"));
 
-	std::string queryString = "SELECT * FROM QA;";
-	ASSERT_EQ(2, DBManager::instance().executeRowCountQuery(queryString.c_str()));
+	std::string_view queryString = "SELECT * FROM QA;";
+	ASSERT_EQ(2, DBManager::instance().executeRowCountQuery(queryString.data()));
 }
 
 TEST_F(QAFixture, deleteQAByID) {
 	ASSERT_TRUE(QAController::deleteQAByID(1));
 	ASSERT_TRUE(QAController::deleteQAByID(2));
 
-	std::string queryString = "SELECT * FROM QA";
-	ASSERT_EQ(0, DBManager::instance().executeRowCountQuery(queryString.c_str()));
+	std::string_view queryString = "SELECT * FROM QA";
+	ASSERT_EQ(0, DBManager::instance().executeRowCountQuery(queryString.data()));
 }
 
 TEST_F(QAFixture, getUpdateQueryConditionEmpty) {
@@ -62,14 +62,14 @@ TEST_F(QAFixture, updateQASuccess) {
 
 	ASSERT_TRUE(QAController::updateQA(*updateQa));
 
-	std::string queryString = "SELECT * FROM QA";
-	ASSERT_EQ(2, DBManager::instance().executeRowCountQuery(queryString.c_str()));
+	std::string_view queryString = "SELECT * FROM QA";
+	ASSERT_EQ(2, DBManager::instance().executeRowCountQuery(queryString.data()));
 
 	queryString = "SELECT * FROM Employee NATURAL JOIN QA WHERE firstName = \"David\"";
-	ASSERT_EQ(0, DBManager::instance().executeRowCountQuery(queryString.c_str()));
+	ASSERT_EQ(0, DBManager::instance().executeRowCountQuery(queryString.data()));
 
 	queryString = "SELECT * FROM Employee NATURAL JOIN QA WHERE firstName = \"Devin\"";
-	ASSERT_EQ(1, DBManager::instance().executeRowCountQuery(queryString.c_str()));
+	ASSERT_EQ(1, DBManager::instance().executeRowCountQuery(queryString.data()));
 }
 
 TEST_F(QAFixture, updateQAFailure) {

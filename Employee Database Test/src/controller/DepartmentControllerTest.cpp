@@ -9,16 +9,16 @@ using EmployeeDB::DBManager;
 TEST_F(DepartmentFixture, insertDepartmentSuccess) {
 	ASSERT_TRUE(DepartmentController::insertDepartment(*department));
 
-	std::string queryString = "SELECT * FROM Department WHERE departmentName = \"Marketing\";";
-	ASSERT_EQ(1, DBManager::instance().executeRowCountQuery(queryString.c_str()));
+	std::string_view queryString = "SELECT * FROM Department WHERE departmentName = \"Marketing\";";
+	ASSERT_EQ(1, DBManager::instance().executeRowCountQuery(queryString.data()));
 }
 
 TEST_F(DepartmentFixture, insertDepartmentFailure) {
 	DepartmentController::insertDepartment(*department);
 	ASSERT_FALSE(DepartmentController::insertDepartment(*department));
 
-	std::string queryString = "SELECT * FROM Department WHERE departmentName = \"Marketing\";";
-	ASSERT_EQ(1, DBManager::instance().executeRowCountQuery(queryString.c_str()));
+	std::string_view queryString = "SELECT * FROM Department WHERE departmentName = \"Marketing\";";
+	ASSERT_EQ(1, DBManager::instance().executeRowCountQuery(queryString.data()));
 }
 
 TEST_F(DepartmentFixture, getDepartmentIDbyNameSuccess) {
@@ -54,16 +54,16 @@ TEST_F(DepartmentFixture, selectDepartmentSuccess) {
 	ASSERT_TRUE(DepartmentController::selectDepartment("departmentName", "Engineer"));
 	ASSERT_TRUE(DepartmentController::selectDepartment("baseSalary", "65000"));
 
-	std::string queryString = "SELECT * FROM Department";
-	ASSERT_EQ(4, DBManager::instance().executeRowCountQuery(queryString.c_str()));
+	std::string_view queryString = "SELECT * FROM Department";
+	ASSERT_EQ(4, DBManager::instance().executeRowCountQuery(queryString.data()));
 }
 
 TEST_F(DepartmentFixture, selectDepartmentFailure) {
 	ASSERT_FALSE(DepartmentController::selectDepartment("departmenttName", "Engineer"));
 	ASSERT_FALSE(DepartmentController::selectDepartment("baseSalaryyy", "65000"));
 
-	std::string queryString = "SELECT * FROM Department";
-	ASSERT_EQ(4, DBManager::instance().executeRowCountQuery(queryString.c_str()));
+	std::string_view queryString = "SELECT * FROM Department";
+	ASSERT_EQ(4, DBManager::instance().executeRowCountQuery(queryString.data()));
 }
 
 TEST_F(DepartmentFixture, deleteDepartmentByID) {
@@ -72,8 +72,8 @@ TEST_F(DepartmentFixture, deleteDepartmentByID) {
 	ASSERT_TRUE(DepartmentController::deleteDepartmentByID(3));
 	ASSERT_TRUE(DepartmentController::deleteDepartmentByID(4));
 
-	std::string queryString = "SELECT * FROM Department";
-	ASSERT_EQ(0, DBManager::instance().executeRowCountQuery(queryString.c_str()));
+	std::string_view queryString = "SELECT * FROM Department";
+	ASSERT_EQ(0, DBManager::instance().executeRowCountQuery(queryString.data()));
 }
 
 TEST_F(DepartmentFixture, getUpdateQueryConditionEmpty) {
@@ -98,14 +98,14 @@ TEST_F(DepartmentFixture, updateDepartmentSuccess) {
 
 	ASSERT_TRUE(DepartmentController::updateDepartment(*updateDepartment));
 
-	std::string queryString = "SELECT * FROM Department";
-	ASSERT_EQ(4, DBManager::instance().executeRowCountQuery(queryString.c_str()));
+	std::string_view queryString = "SELECT * FROM Department";
+	ASSERT_EQ(4, DBManager::instance().executeRowCountQuery(queryString.data()));
 
 	queryString = "SELECT * FROM Department WHERE departmentName = \"Engineer\"";
-	ASSERT_EQ(0, DBManager::instance().executeRowCountQuery(queryString.c_str()));
+	ASSERT_EQ(0, DBManager::instance().executeRowCountQuery(queryString.data()));
 
 	queryString = "SELECT * FROM Department WHERE departmentName = \"Engineering\"";
-	ASSERT_EQ(1, DBManager::instance().executeRowCountQuery(queryString.c_str()));
+	ASSERT_EQ(1, DBManager::instance().executeRowCountQuery(queryString.data()));
 }
 
 TEST_F(DepartmentFixture, updateDepartmentFailure) {
