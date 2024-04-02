@@ -195,6 +195,7 @@
     <ClCompile Include="src\controller\EngineerControllerTest.cpp" />
     <ClCompile Include="src\controller\FinanceControllerTest.cpp" />
     <ClCompile Include="src\controller\HRControllerTest.cpp" />
+    <ClCompile Include="src\controller\ManagerControllerTest.cpp" />
     <ClCompile Include="src\controller\QAControllerTest.cpp" />
     <ClCompile Include="src\ValidateTest.cpp" />
     <ClCompile Include="pch.cpp">

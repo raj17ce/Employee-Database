@@ -43,7 +43,7 @@ namespace EmployeeDB::Model {
 			return m_ProjectTitle;
 		}
 		const std::optional<std::string>& getRole() const {
-			return m_ProjectTitle;
+			return m_Role;
 		}
 		double getYearsOfExperience() const {
 			return m_YearsOfExperience;
