@@ -8,9 +8,11 @@
 
 2. `Clone this repository.`
 
-3. `Open the solution in Visual Studio.`
+3. `Run install_sqlite.bat either by double clicking it or by running it from the terminal to install sqlite3.`
 
-4. `Now, you can build and run the main project as well as the test project.`
+4. `Open the Solution in Visual Studio using Employee Database.sln file`
+
+5. `Now, you can build and run the main project as well as the test project.`
 
 ## Functionalities
 

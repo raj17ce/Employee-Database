@@ -40,3 +40,4 @@ bin/
 bin-int/
 packages/
 .vs/
+Employee Database/lib/sqlite/*
